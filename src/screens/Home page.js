@@ -1,12 +1,30 @@
-import { ImageBackground, StyleSheet, Text, View, Button, Pressable } from "react-native";
-import React from "react";
+import { ImageBackground, StyleSheet, Text, View, Pressable } from "react-native";
+import React, { useEffect } from "react";
 import { ScreenName } from "../../route/ScreenName";
+import  Icon  from "react-native-vector-icons/AntDesign";
+//import {Ionicons} from "react-native-vector-icons/Ionicons"
 
-export default function HomePage(props) {
+
+const HomePage = (props) => {
+
+    // useEffect(()=>{
+    //     props.navigation.toggleDrawer()
+    // },[])
+
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground style={styles.image} source={require('../assets/images/GreenRose.jpeg')}>
+            <ImageBackground style={styles.image} source={require('../assets/images/GreenRose2.jpeg')}>
 
+            <Pressable style={styles.button} onPress={() => {
+                    props.navigation.navigate(ScreenName.Categories);
+                }}>
+                    <Text>
+                        <Icon
+                            size={30}
+                            color="white"
+                            name='rightcircleo' />
+                    </Text>
+                </Pressable>
                 <Text style={styles.text2}>Rosa Verde</Text>
 
                 <Text style={styles.text}>{`
@@ -14,24 +32,16 @@ export default function HomePage(props) {
                     Lovers claim it as their own.\n
                     Its symbols smile upon the land,\n
                     Wrought by Natures wonderous hand;\n
-                    And in their silent beauty speak, Of life and joy,\n
+                    And in their silent beauty speak,\n
+                     Of life and joy,\n
                     to those who seek\n
                     For Love Divine and sunny hours\n
                     In the language of the flowers".\n
 
-                     -The language of flowers london 1875`}
+                -The language of flowers london 1875`}
                 </Text>
-                <Pressable style={styles.button} onPress={() => {
-                    props.navigation.navigate(ScreenName.Types);
-                }}>
-                    <Text style={styles.text3}>Arrow</Text>
-                </Pressable>
 
             </ImageBackground>
-            {/* <Button style={styles.button} title='Next'
-                onPress={() => {
-                    props.navigation.navigate(ScreenName.Types);
-                }}></Button>*/}
 
         </View>
     )
@@ -42,33 +52,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        fontSize: 14,
+        fontSize: 16,
         color: 'white',
         textAlign: "left",
         paddingTop: 30,
-        marginBottom: 200,
-        lineHeight: 10,
-
+        marginBottom: 300,
+        lineHeight: 13,
+        marginRight:20,
     },
     text2: {
         fontWeight: 'bold',
         fontSize: 30,
-        padding: 20,
+       // padding: 10,
         color: 'green',
         textAlign: 'center',
-        marginBottom: 110,
+        marginBottom: 150,
+        marginTop:20,
     },
     text3: {
-        fontSize: 16,
-        color: '#228C22',
+        fontSize: 24,
+        color: 'white',
     },
-    button: {
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        borderRadius: 40,
-        alignSelf: 'center',
-        marginTop: 20,
-        marginBottom: 30,
+    button: { 
+        marginTop:90,
+       // marginRight:10,
+        paddingHorizontal: 40,
+        alignSelf: 'flex-end',
         backgroundColor: 'transparent'
     },
-});
+}); export default HomePage;

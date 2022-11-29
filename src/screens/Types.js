@@ -3,7 +3,7 @@ import React from "react";
 import { ScreenName } from "../../route/ScreenName";
 import Cards from "../assets/Cards";
 
-export default function Types() {
+const Types = () => {
 
     const Arr = [
         {
@@ -23,24 +23,23 @@ export default function Types() {
             image: require('../assets/images/FlowersPage.jpeg'),
         },
     ]
-    
-   
-    const renderCard = (item) => {
-        return Arr.map(item => <Cards Name={item.name} image={item.image} />)
-        
+
+
+    const renderCard = ({ item }) => {
+        return <Cards Name={item.name} image={item.image} />
+
     }
     const params = {
         flatList: {
             data: Arr,
-            renderItem: data => renderCard(data),
+            renderItem: renderCard,
             style: styles.flatList,
-             numColumn: 2,
-            // keyExtactor:
+            numColumns: 2,
         },
     };
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/green1.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/types1.jpeg')}>
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
@@ -50,4 +49,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-})
+    cards: {
+        marginRight:170,
+        marginLeft: 20,
+    },
+}); export default Types;

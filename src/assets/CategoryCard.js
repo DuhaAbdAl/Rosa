@@ -1,29 +1,26 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-    ScrollView,
     StyleSheet,
     Text,
     View,
     Pressable,
     Image,
-    TextInput,
-    FlatList,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
 
-const Cards = (props) => {
-    const { Name, image } = props;
+const CategoryCard = (props) => {
+    const { Name, Image } = props;
     const navigation = useNavigation()
     return (
         <View style={styles.card}>
-            <Pressable onPress={() => {
-                    navigation.navigate(ScreenName.Info , {data:{name:Name}});
-                }}>
+            {/* <Pressable onPress={() => {
+                    navigation.navigate(ScreenName.Types);
+                }}>  
                 
-                <Image style={styles.img} source={image} />
+                <Image style={styles.img} source={Image} />
                 <Text style={styles.text}>{Name}</Text>
-                </Pressable>
+                </Pressable> */}
         </View>
     )
 }
@@ -34,7 +31,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     img: {
-        width: 150,
+        width: 250,
         height: 150,
         marginTop: 20,
         marginLeft: 80,
@@ -45,8 +42,8 @@ const styles = StyleSheet.create({
         margin: 10,
         marginLeft: 100,
     }
-})
+});
 
 
 
-export default Cards; 
+export default CategoryCard; 
