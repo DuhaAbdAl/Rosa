@@ -1,12 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import Categories from "../src/screens/Categories";
 import HomePage from "../src/screens/Home page";
 import Info from "../src/screens/Info";
 import Types from "../src/screens/Types";
 import MyDrawer from "./Drawer";
 import { ScreenName } from "./ScreenName";
+import { Image } from "react-native";
+import Header from "../src/Componants/Header";
+import SignIn from "../src/screens/SignIn";
+import SignUp from "../src/screens/SignUp";
 
 
 const MainNavigation = (props) => {
@@ -14,10 +17,13 @@ const MainNavigation = (props) => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-            initialRouteName="Drawer"  
+            initialRouteName="Drawer" 
+            // options={ 
+            // HeaderLeft={Header}
+            // }
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'black'
+                    backgroundColor: '#28463e'
                 },
                 headerTintColor: 'green',
                 headerTitleAlign:'center',
@@ -25,14 +31,18 @@ const MainNavigation = (props) => {
                 <Stack.Screen name={ScreenName.HomePage} component={HomePage} 
                 options={{
                     headerShown: false,
-                }
-                }
+                }}
                 />
                 <Stack.Screen name="Drawer" component={MyDrawer}
                 options={{headerShown: false,}}/>
                 <Stack.Screen name={ScreenName.Types} component={Types} />
-                <Stack.Screen name={ScreenName.Info} component={Info} />
-                <Stack.Screen name={ScreenName.Categories} component={Categories}/>
+                <Stack.Screen name={ScreenName.Info} component={Info}
+                options={{headerShown: false,}} />
+                {/* <Stack.Screen name={ScreenName.SignUp} component={SignUp}
+                 options={{
+                    headerShown: false,
+                }} />
+                <Stack.Screen name={ScreenName.SignIn} component={SignIn}/> */}
             </Stack.Navigator>
         </NavigationContainer>
     )

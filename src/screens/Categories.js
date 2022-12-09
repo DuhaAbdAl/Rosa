@@ -3,37 +3,15 @@ import React, { useRef } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { ScreenName } from "../../route/ScreenName";
 import Icon from "react-native-vector-icons/AntDesign";
-import { color } from "@rneui/base";
+import { images } from "../mokData/data";
 
-const images = [
-    {
-        id: 1,
-        title: 'Home Plants',
-        img: require('../assets/images/HomePlant.jpeg'),
-    },
-    {
-        id: 2,
-        title: 'Herbs',
-        img: require('../assets/images/herps.jpeg'),
-    },
-    {
-        id: 3,
-        title: 'Shrubs',
-        img: require('../assets/images/shrubs2.jpeg'),
-    },
-    {
-        id: 4,
-        title: 'Trees',
-        img: require('../assets/images/tree.jpeg'),
-    },
-]
-
-const Categories = () => {
+const Categories = (props) => {
+    const{title,img} = props;
     const navigation = useNavigation()
     // const renderCards = ({ item }) => {
     //     return <CategoryCard Name={item.title} Image={item.img} />
     // };
-    // const found = data.find(element => element.title == name);
+    // const found = data.filter(element => element.title == name);
 
     // const renderData = () => {
     //     var keys = Object.keys(?.info || {});
@@ -85,9 +63,9 @@ const Categories = () => {
             return (
 
                 <Animated.View
-                    style={{ width: windowWidth }}
+                    style={[{ width: windowWidth }, styles.scrollContainer]}
                     key={imageIndex}>
-                    <TouchableOpacity style={styles.touch(windowWidth)} onPress={() => { navigation.navigate(ScreenName.Types); }}>
+                    <TouchableOpacity style={styles.touch(windowWidth)} onPress={() => { navigation.navigate(ScreenName.Types , {categoryName: image.title}); }}>
                         <Image source={image.img} style={styles.card} />
                     </TouchableOpacity>
 
@@ -144,7 +122,7 @@ const Categories = () => {
                 <Icon style={styles.icons}
                     name='home' />
                 <Icon style={styles.icons}
-                    name='home' />
+                    name='hearto' />
                 <Icon style={styles.icons}
                     name='calendar' />
                 <Icon style={styles.icons}
@@ -170,6 +148,14 @@ const styles = StyleSheet.create({
         // marginVertical: 10,
         // marginHorizontal:5,
         // backgroundColor: '#6A6C6E',
+        elevation: 10,
+        // shadowColor:'#fff',
+        // shadowOffset:{
+        //     width:'100%',
+        //     height:'100%',
+        // },
+        // shadowOpacity:10,
+        // shadowRadius:3.84,
     },
     card: {
         flex: 1,
@@ -177,6 +163,7 @@ const styles = StyleSheet.create({
         width: 350,
         overflow: 'hidden',
         alignSelf: 'center',
+        elevation:10,
     },
     dots: {
         flexDirection: 'row',
@@ -204,7 +191,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         width: '80%',
         height: 65,
-        backgroundColor: 'black',
+        backgroundColor: '#28463e',
         flexDirection: 'row',
         justifyContent: 'center',
         marginTop: 40,

@@ -1,56 +1,56 @@
 import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList } from "react-native";
 import React from "react";
-import { ScreenName } from "../../route/ScreenName";
 import Cards from "../assets/Cards";
+import { data, plantTypes } from "../mokData/data";
 
-const Types = () => {
 
-    const Arr = [
-        {
-            name: 'Magnolia',
-            image: require('../assets/images/Magnolia.jpeg'),
-        },
-        {
-            name: 'Lamprocapnos spectabilis',
-            image: require('../assets/images/bleedigHeart.jpeg'),
-        },
-        {
-            name: 'Iris',
-            image: require('../assets/images/IrisPlant.jpeg'),
-        },
-        {
-            name: 'Lily',
-            image: require('../assets/images/FlowersPage.jpeg'),
-        },
-    ]
 
+const Types = (props) => {
+
+
+    const {categoryName } = props.route.params || {}
+
+    const filterData = () => {
+        const filterd = data?.filter(plant => {
+            return plant.type == categoryName ; 
+        })
+
+        return filterd ; 
+    }
+
+    // const typefilter =  plantTypes.filter(typeName => { 
+    //     return typeName.type == images.title;
+    //     }) 
+    
 
     const renderCard = ({ item }) => {
-        return <Cards Name={item.name} image={item.image} />
-
+        return <Cards Name={item.title} image={item.image} />
     }
     const params = {
         flatList: {
-            data: Arr,
+            data: filterData(),
             renderItem: renderCard,
             style: styles.flatList,
-            numColumns: 2,
+            numColumns: 1,
+            padding: 10,
+            paddingTop: 22,
+
         },
     };
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/types1.jpeg')}>
+        <ImageBackground style={styles.img} source={require('../assets/images/types2.jpeg')}>
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
-    image: {
+    img: {
         flex: 1,
         justifyContent: 'center',
     },
     cards: {
-        marginRight:170,
+        marginRight: 170,
         marginLeft: 20,
     },
 }); export default Types;

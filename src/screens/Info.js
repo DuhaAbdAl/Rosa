@@ -1,19 +1,17 @@
 import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, } from "react-native";
 import React from "react";
-import { ScreenName } from "../../route/ScreenName";
-import Cards from "../assets/Cards";
 import { data } from "../mokData/data";
 
 const Info = (props) => {
-    const { name } = props.route.params?.data
+    const { name } = props.route.params || {}
     const found = data.find(element => element.title == name);
 
     const renderData = () => {
-        var keys = Object.keys(data?.info || {});
+        var keys = Object.keys(found?.info || {});
         return keys.map(key => {
             return (
                 <View>
-                    <Text style={styles.text}>{key || "404"}</Text>
+                    <Text style={styles.text2}>{key || "404"}</Text>
                     <Text style={styles.text}>{found.info[key] || "404"}</Text>
                 </View>
             )
@@ -21,9 +19,9 @@ const Info = (props) => {
     }
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/Background.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/info6.png')}>
             <ScrollView>
-            {renderData()}
+                {renderData()}
             </ScrollView>
         </ImageBackground>
     )
@@ -32,13 +30,31 @@ const Info = (props) => {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        justifyContent: 'center',
     },
     text: {
-        fontSize: 20,
-        color: 'black',
-        textAlign: "center",
-
+        fontSize: 16,
+        color: '#fff',
+        // textAlign: 'left',
+        lineHeight: 11,
+        width: '90%',
+        marginLeft: 20,
+        marginRight: 150,
+        borderColor:'#000',
+        borderWidth:1,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    },
+    text2: {
+        fontSize: 18,
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginLeft: 20,
+        marginBottom: 10,
+        marginTop: 8,
+        paddingTop: 5,
+        backgroundColor: '#B66878',
+        height: 40,
+        width: '90%',
     },
 
 });

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable,TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { ScreenName } from "../../route/ScreenName";
 import  Icon  from "react-native-vector-icons/AntDesign";
@@ -40,7 +40,19 @@ const HomePage = (props) => {
 
                 -The language of flowers london 1875`}
                 </Text>
+                {/* <View style={styles.margin}>
+                <TouchableOpacity onPress={() => {}} style={{paddingVertical:10}}>
+            <View style={{flexDirection:'row', alignItems:'center'}}>
+                <Icon
+                name='login'
+                size={20}
+                color='white'/>
+                <Text>
 
+                </Text>
+                </View>
+                </TouchableOpacity>
+                </View> */}
             </ImageBackground>
 
         </View>
@@ -79,5 +91,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         alignSelf: 'flex-end',
         backgroundColor: 'transparent'
+    },
+    margin:{
+        padding:20,
+        borderTopWidth:1,
+        borderTopColor:'#ccc',
     },
 }); export default HomePage;
