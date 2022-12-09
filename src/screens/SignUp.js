@@ -6,6 +6,7 @@ import { BlurView } from "@react-native-community/blur";
 import LinearGradient from 'react-native-linear-gradient';
 import Button from "../Componants/Button";
 import { ScreenName } from "../../route/ScreenName";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const SignUp = (props) => {
     const { email, setEmail } = useState(email);
@@ -43,6 +44,26 @@ const SignUp = (props) => {
                 // onChangeText={(val) => setEmail(val)}
                 />
                   <Button text='Sign Up' />
+                  <View style={{alignItems:'center'}}>
+                  <Text style={styles.texeOr}>_____________or_____________</Text>
+                  <View style={{flexDirection:'row'}}>
+                  <Icon
+                  style={styles.iconStyle}
+                  name="facebook-square"
+                  color={'#3681AB'}
+                  size= {40}/>
+                  <Icon
+                  style={styles.iconStyle}
+                  name="instagram"
+                  color={'#d26a9d'}
+                  size={40}/>
+                  <Icon
+                  style={styles.iconStyle}
+                  name="google"
+                  color={'green'}
+                  size={40}/>
+                  </View>
+                  </View>
                 <View style={styles.uptext}>
                 <Text>already have an account ?</Text>
                 <Pressable onPress={() => {
@@ -64,7 +85,7 @@ const styles = StyleSheet.create({
     },
     card: {
         width: 350,
-        height: 600,
+        height: 700,
         alignSelf: 'center',
         borderRadius: 30,
         borderWidth: 1,
@@ -93,6 +114,13 @@ const styles = StyleSheet.create({
     pressText: {
         color: '#2E8D36',
         fontSize: 15,
+    },
+    texeOr:{
+        fontSize: 17,
+        paddingBottom:10,
+    },
+    iconStyle:{
+        padding:10,
     }
 
 

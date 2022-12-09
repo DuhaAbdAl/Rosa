@@ -30,10 +30,13 @@ const Cards = (props) => {
                                 color="white"
                                 size={20} />
                     </View>
+                    <View style={styles.iconView}>
                     <Ionicons style={styles.iconStyle}
                         name="water-outline"
                         color="white"
                         size={18} />
+                        <Text style={styles.iconText}>1-2</Text>
+                        </View>
                     <Icon style={styles.iconStyle}
                         name='thermometer-3'
                         color="white"
@@ -91,13 +94,19 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     iconView: {
-        flexDirection: 'column',
+        flexDirection: 'row',
+    },
+    iconText:{
+         marginTop:7,
+         marginLeft:5,
+         color:'white',
     },
     favorite: {
         alignSelf: 'flex-end',
         // paddingRight:10,
         marginRight: 10,
         marginTop: 5,
+        
     }
 })
 

@@ -6,22 +6,15 @@ import { data, plantTypes } from "../mokData/data";
 
 
 const Types = (props) => {
-
-
-    const {categoryName } = props.route.params || {}
+    const { categoryName } = props.route.params || {}
 
     const filterData = () => {
         const filterd = data?.filter(plant => {
-            return plant.type == categoryName ; 
+            return plant.type == categoryName;
         })
 
-        return filterd ; 
+        return filterd;
     }
-
-    // const typefilter =  plantTypes.filter(typeName => { 
-    //     return typeName.type == images.title;
-    //     }) 
-    
 
     const renderCard = ({ item }) => {
         return <Cards Name={item.title} image={item.image} />

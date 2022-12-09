@@ -19,7 +19,7 @@ const Info = (props) => {
     }
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/info6.png')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/info7.jpeg')}>
             <ScrollView>
                 {renderData()}
             </ScrollView>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         marginRight: 150,
         borderColor:'#000',
         borderWidth:1,
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'rgba(10, 10, 10, 0.5)',
     },
     text2: {
         fontSize: 18,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 8,
         paddingTop: 5,
-        backgroundColor: '#B66878',
+        backgroundColor: '#0c3026',
         height: 40,
         width: '90%',
     },
