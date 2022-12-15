@@ -1,20 +1,46 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { useState } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     Pressable,
     Image,
+    TouchableOpacity,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Favorite from '../Componants/Favorite';
+import { data } from "../mokData/data";
+import Types from '../screens/Types';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Cards = (props) => {
-    const { Name, image, title } = props;
+    const { Name, image, waterIcon, tempIcon, fertIcon, item , isFavorate } = props;
+    const [favorite, setFavorite] = useState(false)
     const navigation = useNavigation()
+
+
+    const OnClickFavorite = async () => {
+
+        var favoritsFromStorage = await AsyncStorage.getItem('favorite');
+        favoritsFromStorage = favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
+
+        if (!favorite) {
+            !favoritsFromStorage?.find(fav => fav.title === Name) &&
+                favoritsFromStorage.push(item)
+        } else {
+            favoritsFromStorage = favoritsFromStorage.filter(fav => fav.title !== Name);
+        }
+
+        AsyncStorage.setItem('favorite' , JSON.stringify(favoritsFromStorage));
+
+        setFavorite(!favorite)
+    }
+
     return (
         <View >
             <Pressable style={styles.card} onPress={() => {
@@ -24,28 +50,37 @@ const Cards = (props) => {
                 <View style={styles.nameCard}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
                         <Text style={styles.text}>{Name}</Text>
-                            <Icon
-                                style={styles.favorite}
-                                name='heart-o'
-                                color="white"
-                                size={20} />
+                        <Pressable onPress={() => OnClickFavorite()} >
+                            <View>
+                                <Icon
+                                    style={styles.favorite}
+                                    name={(favorite == true) ? "heart" : "heart-o"}
+                                    color={(favorite == true) ? "red" : "white"}
+                                    size={20} />
+                            </View>
+                        </Pressable>
                     </View>
                     <View style={styles.iconView}>
-                    <Ionicons style={styles.iconStyle}
-                        name="water-outline"
-                        color="white"
-                        size={18} />
-                        <Text style={styles.iconText}>1-2</Text>
-                        </View>
-                    <Icon style={styles.iconStyle}
-                        name='thermometer-3'
-                        color="white"
-                        size={18} />
-                    <Ionicons style={styles.iconStyle}
-                        name='leaf-outline'
-                        color="white"
-                        size={18} />
-
+                        <Ionicons style={styles.iconStyle}
+                            name="water-outline"
+                            color="white"
+                            size={18} />
+                        <Text style={styles.iconText}> {waterIcon} </Text>
+                    </View>
+                    <View style={styles.iconView}>
+                        <Icon style={styles.iconStyle}
+                            name='thermometer-3'
+                            color="white"
+                            size={18} />
+                        <Text style={styles.iconText}> {tempIcon} </Text>
+                    </View>
+                    <View style={styles.iconView}>
+                        <Ionicons style={styles.iconStyle}
+                            name='leaf-outline'
+                            color="white"
+                            size={18} />
+                        <Text style={styles.iconText}> {fertIcon} </Text>
+                    </View>
                 </View>
             </Pressable>
         </View>
@@ -55,14 +90,6 @@ const styles = StyleSheet.create({
     card: {
         flex: 1,
         flexDirection: 'row',
-        // elevation: 100,
-        // shadowColor:'#000',
-        // shadowOffset:{
-        //     width:0,
-        //     height:2,
-        // },
-        // shadowOpacity:10,
-        // shadowRadius:10,
     },
     imgCard: {
         width: 150,
@@ -72,10 +99,10 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     nameCard: {
-        width: 235,
+        width: 237,
         height: 150,
         paddingTop: 10,
-        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
         marginBottom: 10,
         borderRadius: 20,
         elevation: 30,
@@ -83,30 +110,28 @@ const styles = StyleSheet.create({
     text: {
         color: 'white',
         fontSize: 15,
-        // paddingBottom: 10,
         marginRight: 90,
         marginLeft: 10,
     },
     iconStyle: {
         marginBottom: 10,
-        marginTop: 8,
+        marginTop: 7,
         flexDirection: 'row',
         marginLeft: 10,
     },
     iconView: {
         flexDirection: 'row',
     },
-    iconText:{
-         marginTop:7,
-         marginLeft:5,
-         color:'white',
+    iconText: {
+        marginTop: 7,
+        marginLeft: 5,
+        color: 'white',
     },
     favorite: {
         alignSelf: 'flex-end',
-        // paddingRight:10,
         marginRight: 10,
         marginTop: 5,
-        
+
     }
 })
 

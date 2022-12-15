@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable} from "react-native";
+import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable } from "react-native";
 import { useState } from "react";
 import { BlurView } from "@react-native-community/blur";
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,8 +9,8 @@ import { ScreenName } from "../../route/ScreenName";
 
 
 const SignIn = (props) => {
-    const [ email, setEmail ] = useState(email);
-    const [ password, setPassword ] = useState(password);
+    const [email, setEmail] = useState(email);
+    const [password, setPassword] = useState(password);
     return (
         <ImageBackground style={styles.container} source={require('../assets/images/drawer3.jpeg')}>
             {/* <BlurView
@@ -22,23 +22,23 @@ const SignIn = (props) => {
                     placeholderTextColor={'#fff'}
                     style={styles.input}
                     placeholder="example@gmail.com"
-                    // onChangeText={(val) => setEmail(val)} 
-                    />
+                // onChangeText={(val) => setEmail(val)} 
+                />
                 <TextInput
                     placeholderTextColor={'#fff'}
                     style={styles.input}
                     secureTextEntry={true}
                     placeholder="**************"
-                    // onChangeText={(val) => setPassword(val)}
-                     />
+                // onChangeText={(val) => setPassword(val)}
+                />
                 <Button text='Sign In' />
                 <View style={styles.uptext}>
-                <Text>Forgot Password ?</Text>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.SignUp);
-                }}>
-                    <Text style={styles.pressText}> Sign Up</Text>
-                </Pressable>
+                    <Text>Forgot Password ?</Text>
+                    <Pressable onPress={() => {
+                        props.navigation.navigate(ScreenName.SignUp);
+                    }}>
+                        <Text style={styles.pressText}> Sign Up</Text>
+                    </Pressable>
                 </View>
             </View>
             {/* </BlurView> */}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
     },
     input: {
         width: 250,
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 1,
     },
-    uptext:{
-        flexDirection:'row',
+    uptext: {
+        flexDirection: 'row',
     },
-    pressText:{
+    pressText: {
         color: '#2E8D36',
-        fontSize:15,
+        fontSize: 15,
     }
 
 });

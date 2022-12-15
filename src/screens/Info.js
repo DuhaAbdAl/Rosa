@@ -10,7 +10,7 @@ const Info = (props) => {
         var keys = Object.keys(found?.info || {});
         return keys.map(key => {
             return (
-                <View>
+                <View style={styles.textContainer}>
                     <Text style={styles.text2}>{key || "404"}</Text>
                     <Text style={styles.text}>{found.info[key] || "404"}</Text>
                 </View>
@@ -19,7 +19,7 @@ const Info = (props) => {
     }
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/info7.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/info1.jpeg')}>
             <ScrollView>
                 {renderData()}
             </ScrollView>
@@ -31,17 +31,20 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
     },
-    text: {
-        fontSize: 16,
-        color: '#fff',
-        // textAlign: 'left',
-        lineHeight: 11,
+    textContainer:{
         width: '90%',
+        padding:10,
+        margin:8,
         marginLeft: 20,
         marginRight: 150,
         borderColor:'#000',
-        borderWidth:1,
-        backgroundColor: 'rgba(10, 10, 10, 0.5)',
+        borderWidth:0.5,
+        backgroundColor: 'rgba(10, 10, 10, 0.55)',
+    },
+    text: {
+        fontSize: 16,
+        color: '#fff',
+        lineHeight: 11,
     },
     text2: {
         fontSize: 18,

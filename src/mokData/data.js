@@ -4,7 +4,7 @@ export const data = [
         title: "Lily",
         image: require('../assets/images/FlowersPage.jpeg'),
         info: {
-     about:  `
+            About: `
      Lilium is a genus of bulbous perennials \n
      grown for their very showy,\n
      often fragrant flowers.\n
@@ -28,7 +28,7 @@ export const data = [
      depending on the species.`,
 
 
-     care: `
+            Care: `
      Provide well-drained, highly organic\n
      soil in full sun,\n
      with the lily's "feet" in shade.\n
@@ -36,7 +36,7 @@ export const data = [
      but some prefer alkaline soils.`,
 
 
-    Propagation: `
+            Propagation: `
      In spring, sow seed in a cold\n
      frame as soon as ripe\n
      or germinate under lights at 65-70°F.\n
@@ -44,7 +44,7 @@ export const data = [
      or bulblets as soon as foliage dies down.`,
 
 
-    Problems: `
+            Problems: `
      Gray mold (in wet, cold weather),\n
      viruses spread by aphids, red lily beetles,\n
      slugs, snails.\n
@@ -63,7 +63,10 @@ export const data = [
             // Time_to_ultimate_height: '1 year',
 
         },
-        type: 'Flowers'
+        type: 'Flowers',
+        waterIcon: '1-2',
+        tempIcon: '28c°-30c° ',
+        fertIcon: '1',
     },
     {
         name: '',
@@ -72,10 +75,13 @@ export const data = [
         info: {
             about: `about`,
 
-            
+
             care: 'care',
         },
-        type: 'Flowers'
+        type: 'Flowers',
+        waterIcon: '1-2',
+        tempIcon: '24c°-26c°',
+        fertIcon: '1',
     },
     {
         name: '',
@@ -87,19 +93,25 @@ export const data = [
 
             care: 'care',
         },
-        type: 'Flowers'
+        type: 'Flowers',
+        waterIcon: '1-2',
+        tempIcon: '18c°-28c°',
+        fertIcon: '1',
     },
     {
         name: '',
-        title: "Bleeding Heart",
+        title: "Bleeding\n Heart",
         image: require('../assets/images/bleedigHeart.jpeg'),
         info: {
-               about: `aaa`,
+            about: `aaa`,
 
 
-               care: 'care',
+            care: 'care',
         },
         type: 'Flowers',
+        waterIcon: '1-2',
+        tempIcon: '27c°-35c°',
+        fertIcon: '2',
     }
 ]
 

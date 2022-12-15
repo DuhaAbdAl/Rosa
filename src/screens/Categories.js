@@ -6,23 +6,9 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { images } from "../mokData/data";
 
 const Categories = (props) => {
-    const{title,img} = props;
+    const { title, img } = props;
     const navigation = useNavigation()
-    // const renderCards = ({ item }) => {
-    //     return <CategoryCard Name={item.title} Image={item.img} />
-    // };
-    // const found = data.filter(element => element.title == name);
 
-    // const renderData = () => {
-    //     var keys = Object.keys(?.info || {});
-    //     return keys.map(key => {
-    //         return (
-    //             <View>
-    //                 <Text style={styles.text}>{key || "404"}</Text>
-    //                 <Text style={styles.text}>{found.info[key] || "404"}</Text>
-    //             </View>
-    //         )
-    //     })}
     const scroll = useRef(new Animated.Value(0)).current
     let { width: windowWidth, height: windowHeight } = useWindowDimensions();
     windowHeight = windowHeight - 300;
@@ -42,8 +28,7 @@ const Categories = (props) => {
                                 inputRange,
                                 outputRange: [-500, -50, 0]
                             })
-                        }
-                    ]
+                        }]
                 }, {
                     opacity: scroll.interpolate({
                         inputRange,
@@ -65,7 +50,7 @@ const Categories = (props) => {
                 <Animated.View
                     style={[{ width: windowWidth }, styles.scrollContainer]}
                     key={imageIndex}>
-                    <TouchableOpacity style={styles.touch(windowWidth)} onPress={() => { navigation.navigate(ScreenName.Types , {categoryName: image.title}); }}>
+                    <TouchableOpacity style={styles.touch(windowWidth)} onPress={() => { navigation.navigate(ScreenName.Types, { categoryName: image.title }); }}>
                         <Image source={image.img} style={styles.card} />
                     </TouchableOpacity>
 
@@ -103,7 +88,6 @@ const Categories = (props) => {
             <View style={[styles.scrollContainer, { height: windowHeight }]}>
                 <ScrollView
                     horizontal={true}
-                    // style={styles.scrollStyle}
                     pagingEnabled
                     showsHorizontalScrollIndicator={false}
                     onScroll={Animated.event(
@@ -142,28 +126,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     scrollContainer: {
-        // shadowColor: '#6A6C6E',
-        //elevation: 15,
-        // marginBottom: 10,
-        // marginVertical: 10,
-        // marginHorizontal:5,
-        // backgroundColor: '#6A6C6E',
-        elevation: 10,
-        // shadowColor:'#fff',
-        // shadowOffset:{
-        //     width:'100%',
-        //     height:'100%',
-        // },
-        // shadowOpacity:10,
-        // shadowRadius:3.84,
     },
     card: {
         flex: 1,
-        marginVertical: 10,
         width: 350,
         overflow: 'hidden',
         alignSelf: 'center',
-        elevation:10,
     },
     dots: {
         flexDirection: 'row',
@@ -175,6 +143,7 @@ const styles = StyleSheet.create({
         height: 8,
         borderRadius: 4,
         marginHorizontal: 4,
+        marginBottom: 20,
     },
     nametext: {
         width: '100%',
@@ -189,24 +158,27 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     iconContainer: {
-        width: '80%',
+        width: '100%',
         height: 65,
         backgroundColor: '#28463e',
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 40,
-        alignSelf:'center',
+        marginTop: 70,
+        alignSelf: 'center',
+     
     },
     icons: {
         margin: 20,
         fontSize: 25,
         color: "white",
     },
-    touch: (windowWidth) => ({
-        // borderWidth: 1,
-        backgroundColor: 'rgba(0,0,0,0)',
-        // width: windowWidth
-        flex: 1
-    })
+    touch: () => ({
+        backgroundColor: 'rgba(1,0,0,0)',
+        flex: 1,
+        elevation: 14,
+        width: 350,
+        alignSelf: 'center',
+        marginVertical: 20,
+    }),
 });
 export default Categories;

@@ -1,5 +1,5 @@
 import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data, plantTypes } from "../mokData/data";
 
@@ -7,6 +7,15 @@ import { data, plantTypes } from "../mokData/data";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {}
+    const { name } = props.route.params || {};
+    const [favorates , setFavoratis] = useState([]) ; 
+
+    const getfav = async () => {
+        var favoritsFromStorage = await AsyncStorage.getItem('favorite');
+        return favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
+    }
+
+
 
     const filterData = () => {
         const filterd = data?.filter(plant => {
@@ -17,7 +26,8 @@ const Types = (props) => {
     }
 
     const renderCard = ({ item }) => {
-        return <Cards Name={item.title} image={item.image} />
+        return <Cards Name={item.title} image={item.image} waterIcon={item.waterIcon}
+            tempIcon={item.tempIcon} fertIcon={item.fertIcon} item={item} isFavorate={item.favoritsFromStorage = item.item} />
     }
     const params = {
         flatList: {
@@ -30,6 +40,11 @@ const Types = (props) => {
 
         },
     };
+
+    useEffect(async () => {
+        const fav = await getfav() ;
+        setFavoratis(fav )
+    }, []);
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/types2.jpeg')}>

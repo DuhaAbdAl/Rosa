@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Button from "../Componants/Button";
 import { ScreenName } from "../../route/ScreenName";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const SignUp = (props) => {
     const { email, setEmail } = useState(email);
@@ -30,47 +31,64 @@ const SignUp = (props) => {
                     placeholder="example@gmail.com"
                 // onChangeText={(val) => setEmail(val)}
                 />
-                <TextInput
-                    placeholderTextColor={'#fff'}
-                    style={styles.input}
-                    secureTextEntry={true}
-                    placeholder="**************"
-                // onChangeText={(val) => setPassword(val)} 
-                />
-                <TextInput
-                    placeholderTextColor={'#fff'}
-                    style={styles.input}
-                    placeholder="confirm password"
-                // onChangeText={(val) => setEmail(val)}
-                />
-                  <Button text='Sign Up' />
-                  <View style={{alignItems:'center'}}>
-                  <Text style={styles.texeOr}>_____________or_____________</Text>
-                  <View style={{flexDirection:'row'}}>
-                  <Icon
-                  style={styles.iconStyle}
-                  name="facebook-square"
-                  color={'#3681AB'}
-                  size= {40}/>
-                  <Icon
-                  style={styles.iconStyle}
-                  name="instagram"
-                  color={'#d26a9d'}
-                  size={40}/>
-                  <Icon
-                  style={styles.iconStyle}
-                  name="google"
-                  color={'green'}
-                  size={40}/>
-                  </View>
-                  </View>
+                <View style={styles.input}>
+                    <TextInput
+                        placeholderTextColor={'#fff'}
+                        // style={styles.input}
+                        secureTextEntry={true}
+                        placeholder="**************"
+                    // onChangeText={(val) => setPassword(val)}
+                    />
+                    <Ionicons
+                        style={styles.passwerdIcon}
+                        name="eye-off-outline"
+                        size={24}
+                        color='#fff'
+                    />
+                </View>
+                <View style={styles.input}>
+                    <TextInput
+                        placeholderTextColor={'#fff'}
+                        // style={styles.input}
+                        placeholder="confirm password"
+                        secureTextEntry={true}
+                    // onChangeText={(val) => setEmail(val)}
+                    />
+                    <Ionicons
+                        style={styles.passwerdIcon}
+                        name="eye-off-outline"
+                        size={24}
+                        color='#fff'
+                    />
+                </View>
+                <Button text='Sign Up' />
+                <View style={{ alignItems: 'center' }}>
+                    <Text style={styles.texeOr}>_____________or_____________</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Icon
+                            style={styles.iconStyle}
+                            name="facebook-square"
+                            color={'#3681AB'}
+                            size={40} />
+                        <Icon
+                            style={styles.iconStyle}
+                            name="instagram"
+                            color={'#d26a9d'}
+                            size={40} />
+                        <Icon
+                            style={styles.iconStyle}
+                            name="google"
+                            color={'green'}
+                            size={40} />
+                    </View>
+                </View>
                 <View style={styles.uptext}>
-                <Text>already have an account ?</Text>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.SignIn);
-                }}>
-                    <Text style={styles.pressText}> Sign In</Text>
-                </Pressable>
+                    <Text>already have an account ?</Text>
+                    <Pressable onPress={() => {
+                        props.navigation.navigate(ScreenName.SignIn);
+                    }}>
+                        <Text style={styles.pressText}> Sign In</Text>
+                    </Pressable>
                 </View>
             </View>
             {/* </BlurView> */}
@@ -92,14 +110,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     input: {
         width: 250,
         borderWidth: 2,
         borderRadius: 30,
         borderColor: '#fff',
-        padding: 15,
+        padding: 8,
         margin: 20,
+        flexDirection: 'row',
+        alignContent: 'space-between',
     },
     blur: {
         width: 350,
@@ -115,12 +136,18 @@ const styles = StyleSheet.create({
         color: '#2E8D36',
         fontSize: 15,
     },
-    texeOr:{
+    texeOr: {
         fontSize: 17,
-        paddingBottom:10,
+        paddingBottom: 10,
     },
-    iconStyle:{
-        padding:10,
+    iconStyle: {
+        padding: 10,
+    },
+    passwerdIcon: {
+        marginLeft: 70,
+        marginTop: 10,
+        marginBottom: 10,
+        alignSelf:'flex-end'
     }
 
 
