@@ -5,4 +5,5 @@ export const ScreenName = {
     Categories: 'Categories',
     SignIn: 'Sign In',
     SignUp: 'Sign Up',
+    Favorite: 'Favorite',
 };

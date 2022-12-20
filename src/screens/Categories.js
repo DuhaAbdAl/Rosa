@@ -26,7 +26,7 @@ const Categories = (props) => {
                         {
                             translateY: scroll.interpolate({
                                 inputRange,
-                                outputRange: [-500, -50, 0]
+                                outputRange: [-250, 50, 200]
                             })
                         }]
                 }, {
@@ -85,7 +85,7 @@ const Categories = (props) => {
                 {renderText()}
             </View>
 
-            <View style={[styles.scrollContainer, { height: windowHeight }]}>
+            <View style={[styles.scrollContainer]}>
                 <ScrollView
                     horizontal={true}
                     pagingEnabled
@@ -94,7 +94,7 @@ const Categories = (props) => {
                         [{ nativeEvent: { contentOffset: { x: scroll } } }],
                         { useNativeDriver: false }
                     )}
-                    scrollEventThrottle={16}
+                    scrollEventThrottle={15}
                 >
                     {renderImage()}
                 </ScrollView>
@@ -103,14 +103,30 @@ const Categories = (props) => {
                 {renderDots()}
             </View>
             <View style={styles.iconContainer}>
-                <Icon style={styles.icons}
-                    name='home' />
-                <Icon style={styles.icons}
-                    name='hearto' />
-                <Icon style={styles.icons}
-                    name='calendar' />
-                <Icon style={styles.icons}
-                    name='user' />
+                <Pressable onPress={() => {
+                    props.navigation.navigate(ScreenName.HomePage);
+                }}>
+                    <Icon style={styles.icons}
+                        name='home' />
+                </Pressable>
+                <Pressable onPress={() => {
+                    props.navigation.navigate(ScreenName.Favorite);
+                }}>
+                    <Icon style={styles.icons}
+                        name='hearto' />
+                </Pressable>
+                <Pressable onPress={() => {
+                    props.navigation.navigate(ScreenName.Favorite);
+                }}>
+                    <Icon style={styles.icons}
+                        name='calendar' />
+                </Pressable>
+                <Pressable onPress={() => {
+                    props.navigation.navigate(ScreenName.Favorite);
+                }}>
+                    <Icon style={styles.icons}
+                        name='user' />
+                </Pressable>
             </View>
         </View>
 
@@ -120,12 +136,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
     scrollStyle: {
         flex: 1,
     },
     scrollContainer: {
+        flex:1
     },
     card: {
         flex: 1,
@@ -146,8 +163,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     nametext: {
+        height:100 , 
         width: '100%',
         marginBottom: 10,
+        // borderWidth:1 , 
     },
     textView: {
         position: 'absolute',
@@ -165,7 +184,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 70,
         alignSelf: 'center',
-     
+
     },
     icons: {
         margin: 20,

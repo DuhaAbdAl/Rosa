@@ -9,6 +9,7 @@ import { ScreenName } from "./ScreenName";
 import { StyleSheet } from "react-native";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
+import Favorite from "../src/Componants/Favorite";
 
 const Drawer = createDrawerNavigator();
 const MyDrawer = () => {
@@ -81,7 +82,14 @@ const MyDrawer = () => {
       options:{
       headerShown:false
       }
-    }
+    },
+    favorite:{
+      name: ScreenName.Favorite,
+      component: Favorite,
+      options:{
+        headerShown:false
+        }
+    },
   }
 
   return (
@@ -94,6 +102,7 @@ const MyDrawer = () => {
       <Drawer.Screen {...params.info} />
       <Drawer.Screen {...params.signIn}/>
       <Drawer.Screen {...params.signUp}/>
+      <Drawer.Screen {...params.favorite}/>
     </Drawer.Navigator>
   );
 }
@@ -102,5 +111,5 @@ const styles = StyleSheet.create({
   CategoriesHeaderStyle: {
 
   }
-})
+});
 export default MyDrawer;

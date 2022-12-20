@@ -1,18 +1,27 @@
-import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data, plantTypes } from "../mokData/data";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {}
     const { name } = props.route.params || {};
-    const [favorates , setFavoratis] = useState([]) ; 
+    const [favorates, setFavoratis] = useState([]);
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
-        return favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
+
+        if (favoritsFromStorage) {
+            favoritsFromStorage = await JSON.parse(favoritsFromStorage);
+        } else {
+            favoritsFromStorage = []
+        }
+
+        return favoritsFromStorage;
     }
 
 
@@ -25,9 +34,23 @@ const Types = (props) => {
         return filterd;
     }
 
+    const checkIsFavorate = (title) => {
+        const isFav = favorates.find(item => item.title === title)
+        console.log( 'title: ' , title ,  'isfave: ' , isFav , 'res: ' , !!isFav);
+        return !!isFav;
+    }
+
     const renderCard = ({ item }) => {
-        return <Cards Name={item.title} image={item.image} waterIcon={item.waterIcon}
-            tempIcon={item.tempIcon} fertIcon={item.fertIcon} item={item} isFavorate={item.favoritsFromStorage = item.item} />
+        return <Cards
+            Name={item.title}
+            image={item.image}
+            waterIcon={item.waterIcon}
+            tempIcon={item.tempIcon}
+            fertIcon={item.fertIcon}
+            item={item}
+            isFavorate={checkIsFavorate(item.title)}
+            favorates={favorates}
+        />
     }
     const params = {
         flatList: {
@@ -40,14 +63,23 @@ const Types = (props) => {
 
         },
     };
-
-    useEffect(async () => {
-        const fav = await getfav() ;
-        setFavoratis(fav )
+    useEffect(() => {
+        getfav().then(res => setFavoratis([...res]))
     }, []);
 
     return (
-        <ImageBackground style={styles.img} source={require('../assets/images/types2.jpeg')}>
+        <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
+            <View style={styles.searchContainer}>
+                <AntDesign style={styles.search}
+                    name='search1'
+                    color='white'
+                    size={20}
+                />
+                <TextInput
+                 placeholderTextColor={'#fff'}
+                 placeholder="search"
+                />
+            </View>
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
@@ -61,4 +93,19 @@ const styles = StyleSheet.create({
         marginRight: 170,
         marginLeft: 20,
     },
+    search: {
+        padding: 10,
+        alignSelf: 'flex-start',
+    },
+    searchContainer: {
+        height: 45,
+        width: 150,
+        margin:10,
+        marginTop:20,
+        borderWidth: 2,
+        borderRadius: 30,
+        borderColor: 'white',
+        alignSelf: 'center',
+        flexDirection:'row',
+    }
 }); export default Types;

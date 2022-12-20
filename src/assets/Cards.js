@@ -12,37 +12,48 @@ import {
 import { ScreenName } from '../../route/ScreenName';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Favorite from '../Componants/Favorite';
-import { data } from "../mokData/data";
-import Types from '../screens/Types';
+import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
 
 
 const Cards = (props) => {
-    const { Name, image, waterIcon, tempIcon, fertIcon, item , isFavorate } = props;
+    const { Name, image, waterIcon, tempIcon, fertIcon, item, isFavorate, favorates } = props;
     const [favorite, setFavorite] = useState(false)
     const navigation = useNavigation()
+    var favoritsFromStorage = favorates;
 
+
+    const checkIfFavorate = () => {
+        const isFav = favoritsFromStorage.find(item => item === Name)
+        return !!isFav;
+    }
 
     const OnClickFavorite = async () => {
 
-        var favoritsFromStorage = await AsyncStorage.getItem('favorite');
-        favoritsFromStorage = favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
+        // var favoritsFromStorage = await AsyncStorage.getItem('favorite');
+        // favoritsFromStorage = favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
 
         if (!favorite) {
-            !favoritsFromStorage?.find(fav => fav.title === Name) &&
-                favoritsFromStorage.push(item)
+            !checkIfFavorate() &&
+                favoritsFromStorage.push(Name)
         } else {
-            favoritsFromStorage = favoritsFromStorage.filter(fav => fav.title !== Name);
+            favoritsFromStorage = favoritsFromStorage.filter(fav => fav !== Name);
         }
 
-        AsyncStorage.setItem('favorite' , JSON.stringify(favoritsFromStorage));
+        AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage)); 
 
         setFavorite(!favorite)
     }
 
+    useEffect(() => {
+        setFavorite(checkIfFavorate())
+    }, [favorates])
+
+
     return (
         <View >
+
             <Pressable style={styles.card} onPress={() => {
                 navigation.navigate(ScreenName.Info, { name: Name });
             }}>
@@ -50,12 +61,12 @@ const Cards = (props) => {
                 <View style={styles.nameCard}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
                         <Text style={styles.text}>{Name}</Text>
-                        <Pressable onPress={() => OnClickFavorite()} >
+                        <Pressable onPress={OnClickFavorite} > 
                             <View>
                                 <Icon
                                     style={styles.favorite}
-                                    name={(favorite == true) ? "heart" : "heart-o"}
-                                    color={(favorite == true) ? "red" : "white"}
+                                    name={(favorite) ? "heart" : "heart-o"}
+                                    color={(favorite) ? "red" : "white"}
                                     size={20} />
                             </View>
                         </Pressable>
@@ -131,8 +142,8 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginRight: 10,
         marginTop: 5,
+    },
 
-    }
 })
 
 

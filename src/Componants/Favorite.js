@@ -4,34 +4,20 @@ import { useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Favorite = (props) => {
-    const [favorite, setFavorite] = useState(false)
+    // const { fav } = props.route.params || {}
+    // const filterFav = () => {
+    //     const filterd = data?.filter(plant => {
+    //         return plant.type == fav;
+    //     })
 
-    const OnClick = () => {
-        setFavorite(!favorite)
-    }
+    //     return filterd;
+    // }
+return(
+    <View>
 
-    return (
-        <Pressable onPress={() => OnClick()} >
-            <View style={styles.fillView}>
-                <Icon
-                    style={styles.favorite}
-                    name={(favorite==true)? "heart" : "heart-o"}
-                    color={(favorite==true)? "red" : "white"}
-                    size={20} />
-            </View>
-        </Pressable>
-
-
-    )
-};
+    </View>
+)}
 const styles = StyleSheet.create({
-    fillView: {
-        position: 'absolute',
-        width: 10,
-        height: 10,
-        top: 40,
-        left: 90,
-        backgroundColor: 'red'
-    }
+   
 });
 export default Favorite;
