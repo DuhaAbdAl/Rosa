@@ -4,13 +4,14 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
 
 
-const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
+const SearchBar = ({clicked, setClicked, searchPhrase, setSearchPhrase}) => {
     return (
         
         <View style={styles.container}>
             <View
                 style={
-                    clicked ? styles.searchBarClicked : styles.searchBarUnclicked
+                    clicked 
+                    ? styles.searchBarClicked : styles.searchBarUnclicked
                 }>
                 <AntDesign
                     name='search1'
@@ -28,7 +29,7 @@ const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
                     }}
                 />
                 {clicked && (
-                    <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
+                    <Entypo name="cross" size={28} color="black" style={{ padding: 1 }} onPress={() => {
                         setSearchPhrase("")
                     }} />
                 )}

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable,TouchableOpacity } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable, Button, TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { ScreenName } from "../../route/ScreenName";
 import  Icon  from "react-native-vector-icons/AntDesign";
@@ -6,16 +6,11 @@ import  Icon  from "react-native-vector-icons/AntDesign";
 
 
 const HomePage = (props) => {
-
-    // useEffect(()=>{
-    //     props.navigation.toggleDrawer()
-    // },[])
-
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.image} source={require('../assets/images/GreenRose2.jpeg')}>
 
-            <Pressable style={styles.button} onPress={() => {
+            {/* <Pressable style={styles.button} onPress={() => {
                     props.navigation.navigate(ScreenName.Categories);
                 }}>
                     <Text>
@@ -24,7 +19,7 @@ const HomePage = (props) => {
                             color="white"
                             name='rightcircleo' />
                     </Text>
-                </Pressable>
+                </Pressable> */}
                 <Text style={styles.text2}>Rosa Verde</Text>
 
                 <Text style={styles.text}>{`
@@ -40,19 +35,14 @@ const HomePage = (props) => {
 
                 -The language of flowers london 1875`}
                 </Text>
-                {/* <View style={styles.margin}>
-                <TouchableOpacity onPress={() => {}} style={{paddingVertical:10}}>
-            <View style={{flexDirection:'row', alignItems:'center'}}>
-                <Icon
-                name='login'
-                size={20}
-                color='white'/>
-                <Text>
-
-                </Text>
-                </View>
-                </TouchableOpacity>
-                </View> */}
+                
+                <Button 
+                style={styles.button}
+                title="Get Started"
+                color={'white'}
+                onPress={() => {
+                    props.navigation.navigate(ScreenName.Categories);
+                }}/>
             </ImageBackground>
 
         </View>
@@ -87,10 +77,10 @@ const styles = StyleSheet.create({
     },
     button: { 
         marginTop:90,
-       // marginRight:10,
-        paddingHorizontal: 40,
-        alignSelf: 'flex-end',
-        backgroundColor: 'transparent'
+    //    marginRight:10,
+    //     paddingHorizontal: 40,
+        alignSelf: 'center',
+        backgroundColor: "rgba(10, 10, 10, 0.55)",
     },
     margin:{
         padding:20,

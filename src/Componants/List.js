@@ -13,7 +13,7 @@ const Item = ({ name, details }) => (
     </View>
 );
 
-const List = ({ searchPhrase, setCLicked, data }) => {
+const List = ({ searchPhrase, setClicked, data }) => {
     const renderItem = ({ item }) => {
         if (searchPhrase === "") {
             return <Item name={item.name} details={item.details} />;
@@ -30,7 +30,7 @@ const List = ({ searchPhrase, setCLicked, data }) => {
         <View style={styles.listContainer}>
             <View
                 onStartShouldSetResponder={() => {
-                    setCLicked(false);
+                    setClicked(false);
                 }}
             >
                 <FlatList

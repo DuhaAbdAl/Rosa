@@ -12,14 +12,13 @@ import { data } from "../mokData/data";
 const SearchHome = () => {
     const [searchPhrase, setSearchPhrase] = useState("");
     const [clicked, setClicked] = useState(false);
-    const [data, setData] = useState();
+    const [fakeData, setfakeData] = useState();
 
-    // get data from the fake api endpoint
     useEffect(() => {
         const getData = async () => {
             const apiResponse = await fetch();
             const data = await apiResponse.json();
-            setData(data);
+            setfakeData(fakeData);
         };
         getData();
     }, []);
@@ -37,7 +36,7 @@ const SearchHome = () => {
                 {(
                     <List
                         searchPhrase={searchPhrase}
-                        data={data}
+                        data={fakeData}
                         setClicked={setClicked}
                     />
                 )}
