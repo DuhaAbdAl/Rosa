@@ -10,6 +10,7 @@ import { Image } from "react-native";
 import Header from "../src/Componants/Header";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
+import SearchHome from "../src/Componants/SearchHome";
 
 
 const MainNavigation = (props) => {
@@ -17,27 +18,29 @@ const MainNavigation = (props) => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-            initialRouteName="Drawer" 
-            // options={ 
-            // HeaderLeft={Header}
-            // }
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: '#28463e'
-                },
-                headerTintColor: 'green',
-                headerTitleAlign:'center',
-            }}>
-                <Stack.Screen name={ScreenName.HomePage} component={HomePage} 
-                options={{
-                    headerShown: false,
-                }}
+                initialRouteName="Drawer"
+                // options={ 
+                // HeaderLeft={Header}
+                // }
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: '#28463e'
+                    },
+                    headerTintColor: 'green',
+                    headerTitleAlign: 'center',
+                }}>
+                <Stack.Screen name={ScreenName.HomePage} component={HomePage}
+                    options={{
+                        headerShown: false,
+                    }}
                 />
                 <Stack.Screen name="Drawer" component={MyDrawer}
-                options={{headerShown: false,}}/>
+                    options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.Types} component={Types} />
                 <Stack.Screen name={ScreenName.Info} component={Info}
-                options={{headerShown: false,}} />
+                    options={{ headerShown: false, }} />
+                <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
+                    options={{ headerShown: false, }} />
                 {/* <Stack.Screen name={ScreenName.SignUp} component={SignUp}
                  options={{
                     headerShown: false,

@@ -4,6 +4,7 @@ import Cards from "../assets/Cards";
 import { data, plantTypes } from "../mokData/data";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SearchBar from "../Componants/SearchBar";
 
 
 
@@ -69,17 +70,7 @@ const Types = (props) => {
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            <View style={styles.searchContainer}>
-                <AntDesign style={styles.search}
-                    name='search1'
-                    color='white'
-                    size={20}
-                />
-                <TextInput
-                 placeholderTextColor={'#fff'}
-                 placeholder="search"
-                />
-            </View>
+            {SearchBar()} 
             <FlatList {...params.flatList} />
         </ImageBackground>
     )

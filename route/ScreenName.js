@@ -6,4 +6,5 @@ export const ScreenName = {
     SignIn: 'Sign In',
     SignUp: 'Sign Up',
     Favorite: 'Favorite',
+    SearchHome: 'Search Home',
 };
