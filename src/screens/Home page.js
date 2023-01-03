@@ -1,48 +1,45 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Button, TouchableOpacity } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable, TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { ScreenName } from "../../route/ScreenName";
-import  Icon  from "react-native-vector-icons/AntDesign";
-//import {Ionicons} from "react-native-vector-icons/Ionicons"
-
+import Icon from "react-native-vector-icons/AntDesign";
+import Button from "../Componants/Button";
+import CustomDrawerButton from "../Componants/CostomDrawerButton";
+import { Entypo } from "react-native-vector-icons/Entypo";
 
 const HomePage = (props) => {
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.image} source={require('../assets/images/GreenRose2.jpeg')}>
+                {/* <CustomDrawerButton onPress={() => {
+            props.navigation.navigate(ScreenName.CustomDrawer);
+        }} /> */}
+                {/* <TouchableOpacity >
+                    <View style={styles.button}>
+                        <Entypo name="menu" size={18} color="white" onPress={() => {
+                            props.navigation.navigate(ScreenName.CustomDrawer);
+                        }}
+                        />
+                    </View>
 
-            {/* <Pressable style={styles.button} onPress={() => {
-                    props.navigation.navigate(ScreenName.Categories);
-                }}>
-                    <Text>
-                        <Icon
-                            size={30}
-                            color="white"
-                            name='rightcircleo' />
-                    </Text>
-                </Pressable> */}
+                </TouchableOpacity> */}
                 <Text style={styles.text2}>Rosa Verde</Text>
 
-                <Text style={styles.text}>{`
-                   "There is a language, 'little known'\n,
-                    Lovers claim it as their own.\n
-                    Its symbols smile upon the land,\n
-                    Wrought by Natures wonderous hand;\n
-                    And in their silent beauty speak,\n
-                     Of life and joy,\n
-                    to those who seek\n
-                    For Love Divine and sunny hours\n
-                    In the language of the flowers".\n
+                <Text style={styles.text}>
+                    {`Home Is Where\n 
 
-                -The language of flowers london 1875`}
+          My Plants Are.\n
+    
+            `}
+                    <Text style={styles.text1}>
+                        {`To Plant A Garden Is\n   
+      To Believe In Tomorrow`}
+                    </Text>
                 </Text>
-                
-                <Button 
-                style={styles.button}
-                title="Get Started"
-                color={'white'}
-                onPress={() => {
-                    props.navigation.navigate(ScreenName.Categories);
-                }}/>
+                <Button
+                    text="Get Started"
+                    onPress={() => {
+                        props.navigation.navigate(ScreenName.Categories);
+                    }} />
             </ImageBackground>
 
         </View>
@@ -54,37 +51,63 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        fontSize: 16,
+        fontSize: 25,
+        fontWeight: 'bold',
         color: 'white',
-        textAlign: "left",
-        paddingTop: 30,
-        marginBottom: 300,
+        textAlign: "center",
+        paddingTop: 20,
+        marginBottom: 200,
         lineHeight: 13,
-        marginRight:20,
+        marginRight: 20,
+        marginLeft: 50,
+        alignSelf: 'baseline',
+    },
+    text1: {
+        fontSize: 18,
+        color: 'white',//#C5E1A5
+        textAlign: "center",
+        lineHeight: 13,
+        marginTop: 15,
     },
     text2: {
         fontWeight: 'bold',
-        fontSize: 30,
-       // padding: 10,
-        color: 'green',
+        fontStyle: 'italic',
+        fontSize: 35,
+        color: '#7dac66',
         textAlign: 'center',
-        marginBottom: 150,
-        marginTop:20,
+        marginBottom: 250,
+        marginTop: 20,
     },
     text3: {
         fontSize: 24,
         color: 'white',
     },
-    button: { 
-        marginTop:90,
-    //    marginRight:10,
-    //     paddingHorizontal: 40,
-        alignSelf: 'center',
-        backgroundColor: "rgba(10, 10, 10, 0.55)",
+    margin: {
+        padding: 20,
+        borderTopWidth: 1,
+        borderTopColor: '#ccc',
     },
-    margin:{
-        padding:20,
-        borderTopWidth:1,
-        borderTopColor:'#ccc',
+    button: {
+        width: 100,
+        alignSelf: 'flex-start',
+        borderWidth: 2,
+        borderRadius: 70,
+        borderColor: '#000',
+        padding: 15,
+        margin: 20,
+        backgroundColor: 'rgba(10, 10, 10, 0.60)',
     },
 }); export default HomePage;
+
+//  `
+// "There is a language, 'little known'\n,
+// Lovers claim it as their own.\n
+// Its symbols smile upon the land,\n
+// Wrought by Natures wonderous hand;\n
+// And in their silent beauty speak,\n
+//  Of life and joy,\n
+// to those who seek\n
+// For Love Divine and sunny hours\n
+// In the language of the flowers".\n
+
+// -The language of flowers london 1875`

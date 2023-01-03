@@ -7,24 +7,24 @@ import {
 } from "react-native";
 import List from "./List";
 import SearchBar from "./SearchBar";
-import { data } from "../mokData/data";
+// import { data } from "../mokData/data";
 
 const SearchHome = () => {
     const [searchPhrase, setSearchPhrase] = useState("");
     const [clicked, setClicked] = useState(false);
-    const [fakeData, setfakeData] = useState();
+    const [Data, setData] = useState();
 
     useEffect(() => {
         const getData = async () => {
             const apiResponse = await fetch();
             const data = await apiResponse.json();
-            setfakeData(fakeData);
+            setData(Data);
         };
         getData();
     }, []);
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/search1.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/info2.jpeg')}>
             <View >
                 {!clicked}
                 <SearchBar
@@ -36,7 +36,7 @@ const SearchHome = () => {
                 {(
                     <List
                         searchPhrase={searchPhrase}
-                        data={fakeData}
+                        data={Data}
                         setClicked={setClicked}
                     />
                 )}

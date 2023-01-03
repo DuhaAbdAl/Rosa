@@ -70,7 +70,7 @@ const Types = (props) => {
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            {SearchBar()} 
+            {/* {SearchBar()}  */}
             <FlatList {...params.flatList} />
         </ImageBackground>
     )

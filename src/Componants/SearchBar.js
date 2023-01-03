@@ -4,14 +4,14 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
 
 
-const SearchBar = ({clicked, setClicked, searchPhrase, setSearchPhrase}) => {
+const SearchBar = (props) => {
+    const { clicked, setClicked, searchPhrase, setSearchPhrase } = props;
     return (
-        
         <View style={styles.container}>
             <View
                 style={
-                    clicked 
-                    ? styles.searchBarClicked : styles.searchBarUnclicked
+                    props.clicked
+                        ? styles.searchBarClicked : styles.searchBarUnclicked
                 }>
                 <AntDesign
                     name='search1'
@@ -61,20 +61,22 @@ const styles = StyleSheet.create({
     searchBarUnclicked: {
         padding: 10,
         marginLeft: 15,
-        marginTop:20,
+        marginTop: 40,
         flexDirection: "row",
-        width: "95%",
-        backgroundColor: "#136163",
+        width: "98%",
+        backgroundColor: "#4E653D",
+        elevation:25,
+        borderColor:"#20331B",
         borderRadius: 15,
         alignItems: "center",
     },
     searchBarClicked: {
         padding: 10,
         marginLeft: 15,
-        marginTop:20,
+        marginTop: 40,
         flexDirection: "row",
         width: "95%",
-        backgroundColor: "#136163",
+        backgroundColor: "#4E653D",
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -85,6 +87,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         width: "90%",
     },
-    
+
 });
 export default SearchBar;
