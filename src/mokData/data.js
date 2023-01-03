@@ -67,6 +67,7 @@ export const data = [
         waterIcon: '1-2',
         tempIcon: '28c°-30c° ',
         fertIcon: '1',
+        // fav: checkIsFavorate(),
     },
     {
         name: '',

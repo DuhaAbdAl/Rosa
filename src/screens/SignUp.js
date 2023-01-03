@@ -4,7 +4,7 @@ import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable } from "r
 import { useState } from "react";
 import { BlurView } from "@react-native-community/blur";
 import LinearGradient from 'react-native-linear-gradient';
-import Button from "../Componants/Button";
+import CustomButton from "../Componants/CustomButton";
 import { ScreenName } from "../../route/ScreenName";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -61,7 +61,9 @@ const SignUp = (props) => {
                         color='#fff'
                     />
                 </View>
-                <Button text='Sign Up' />
+                <CustomButton text='Sign Up'onPress={() => {
+                        props.navigation.navigate(ScreenName.SignIn);
+                    }}/>
                 <View style={{ alignItems: 'center' }}>
                     <Text style={styles.texeOr}>_____________or_____________</Text>
                     <View style={{ flexDirection: 'row' }}>

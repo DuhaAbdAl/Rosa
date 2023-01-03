@@ -24,7 +24,7 @@ const SearchHome = () => {
     }, []);
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/info2.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
             <View >
                 {!clicked}
                 <SearchBar

@@ -9,10 +9,12 @@ const SearchBar = (props) => {
     return (
         <View style={styles.container}>
             <View
-                style={
-                    props.clicked
-                        ? styles.searchBarClicked : styles.searchBarUnclicked
-                }>
+            style={
+                clicked
+                 ? styles.searchBarClicked : styles.searchBarUnclicked
+                 
+            }
+                 >
                 <AntDesign
                     name='search1'
                     color='white'
@@ -25,11 +27,11 @@ const SearchBar = (props) => {
                     value={searchPhrase}
                     onChangeText={setSearchPhrase}
                     onFocus={() => {
-                        setClicked(true);
+                        setClicked?.(true);
                     }}
                 />
                 {clicked && (
-                    <Entypo name="cross" size={28} color="black" style={{ padding: 1 }} onPress={() => {
+                    <Entypo name="cross" size={28} color="#333" style={{ padding: 1 }} onPress={() => {
                         setSearchPhrase("")
                     }} />
                 )}
@@ -56,16 +58,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: "row",
         width: "90%",
-
-    },
+    }, 
     searchBarUnclicked: {
         padding: 10,
         marginLeft: 15,
-        marginTop: 40,
+        marginTop: 20,
         flexDirection: "row",
         width: "98%",
-        backgroundColor: "#4E653D",
-        elevation:25,
+        backgroundColor: "#91B19A",
         borderColor:"#20331B",
         borderRadius: 15,
         alignItems: "center",
@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
     searchBarClicked: {
         padding: 10,
         marginLeft: 15,
-        marginTop: 40,
+        marginTop: 20,
         flexDirection: "row",
         width: "95%",
-        backgroundColor: "#4E653D",
+        backgroundColor: "#91B19A",
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "space-evenly",

@@ -11,6 +11,7 @@ import Header from "../src/Componants/Header";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
 import SearchHome from "../src/Componants/SearchHome";
+import CustomButton from "../src/Componants/CustomButton";
 
 
 const MainNavigation = (props) => {
@@ -41,11 +42,11 @@ const MainNavigation = (props) => {
                     options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
                     options={{ headerShown: false, }} />
-                {/* <Stack.Screen name={ScreenName.SignUp} component={SignUp}
+                 {/* <Stack.Screen name={ScreenName.CustomButton} component={CustomButton}
                  options={{
                     headerShown: false,
-                }} />
-                <Stack.Screen name={ScreenName.SignIn} component={SignIn}/> */}
+                }} /> */}
+                {/* <Stack.Screen name={ScreenName.SignIn} component={SignIn}/> */} 
             </Stack.Navigator>
         </NavigationContainer>
     )

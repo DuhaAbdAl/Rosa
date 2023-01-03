@@ -7,12 +7,10 @@ import {
     View,
     Pressable,
     Image,
-    TouchableOpacity,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 

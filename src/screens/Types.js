@@ -1,7 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
-import { data, plantTypes } from "../mokData/data";
+import {data} from "../mokData/data";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SearchBar from "../Componants/SearchBar";
@@ -10,7 +10,7 @@ import SearchBar from "../Componants/SearchBar";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {}
-    const { name } = props.route.params || {};
+    // const { name } = props.route.params || {};
     const [favorates, setFavoratis] = useState([]);
 
     const getfav = async () => {
@@ -68,9 +68,12 @@ const Types = (props) => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
+    const addToFavorits = () =>{
+        setFavoratis=([...favorates])
+    }
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            {/* {SearchBar()}  */}
+            {SearchBar(props)} 
             <FlatList {...params.flatList} />
         </ImageBackground>
     )

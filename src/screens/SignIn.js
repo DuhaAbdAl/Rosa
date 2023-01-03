@@ -4,7 +4,7 @@ import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable } from "r
 import { useState } from "react";
 import { BlurView } from "@react-native-community/blur";
 import LinearGradient from 'react-native-linear-gradient';
-import Button from "../Componants/Button";
+import CustomButton from "../Componants/CustomButton";
 import { ScreenName } from "../../route/ScreenName";
 
 
@@ -31,7 +31,7 @@ const SignIn = (props) => {
                     placeholder="**************"
                 // onChangeText={(val) => setPassword(val)}
                 />
-                <Button text='Sign In' />
+                <CustomButton text='Sign In' />
                 <View style={styles.uptext}>
                     <Text>Forgot Password ?</Text>
                     <Pressable onPress={() => {
