@@ -68,9 +68,7 @@ const Types = (props) => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
-    const addToFavorits = () =>{
-        setFavoratis=([...favorates])
-    }
+   
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
             {SearchBar(props)} 

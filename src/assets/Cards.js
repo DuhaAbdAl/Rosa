@@ -28,10 +28,6 @@ const Cards = (props) => {
     }
 
     const OnClickFavorite = async () => {
-
-        // var favoritsFromStorage = await AsyncStorage.getItem('favorite');
-        // favoritsFromStorage = favoritsFromStorage ? await JSON.parse(favoritsFromStorage) : []
-
         if (!favorite) {
             !checkIfFavorate() &&
                 favoritsFromStorage.push(Name)

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Button, TextInput, ImageBackground } from "react-native";
+import { StyleSheet, View, Button, TextInput, Keyboard } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -31,8 +31,8 @@ const SearchBar = (props) => {
                     }}
                 />
                 {clicked && (
-                    <Entypo name="cross" size={28} color="#333" style={{ padding: 1 }} onPress={() => {
-                        setSearchPhrase("")
+                    <Entypo name="cross" size={28} color="#91B19A" style={{ padding: 1 }} onPress={() => {
+                        setSearchPhrase("") && Keyboard.dismiss()
                     }} />
                 )}
             </View>
@@ -65,8 +65,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: "98%",
-        backgroundColor: "#91B19A",
-        borderColor:"#20331B",
+        // backgroundColor: "#91B19A",
+        borderWidth:2,
+        borderColor:"#91B19A",
+        // borderColor:"#20331B",
         borderRadius: 15,
         alignItems: "center",
     },
@@ -76,7 +78,9 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: "95%",
-        backgroundColor: "#91B19A",
+        borderWidth:2,
+        borderColor:"#91B19A",
+        // backgroundColor: "#91B19A",
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "space-evenly",
