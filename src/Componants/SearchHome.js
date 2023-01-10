@@ -33,13 +33,13 @@ const SearchHome = () => {
                     clicked={clicked}
                     setClicked={setClicked}
                 />
-                {(
+                {/* {(
                     <List
                         searchPhrase={searchPhrase}
                         data={Data}
                         setClicked={setClicked}
                     />
-                )}
+                )} */}
             </View>
         </ImageBackground>
     );

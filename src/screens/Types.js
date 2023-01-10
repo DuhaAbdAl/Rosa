@@ -1,7 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
-import {data} from "../mokData/data";
+import { data } from "../mokData/data";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SearchBar from "../Componants/SearchBar";
@@ -12,6 +12,10 @@ const Types = (props) => {
     const { categoryName } = props.route.params || {}
     // const { name } = props.route.params || {};
     const [favorates, setFavoratis] = useState([]);
+    const [clicked, setClicked] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState("");
+
+
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
@@ -37,7 +41,7 @@ const Types = (props) => {
 
     const checkIsFavorate = (title) => {
         const isFav = favorates.find(item => item.title === title)
-        console.log( 'title: ' , title ,  'isfave: ' , isFav , 'res: ' , !!isFav);
+        console.log('title: ', title, 'isfave: ', isFav, 'res: ', !!isFav);
         return !!isFav;
     }
 
@@ -68,10 +72,16 @@ const Types = (props) => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
-   
+
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            {SearchBar(props)} 
+            {!clicked}
+            <SearchBar {... props}
+                searchPhrase={searchPhrase}
+                setSearchPhrase={setSearchPhrase}
+                clicked={clicked}
+                setClicked={setClicked}
+            />
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
@@ -92,12 +102,12 @@ const styles = StyleSheet.create({
     searchContainer: {
         height: 45,
         width: 150,
-        margin:10,
-        marginTop:20,
+        margin: 10,
+        marginTop: 20,
         borderWidth: 2,
         borderRadius: 30,
         borderColor: 'white',
         alignSelf: 'center',
-        flexDirection:'row',
+        flexDirection: 'row',
     }
 }); export default Types;

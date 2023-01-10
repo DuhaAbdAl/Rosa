@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 
 
 const Cards = (props) => {
-    const { Name, image, waterIcon, tempIcon, fertIcon, item, isFavorate, favorates } = props;
+    const { Name, image, waterIcon, tempIcon, fertIcon, favorates } = props;
     const [favorite, setFavorite] = useState(false)
     const navigation = useNavigation()
     var favoritsFromStorage = favorates;
@@ -44,6 +44,9 @@ const Cards = (props) => {
         setFavorite(checkIfFavorate())
     }, [favorates])
 
+    const addToFavorite = () =>{
+        let MyList = [OnClickFavorite]
+    }
 
     return (
         <View >

@@ -1,26 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect , useCallback } from "react";
 import {Text, View} from 'react-native';
 
 
 const ReadMore = (props) => {
-    // const text = Info();
-    // const [isReadMore, setIsReadMore] = useState(true);
-    // // const toggleReadMore = () => {
-    // //     setIsReadMore(!isReadMore);
-    // // };
-    // return (
-    //     <View>
-    //         {isReadMore ? text.slice(0, 150) : text}
-    //         {/* <Text
-    //             numberOfLines={2}
-    //             onTextLayout={(e) => setIsReadMore(e.nativeEvent.lines.length > 2)}>
-    //             {text}</Text> */}
-    //         {isReadMore && (
-    //             <Text style={{ color: 'green' }} onPress={() => {
-    //             }}> Read More... </Text>)}
-   
-    //     </View>
-    // )
+    const MIN_LINES = 5 ; 
     const {readMoreStyle, text, textStyle} =props;
     const [showMoreButton, setShowMoreButton] = useState(false);
     const [textShown, setTextShown] = useState(false);
@@ -31,14 +14,14 @@ const ReadMore = (props) => {
     };
   
     useEffect(() => {
-      setNumLines(textShown ? undefined : 3);
+      setNumLines(textShown ? undefined : MIN_LINES);
     }, [textShown]);
   
     const onTextLayout = useCallback(
       (e) => {
-        if (e.nativeEvent.lines.length > 3 && !textShown) {
+        if (e.nativeEvent.lines.length > MIN_LINES && !textShown) {
           setShowMoreButton(true);
-          setNumLines(3);
+          setNumLines(MIN_LINES);
         }
       },
       [textShown],
