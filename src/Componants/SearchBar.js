@@ -32,7 +32,7 @@ const SearchBar = (props) => {
                 />
                 {clicked && (
                     <Entypo name="cross" size={28} color="#91B19A" style={{ padding: 1 }} onPress={() => {
-                        setSearchPhrase("") && Keyboard.dismiss()
+                        setSearchPhrase("") && styles.searchBarUnclicked
                     }} />
                 )}
             </View>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(250, 250, 250, 0.3)',
         borderWidth:1,
         borderColor:"#91B19A",
-        // borderColor:"#20331B",
         borderRadius: 15,
         alignItems: "center",
     },
@@ -80,7 +79,6 @@ const styles = StyleSheet.create({
         width: "95%",
         borderWidth:2,
         borderColor:"#91B19A",
-        // backgroundColor: "#91B19A",
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "space-evenly",

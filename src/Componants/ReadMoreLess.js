@@ -1,4 +1,5 @@
-import React, { useState , useEffect , useCallback } from "react";
+import React, { useState , useEffect , useCallback,  } from "react";
+import { StyleSheet } from "react-native";
 import {Text, View} from 'react-native';
 
 
@@ -35,11 +36,16 @@ const ReadMore = (props) => {
         </Text>
   
         {showMoreButton ? (
-          <Text onPress={toggleTextShown} style={readMoreStyle}>
+          <Text onPress={toggleTextShown} style={styles.ReadButton}>
             {textShown ? 'Read Less' : 'Read More'}
           </Text>
         ) : null}
       </View>
     )
-}
+};
+const styles = StyleSheet.create ({
+  ReadButton:{
+    alignSelf: 'flex-end',
+  }
+})
 export default ReadMore;

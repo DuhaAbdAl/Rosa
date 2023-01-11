@@ -18,12 +18,12 @@ const List = ({ searchPhrase, setClicked, data }) => {
         if (searchPhrase === "") {
             return <Item name={item.name} details={item.details} />;
         }
-        if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-            return <Item name={item.name} details={item.details} />;
-        }
-        if (item.details.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-            return <Item name={item.name} details={item.details} />;
-        }
+        // if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
+        //     return <Item name={item.name} details={item.details} />;
+        // }
+        // if (item.details.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
+        //     return <Item name={item.name} details={item.details} />;
+        // }
     };
 
     return (

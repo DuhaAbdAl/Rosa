@@ -16,8 +16,8 @@ const SearchHome = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const apiResponse = await fetch();
-            const data = await apiResponse.json();
+            // const apiResponse = await fetch();
+            // const data = await apiResponse.json();
             setData(Data);
         };
         getData();
@@ -27,19 +27,19 @@ const SearchHome = () => {
         <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
             <View >
                 {!clicked}
-                <SearchBar
+                <SearchBar style={styles.bar}
                     searchPhrase={searchPhrase}
                     setSearchPhrase={setSearchPhrase}
                     clicked={clicked}
                     setClicked={setClicked}
                 />
-                {/* {(
+                {(
                     <List
                         searchPhrase={searchPhrase}
                         data={Data}
                         setClicked={setClicked}
                     />
-                )} */}
+                )}
             </View>
         </ImageBackground>
     );
@@ -51,16 +51,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    root: {
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    title: {
-        width: "100%",
-        marginTop: 20,
-        fontSize: 25,
-        fontWeight: "bold",
-        marginLeft: "10%",
-    },
+    bar:{
+        marginBottom:200,
+    }
 });
 export default SearchHome;

@@ -4,7 +4,9 @@ import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header
 import { data } from "../mokData/data";
 import { Platform } from "react-native";
 import * as Animatable from 'react-native-animatable';
+// import { data } from "../mokData/data";
 import ReadMore from "../Componants/ReadMoreLess";
+
 import { useRef } from "react";
 
 const Info = (props) => {
@@ -19,23 +21,16 @@ const Info = (props) => {
                 <View style={styles.textContainer}>
                     <Text style={styles.text2}>{key || "404"}</Text>
                     {/* <Text style={styles.text}>{found.info[key] || "404"}</Text> */}
-                    <ReadMore style={{ color: "white" }} text={found.info[key] || "404"} />
-                </View>
-            )
-        })
-    }
-    const renderImage = () => {
-        var keys = Object.keys(foundImg?.image || {});
-        return keys.map(key => {
-            return (
-                <View>
-                    <Image source={foundImg.image[key] || "404"} />
+                    <ReadMore style={styles.text} text={found.info[key] || "404"} />
                 </View>
             )
         })
     }
     // const MinHight = Platform.OS == 55;
     // const MaxHight = 350;
+    // const itemDetail = () =>{
+    //     const imgData = data.image
+    // }
 
     const HeaderImage = (props) => {
         const imgeTitle = useRef(null)
@@ -46,18 +41,18 @@ const Info = (props) => {
                 minHeight={55}
                 maxOverlayOpacity={0.6}
                 minOverlayOpacity={0.3}
-                // headerImage={require('../assets/images/info2.jpeg')}
+                headerImage={require('../assets/images/info2.jpeg')}
                 renderHeader={() => {
                     <Image source={renderImage()} />
                 }}
                 renderForeground={() => (
                     <View>
-                        <Text style={{ color: "red" }}> Hello </Text>
+                        {/* <Text style={{ color: "red" }}> {data.title} </Text> */}
                     </View>
                 )}
                 renderFixedForeground={() => (
                     <Animatable.View ref={imgeTitle}>
-                        <Text style={{ color: "blue", alignSelf: 'center' }}>Welcom</Text>
+                        <Text style={styles.test1}>Welcom</Text>
                     </Animatable.View>
                 )}
             >
@@ -71,11 +66,13 @@ const Info = (props) => {
         )
     }
 
+const aa = '../assets/images/info1.jpeg' ; 
+
     return (
         <HeaderImage>
             <ImageBackground
                 style={styles.imageBack}
-                source={require('../assets/images/info1.jpeg')}
+                source={require(aa)}
             >
                 {/* {HeaderImage()} */}
 
@@ -109,7 +106,7 @@ const styles = StyleSheet.create({
         width: '90%',
         padding: 10,
         margin: 8,
-        marginLeft: 20,
+        marginLeft: 10,
         marginRight: 150,
         borderColor: '#000',
         borderWidth: 0.5,
@@ -118,7 +115,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         color: '#fff',
-        lineHeight: 11,
+        // lineHeight: 11,
     },
     text2: {
         fontSize: 18,
@@ -137,8 +134,13 @@ const styles = StyleSheet.create({
     },
     test1:{
         fontSize: 20,
-        
-    }
+        color:'blue',
+        textAlign:'center',
+        marginLeft: 20,
+        marginBottom: 10,
+        marginTop: 8,
+        paddingTop: 5,
+    },
 });
 
 export default Info;

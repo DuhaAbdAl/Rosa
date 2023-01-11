@@ -7,7 +7,6 @@ import Types from "../src/screens/Types";
 import MyDrawer from "./Drawer";
 import { ScreenName } from "./ScreenName";
 import { Image } from "react-native";
-import Header from "../src/Componants/Header";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
 import SearchHome from "../src/Componants/SearchHome";

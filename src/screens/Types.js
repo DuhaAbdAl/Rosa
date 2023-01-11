@@ -5,6 +5,7 @@ import { data } from "../mokData/data";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SearchBar from "../Componants/SearchBar";
+import CustomHeader from "../Componants/CustomHeader";
 
 
 
@@ -41,7 +42,7 @@ const Types = (props) => {
 
     const checkIsFavorate = (title) => {
         const isFav = favorates.find(item => item.title === title)
-        console.log('title: ', title, 'isfave: ', isFav, 'res: ', !!isFav);
+        // console.log('title: ', title, 'isfave: ', isFav, 'res: ', !!isFav);
         return !!isFav;
     }
 
@@ -75,13 +76,14 @@ const Types = (props) => {
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            {!clicked}
+            {/* {!clicked}
             <SearchBar {... props}
                 searchPhrase={searchPhrase}
                 setSearchPhrase={setSearchPhrase}
                 clicked={clicked}
                 setClicked={setClicked}
-            />
+            /> */}
+            <CustomHeader/>
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
