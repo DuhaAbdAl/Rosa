@@ -6,11 +6,10 @@ import Info from "../src/screens/Info";
 import Types from "../src/screens/Types";
 import MyDrawer from "./Drawer";
 import { ScreenName } from "./ScreenName";
-import { Image } from "react-native";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
 import SearchHome from "../src/Componants/SearchHome";
-import CustomButton from "../src/Componants/CustomButton";
+import Categories from "../src/screens/Categories";
 
 
 const MainNavigation = (props) => {
@@ -28,7 +27,8 @@ const MainNavigation = (props) => {
                     },
                     headerTintColor: 'green',
                     headerTitleAlign: 'center',
-                }}>
+                }}
+                >
                 <Stack.Screen name={ScreenName.HomePage} component={HomePage}
                     options={{
                         headerShown: false,
@@ -36,16 +36,19 @@ const MainNavigation = (props) => {
                 />
                 <Stack.Screen name="Drawer" component={MyDrawer}
                     options={{ headerShown: false, }} />
-                <Stack.Screen name={ScreenName.Types} component={Types} />
+                <Stack.Screen name={ScreenName.Types} component={Types} 
+                 options={{ headerShown: false, }}/>
                 <Stack.Screen name={ScreenName.Info} component={Info}
                     options={{ headerShown: false, }} />
-                <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
+                     <Stack.Screen name={ScreenName.Categories} component={Categories}
                     options={{ headerShown: false, }} />
+                <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
+                    options={{ headerShown: false }} />
                  {/* <Stack.Screen name={ScreenName.CustomButton} component={CustomButton}
                  options={{
                     headerShown: false,
                 }} /> */}
-                {/* <Stack.Screen name={ScreenName.SignIn} component={SignIn}/> */} 
+                <Stack.Screen name={ScreenName.SignUp} component={SignUp}/> 
             </Stack.Navigator>
         </NavigationContainer>
     )

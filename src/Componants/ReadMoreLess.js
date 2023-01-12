@@ -46,6 +46,10 @@ const ReadMore = (props) => {
 const styles = StyleSheet.create ({
   ReadButton:{
     alignSelf: 'flex-end',
+    color: 'white',
+  },
+  textStyle:{
+    color:'white'
   }
 })
 export default ReadMore;

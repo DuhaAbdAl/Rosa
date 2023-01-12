@@ -1,5 +1,6 @@
 export const data = [
     {
+        id: '1',
         title: "Lily",
         image: require('../assets/images/FlowersPage.jpeg'),
         info: {
@@ -58,6 +59,7 @@ export const data = [
         fertIcon: '1',
     },
     {
+        id:'2',
         title: "Magnolia",
         image: require('../assets/images/Magnolia.jpeg'),
         info: {
@@ -72,6 +74,7 @@ export const data = [
         fertIcon: '1',
     },
     {
+        id:'3',
         title: "Iris",
         image: require('../assets/images/IrisPlant.jpeg'),
         info: {
@@ -86,6 +89,7 @@ export const data = [
         fertIcon: '1',
     },
     {
+        id:'4',
         title: "Bleeding\n Heart",
         image: require('../assets/images/bleedigHeart.jpeg'),
         info: {
@@ -104,27 +108,22 @@ export const data = [
 
 export const images = [
     {
-        id: 1,
         title: 'Home Plants',
         img: require('../assets/images/HomePlant.jpeg'),
     },
     {
-        id: 2,
         title: 'Herbs',
         img: require('../assets/images/herps.jpeg'),
     },
     {
-        id: 3,
         title: 'Shrubs',
         img: require('../assets/images/shrubs2.jpeg'),
     },
     {
-        id: 4,
         title: 'Trees',
         img: require('../assets/images/tree.jpeg'),
     },
     {
-        id: 5,
         title: 'Flowers',
         img: require('../assets/images/flower.jpeg'),
     }

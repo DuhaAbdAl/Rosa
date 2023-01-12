@@ -5,6 +5,7 @@ import Types from "../src/screens/Types";
 import Info from "../src/screens/Info";
 import CustomDrawer from "../src/Componants/CustomDrawer";
 import Icon from "react-native-vector-icons/AntDesign";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { ScreenName } from "./ScreenName";
 import { StyleSheet } from "react-native";
 import SignIn from "../src/screens/SignIn";
@@ -16,9 +17,9 @@ const MyDrawer = () => {
 
   const renderIcon = (color, screenName) => {
     const icons = {
-      [ScreenName.HomePage]: <Icon name="home" size={22} color={color} />,
-      [ScreenName.Categories]: <Icon name="home" size={22} color={color} />,
-      [ScreenName.Types]: <Icon name="home" size={22} color={color} />,
+      [ScreenName.HomePage]: <FontAwesome name="home" size={22} color={'black'} />,
+      [ScreenName.Favorite]: <Icon name="heart" size={22} color={'red'} />,
+      // [ScreenName.Favorite]: <Icon name="home" size={22} color={color} />,
       [ScreenName.Info]: <Icon name="home" size={22} color={color} />,
     }
     return icons[screenName];
@@ -46,29 +47,37 @@ const MyDrawer = () => {
         drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
       }
     },
-    categoriesPage: {
-      name: ScreenName.Categories,
-      component: Categories,
-      options: {
-        headerShown:false , 
-        drawerStyle: styles.CategoriesHeaderStyle,
-        drawerIcon: ({ color }) => renderIcon(color , ScreenName.Categories)
-      }
-    }, 
-    types:{
-      name:ScreenName.Types,
-      component: Types,
+    favorite:{
+      name: ScreenName.Favorite,
+      component: Favorite,
       options:{
-        headerShown:false
+        headerShown:false,
+        drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
         }
     },
-    info:{
-      name: ScreenName.Info,
-      component: Info,
-      options:{
-        headerShown:false
-        }
-    },
+    // categoriesPage: {
+    //   name: ScreenName.Categories,
+    //   component: Categories,
+    //   options: {
+    //     headerShown:false , 
+    //     drawerStyle: styles.CategoriesHeaderStyle,
+    //     drawerIcon: ({ color }) => renderIcon(color , ScreenName.Categories)
+    //   }
+    // }, 
+    // types:{
+    //   name:ScreenName.Types,
+    //   component: Types,
+    //   options:{
+    //     headerShown:false
+    //     }
+    // },
+    // info:{
+    //   name: ScreenName.Info,
+    //   component: Info,
+    //   options:{
+    //     headerShown:false
+    //     }
+    // },
     signIn:{
       name: ScreenName.SignIn,
       component: SignIn,
@@ -76,20 +85,14 @@ const MyDrawer = () => {
       headerShown:false
       }
     },
-    signUp:{
-      name: ScreenName.SignUp,
-      component: SignUp,
-      options:{
-      headerShown:false
-      }
-    },
-    favorite:{
-      name: ScreenName.Favorite,
-      component: Favorite,
-      options:{
-        headerShown:false
-        }
-    },
+    // signUp:{
+    //   name: ScreenName.SignUp,
+    //   component: SignUp,
+    //   options:{
+    //   headerShown:false
+    //   }
+    // },
+   
   }
 
   return (
@@ -97,12 +100,12 @@ const MyDrawer = () => {
     drawerPosition = 'right'
     {...params.navigator} >
       <Drawer.Screen {...params.homePage} />
-      <Drawer.Screen {...params.categoriesPage} />
-      <Drawer.Screen {...params.types} />
-      <Drawer.Screen {...params.info} />
-      <Drawer.Screen {...params.signIn}/>
-      <Drawer.Screen {...params.signUp}/>
+      {/* <Drawer.Screen {...params.categoriesPage} /> */}
+      {/* <Drawer.Screen {...params.types} /> */}
+      {/* <Drawer.Screen {...params.info} /> */}
       <Drawer.Screen {...params.favorite}/>
+      <Drawer.Screen {...params.signIn}/>
+      {/* <Drawer.Screen {...params.signUp}/> */}
     </Drawer.Navigator>
   );
 }

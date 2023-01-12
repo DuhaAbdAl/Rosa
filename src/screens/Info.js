@@ -2,17 +2,15 @@ import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, } f
 import React from "react";
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
 import { data } from "../mokData/data";
-import { Platform } from "react-native";
 import * as Animatable from 'react-native-animatable';
-// import { data } from "../mokData/data";
 import ReadMore from "../Componants/ReadMoreLess";
-
 import { useRef } from "react";
 
 const Info = (props) => {
     const { name, image } = props.route.params || {}
     const found = data.find(element => element.title == name);
     const foundImg = data.find(element => element.title == image);
+    // const itemData = route.params.data;
 
     const renderData = () => {
         var keys = Object.keys(found?.info || {});
@@ -34,16 +32,15 @@ const Info = (props) => {
 
     const HeaderImage = (props) => {
         const imgeTitle = useRef(null)
-
         return (
             <ImageHeaderScrollView
                 maxHeight={250}
                 minHeight={55}
                 maxOverlayOpacity={0.6}
                 minOverlayOpacity={0.3}
-                headerImage={require('../assets/images/info2.jpeg')}
+                // headerImage={require('../assets/images/info2.jpeg')}
                 renderHeader={() => {
-                    <Image source={renderImage()} />
+                    <Image source={require('../assets/images/info2.jpeg')} />
                 }}
                 renderForeground={() => (
                     <View>
@@ -66,13 +63,11 @@ const Info = (props) => {
         )
     }
 
-const aa = '../assets/images/info1.jpeg' ; 
-
     return (
         <HeaderImage>
             <ImageBackground
                 style={styles.imageBack}
-                source={require(aa)}
+                source={require('../assets/images/info10.jpeg')}
             >
                 {/* {HeaderImage()} */}
 
@@ -104,17 +99,19 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         width: '90%',
+        alignSelf:'center',
         padding: 10,
         margin: 8,
-        marginLeft: 10,
-        marginRight: 150,
+        // marginLeft: 10,
+        // marginRight: 150,
         borderColor: '#000',
         borderWidth: 0.5,
         backgroundColor: 'rgba(10, 10, 10, 0.55)',
     },
     text: {
         fontSize: 16,
-        color: '#fff',
+        color: 'white',
+        fontWeight:'bold',
         // lineHeight: 11,
     },
     text2: {
@@ -132,10 +129,10 @@ const styles = StyleSheet.create({
         height: 40,
         width: '90%',
     },
-    test1:{
+    test1: {
         fontSize: 20,
-        color:'blue',
-        textAlign:'center',
+        color: 'blue',
+        textAlign: 'center',
         marginLeft: 20,
         marginBottom: 10,
         marginTop: 8,

@@ -76,14 +76,7 @@ const Types = (props) => {
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
-            {/* {!clicked}
-            <SearchBar {... props}
-                searchPhrase={searchPhrase}
-                setSearchPhrase={setSearchPhrase}
-                clicked={clicked}
-                setClicked={setClicked}
-            /> */}
-            <CustomHeader/>
+            <CustomHeader />
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
@@ -113,3 +106,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     }
 }); export default Types;
+ {/* {!clicked}
+<SearchBar {... props}
+searchPhrase={searchPhrase}
+setSearchPhrase={setSearchPhrase}
+clicked={clicked}
+setClicked={setClicked}
+/> */}
