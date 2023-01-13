@@ -97,6 +97,7 @@ const MyDrawer = () => {
 
   return (
     <Drawer.Navigator 
+    id="LeftDrawer"
     drawerPosition = 'right'
     {...params.navigator} >
       <Drawer.Screen {...params.homePage} />

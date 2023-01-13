@@ -2,13 +2,17 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from "react
 import React from "react";
 import { ScreenName } from "../../route/ScreenName";
 import Entypo  from "react-native-vector-icons/Entypo";
+import { useNavigation } from "@react-navigation/native";
+
 
 const HomePage = (props) => {
+    const navigation = useNavigation();
+    const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.image} source={require('../assets/images/GreenRose2.jpeg')}>
                 <TouchableOpacity onPress={() => {
-                    props.navigation.openDrawer();
+                    drawerNavigation?.openDrawer();
                 }}>
                     <Entypo
                         name="menu"

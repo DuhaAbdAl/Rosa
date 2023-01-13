@@ -1,12 +1,15 @@
-import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable, Image, ScrollView, } from "react-native";
 import React from "react";
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
 import { data } from "../mokData/data";
 import * as Animatable from 'react-native-animatable';
 import ReadMore from "../Componants/ReadMoreLess";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 
 const Info = (props) => {
+    const navigation = useNavigation();
     const { name, image } = props.route.params || {}
     const found = data.find(element => element.title == name);
     const foundImg = data.find(element => element.title == image);
@@ -27,9 +30,8 @@ const Info = (props) => {
     // const MinHight = Platform.OS == 55;
     // const MaxHight = 350;
     // const itemDetail = () =>{
-    //     const imgData = data.image
+    //     const imgData = data.find(element => element.image==image)
     // }
-
     const HeaderImage = (props) => {
         const imgeTitle = useRef(null)
         return (
@@ -38,18 +40,18 @@ const Info = (props) => {
                 minHeight={55}
                 maxOverlayOpacity={0.6}
                 minOverlayOpacity={0.3}
-                // headerImage={require('../assets/images/info2.jpeg')}
+                headerImage={require('../assets/images/info2.jpeg')}
                 renderHeader={() => {
-                    <Image source={require('../assets/images/info2.jpeg')} />
+                    // <Image source={foundImg} />
                 }}
                 renderForeground={() => (
                     <View>
-                        {/* <Text style={{ color: "red" }}> {data.title} </Text> */}
+                        {/* <Text style={{ color: "red" }}> {found} </Text> */}
                     </View>
                 )}
                 renderFixedForeground={() => (
                     <Animatable.View ref={imgeTitle}>
-                        <Text style={styles.test1}>Welcom</Text>
+                        <Text style={styles.test1}>title</Text>
                     </Animatable.View>
                 )}
             >
@@ -64,18 +66,25 @@ const Info = (props) => {
     }
 
     return (
-        <HeaderImage>
+        <HeaderImage style={styles.headerImage}>
+            <View>
+                <Pressable onPress={() => {
+                    navigation.goBack();
+                }}>
+                    <Ionicons
+                        name="chevron-back"
+                        size={25}
+                        color="white"
+                        style={{ marginRight: 10, marginTop: 8, alignSelf: 'flex-start' }} />
+                </Pressable>
+            </View>
+
             <ImageBackground
                 style={styles.imageBack}
-                source={require('../assets/images/info10.jpeg')}
-            >
-                {/* {HeaderImage()} */}
-
-                {/* <View style={styles.headerImage}></View> */}
-                {/* <ScrollView style={{flex:1}}> */}
+                source={require('../assets/images/info10.jpeg')}>
+                {/* <ScrollView> */}
                 {renderData()}
                 {/* </ScrollView> */}
-
             </ImageBackground>
         </HeaderImage>
     )
@@ -83,7 +92,7 @@ const Info = (props) => {
 }
 const styles = StyleSheet.create({
     headerImage: {
-        // flex: 1,
+        flex: 1,
         // height: 200,
         // width: 200,
         // backgroundColor: 'red'
@@ -99,11 +108,9 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         width: '90%',
-        alignSelf:'center',
+        alignSelf: 'center',
         padding: 10,
         margin: 8,
-        // marginLeft: 10,
-        // marginRight: 150,
         borderColor: '#000',
         borderWidth: 0.5,
         backgroundColor: 'rgba(10, 10, 10, 0.55)',
@@ -111,7 +118,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         color: 'white',
-        fontWeight:'bold',
+        fontWeight: 'bold',
         // lineHeight: 11,
     },
     text2: {

@@ -7,10 +7,13 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native";
 import { useRef } from "react";
 import { Animated } from "react-native";
+import { ScreenName } from "../../route/ScreenName";
+import { useNavigation } from "@react-navigation/native";
 
-const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 const CustomHeader = (props) => {
+    const navigation = useNavigation();
+    const drawerNavigation = navigation.getParent('LeftDrawer');
     const animatedValue = useRef(new Animated.Value(0)).current;
 
     const searchInputAnimation = {
@@ -47,8 +50,8 @@ const CustomHeader = (props) => {
                 <View style={styles.upperHeader}>
                     <View>
                         <Pressable onPress={() => {
-                            props.navigation.goBack();
-                        }} >
+                            navigation.goBack();
+                        }}>
                             <Ionicons
                                 name="chevron-back"
                                 size={25}
@@ -67,7 +70,7 @@ const CustomHeader = (props) => {
                             style={styles.searchInput} />
                     </View>
                     <TouchableOpacity onPress={() => {
-                        props.navigation.openDrawer();
+                        drawerNavigation?.openDrawer();
                     }}>
                         <Image source={require('../assets/images/profile.jpeg')}
                             style={styles.profile} />
@@ -79,7 +82,7 @@ const CustomHeader = (props) => {
                             name="water-outline"
                             size={25}
                             style={styles.featureIcons} />
-                       
+
                         <Text style={styles.featureText}>Water</Text>
 
                     </View>
@@ -87,8 +90,8 @@ const CustomHeader = (props) => {
                         <FontAwesome
                             name='thermometer-3'
                             size={25}
-                            style={styles.featureIcons}  />
-                      
+                            style={styles.featureIcons} />
+
                         <Text style={styles.featureText}>Tempreature</Text>
 
                     </View>
@@ -97,7 +100,7 @@ const CustomHeader = (props) => {
                             name='leaf-outline'
                             size={25}
                             style={styles.featureIcons} />
-                       
+
                         <Text style={styles.featureText}>Fertilizer</Text>
                     </View>
                 </View>
@@ -124,7 +127,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
-        backgroundColor:'rgba(10, 10, 10, 0.65)'
+        backgroundColor: 'rgba(10, 10, 10, 0.65)'
     },
     searchContainer: {
         flex: 1,
@@ -161,7 +164,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         paddingHorizontal: 8,
-        backgroundColor:'rgba(10, 10, 10, 0.70)'
+        backgroundColor: 'rgba(10, 10, 10, 0.70)'
     },
     feature: {
         alignItems: 'center',
@@ -169,15 +172,15 @@ const styles = StyleSheet.create({
     },
     featureIcons: {
         color: "white",
-        alignSelf:'center',
-        marginLeft:20,
+        alignSelf: 'center',
+        marginLeft: 20,
     },
     featureText: {
         fontWeight: 'bold',
         fontSize: 13.5,
         color: 'white',
         marginTop: 10,
-        marginLeft:20,
+        marginLeft: 20,
     },
     paddingHeader: {
         height: lowerHeader_Hight,

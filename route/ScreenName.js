@@ -7,5 +7,6 @@ export const ScreenName = {
     SignUp: 'Sign Up',
     Favorite: 'Favorite',
     SearchHome: 'Search Home',
-    CustomDrawer:'Custom Drawer',    
+    CustomDrawer:'Custom Drawer', 
+    CustomHeader: 'CustomHeader',   
 };
