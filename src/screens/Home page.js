@@ -1,7 +1,7 @@
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
 import { ScreenName } from "../../route/ScreenName";
-import Entypo  from "react-native-vector-icons/Entypo";
+import Entypo from "react-native-vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
 
 
@@ -28,16 +28,24 @@ const HomePage = (props) => {
                         {`To Plant A Garden Is\n To Believe In Tomorrow`}
                     </Text>
                 </Text>
-                
-                <TouchableOpacity onPress={() => {
-                    props.navigation.navigate(ScreenName.Categories);
-                }}>
-                    <View style={styles.buttonCard}>
-                        <Text style={styles.buttonText}>
-                            Get Started
-                        </Text>
+                <View style={styles.pressContainer}>
+                    <TouchableOpacity onPress={() => {
+                        props.navigation.navigate(ScreenName.Categories);
+                    }}>
+                        <View style={styles.buttonCard}>
+                            <Text style={styles.buttonText}>
+                                Get Started
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                    <View style={styles.inText}>
+                        <Pressable onPress={() => {
+                            props.navigation.navigate(ScreenName.SignIn);
+                        }}>
+                            <Text style={styles.pressText}> Sign In</Text>
+                        </Pressable>
                     </View>
-                </TouchableOpacity>
+                </View>
             </ImageBackground>
 
         </View>
@@ -46,7 +54,6 @@ const HomePage = (props) => {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        // justifyContent: 'center',
     },
     text: {
         fontSize: 25,
@@ -56,7 +63,6 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         marginBottom: 100,
         lineHeight: 40,
-        // marginRight: 10,
         marginLeft: 150,
         alignSelf: 'baseline',
     },
@@ -94,22 +100,36 @@ const styles = StyleSheet.create({
         borderColor: '#000',
         padding: 15,
         margin: 20,
-        marginTop:70,
-        marginLeft: 60,
-        marginBottom:100,
+        marginTop: 60,
+        marginLeft: 110,
+        // marginBottom: 100,
         backgroundColor: 'rgba(10, 10, 10, 0.60)',
     },
     buttonText: {
         fontSize: 20,
         fontWeight: "bold",
-        color: 'white'//'#A4B17B'
+        color: 'white',//'#A4B17B'
     },
     icon: {
-        marginLeft:20 , 
-        marginTop: 20 , 
+        marginLeft: 20,
+        marginTop: 20,
         fontSize: 30,
         color: "white",
         alignSelf: 'flex-start',
+    },
+    inText: {
+        marginLeft:180,
+        marginBottom:20,
+        // marginTop:120,
+        // marginRight: 30,
+    },
+    pressText: {
+        color: '#2E8D36',
+        fontSize: 20,
+    },
+    pressContainer:{
+        flexDirection:'column',
+        justifyContent:'space-between',
     },
 }); export default HomePage;
 

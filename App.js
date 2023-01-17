@@ -1,23 +1,17 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 
 
 import MainNavigation from './route/nav';
+import RosaProvider from './Store/RosaProvider';
 const App = () => {
-  
-  return (
 
-    <View style={{ flex: 1 }}>
-      <MainNavigation/>
-    </View>
+  return (
+    <RosaProvider>
+      <View style={{ flex: 1 }}>
+        <MainNavigation />
+      </View>
+    </RosaProvider>
   )
 
 };

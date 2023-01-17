@@ -1,22 +1,17 @@
-import { ImageBackground, StyleSheet, Text, View, Button, Image, ScrollView, FlatList, TextInput } from "react-native";
+import { ImageBackground, StyleSheet, FlatList} from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data } from "../mokData/data";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import SearchBar from "../Componants/SearchBar";
 import CustomHeader from "../Componants/CustomHeader";
+import { useContext } from "react";
+import RosaContext from "../../Store/RosaContext";
 
 
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {}
-    // const { name } = props.route.params || {};
-    const [favorates, setFavoratis] = useState([]);
-    const [clicked, setClicked] = useState(false);
-    const [searchPhrase, setSearchPhrase] = useState("");
-
-
+    const {favorates, setFavoratis} = useContext(RosaContext);
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
@@ -42,7 +37,6 @@ const Types = (props) => {
 
     const checkIsFavorate = (title) => {
         const isFav = favorates.find(item => item.title === title)
-        // console.log('title: ', title, 'isfave: ', isFav, 'res: ', !!isFav);
         return !!isFav;
     }
 
@@ -60,7 +54,7 @@ const Types = (props) => {
     }
     const params = {
         flatList: {
-            data: filterData(),
+            data: [...filterData() , ...filterData()],
             renderItem: renderCard,
             style: styles.flatList,
             numColumns: 1,
@@ -106,7 +100,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     }
 }); export default Types;
- {/* {!clicked}
+  {/* {!clicked}
 <SearchBar {... props}
 searchPhrase={searchPhrase}
 setSearchPhrase={setSearchPhrase}

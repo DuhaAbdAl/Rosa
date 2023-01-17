@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, ScrollView, } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable, Image,TouchableOpacity } from "react-native";
 import React from "react";
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
 import { data } from "../mokData/data";
@@ -10,92 +10,102 @@ import { useRef } from "react";
 
 const Info = (props) => {
     const navigation = useNavigation();
-    const { name, image } = props.route.params || {}
+    const drawerNavigation = navigation.getParent('LeftDrawer');
+    const { name } = props.route.params || {}
     const found = data.find(element => element.title == name);
-    const foundImg = data.find(element => element.title == image);
-    // const itemData = route.params.data;
-
+    // const foundImg = data.find(element => element.image == image);
+    // console.log('foundImg', foundImg)
     const renderData = () => {
         var keys = Object.keys(found?.info || {});
         return keys.map(key => {
             return (
                 <View style={styles.textContainer}>
                     <Text style={styles.text2}>{key || "404"}</Text>
-                    {/* <Text style={styles.text}>{found.info[key] || "404"}</Text> */}
                     <ReadMore style={styles.text} text={found.info[key] || "404"} />
                 </View>
             )
         })
     }
-    // const MinHight = Platform.OS == 55;
-    // const MaxHight = 350;
-    // const itemDetail = () =>{
-    //     const imgData = data.find(element => element.image==image)
-    // }
+    // console.log('found.image', found.image)
+    // console.log('found.title', found.title)
     const HeaderImage = (props) => {
         const imgeTitle = useRef(null)
         return (
             <ImageHeaderScrollView
                 maxHeight={250}
                 minHeight={55}
-                maxOverlayOpacity={0.6}
+                maxOverlayOpacity={0.5}
                 minOverlayOpacity={0.3}
-                headerImage={require('../assets/images/info2.jpeg')}
+                // headerImage={require('../assets/images/FlowersPage.jpeg')}
                 renderHeader={() => {
-                    // <Image source={foundImg} />
+                  return  <Image style={{resizeMode:'repeat'}} source={found.image} /> 
                 }}
                 renderForeground={() => (
-                    <View>
-                        {/* <Text style={{ color: "red" }}> {found} </Text> */}
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+
+                        <Text style={styles.titleAnimatedUp}> {found.title} </Text>
                     </View>
                 )}
                 renderFixedForeground={() => (
-                    <Animatable.View ref={imgeTitle}>
-                        <Text style={styles.test1}>title</Text>
+                    <Animatable.View ref={imgeTitle} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Pressable onPress={() => {
+                            navigation.goBack();
+                        }}>
+                            <Ionicons
+                                name="chevron-back"
+                                size={30}
+                                color="white"
+                                style={{ marginLeft: 15, marginTop: 12, alignSelf: 'flex-start' }} />
+                        </Pressable>
+                        <Text style={styles.titleAnimated}>{found.title}</Text>
+                        <TouchableOpacity onPress={() => {
+                            drawerNavigation?.openDrawer();
+                        }}>
+                            <Image source={require('../assets/images/profile.jpeg')}
+                                style={styles.profile} />
+                        </TouchableOpacity>
                     </Animatable.View>
                 )}
+                foregroundParallaxRatio={5}
+            // scrollViewBackgroundColor="#ddddff"
             >
 
                 <TriggeringView
-                    onHide={() => imgeTitle.current.fadeInUp(200)}
-                    onDisplay={() => imgeTitle.current.fadeOut(100)}>
+                 onHide={() => imgeTitle.current.fadeInUp(200)}
+                 onDisplay={() => imgeTitle.current.fadeOut(100)}
+                >
+                    <ImageBackground
+                        style={styles.imageBack}
+                        source={require('../assets/images/info10.jpeg')} >
+                        {renderData()}
+                    </ImageBackground>
                 </TriggeringView>
                 {props.children}
-            </ImageHeaderScrollView>
+            </ImageHeaderScrollView >
         )
     }
 
     return (
-        <HeaderImage style={styles.headerImage}>
-            <View>
-                <Pressable onPress={() => {
-                    navigation.goBack();
-                }}>
-                    <Ionicons
-                        name="chevron-back"
-                        size={25}
-                        color="white"
-                        style={{ marginRight: 10, marginTop: 8, alignSelf: 'flex-start' }} />
-                </Pressable>
-            </View>
+        // <ImageBackground
+        //         style={styles.imageBack}
+        //         source={require('../assets/images/info10.jpeg')} >
+        <HeaderImage style={styles.headerImage} />
 
-            <ImageBackground
-                style={styles.imageBack}
-                source={require('../assets/images/info10.jpeg')}>
-                {/* <ScrollView> */}
-                {renderData()}
-                {/* </ScrollView> */}
-            </ImageBackground>
-        </HeaderImage>
+    //             {/* <ScrollView> */ }
+    // {/* {renderData()} */ }
+    // {/* </ScrollView> */ }
+
+            // </ImageBackground>
+
     )
 
 }
 const styles = StyleSheet.create({
     headerImage: {
         flex: 1,
-        // height: 200,
-        // width: 200,
-        // backgroundColor: 'red'
+        height: 200,
+        width: 200,
     },
     image: {
         height: 55,
@@ -136,14 +146,39 @@ const styles = StyleSheet.create({
         height: 40,
         width: '90%',
     },
-    test1: {
-        fontSize: 20,
-        color: 'blue',
+    titleAnimated: {
+        fontSize: 30,
+        fontWeight: 'italic',
+        color: 'white',
+        backgroundColor:'rgba(250, 250, 250, 0.55)',
+        borderRadius:10,
+        height:70,
+        padding:5,
         textAlign: 'center',
-        marginLeft: 20,
+        marginBottom: 12,
+        marginTop:15 ,
+        paddingTop: 5,
+    },
+    titleAnimatedUp: {
+        fontSize: 30,
+        fontWeight: 'italic',
+        color: 'green',//transparent
+        textAlign: 'center',
+        marginRight: 170,
+        marginLeft: 165,
         marginBottom: 10,
         marginTop: 8,
         paddingTop: 5,
+    },
+    profile: {
+        alignSelf: 'flex-end',
+        width: 38,
+        height: 38,
+        borderRadius: 20,
+        borderColor: 'white',
+        borderWidth: 1,
+        margin: 10,
+        marginTop: 10,
     },
 });
 

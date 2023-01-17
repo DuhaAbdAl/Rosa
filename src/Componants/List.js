@@ -5,27 +5,29 @@ import {
     View,
     FlatList,
 } from "react-native";
+import { data } from "../mokData/data";
 
 const Item = ({ name, details }) => (
     <View style={styles.item}>
         <Text style={styles.title}>{name}</Text>
-        <Text style={styles.details}>{details}</Text>
+        {/* <Text style={styles.details}>{details}</Text> */}
     </View>
 );
 
-const List = ({ searchPhrase, setClicked, data }) => {
+const List = (props) => {
+    const { searchPhrase, setClicked } = props;
     const renderItem = ({ item }) => {
         if (searchPhrase === "") {
-            return <Item name={item.name} details={item.details} />;
+            return <Item name={item.name} />;
         }
-        // if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-        //     return <Item name={item.name} details={item.details} />;
-        // }
+        if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
+            return <Item name={item.name} />;
+        }
         // if (item.details.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
         //     return <Item name={item.name} details={item.details} />;
         // }
     };
-
+    // console.log('item.name', item.name)
     return (
         <View style={styles.listContainer}>
             <View

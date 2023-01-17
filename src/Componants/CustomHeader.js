@@ -113,7 +113,7 @@ const upperHeader_Hight = 75;
 const lowerHeader_Hight = 96;
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
     },
     // upperHeaderPlaceHolder: {
     //     height: upperHeader_Hight,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     searchInput: {
-        position: 'absolute',
+        // position: 'absolute',
         // marginBottom:20,
         width: '100%',
         backgroundColor: 'rgba(250,250,250,0.3)',
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         paddingVertical: 4,
         paddingLeft: 32,
+        // zIndex:9999
     },
     profile: {
         width: 38,

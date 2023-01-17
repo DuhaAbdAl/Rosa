@@ -55,29 +55,27 @@ const MyDrawer = () => {
         drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
         }
     },
-    // categoriesPage: {
-    //   name: ScreenName.Categories,
-    //   component: Categories,
-    //   options: {
-    //     headerShown:false , 
-    //     drawerStyle: styles.CategoriesHeaderStyle,
-    //     drawerIcon: ({ color }) => renderIcon(color , ScreenName.Categories)
-    //   }
-    // }, 
-    // types:{
-    //   name:ScreenName.Types,
-    //   component: Types,
-    //   options:{
-    //     headerShown:false
-    //     }
-    // },
-    // info:{
-    //   name: ScreenName.Info,
-    //   component: Info,
-    //   options:{
-    //     headerShown:false
-    //     }
-    // },
+    categoriesPage: {
+      name: ScreenName.Categories,
+      component: Categories,
+      options: {
+        headerShown:false , 
+      }
+    }, 
+    types:{
+      name:ScreenName.Types,
+      component: Types,
+      options:{
+        headerShown:false
+        }
+    },
+    info:{
+      name: ScreenName.Info,
+      component: Info,
+      options:{
+        headerShown:false
+        }
+    },
     signIn:{
       name: ScreenName.SignIn,
       component: SignIn,
@@ -85,28 +83,28 @@ const MyDrawer = () => {
       headerShown:false
       }
     },
-    // signUp:{
-    //   name: ScreenName.SignUp,
-    //   component: SignUp,
-    //   options:{
-    //   headerShown:false
-    //   }
-    // },
+    signUp:{
+      name: ScreenName.SignUp,
+      component: SignUp,
+      options:{
+      headerShown:false
+      }
+    },
    
   }
 
   return (
     <Drawer.Navigator 
     id="LeftDrawer"
-    drawerPosition = 'right'
+    drawerPosition = 'left'
     {...params.navigator} >
       <Drawer.Screen {...params.homePage} />
-      {/* <Drawer.Screen {...params.categoriesPage} /> */}
-      {/* <Drawer.Screen {...params.types} /> */}
-      {/* <Drawer.Screen {...params.info} /> */}
+      <Drawer.Screen {...params.categoriesPage} />
+      <Drawer.Screen {...params.types} />
+      <Drawer.Screen {...params.info} />
       <Drawer.Screen {...params.favorite}/>
       <Drawer.Screen {...params.signIn}/>
-      {/* <Drawer.Screen {...params.signUp}/> */}
+      <Drawer.Screen {...params.signUp}/>
     </Drawer.Navigator>
   );
 }
