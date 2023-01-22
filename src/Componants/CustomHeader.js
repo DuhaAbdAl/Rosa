@@ -16,30 +16,30 @@ const CustomHeader = (props) => {
     const drawerNavigation = navigation.getParent('LeftDrawer');
     const animatedValue = useRef(new Animated.Value(0)).current;
 
-    const searchInputAnimation = {
-        transform: [
-            {
-                scaleX: animatedValue.interpolate({
-                    inputRange: [0, 50],
-                    outputRange: [1, 0],
-                    extrapolate: 'clamp',
-                }),
-            },
-            {
-                translateX: animatedValue.interpolate({
-                    inputRange: [0, 25],
-                    outputRange: [0, -100],
-                    extrapolate: 'clamp',
-                }),
-            },
-        ],
-        opacity: animatedValue.interpolate({
-            inputRange: [0, 25],
-            outputRange: [1, 0],
-            extrapolate: 'clamp',
-        })
+    // const searchInputAnimation = {
+    //     transform: [
+    //         {
+    //             scaleX: animatedValue.interpolate({
+    //                 inputRange: [0, 50],
+    //                 outputRange: [1, 0],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //         {
+    //             translateX: animatedValue.interpolate({
+    //                 inputRange: [0, 25],
+    //                 outputRange: [0, -100],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //     ],
+    //     opacity: animatedValue.interpolate({
+    //         inputRange: [0, 25],
+    //         outputRange: [1, 0],
+    //         extrapolate: 'clamp',
+    //     })
 
-    }
+    // }
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -119,11 +119,18 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
-        // width: '100%',
-        // backgroundColor: 'rgba(250,250,250,0.2)'
+        // height:170, 
+        // position:'absolute',
+        // top:0,
+        // left:0,
+        // right:0,
     },
     upperHeader: {
-        // height: upperHeader_Hight,
+        // position:'absolute',
+        // top:0,
+        // left:0,
+        // right:0,
+        height: upperHeader_Hight,
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
@@ -135,18 +142,19 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
         marginLeft: 7,
-        marginTop: 8,
+        marginTop: 19,
+        position:'absolute',
     },
     searchInput: {
         // position: 'absolute',
-        // marginBottom:20,
+        marginTop:12,
         width: '100%',
         backgroundColor: 'rgba(250,250,250,0.3)',
         color: 'white',
         borderRadius: 4,
         paddingVertical: 4,
         paddingLeft: 32,
-        // zIndex:9999
+        // zIndex:9999 (ios)
     },
     profile: {
         width: 38,
@@ -159,6 +167,10 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     lowerHeader: {
+        // position:'absolute',
+        // top:0,
+        // left:0,
+        // right:0,
         height: lowerHeader_Hight,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -184,7 +196,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
     paddingHeader: {
-        height: lowerHeader_Hight,
+        // height: lowerHeader_Hight,
     },
     scrollViewcontainer: {
         height: Window_Hight * 2,

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, FlatList} from "react-native";
+import { ImageBackground, StyleSheet, FlatList, Animated} from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data } from "../mokData/data";
@@ -60,18 +60,33 @@ const Types = (props) => {
             numColumns: 1,
             padding: 10,
             paddingTop: 22,
-
-        },
+        }
     };
     useEffect(() => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
+    const scrollY = new Animated.Value(0)
+    const diffClamp = Animated.diffClamp(scrollY,0,170)
+    const translateY = diffClamp.interpolate({
+        inputRange:[0,170],
+        outputRange:[0,-170]
+    }) 
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
+            <Animated.View 
+            style={{
+                transform:[
+                    {translateY: translateY}
+                ],
+                elevation:8,
+            }}>
             <CustomHeader />
-            <FlatList {...params.flatList} />
+            </Animated.View>
+            <FlatList {...params.flatList} 
+            onScroll={(e)=>{
+                scrollY.setValue(e.nativeEvent.contentOffset.y)}}/>
         </ImageBackground>
     )
 };

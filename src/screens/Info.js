@@ -7,6 +7,7 @@ import ReadMore from "../Componants/ReadMoreLess";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
+import { WINDOW_WIDTH } from "../assets/Sizes";
 
 const Info = (props) => {
     const navigation = useNavigation();
@@ -26,7 +27,7 @@ const Info = (props) => {
         })
     }
     // console.log('found.image', found.image)
-    console.log('found.title', found.title)
+    // console.log('found.title', found.title)
     const HeaderImage = (props) => {
         const imgeTitle = useRef(null)
         return (
@@ -72,9 +73,9 @@ const Info = (props) => {
                     onHide={() => imgeTitle.current.fadeInUp(200)}
                     onDisplay={() => imgeTitle.current.fadeOut(100)}
                 >
-                    {/* <Text style={styles.titleText}> */}
-                        <Text style={styles.name}>{found.title}</Text> 
-                    {/* </Text> */}
+                    <Text style={styles.titleText}>
+                        <Text style={styles.name}>{found.title}</Text>
+                    </Text>
                 </TriggeringView>
                 <ImageBackground
                     style={styles.imageBack}
@@ -85,14 +86,15 @@ const Info = (props) => {
             </ImageHeaderScrollView >
         )
     }
+    console.log('found.title', found.title)
 
     return (
         <HeaderImage style={styles.headerImage} />
     )
 
 }
-const MIN_HEIGHT = 350;
-const MAX_HEIGHT = 250;
+const MIN_HEIGHT = 250;
+const MAX_HEIGHT = 350;
 
 const styles = StyleSheet.create({
     headerImage: {
@@ -107,7 +109,8 @@ const styles = StyleSheet.create({
     },
     image: {
         height: MAX_HEIGHT,
-        width: Dimensions.get('window').width,
+        // width: Dimensions.get('window').width,
+        width: WINDOW_WIDTH,
         alignSelf: 'stretch',
         resizeMode: 'cover',
     },
