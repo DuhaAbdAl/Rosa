@@ -4,14 +4,17 @@ import { Window_Hight } from "../assets/Sizes";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Entypo from "react-native-vector-icons/Entypo";
 import { TextInput } from "react-native";
 import { useRef } from "react";
 import { Animated } from "react-native";
 import { ScreenName } from "../../route/ScreenName";
 import { useNavigation } from "@react-navigation/native";
+import { Keyboard } from "react-native";
 
 
 const CustomHeader = (props) => {
+    const { clicked, setClicked, searchPhrase, setSearchPhrase } = props;
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     const animatedValue = useRef(new Animated.Value(0)).current;
@@ -60,14 +63,32 @@ const CustomHeader = (props) => {
                         </Pressable>
                     </View>
                     <View style={styles.searchContainer}>
-                        <AntDesign style={styles.searchIcon}
-                            name='search1'
-                            color='white'
-                            size={20} />
-                        <TextInput
-                            placeholder="Search"
-                            placeholderTextColor={'rgba(255,255,255,0.8)'}
-                            style={styles.searchInput} />
+                        <View
+                            style={
+                                clicked
+                                    ? styles.searchBarClicked : styles.searchBarUnclicked
+
+                            }
+                        >
+                            <AntDesign style={styles.searchIcon}
+                                name='search1'
+                                color='white'
+                                size={20} />
+                            <TextInput
+                                placeholder="Search"
+                                placeholderTextColor={'rgba(255,255,255,0.8)'}
+                                value={searchPhrase}
+                                onChangeText={setSearchPhrase}
+                                onFocus={() => {
+                                    setClicked?.(true);
+                                }}
+                                style={styles.searchInput} />
+                            {clicked && (
+                                <Entypo name="cross" size={20} color="white" onPress={() => {
+                                    setSearchPhrase("") && Keyboard.dismiss()
+                                }} />
+                            )}
+                        </View>
                     </View>
                     <TouchableOpacity onPress={() => {
                         drawerNavigation?.openDrawer();
@@ -119,7 +140,7 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
-        // height:170, 
+        height: 150,
         // position:'absolute',
         // top:0,
         // left:0,
@@ -140,14 +161,22 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
     },
+    searchBarUnclicked: {
+        flexDirection: "row",
+        alignItems: "flex-start",
+    },
+    searchBarClicked: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+    },
     searchIcon: {
         marginLeft: 7,
         marginTop: 19,
-        position:'absolute',
+        position: 'absolute',
     },
     searchInput: {
         // position: 'absolute',
-        marginTop:12,
+        marginTop: 12,
         width: '100%',
         backgroundColor: 'rgba(250,250,250,0.3)',
         color: 'white',

@@ -10,7 +10,7 @@ const HomePage = (props) => {
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground style={styles.image} source={require('../assets/images/GreenRose2.jpeg')}>
+            <ImageBackground style={styles.image} source={require('../assets/images/HomePage.jpeg')}>
                 <TouchableOpacity onPress={() => {
                     drawerNavigation?.openDrawer();
                 }}>
@@ -22,22 +22,24 @@ const HomePage = (props) => {
 
                 <Text style={styles.text2}>Rosa Verde</Text>
 
-                <Text style={styles.text}>
-                    {`Home Is Where\n My Plants Are\n`}
-                    <Text style={styles.text1}>
-                        {`To Plant A Garden Is\n To Believe In Tomorrow`}
+                <View style={styles.quoteText}>
+                    <Text style={styles.text}>
+                        {`Home Is Where\n My Plants Are\n`}
+                        <Text style={styles.text1}>
+                            {`To Plant A Garden Is\n To Believe In Tomorrow`}
+                        </Text>
                     </Text>
-                </Text>
+                </View>
+                <TouchableOpacity onPress={() => {
+                    props.navigation.navigate(ScreenName.Categories);
+                }}>
+                    <View style={styles.buttonCard}>
+                        <Text style={styles.buttonText}>
+                            Get Started
+                        </Text>
+                    </View>
+                </TouchableOpacity>
                 <View style={styles.pressContainer}>
-                    <TouchableOpacity onPress={() => {
-                        props.navigation.navigate(ScreenName.Categories);
-                    }}>
-                        <View style={styles.buttonCard}>
-                            <Text style={styles.buttonText}>
-                                Get Started
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
                     <View style={styles.inText}>
                         <Pressable onPress={() => {
                             props.navigation.navigate(ScreenName.SignIn);
@@ -58,34 +60,40 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'white',
+        color: 'green',
         textAlign: "center",
         paddingTop: 30,
-        marginBottom: 100,
         lineHeight: 40,
-        marginLeft: 150,
+        // marginLeft: 15,
         alignSelf: 'baseline',
     },
     text1: {
         fontSize: 18,
+        fontWeight: 'bold',
         fontStyle: "italic",
-        color: 'white',//#C5E1A5
+        color: 'green',//#C5E1A5
         textAlign: "center",
         lineHeight: 40,
-        marginTop: 15,
+        marginLeft: 50,
     },
     text2: {
         fontWeight: 'bold',
         fontStyle: 'italic',
         fontSize: 35,
-        color: '#7dac66',
+        color: '#33691E',
         textAlign: 'center',
         marginBottom: 200,
-        marginTop: 20,
+        // marginTop: 10,
     },
     text3: {
         fontSize: 24,
         color: 'white',
+    },
+    quoteText: {
+        backgroundColor: 'rgba(250,250,250,0.3)',
+        height: 270,
+        width: 270,
+        alignSelf: 'center',
     },
     margin: {
         padding: 20,
@@ -93,22 +101,19 @@ const styles = StyleSheet.create({
         borderTopColor: '#ccc',
     },
     buttonCard: {
-        width: 200,
+        width: 170,
         alignSelf: 'center',
-        borderWidth: 2,
         borderRadius: 70,
-        borderColor: '#000',
-        padding: 15,
-        margin: 20,
-        marginTop: 60,
-        marginLeft: 110,
-        // marginBottom: 100,
-        backgroundColor: 'rgba(10, 10, 10, 0.60)',
+        padding: 10,
+        // margin: 20,
+        marginTop: 110,
+        backgroundColor: 'transparent'//'rgba(250,250,250,0.3)',
     },
     buttonText: {
         fontSize: 20,
         fontWeight: "bold",
         color: 'white',//'#A4B17B'
+        alignSelf: 'center',
     },
     icon: {
         marginLeft: 20,
@@ -118,18 +123,21 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     inText: {
-        marginLeft:180,
-        marginBottom:20,
-        // marginTop:120,
-        // marginRight: 30,
+        marginLeft: 180,
+        marginBottom: 20,
     },
     pressText: {
-        color: '#2E8D36',
+        color: 'green',
         fontSize: 20,
+        fontWeight: 'bold',
+        fontStyle:'italic',
+        marginRight: 30,
     },
-    pressContainer:{
-        flexDirection:'column',
-        justifyContent:'space-between',
+    pressContainer: {
+        // flexDirection: 'row',
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        marginBottom: 50,
     },
 }); export default HomePage;
 
