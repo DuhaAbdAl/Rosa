@@ -10,7 +10,7 @@ const HomePage = (props) => {
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground style={styles.image} source={require('../assets/images/HomePage.jpeg')}>
+            <ImageBackground style={styles.image} source={require('../assets/images/HomePage2.jpeg')}>
                 <TouchableOpacity onPress={() => {
                     drawerNavigation?.openDrawer();
                 }}>
@@ -60,18 +60,18 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'green',
+        color: 'white',
         textAlign: "center",
         paddingTop: 30,
         lineHeight: 40,
-        // marginLeft: 15,
+        marginLeft: 35,
         alignSelf: 'baseline',
     },
     text1: {
         fontSize: 18,
         fontWeight: 'bold',
         fontStyle: "italic",
-        color: 'green',//#C5E1A5
+        color: 'white',//#C5E1A5
         textAlign: "center",
         lineHeight: 40,
         marginLeft: 50,
@@ -80,20 +80,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontStyle: 'italic',
         fontSize: 35,
-        color: '#33691E',
+        color: '#8bca84',
         textAlign: 'center',
         marginBottom: 200,
-        // marginTop: 10,
+        marginTop: 10,
     },
     text3: {
         fontSize: 24,
         color: 'white',
     },
     quoteText: {
-        backgroundColor: 'rgba(250,250,250,0.3)',
+        backgroundColor: 'rgba(250,250,250,0.0)',
         height: 270,
         width: 270,
-        alignSelf: 'center',
+        alignSelf: 'flex-end',
     },
     margin: {
         padding: 20,

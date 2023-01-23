@@ -2,10 +2,13 @@ import { StyleSheet, View, Button, TextInput, Keyboard } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
+import { useState } from "react";
 
 
 const SearchBar = (props) => {
     const { clicked, setClicked, searchPhrase, setSearchPhrase } = props;
+    const [input, setInput] = useState("");
+
     return (
         <View style={styles.container}>
             <View
@@ -24,8 +27,8 @@ const SearchBar = (props) => {
                 <TextInput
                     style={styles.input}
                     placeholder="Search"
-                    value={searchPhrase}
-                    onChangeText={setSearchPhrase}
+                    value={input}
+                    onChangeText={(text) => setInput(text)}
                     onFocus={() => {
                         setClicked?.(true);
                     }}

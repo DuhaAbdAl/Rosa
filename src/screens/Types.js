@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomHeader from "../Componants/CustomHeader";
 import { useContext } from "react";
 import RosaContext from "../../Store/RosaContext";
+import SearchList from "../Componants/List";
 
 
 
@@ -85,8 +86,10 @@ const Types = (props) => {
             <CustomHeader />
             </Animated.View>
             <FlatList {...params.flatList} 
-            onScroll={(e)=>{
-                scrollY.setValue(e.nativeEvent.contentOffset.y)}}/>
+            // onScroll={(e)=>{
+            //     scrollY.setValue(e.nativeEvent.contentOffset.y)}}
+                />
+                {/* <SearchList/> */}
         </ImageBackground>
     )
 };

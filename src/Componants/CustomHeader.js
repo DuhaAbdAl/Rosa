@@ -11,14 +11,18 @@ import { Animated } from "react-native";
 import { ScreenName } from "../../route/ScreenName";
 import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
+import SearchList from "./List";
+import { useState } from "react";
+import { data } from "../mokData/data";
 
 
 const CustomHeader = (props) => {
-    const { clicked, setClicked, searchPhrase, setSearchPhrase } = props;
+    const { clicked, setClicked } = props;
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     const animatedValue = useRef(new Animated.Value(0)).current;
-
+    const [input, setInput] = useState("");
+    // console.log(input)
     // const searchInputAnimation = {
     //     transform: [
     //         {
@@ -43,6 +47,12 @@ const CustomHeader = (props) => {
     //     })
 
     // }
+    const scrollY = new Animated.Value(0)
+    const diffClamp = Animated.diffClamp(scrollY, 0, 96)
+    const translateY = diffClamp.interpolate({
+        inputRange: [0, 96],
+        outputRange: [0, -96]
+    })
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -77,8 +87,8 @@ const CustomHeader = (props) => {
                             <TextInput
                                 placeholder="Search"
                                 placeholderTextColor={'rgba(255,255,255,0.8)'}
-                                value={searchPhrase}
-                                onChangeText={setSearchPhrase}
+                                value={input}
+                                onChangeText={(text) => setInput(text)}
                                 onFocus={() => {
                                     setClicked?.(true);
                                 }}
@@ -90,6 +100,9 @@ const CustomHeader = (props) => {
                             )}
                         </View>
                     </View>
+
+                    <SearchList data={data} input={input} setInput={setInput} />
+
                     <TouchableOpacity onPress={() => {
                         drawerNavigation?.openDrawer();
                     }}>
@@ -97,34 +110,42 @@ const CustomHeader = (props) => {
                             style={styles.profile} />
                     </TouchableOpacity>
                 </View>
-                <View style={styles.lowerHeader}>
-                    <View style={styles.feature}>
-                        <Ionicons
-                            name="water-outline"
-                            size={25}
-                            style={styles.featureIcons} />
+                <Animated.View
+                    style={{
+                        transform: [
+                            { translateY: translateY }
+                        ],
+                        elevation: 8,
+                    }}>
+                    <View style={styles.lowerHeader}>
+                        <View style={styles.feature}>
+                            <Ionicons
+                                name="water-outline"
+                                size={25}
+                                style={styles.featureIcons} />
 
-                        <Text style={styles.featureText}>Water</Text>
+                            <Text style={styles.featureText}>Water</Text>
 
+                        </View>
+                        <View style={styles.feature}>
+                            <FontAwesome
+                                name='thermometer-3'
+                                size={25}
+                                style={styles.featureIcons} />
+
+                            <Text style={styles.featureText}>Tempreature</Text>
+
+                        </View>
+                        <View style={styles.feature}>
+                            <Ionicons
+                                name='leaf-outline'
+                                size={25}
+                                style={styles.featureIcons} />
+
+                            <Text style={styles.featureText}>Fertilizer</Text>
+                        </View>
                     </View>
-                    <View style={styles.feature}>
-                        <FontAwesome
-                            name='thermometer-3'
-                            size={25}
-                            style={styles.featureIcons} />
-
-                        <Text style={styles.featureText}>Tempreature</Text>
-
-                    </View>
-                    <View style={styles.feature}>
-                        <Ionicons
-                            name='leaf-outline'
-                            size={25}
-                            style={styles.featureIcons} />
-
-                        <Text style={styles.featureText}>Fertilizer</Text>
-                    </View>
-                </View>
+                </Animated.View>
             </View>
         </View>
     )
@@ -140,7 +161,7 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
-        height: 150,
+        height: 165,
         // position:'absolute',
         // top:0,
         // left:0,

@@ -5,23 +5,25 @@ import {
     ActivityIndicator,
     ImageBackground
 } from "react-native";
-import List from "./List";
+import SearchList from "./List";
 import SearchBar from "./SearchBar";
-// import { data } from "../mokData/data";
+import { data } from "../mokData/data";
 
 const SearchHome = () => {
     const [searchPhrase, setSearchPhrase] = useState("");
     const [clicked, setClicked] = useState(false);
     const [Data, setData] = useState();
+    const [input, setInput] = useState("");
 
-    useEffect(() => {
-        const getData = async () => {
-            // const apiResponse = await fetch();
-            // const data = await apiResponse.json();
-            setData(Data);
-        };
-        getData();
-    }, []);
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         // const apiResponse = await fetch();
+    //         // const data = await apiResponse.json();
+    //         setData(Data);
+    //     };
+    //     getData();
+    // }, []);
 
     return (
         <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
@@ -34,11 +36,7 @@ const SearchHome = () => {
                     setClicked={setClicked}
                 />
                 {(
-                    <List
-                        searchPhrase={searchPhrase}
-                        data={Data}
-                        setClicked={setClicked}
-                    />
+                    <SearchList data={data} input={input} setInput={setInput}/>
                 )}
             </View>
         </ImageBackground>

@@ -5,62 +5,51 @@ import {
     View,
     FlatList,
 } from "react-native";
-import { data } from "../mokData/data";
 
-const Item = ({ name, details }) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{name}</Text>
-        {/* <Text style={styles.details}>{details}</Text> */}
-    </View>
-);
-
-const List = (props) => {
-    const { searchPhrase, setClicked } = props;
-    const renderItem = ({ item }) => {
-        if (searchPhrase === "") {
-            return <Item name={item.name} />;
-        }
-        if (item.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-            return <Item name={item.name} />;
-        }
-        // if (item.details.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-        //     return <Item name={item.name} details={item.details} />;
-        // }
-    };
-    // console.log('item.name', item.name)
+const SearchList = (props) => {
+    const { data, input, setInput } = props;
     return (
-        <View style={styles.listContainer}>
-            <View
-                onStartShouldSetResponder={() => {
-                    setClicked(false);
-                }}
-            >
-                <FlatList
-                    data={data}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                />
-            </View>
+        <View>
+            <FlatList data={data} renderItem={({ item }) => {
+                if (input === "") {
+                    return (
+                        null
+                    )
+                }
+                if (item.title.toUpperCase().includes(input.toUpperCase())) {
+                    return (
+                        <View style={{ marginVertical: 10 }}>
+                            <Text style={{ fontSize: 14, fontWeight: "bold", alignSelf: 'center', marginTop: 45 }}>{item.title}</Text>
+                            <Text style={{ borderColor: "gray", borderWidth: 1, height: 1, marginTop: 5 }} />
+                        </View>
+                    )
+                }
+            }} />
         </View>
-    );
+    )
 };
 
 const styles = StyleSheet.create({
-    listContainer: {
-        margin: 10,
-        height: "85%",
-        width: "100%",
-    },
-    item: {
-        margin: 30,
-        borderBottomWidth: 2,
-        borderBottomColor: "lightgrey"
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: "bold",
-        marginBottom: 5,
-        fontStyle: "italic",
-    },
+    // listContainer: {
+    //     margin: 10,
+    //     height: "85%",
+    //     width: "100%",
+    // },
+    // item: {
+    //     margin: 30,
+    //     borderBottomWidth: 2,
+    //     borderBottomColor: "lightgrey"
+    // },
+    // title: {
+    //     fontSize: 20,
+    //     fontWeight: "bold",
+    //     marginBottom: 5,
+    //     fontStyle: "italic",
+    // },
 });
-export default List;
+export default SearchList;
+//   <View
+// onStartShouldSetResponder={() => {
+//     setClicked(false);
+// }}
+// > </View>
