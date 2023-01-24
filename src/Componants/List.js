@@ -8,17 +8,17 @@ import {
 
 const SearchList = (props) => {
     const { data, input, setInput } = props;
+
+    if(!input){
+        return null ; 
+    }
+
     return (
         <View>
             <FlatList data={data} renderItem={({ item }) => {
-                if (input === "") {
-                    return (
-                        null
-                    )
-                }
                 if (item.title.toUpperCase().includes(input.toUpperCase())) {
                     return (
-                        <View style={{ marginVertical: 10 }}>
+                        <View style={styles.listContainer}>
                             <Text style={{ fontSize: 14, fontWeight: "bold", alignSelf: 'center', marginTop: 45 }}>{item.title}</Text>
                             <Text style={{ borderColor: "gray", borderWidth: 1, height: 1, marginTop: 5 }} />
                         </View>
@@ -30,11 +30,12 @@ const SearchList = (props) => {
 };
 
 const styles = StyleSheet.create({
-    // listContainer: {
-    //     margin: 10,
-    //     height: "85%",
-    //     width: "100%",
-    // },
+    listContainer: {
+        // margin: 10,
+        height: 100,
+        width: 150,
+        marginVertical: 10
+    },
     // item: {
     //     margin: 30,
     //     borderBottomWidth: 2,

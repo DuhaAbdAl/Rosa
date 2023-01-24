@@ -14,8 +14,15 @@ import { Keyboard } from "react-native";
 import SearchList from "./List";
 import { useState } from "react";
 import { data } from "../mokData/data";
+import { getFeatureViewAnimation } from "../assets/Utils";
+
+// const animatedValue = useRef(new Animated.Value(0)).current;
+// const scrollViewRef = useRef < ScrollView > (null);
+// const lastOffsetY = useRef(0);
+// const scrollDirection = useRef('');
 
 
+const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 const CustomHeader = (props) => {
     const { clicked, setClicked } = props;
     const navigation = useNavigation();
@@ -23,6 +30,21 @@ const CustomHeader = (props) => {
     const animatedValue = useRef(new Animated.Value(0)).current;
     const [input, setInput] = useState("");
     // console.log(input)
+    const scrollViewRef = useRef < ScrollView > (null);
+    const lastOffSetY = useRef(0);
+    const scroallDirection = useRef();
+
+    const WaterViewAnimation = getFeatureViewAnimation(animatedValue, 36);
+    const TempViewAnimation = getFeatureViewAnimation(animatedValue, -16);
+    const LeafViewAnimation = getFeatureViewAnimation(animatedValue, -56);
+    // const scanViewAnimation = getFeatureViewAnimation(animatedValue, -92);
+
+    // const scrollY = new Animated.Value(0)
+    // const diffClamp = Animated.diffClamp(scrollY, 0, 96)
+    // const translateY = diffClamp.interpolate({
+    //     inputRange: [0, 96],
+    //     outputRange: [0, -96]
+    // })
     // const searchInputAnimation = {
     //     transform: [
     //         {
@@ -47,17 +69,91 @@ const CustomHeader = (props) => {
     //     })
 
     // }
-    const scrollY = new Animated.Value(0)
-    const diffClamp = Animated.diffClamp(scrollY, 0, 96)
-    const translateY = diffClamp.interpolate({
-        inputRange: [0, 96],
-        outputRange: [0, -96]
-    })
+    // const featureTextAnimation = {
+    //     transform: [
+    //         {
+    //             scale: animatedValue.interpolate({
+    //                 inputRange: [0, 30],
+    //                 outputRange: [1, 0],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //     ],
+    //     opacity: animatedValue.interpolate({
+    //         inputRange: [0, 30],
+    //         outputRange: [1, 0],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+    // const waterViewAnimation = {
+    //     transform: [
+    //         {
+    //             translateX: animatedValue.interpolate({
+    //                 inputRange: [0, 80],
+    //                 outputRange: [0, 36],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //     ],
+    //     translateY: animatedValue.interpolate({
+    //         inputRange: [0, 100],
+    //         outputRange: [0, -50],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+    // const tempViewAnimation = {
+    //     transform: [
+    //         {
+    //             translateX: animatedValue.interpolate({
+    //                 inputRange: [0, 80],
+    //                 outputRange: [0, 36],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //     ],
+    //     translateY: animatedValue.interpolate({
+    //         inputRange: [0, 100],
+    //         outputRange: [0, -50],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+    // const leafViewAnimation = {
+    //     transform: [
+    //         {
+    //             translateX: animatedValue.interpolate({
+    //                 inputRange: [0, 80],
+    //                 outputRange: [0, 36],
+    //                 extrapolate: 'clamp',
+    //             }),
+    //         },
+    //     ],
+    //     translateY: animatedValue.interpolate({
+    //         inputRange: [0, 100],
+    //         outputRange: [0, -50],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+
+    // const featureIconsAnimated = {
+    //     opacity: animatedValue.interpolate({
+    //         inputRange: [0, 25],
+    //         outputRange: [1, 0],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+    // const featureUpIconsAnimated = {
+    //     opacity: animatedValue.interpolate({
+    //         inputRange: [0, 50],
+    //         outputRange: [0, 1],
+    //         extrapolate: 'clamp',
+    //     })
+    // }
+    
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
             <View>
-                <View style={styles.upperHeaderPlaceHolder} />
+                <View style={styles.upperHeaderPlaceholder} />
             </View>
             <View style={styles.header}>
                 <View style={styles.upperHeader}>
@@ -93,6 +189,7 @@ const CustomHeader = (props) => {
                                     setClicked?.(true);
                                 }}
                                 style={styles.searchInput} />
+                            {/* // style={[styles.searchInput, searchInputAnimation]} /> */}
                             {clicked && (
                                 <Entypo name="cross" size={20} color="white" onPress={() => {
                                     setSearchPhrase("") && Keyboard.dismiss()
@@ -100,9 +197,9 @@ const CustomHeader = (props) => {
                             )}
                         </View>
                     </View>
-
-                    <SearchList data={data} input={input} setInput={setInput} />
-
+                    <View style={styles.listContainer}>
+                        <SearchList data={data} input={input} setInput={setInput} />
+                    </View>
                     <TouchableOpacity onPress={() => {
                         drawerNavigation?.openDrawer();
                     }}>
@@ -110,47 +207,92 @@ const CustomHeader = (props) => {
                             style={styles.profile} />
                     </TouchableOpacity>
                 </View>
-                <Animated.View
-                    style={{
-                        transform: [
-                            { translateY: translateY }
-                        ],
-                        elevation: 8,
-                    }}>
-                    <View style={styles.lowerHeader}>
-                        <View style={styles.feature}>
-                            <Ionicons
-                                name="water-outline"
-                                size={25}
-                                style={styles.featureIcons} />
+                {/* <Animated.View
+                // style={{
+                //     transform: [
+                //         { translateY: translateY }
+                //     ],
+                //     elevation: 8,
+                // }}
+                > */}
+                <View style={styles.lowerHeader}>
+                    {/* <Animated.View style={[styles.feature, waterViewAnimation]}> */}
+                    <View style={styles.feature}>
+                        {/* <Ionicons
+                            name="md-water-sharp"
+                            size={25}
+                            style={styles.featureIconUp} /> */}
+                        {/* // style={[styles.featureIconUp, featureUpIconsAnimated]} /> */}
 
-                            <Text style={styles.featureText}>Water</Text>
-
-                        </View>
-                        <View style={styles.feature}>
-                            <FontAwesome
-                                name='thermometer-3'
-                                size={25}
-                                style={styles.featureIcons} />
-
-                            <Text style={styles.featureText}>Tempreature</Text>
-
-                        </View>
-                        <View style={styles.feature}>
-                            <Ionicons
-                                name='leaf-outline'
-                                size={25}
-                                style={styles.featureIcons} />
-
-                            <Text style={styles.featureText}>Fertilizer</Text>
-                        </View>
+                        <Ionicons
+                            name="water-outline"
+                            size={25}
+                            style={styles.featureIcons} />
+                        <Text style={styles.featureText}>Water</Text>
+                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Water</Animated.Text> */}
                     </View>
-                </Animated.View>
-            </View>
-        </View>
+                    {/* </Animated.View> */}
+                    {/* <Animated.View style={[styles.feature, tempViewAnimation]}> */}
+                    <View style={styles.feature}>
+
+                        {/* <FontAwesome
+                            name='thermometer-empty'
+                            size={25}
+                            style={[styles.featureIconUp, featureUpIconsAnimated]} /> */}
+                        <FontAwesome
+                            name='thermometer-3'
+                            size={25}
+                            style={styles.featureIcons} />
+                        <Text style={styles.featureText}>Tempreature</Text>
+                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Tempreature</Animated.Text> */}
+                    </View>
+                    {/* </Animated.View> */}
+                    {/* <Animated.View style={[styles.feature, leafViewAnimation]}> */}
+                    <View style={styles.feature}>
+                        <Ionicons
+                            name='leaf-outline'
+                            size={25}
+                            style={styles.featureIcons} />
+                        {/* style={[styles.featureIcons, featureIconsAnimated]} /> */}
+                        {/* <Ionicons
+                            name='leaf-sharp'
+                            size={25}
+                            // style={[styles.featureIconUp, featureUpIconsAnimated]} />
+                            style={styles.featureIconUp} /> */}
+                        <Text style={styles.featureText}>Fertilizer</Text>
+                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Fertilizer</Animated.Text> */}
+                    </View>
+                    {/* </Animated.View> */}
+                </View>
+                {/* </Animated.View> */}
+                {/* <ScrollView
+                    onScroll={e => {
+                        const offsetY = e.nativeEvent.contentOffset.y;
+                        animatedValue.setValue(offsetY);
+                    }}
+                    scrollEventThrottle={16}>
+                    <View style={styles.paddingHeader} />
+                    <View style={styles.scrollViewcontainer} />
+
+                </ScrollView> */}
+            </View >
+        </View >
     )
 };
-
+// ref={scrollViewRef}
+// onScroll={e => {
+//     const offsetY = e.nativeEvent.contentOffset.y;
+//     offsetY - lastOffSetY.current > 0 ? 'down' : 'up';
+//     lastOffSetY.current = offsetY;
+//     animatedValue.setValue(offsetY);
+// }}
+// onScrollEndDrag={() =>{
+//     scrollViewRef.current?.ScrollTo({
+//         // y: scroallDirection.current === 'down' ? 100 : 0,
+//         animated: true,
+//     });
+// }}
+const UPPER_HEADER_PADDING_TOP = 1;
 const upperHeader_Hight = 75;
 const lowerHeader_Hight = 96;
 const styles = StyleSheet.create({
@@ -161,18 +303,25 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
+        position: 'absolute',
+        width: '100%',
         height: 165,
         // position:'absolute',
-        // top:0,
+        // top:10,
         // left:0,
         // right:0,
     },
+    upperHeaderPlaceholder: {
+        height: upperHeader_Hight + UPPER_HEADER_PADDING_TOP,
+        paddingTop: UPPER_HEADER_PADDING_TOP,
+    },
     upperHeader: {
         // position:'absolute',
-        // top:0,
+        // top:10,
         // left:0,
-        // right:0,
-        height: upperHeader_Hight,
+        // right:0,  height: UPPER_HEADER_HEIGHT + UPPER_HEADER_PADDING_TOP,
+        paddingTop: UPPER_HEADER_PADDING_TOP,
+        height: upperHeader_Hight + UPPER_HEADER_PADDING_TOP,
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
@@ -221,6 +370,7 @@ const styles = StyleSheet.create({
         // top:0,
         // left:0,
         // right:0,
+        width:'100%',
         height: lowerHeader_Hight,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -238,6 +388,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: 20,
     },
+    featureIconUp: {
+        position: 'absolute',
+        top: 8,
+    },
     featureText: {
         fontWeight: 'bold',
         fontSize: 13.5,
@@ -252,5 +406,8 @@ const styles = StyleSheet.create({
         height: Window_Hight * 2,
         backgroundColor: "white",
     },
+    listContainer: {
+
+    }
 })
 export default CustomHeader;

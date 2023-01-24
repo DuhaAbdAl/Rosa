@@ -28,73 +28,85 @@ const Info = (props) => {
     }
     // console.log('found.image', found.image)
     // console.log('found.title', found.title)
-    const HeaderImage = (props) => {
-        const imgeTitle = useRef(null)
+    const navImgeTitle = useRef(null)
+    const RenderFixedForegroundComponent = () => {
         return (
-            <ImageHeaderScrollView
-                maxHeight={MAX_HEIGHT}
-                minHeight={MIN_HEIGHT}
-                maxOverlayOpacity={0.6}
-                minOverlayOpacity={0.3}
-                fadeOutForeground
-                renderHeader={() => {
-                    return <Image style={styles.image} source={found.image} />
-                }}
-                renderForeground={() => (
-                    <View style={styles.Foreground}>
-                        <Text style={styles.titleAnimatedUp}> {found.title} </Text>
-                    </View>
-                )}
-                renderFixedForeground={() => (
-                    <Animatable.View ref={imgeTitle} style={styles.FixedForeground}>
-                        <Pressable onPress={() => {
-                            navigation.goBack();
-                        }}>
-                            <Ionicons
-                                name="chevron-back"
-                                size={30}
-                                color="white"
-                                style={styles.icon} />
-                        </Pressable>
-                        <Text style={styles.titleAnimated}>{found.title}</Text>
-                        <TouchableOpacity onPress={() => {
-                            drawerNavigation?.openDrawer();
-                        }}>
-                            <Image source={require('../assets/images/profile.jpeg')}
-                                style={styles.profile} />
-                        </TouchableOpacity>
-                    </Animatable.View>
-                )}
-                foregroundParallaxRatio={5}
-            // scrollViewBackgroundColor="#ddddff"
-            >
-
-                <TriggeringView
-                    onHide={() => imgeTitle.current.fadeInUp(200)}
-                    onDisplay={() => imgeTitle.current.fadeOut(100)}
-                >
-                    <Text style={styles.titleText}>
-                        <Text style={styles.name}>{found.title}</Text>
-                    </Text>
-                </TriggeringView>
-                <ImageBackground
-                    style={styles.imageBack}
-                    source={require('../assets/images/info10.jpeg')} >
-                    {renderData()}
-                </ImageBackground>
-                {props.children}
-            </ImageHeaderScrollView >
+            <Animatable.View ref={navImgeTitle} style={styles.FixedForeground}>
+                <Pressable onPress={() => {
+                    navigation.goBack();
+                }}>
+                    <Ionicons
+                        name="chevron-back"
+                        size={30}
+                        color="white"
+                        style={styles.icon} />
+                </Pressable>
+                <Text style={styles.titleAnimated}>{found.title}</Text>
+                <TouchableOpacity onPress={() => {
+                    drawerNavigation?.openDrawer();
+                }}>
+                    <Image source={require('../assets/images/profile.jpeg')}
+                        style={styles.profile} />
+                </TouchableOpacity>
+            </Animatable.View>
         )
     }
-    console.log('found.title', found.title)
+
+    const params = {
+        ImageHeaderScrollView: {
+            maxHeight: MAX_HEIGHT,
+            minHeight: MIN_HEIGHT,
+            maxOverlayOpacity: 0.6,
+            minOverlayOpacity: 0.3,
+            fadeOutForeground: true,
+            foregroundParallaxRati: 5,
+            renderHeader: () => <Image style={styles.image} source={found.image} />,
+            renderFixedForeground: () => <RenderFixedForegroundComponent />,
+            renderForeground: () => (
+                <View style={styles.Foreground}>
+                    <Text style={styles.titleAnimatedUp}> {found.title} </Text>
+                </View>
+            ),
+        },
+        TriggeringViewParams: {
+            style: styles.section,
+            onHide: () => {
+                console.log("onHide")
+                navImgeTitle.current?.fadeInUp?.(200)
+            },
+            onDisplay: () => {
+                console.log('onDisplay');
+                navImgeTitle.current?.fadeOut(100)
+            },
+            onBeginHidde: () => console.log("onBeginHidde"),
+            onBeginDisplayed: () => console.log("onBeginDisplayed"),
+            onTouchTop: () => console.log("onTouchTop"),
+            onBeginHidden:()=> console.log("onBeginHidden") ,
+        }
+    }//params
+
+
+
 
     return (
-        <HeaderImage style={styles.headerImage} />
+        <ImageHeaderScrollView {...params.ImageHeaderScrollView} >
+
+            <TriggeringView {...params.TriggeringViewParams}>
+                <Text style={styles.name}>{found.title + "ttt"}</Text>
+            </TriggeringView>
+
+            <ImageBackground style={styles.imageBack} source={require('../assets/images/info10.jpeg')} >
+                {renderData()}
+            </ImageBackground>
+
+            {props.children}
+
+        </ImageHeaderScrollView >
     )
 
 }
-const MIN_HEIGHT = 250;
-const MAX_HEIGHT = 350;
+const MIN_HEIGHT = 80;
+const MAX_HEIGHT = 200;
 
 const styles = StyleSheet.create({
     headerImage: {
@@ -106,6 +118,13 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginTop: 12,
         alignSelf: 'flex-start',
+    },
+    section: {
+        padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#cccccc',
+        backgroundColor: 'red',
+        // borderWidth:7
     },
     image: {
         height: MAX_HEIGHT,
@@ -148,18 +167,17 @@ const styles = StyleSheet.create({
         width: '90%',
     },
     FixedForeground: {
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: MIN_HEIGHT,
-        alignItems: 'center',
+        // alignItems: 'center',
         paddingTop: 16,
-        opacity: 0,
     },
     titleAnimated: {
         fontSize: 30,
         fontWeight: 'italic',
-        color: 'white',
-        backgroundColor: 'rgba(250, 250, 250, 0.55)',
+        color: 'red',
         // borderRadius: 10,
         // height: 70,
         // padding: 5,
@@ -193,6 +211,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         fontWeight: 'bold',
+        color: 'green'
     },
     profile: {
         alignSelf: 'flex-end',

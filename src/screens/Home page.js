@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 200,
         marginTop: 10,
+        elevation:14,
     },
     text3: {
         fontSize: 24,

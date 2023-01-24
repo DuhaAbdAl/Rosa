@@ -67,22 +67,23 @@ const Types = (props) => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
-    const scrollY = new Animated.Value(0)
-    const diffClamp = Animated.diffClamp(scrollY,0,170)
-    const translateY = diffClamp.interpolate({
-        inputRange:[0,170],
-        outputRange:[0,-170]
-    }) 
+    // const scrollY = new Animated.Value(0)
+    // const diffClamp = Animated.diffClamp(scrollY,0,170)
+    // const translateY = diffClamp.interpolate({
+    //     inputRange:[0,170],
+    //     outputRange:[0,-170]
+    // }) 
 
     return (
         <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
             <Animated.View 
-            style={{
-                transform:[
-                    {translateY: translateY}
-                ],
-                elevation:8,
-            }}>
+            // style={{
+            //     transform:[
+            //         {translateY: translateY}
+            //     ],
+            //     elevation:8,
+            // }}
+            >
             <CustomHeader />
             </Animated.View>
             <FlatList {...params.flatList} 
