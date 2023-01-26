@@ -44,10 +44,7 @@ const Cards = (props) => {
         setFavorite(checkIfFavorate())
     }, [favorates])
 
-    const addToFavorite = () =>{
-        let MyList = [OnClickFavorite]
-    }
-
+   
     return (
         <View >
 

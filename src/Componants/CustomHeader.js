@@ -30,14 +30,14 @@ const CustomHeader = (props) => {
     const animatedValue = useRef(new Animated.Value(0)).current;
     const [input, setInput] = useState("");
     // console.log(input)
-    const scrollViewRef = useRef < ScrollView > (null);
-    const lastOffSetY = useRef(0);
-    const scroallDirection = useRef();
+    // const scrollViewRef = useRef(null);
+    // const lastOffSetY = useRef(0);
+    // const scroallDirection = useRef();
 
-    const WaterViewAnimation = getFeatureViewAnimation(animatedValue, 36);
-    const TempViewAnimation = getFeatureViewAnimation(animatedValue, -16);
-    const LeafViewAnimation = getFeatureViewAnimation(animatedValue, -56);
-    // const scanViewAnimation = getFeatureViewAnimation(animatedValue, -92);
+    // const WaterViewAnimation = getFeatureViewAnimation(animatedValue, 36);
+    // const TempViewAnimation = getFeatureViewAnimation(animatedValue, -16);
+    // const LeafViewAnimation = getFeatureViewAnimation(animatedValue, -56);
+    // // const scanViewAnimation = getFeatureViewAnimation(animatedValue, -92);
 
     // const scrollY = new Animated.Value(0)
     // const diffClamp = Animated.diffClamp(scrollY, 0, 96)
@@ -85,70 +85,70 @@ const CustomHeader = (props) => {
     //         extrapolate: 'clamp',
     //     })
     // }
-    // const waterViewAnimation = {
-    //     transform: [
-    //         {
-    //             translateX: animatedValue.interpolate({
-    //                 inputRange: [0, 80],
-    //                 outputRange: [0, 36],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //     ],
-    //     translateY: animatedValue.interpolate({
-    //         inputRange: [0, 100],
-    //         outputRange: [0, -50],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
-    // const tempViewAnimation = {
-    //     transform: [
-    //         {
-    //             translateX: animatedValue.interpolate({
-    //                 inputRange: [0, 80],
-    //                 outputRange: [0, 36],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //     ],
-    //     translateY: animatedValue.interpolate({
-    //         inputRange: [0, 100],
-    //         outputRange: [0, -50],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
-    // const leafViewAnimation = {
-    //     transform: [
-    //         {
-    //             translateX: animatedValue.interpolate({
-    //                 inputRange: [0, 80],
-    //                 outputRange: [0, 36],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //     ],
-    //     translateY: animatedValue.interpolate({
-    //         inputRange: [0, 100],
-    //         outputRange: [0, -50],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
+    // // const waterViewAnimation = {
+    // //     transform: [
+    // //         {
+    // //             translateX: animatedValue.interpolate({
+    // //                 inputRange: [0, 80],
+    // //                 outputRange: [0, 36],
+    // //                 extrapolate: 'clamp',
+    // //             }),
+    // //         },
+    // //     ],
+    // //     translateY: animatedValue.interpolate({
+    // //         inputRange: [0, 100],
+    // //         outputRange: [0, -50],
+    // //         extrapolate: 'clamp',
+    // //     })
+    // // }
+    // // const tempViewAnimation = {
+    // //     transform: [
+    // //         {
+    // //             translateX: animatedValue.interpolate({
+    // //                 inputRange: [0, 80],
+    // //                 outputRange: [0, 36],
+    // //                 extrapolate: 'clamp',
+    // //             }),
+    // //         },
+    // //     ],
+    // //     translateY: animatedValue.interpolate({
+    // //         inputRange: [0, 100],
+    // //         outputRange: [0, -50],
+    // //         extrapolate: 'clamp',
+    // //     })
+    // // }
+    // // const leafViewAnimation = {
+    // //     transform: [
+    // //         {
+    // //             translateX: animatedValue.interpolate({
+    // //                 inputRange: [0, 80],
+    // //                 outputRange: [0, 36],
+    // //                 extrapolate: 'clamp',
+    // //             }),
+    // //         },
+    // //     ],
+    // //     translateY: animatedValue.interpolate({
+    // //         inputRange: [0, 100],
+    // //         outputRange: [0, -50],
+    // //         extrapolate: 'clamp',
+    // //     })
+    // // }
 
+    // // const featureIconsAnimated = {
+    // //     opacity: animatedValue.interpolate({
+    // //         inputRange: [0, 25],
+    // //         outputRange: [1, 0],
+    // //         extrapolate: 'clamp',
+    // //     })
+    // // }
     // const featureIconsAnimated = {
-    //     opacity: animatedValue.interpolate({
-    //         inputRange: [0, 25],
-    //         outputRange: [1, 0],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
-    // const featureUpIconsAnimated = {
     //     opacity: animatedValue.interpolate({
     //         inputRange: [0, 50],
     //         outputRange: [0, 1],
     //         extrapolate: 'clamp',
     //     })
     // }
-    
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
@@ -189,7 +189,7 @@ const CustomHeader = (props) => {
                                     setClicked?.(true);
                                 }}
                                 style={styles.searchInput} />
-                            {/* // style={[styles.searchInput, searchInputAnimation]} /> */}
+                                {/* style={[styles.searchInput, searchInputAnimation]} /> */}
                             {clicked && (
                                 <Entypo name="cross" size={20} color="white" onPress={() => {
                                     setSearchPhrase("") && Keyboard.dismiss()
@@ -216,13 +216,12 @@ const CustomHeader = (props) => {
                 // }}
                 > */}
                 <View style={styles.lowerHeader}>
-                    {/* <Animated.View style={[styles.feature, waterViewAnimation]}> */}
-                    <View style={styles.feature}>
+                    {/* <Animated.View style={[styles.feature, WaterViewAnimation]}> */}
+                        <View style={styles.feature}>
                         {/* <Ionicons
                             name="md-water-sharp"
                             size={25}
-                            style={styles.featureIconUp} /> */}
-                        {/* // style={[styles.featureIconUp, featureUpIconsAnimated]} /> */}
+                            style={[styles.featureIconUp, featureIconsAnimated]} /> */}
 
                         <Ionicons
                             name="water-outline"
@@ -230,45 +229,55 @@ const CustomHeader = (props) => {
                             style={styles.featureIcons} />
                         <Text style={styles.featureText}>Water</Text>
                         {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Water</Animated.Text> */}
-                    </View>
+                        </View>
                     {/* </Animated.View> */}
-                    {/* <Animated.View style={[styles.feature, tempViewAnimation]}> */}
-                    <View style={styles.feature}>
+                    {/* <Animated.View style={[styles.feature, TempViewAnimation]}> */}
+                        <View style={styles.feature}>
 
                         {/* <FontAwesome
                             name='thermometer-empty'
                             size={25}
-                            style={[styles.featureIconUp, featureUpIconsAnimated]} /> */}
+                            style={[styles.featureIconUp, featureIconsAnimated]} /> */}
                         <FontAwesome
                             name='thermometer-3'
                             size={25}
                             style={styles.featureIcons} />
                         <Text style={styles.featureText}>Tempreature</Text>
                         {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Tempreature</Animated.Text> */}
-                    </View>
+                        </View>
                     {/* </Animated.View> */}
-                    {/* <Animated.View style={[styles.feature, leafViewAnimation]}> */}
-                    <View style={styles.feature}>
-                        <Ionicons
+                    {/* <Animated.View style={[styles.feature, LeafViewAnimation]}> */}
+                        <View style={styles.feature}>
+                        {/* <Ionicons
                             name='leaf-outline'
                             size={25}
-                            style={styles.featureIcons} />
-                        {/* style={[styles.featureIcons, featureIconsAnimated]} /> */}
-                        {/* <Ionicons
+                            // style={styles.featureIcons} />
+                            style={[styles.featureIcons, featureIconsAnimated]} /> */}
+                        <Ionicons
                             name='leaf-sharp'
                             size={25}
-                            // style={[styles.featureIconUp, featureUpIconsAnimated]} />
-                            style={styles.featureIconUp} /> */}
+                            // style={[styles.featureIconUp, featureIconsAnimated]} />
+                        style={styles.featureIconUp} />  
                         <Text style={styles.featureText}>Fertilizer</Text>
                         {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Fertilizer</Animated.Text> */}
-                    </View>
+                        </View>
                     {/* </Animated.View> */}
                 </View>
                 {/* </Animated.View> */}
                 {/* <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    ref={scrollViewRef}
                     onScroll={e => {
                         const offsetY = e.nativeEvent.contentOffset.y;
+                        offsetY - lastOffSetY.current > 0 ? 'down' : 'up';
+                        lastOffSetY.current = offsetY;
                         animatedValue.setValue(offsetY);
+                    }}
+                    onScrollEndDrag={() => {
+                        scrollViewRef.current?.ScrollTo({
+                            y: scroallDirection.current === 'down' ? 100 : 0,
+                            animated: true,
+                        });
                     }}
                     scrollEventThrottle={16}>
                     <View style={styles.paddingHeader} />
@@ -279,19 +288,7 @@ const CustomHeader = (props) => {
         </View >
     )
 };
-// ref={scrollViewRef}
-// onScroll={e => {
-//     const offsetY = e.nativeEvent.contentOffset.y;
-//     offsetY - lastOffSetY.current > 0 ? 'down' : 'up';
-//     lastOffSetY.current = offsetY;
-//     animatedValue.setValue(offsetY);
-// }}
-// onScrollEndDrag={() =>{
-//     scrollViewRef.current?.ScrollTo({
-//         // y: scroallDirection.current === 'down' ? 100 : 0,
-//         animated: true,
-//     });
-// }}
+
 const UPPER_HEADER_PADDING_TOP = 1;
 const upperHeader_Hight = 75;
 const lowerHeader_Hight = 96;
@@ -303,7 +300,7 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
-        position: 'absolute',
+        // position: 'absolute',
         width: '100%',
         height: 165,
         // position:'absolute',
@@ -370,7 +367,7 @@ const styles = StyleSheet.create({
         // top:0,
         // left:0,
         // right:0,
-        width:'100%',
+        width: '100%',
         height: lowerHeader_Hight,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -400,10 +397,10 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
     paddingHeader: {
-        // height: lowerHeader_Hight,
+        height: lowerHeader_Hight,
     },
     scrollViewcontainer: {
-        height: Window_Hight * 2,
+        height: 1000,//Window_Hight * 2,
         backgroundColor: "white",
     },
     listContainer: {

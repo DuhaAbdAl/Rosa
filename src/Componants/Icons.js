@@ -10,6 +10,15 @@ const Icons = () =>{
     
  
 )}
+    // "@react-native-community/blur": "^4.3.0",
+    // "@react-navigation/native": "^5.8.10",
+    // "react": "16.13.1",
+    // "react-native": "0.63.4",
+    // "react-native-gesture-handler": "^2.8.0",
+    // "react-native-safe-area-context": "^4.4.1",
+    // "react-native-screens": "^2.15.0",
+    // "react-native-vector-icons": "^7.1.0",
+
 // import { StyleSheet, Text, View, Pressable, Image, StatusBar, ScrollView, TouchableOpacity } from "react-native";
 // import React from "react";
 // import { Window_Hight } from "../assets/Sizes";
