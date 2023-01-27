@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import {
     StyleSheet,
@@ -13,12 +13,14 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
+import RosaContext from '../../Store/RosaContext';
 
 
 const Cards = (props) => {
     const { Name, image, waterIcon, tempIcon, fertIcon, favorates } = props;
-    const [favorite, setFavorite] = useState(false)
-    const navigation = useNavigation()
+    // const [favorite, setFavorite] = useState(false)
+    const {favorite, setFavorite} = useContext(RosaContext);
+    const navigation = useNavigation();
     var favoritsFromStorage = favorates;
 
 

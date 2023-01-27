@@ -15,277 +15,131 @@ import SearchList from "./List";
 import { useState } from "react";
 import { data } from "../mokData/data";
 import { getFeatureViewAnimation } from "../assets/Utils";
-
-// const animatedValue = useRef(new Animated.Value(0)).current;
-// const scrollViewRef = useRef < ScrollView > (null);
-// const lastOffsetY = useRef(0);
-// const scrollDirection = useRef('');
+import RosaContext from "../../Store/RosaContext";
+import { useContext } from "react";
 
 
-const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
-const CustomHeader = (props) => {
+const scrollY = new Animated.Value(0)
+const diffClamp = Animated.diffClamp(scrollY, 0, 90)
+const translateY = diffClamp.interpolate({
+    inputRange: [0, 90],
+    outputRange: [0, -90]
+})
+
+
+const UpperHeader = (props) => {
     const { clicked, setClicked } = props;
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
-    const animatedValue = useRef(new Animated.Value(0)).current;
-    const [input, setInput] = useState("");
-    // console.log(input)
-    // const scrollViewRef = useRef(null);
-    // const lastOffSetY = useRef(0);
-    // const scroallDirection = useRef();
+    const {input, setInput} = useContext(RosaContext);
 
-    // const WaterViewAnimation = getFeatureViewAnimation(animatedValue, 36);
-    // const TempViewAnimation = getFeatureViewAnimation(animatedValue, -16);
-    // const LeafViewAnimation = getFeatureViewAnimation(animatedValue, -56);
-    // // const scanViewAnimation = getFeatureViewAnimation(animatedValue, -92);
+    return (
+        <View style={styles.upperHeader}>
+            <View>
+                <Pressable onPress={() => {
+                    navigation.goBack();
+                }}>
+                    <Ionicons
+                        name="chevron-back"
+                        size={25}
+                        color="white"
+                        style={{ marginRight: 10, marginTop: 8 }} />
+                </Pressable>
+            </View>
+            <View style={styles.searchContainer}>
+                <View
+                    style={
+                        clicked
+                            ? styles.searchBarClicked : styles.searchBarUnclicked
 
-    // const scrollY = new Animated.Value(0)
-    // const diffClamp = Animated.diffClamp(scrollY, 0, 96)
-    // const translateY = diffClamp.interpolate({
-    //     inputRange: [0, 96],
-    //     outputRange: [0, -96]
-    // })
-    // const searchInputAnimation = {
-    //     transform: [
-    //         {
-    //             scaleX: animatedValue.interpolate({
-    //                 inputRange: [0, 50],
-    //                 outputRange: [1, 0],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //         {
-    //             translateX: animatedValue.interpolate({
-    //                 inputRange: [0, 25],
-    //                 outputRange: [0, -100],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //     ],
-    //     opacity: animatedValue.interpolate({
-    //         inputRange: [0, 25],
-    //         outputRange: [1, 0],
-    //         extrapolate: 'clamp',
-    //     })
+                    }
+                >
+                    <AntDesign style={styles.searchIcon}
+                        name='search1'
+                        color='white'
+                        size={20} />
+                    <TextInput
+                        placeholder="Search"
+                        placeholderTextColor={'rgba(255,255,255,0.8)'}
+                        value={input}
+                        onChangeText={(text) => setInput(text)}
+                        onFocus={() => {
+                            setClicked?.(true);
+                        }}
+                        style={styles.searchInput} />
+                    {clicked && (
+                        <Entypo name="cross" size={20} color="white" onPress={() => {
+                            setSearchPhrase("") && Keyboard.dismiss()
+                        }} />
+                    )}
+                </View>
+            </View>
+            <View style={styles.listContainer}>
+                <SearchList data={data} input={input} setInput={setInput} />
+            </View>
+            <TouchableOpacity onPress={() => {
+                drawerNavigation?.openDrawer();
+            }}>
+                <Image source={require('../assets/images/profile.jpeg')}
+                    style={styles.profile} />
+            </TouchableOpacity>
+        </View>
+    )
+};
 
-    // }
-    // const featureTextAnimation = {
-    //     transform: [
-    //         {
-    //             scale: animatedValue.interpolate({
-    //                 inputRange: [0, 30],
-    //                 outputRange: [1, 0],
-    //                 extrapolate: 'clamp',
-    //             }),
-    //         },
-    //     ],
-    //     opacity: animatedValue.interpolate({
-    //         inputRange: [0, 30],
-    //         outputRange: [1, 0],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
-    // // const waterViewAnimation = {
-    // //     transform: [
-    // //         {
-    // //             translateX: animatedValue.interpolate({
-    // //                 inputRange: [0, 80],
-    // //                 outputRange: [0, 36],
-    // //                 extrapolate: 'clamp',
-    // //             }),
-    // //         },
-    // //     ],
-    // //     translateY: animatedValue.interpolate({
-    // //         inputRange: [0, 100],
-    // //         outputRange: [0, -50],
-    // //         extrapolate: 'clamp',
-    // //     })
-    // // }
-    // // const tempViewAnimation = {
-    // //     transform: [
-    // //         {
-    // //             translateX: animatedValue.interpolate({
-    // //                 inputRange: [0, 80],
-    // //                 outputRange: [0, 36],
-    // //                 extrapolate: 'clamp',
-    // //             }),
-    // //         },
-    // //     ],
-    // //     translateY: animatedValue.interpolate({
-    // //         inputRange: [0, 100],
-    // //         outputRange: [0, -50],
-    // //         extrapolate: 'clamp',
-    // //     })
-    // // }
-    // // const leafViewAnimation = {
-    // //     transform: [
-    // //         {
-    // //             translateX: animatedValue.interpolate({
-    // //                 inputRange: [0, 80],
-    // //                 outputRange: [0, 36],
-    // //                 extrapolate: 'clamp',
-    // //             }),
-    // //         },
-    // //     ],
-    // //     translateY: animatedValue.interpolate({
-    // //         inputRange: [0, 100],
-    // //         outputRange: [0, -50],
-    // //         extrapolate: 'clamp',
-    // //     })
-    // // }
+const LowerHeader = () => {
+    return (
+        <Animated.View
+            style={{
+                transform: [
+                    { translateY: translateY }
+                ],
+            }}
+        >
+            <View style={styles.lowerHeader}>
+                <View style={styles.feature}>
+                    <Ionicons
+                        name="water-outline"
+                        size={25}
+                        style={styles.featureIcons} />
+                    <Text style={styles.featureText}>Water</Text>
+                </View>
+                <View style={styles.feature}>
 
-    // // const featureIconsAnimated = {
-    // //     opacity: animatedValue.interpolate({
-    // //         inputRange: [0, 25],
-    // //         outputRange: [1, 0],
-    // //         extrapolate: 'clamp',
-    // //     })
-    // // }
-    // const featureIconsAnimated = {
-    //     opacity: animatedValue.interpolate({
-    //         inputRange: [0, 50],
-    //         outputRange: [0, 1],
-    //         extrapolate: 'clamp',
-    //     })
-    // }
-
+                    <FontAwesome
+                        name='thermometer-3'
+                        size={25}
+                        style={styles.featureIcons} />
+                    <Text style={styles.featureText}>Tempreature</Text>
+                </View>
+                <View style={styles.feature}>
+                    <Ionicons
+                        name='leaf-sharp'
+                        size={25}
+                        style={styles.featureIcons} />
+                    <Text style={styles.featureText}>Fertilizer</Text>
+                </View>
+            </View>
+            <ScrollView
+                onScroll={(e) => {
+                    scrollY.setValue(e.nativeEvent.contentOffset.y)
+                }}>
+            </ScrollView>
+        </Animated.View>
+    )
+}
+const CustomHeader = () => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} />
-            <View>
+            {/* <View>
                 <View style={styles.upperHeaderPlaceholder} />
-            </View>
-            <View style={styles.header}>
-                <View style={styles.upperHeader}>
-                    <View>
-                        <Pressable onPress={() => {
-                            navigation.goBack();
-                        }}>
-                            <Ionicons
-                                name="chevron-back"
-                                size={25}
-                                color="white"
-                                style={{ marginRight: 10, marginTop: 8 }} />
-                        </Pressable>
-                    </View>
-                    <View style={styles.searchContainer}>
-                        <View
-                            style={
-                                clicked
-                                    ? styles.searchBarClicked : styles.searchBarUnclicked
+            </View> */}
+            <UpperHeader />
+            <LowerHeader />
 
-                            }
-                        >
-                            <AntDesign style={styles.searchIcon}
-                                name='search1'
-                                color='white'
-                                size={20} />
-                            <TextInput
-                                placeholder="Search"
-                                placeholderTextColor={'rgba(255,255,255,0.8)'}
-                                value={input}
-                                onChangeText={(text) => setInput(text)}
-                                onFocus={() => {
-                                    setClicked?.(true);
-                                }}
-                                style={styles.searchInput} />
-                                {/* style={[styles.searchInput, searchInputAnimation]} /> */}
-                            {clicked && (
-                                <Entypo name="cross" size={20} color="white" onPress={() => {
-                                    setSearchPhrase("") && Keyboard.dismiss()
-                                }} />
-                            )}
-                        </View>
-                    </View>
-                    <View style={styles.listContainer}>
-                        <SearchList data={data} input={input} setInput={setInput} />
-                    </View>
-                    <TouchableOpacity onPress={() => {
-                        drawerNavigation?.openDrawer();
-                    }}>
-                        <Image source={require('../assets/images/profile.jpeg')}
-                            style={styles.profile} />
-                    </TouchableOpacity>
-                </View>
-                {/* <Animated.View
-                // style={{
-                //     transform: [
-                //         { translateY: translateY }
-                //     ],
-                //     elevation: 8,
-                // }}
-                > */}
-                <View style={styles.lowerHeader}>
-                    {/* <Animated.View style={[styles.feature, WaterViewAnimation]}> */}
-                        <View style={styles.feature}>
-                        {/* <Ionicons
-                            name="md-water-sharp"
-                            size={25}
-                            style={[styles.featureIconUp, featureIconsAnimated]} /> */}
+        </View>
 
-                        <Ionicons
-                            name="water-outline"
-                            size={25}
-                            style={styles.featureIcons} />
-                        <Text style={styles.featureText}>Water</Text>
-                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Water</Animated.Text> */}
-                        </View>
-                    {/* </Animated.View> */}
-                    {/* <Animated.View style={[styles.feature, TempViewAnimation]}> */}
-                        <View style={styles.feature}>
-
-                        {/* <FontAwesome
-                            name='thermometer-empty'
-                            size={25}
-                            style={[styles.featureIconUp, featureIconsAnimated]} /> */}
-                        <FontAwesome
-                            name='thermometer-3'
-                            size={25}
-                            style={styles.featureIcons} />
-                        <Text style={styles.featureText}>Tempreature</Text>
-                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Tempreature</Animated.Text> */}
-                        </View>
-                    {/* </Animated.View> */}
-                    {/* <Animated.View style={[styles.feature, LeafViewAnimation]}> */}
-                        <View style={styles.feature}>
-                        {/* <Ionicons
-                            name='leaf-outline'
-                            size={25}
-                            // style={styles.featureIcons} />
-                            style={[styles.featureIcons, featureIconsAnimated]} /> */}
-                        <Ionicons
-                            name='leaf-sharp'
-                            size={25}
-                            // style={[styles.featureIconUp, featureIconsAnimated]} />
-                        style={styles.featureIconUp} />  
-                        <Text style={styles.featureText}>Fertilizer</Text>
-                        {/* <Animated.Text style={[styles.featureText, featureTextAnimation]}>Fertilizer</Animated.Text> */}
-                        </View>
-                    {/* </Animated.View> */}
-                </View>
-                {/* </Animated.View> */}
-                {/* <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    ref={scrollViewRef}
-                    onScroll={e => {
-                        const offsetY = e.nativeEvent.contentOffset.y;
-                        offsetY - lastOffSetY.current > 0 ? 'down' : 'up';
-                        lastOffSetY.current = offsetY;
-                        animatedValue.setValue(offsetY);
-                    }}
-                    onScrollEndDrag={() => {
-                        scrollViewRef.current?.ScrollTo({
-                            y: scroallDirection.current === 'down' ? 100 : 0,
-                            animated: true,
-                        });
-                    }}
-                    scrollEventThrottle={16}>
-                    <View style={styles.paddingHeader} />
-                    <View style={styles.scrollViewcontainer} />
-
-                </ScrollView> */}
-            </View >
-        </View >
     )
 };
 
@@ -300,25 +154,16 @@ const styles = StyleSheet.create({
     //     height: upperHeader_Hight,
     // },
     header: {
-        // position: 'absolute',
         width: '100%',
         height: 165,
-        // position:'absolute',
-        // top:10,
-        // left:0,
-        // right:0,
     },
     upperHeaderPlaceholder: {
-        height: upperHeader_Hight + UPPER_HEADER_PADDING_TOP,
-        paddingTop: UPPER_HEADER_PADDING_TOP,
+        height: upperHeader_Hight,
+        // paddingTop: UPPER_HEADER_PADDING_TOP,
     },
     upperHeader: {
-        // position:'absolute',
-        // top:10,
-        // left:0,
-        // right:0,  height: UPPER_HEADER_HEIGHT + UPPER_HEADER_PADDING_TOP,
-        paddingTop: UPPER_HEADER_PADDING_TOP,
-        height: upperHeader_Hight + UPPER_HEADER_PADDING_TOP,
+        // paddingTop: UPPER_HEADER_PADDING_TOP,
+        height: upperHeader_Hight,
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
@@ -342,7 +187,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     searchInput: {
-        // position: 'absolute',
         marginTop: 12,
         width: '100%',
         backgroundColor: 'rgba(250,250,250,0.3)',
@@ -363,10 +207,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     lowerHeader: {
-        // position:'absolute',
-        // top:0,
-        // left:0,
-        // right:0,
+        // marginTop:10,
         width: '100%',
         height: lowerHeader_Hight,
         flexDirection: 'row',
@@ -384,10 +225,6 @@ const styles = StyleSheet.create({
         color: "white",
         alignSelf: 'center',
         marginLeft: 20,
-    },
-    featureIconUp: {
-        position: 'absolute',
-        top: 8,
     },
     featureText: {
         fontWeight: 'bold',
