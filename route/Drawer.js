@@ -92,7 +92,7 @@ const MyDrawer = () => {
     },
    
   }
-
+// do another page for stack navigation and import them here
   return (
     <Drawer.Navigator 
     id="LeftDrawer"
