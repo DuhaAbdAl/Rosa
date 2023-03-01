@@ -6,18 +6,17 @@ import Cards from "../assets/Cards";
 import { ScreenName } from '../../route/ScreenName';
 import { data } from "../mokData/data";
 
-const checkIsFavorate = (title) => {
-    const [favList, setFavList] = useState([])
-    // const isFav = favList.find(item => item.title === title)
-    return !!isFav;
-}
+// const checkIsFavorate = (title) => {
+//     const [favList, setFavList] = useState([])
+//     // const isFav = favList.find(item => item.title === title)
+//     return !!isFav;
+// }
 
 const Favorite = (props) => {
     return (
         <ImageBackground style={styles.image} source={require('../assets/images/favorite1.jpeg')}>
-          <Cards
-            // isFavorate={checkIsFavorate(data.title)}
-            />
+          {/* <Cards/> */}
+            {/*  isFavorate={checkIsFavorate(data.title)} */}
         </ImageBackground>
     )
 }

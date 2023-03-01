@@ -19,7 +19,7 @@ import RosaContext from '../../Store/RosaContext';
 const Cards = (props) => {
     const { Name, image, waterIcon, tempIcon, fertIcon, favorates } = props;
     // const [favorite, setFavorite] = useState(false)
-    const {favorite, setFavorite} = useContext(RosaContext);
+    const {favorite, setFavoratis} = useContext(RosaContext);
     const navigation = useNavigation();
     var favoritsFromStorage = favorates;
 
@@ -43,7 +43,7 @@ const Cards = (props) => {
     }
 
     useEffect(() => {
-        setFavorite(checkIfFavorate())
+        // setFavoratis(checkIfFavorate())
     }, [favorates])
 
    
