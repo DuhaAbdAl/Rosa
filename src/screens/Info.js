@@ -19,15 +19,15 @@ const Info = (props) => {
         var keys = Object.keys(found?.info || {});
         return keys.map(key => {
             return (
-                <View style={styles.textContainer}>
+                // <View style={styles.textContainer}>
+                <View>
                     <Text style={styles.text2}>{key || "404"}</Text>
-                    <ReadMore style={styles.text} text={found.info[key] || "404"} />
+                    <ReadMore text={found.info[key] || "404"} />
                 </View>
             )
         })
     }
-    // console.log('found.image', found.image)
-    // console.log('found.title', found.title)
+   
     const navImgeTitle = useRef(null)
     const RenderFixedForegroundComponent = () => {
         return (
@@ -41,7 +41,7 @@ const Info = (props) => {
                         color="white"
                         style={styles.icon} />
                 </Pressable>
-                <Text style={styles.titleAnimated}>{found.title}</Text>
+                {/* <Text style={styles.titleAnimated}>{found.title}</Text> */}
                 <TouchableOpacity onPress={() => {
                     drawerNavigation?.openDrawer();
                 }}>
@@ -62,46 +62,45 @@ const Info = (props) => {
             foregroundParallaxRati: 5,
             renderHeader: () => <Image style={styles.image} source={found.image} />,
             renderFixedForeground: () => <RenderFixedForegroundComponent />,
-            renderForeground: () => (
-                <View style={styles.Foreground}>
-                    <Text style={styles.titleAnimatedUp}> {found.title} </Text>
-                </View>
-            ),
+            // renderForeground: () => (
+            //     <View style={styles.Foreground}>
+            //         <Text style={styles.titleAnimatedUp}> {found.title} </Text>
+            //     </View>
+            // ),
         },
-        TriggeringViewParams: {
-            style: styles.section,
-            onHide: () => {
-                console.log("onHide")
-                navImgeTitle.current?.fadeInUp?.(200)
-            },
-            onDisplay: () => {
-                console.log('onDisplay');
-                navImgeTitle.current?.fadeOut(100)
-            },
-            onBeginHidde: () => console.log("onBeginHidde"),
-            onBeginDisplayed: () => console.log("onBeginDisplayed"),
-            onTouchTop: () => console.log("onTouchTop"),
-            onBeginHidden:()=> console.log("onBeginHidden") ,
-        }
+        // TriggeringViewParams: {
+        //     style: styles.section,
+        //     onHide: () => {
+        //         console.log("onHide")
+        //         navImgeTitle.current?.fadeInUp?.(200)
+        //     },
+        //     onDisplay: () => {
+        //         console.log('onDisplay');
+        //         navImgeTitle.current?.fadeOut(100)
+        //     },
+        //     onBeginHidde: () => console.log("onBeginHidde"),
+        //     onBeginDisplayed: () => console.log("onBeginDisplayed"),
+        //     onTouchTop: () => console.log("onTouchTop"),
+        //     onBeginHidden: () => console.log("onBeginHidden"),
+        // }
     }//params
 
 
-
+    {/* <TriggeringView {...params.TriggeringViewParams}>
+        <Text style={styles.name}>{found.title + "ttt"}</Text>
+    </TriggeringView> */}
 
     return (
         <ImageHeaderScrollView {...params.ImageHeaderScrollView} >
-
-            <TriggeringView {...params.TriggeringViewParams}>
-                <Text style={styles.name}>{found.title + "ttt"}</Text>
+            <TriggeringView>
+                <Text style={styles.name}>{found.title}</Text>
             </TriggeringView>
-
-            <ImageBackground style={styles.imageBack} source={require('../assets/images/info10.jpeg')} >
+            {/* <ImageBackground style={styles.imageBack} source={require('../assets/images/info10.jpeg')} > */}
                 {renderData()}
-            </ImageBackground>
-
+            {/* </ImageBackground> */}
             {props.children}
-
         </ImageHeaderScrollView >
+
     )
 
 }
@@ -124,11 +123,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
         backgroundColor: 'red',
-        // borderWidth:7
     },
     image: {
         height: MAX_HEIGHT,
-        // width: Dimensions.get('window').width,
         width: WINDOW_WIDTH,
         alignSelf: 'stretch',
         resizeMode: 'cover',
@@ -137,37 +134,33 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     textContainer: {
-        width: '90%',
-        alignSelf: 'center',
-        padding: 10,
-        margin: 8,
+        // alignContent:'flex-start',
+        // width: '90%',
+        // alignSelf: 'center',
+        // padding: 10,
+        // margin: 8,
         borderColor: '#000',
         borderWidth: 0.5,
-        backgroundColor: 'rgba(10, 10, 10, 0.55)',
-    },
-    text: {
-        fontSize: 16,
-        color: 'white',
-        fontWeight: 'bold',
-        // lineHeight: 11,
+        // backgroundColor: 'rgba(10, 10, 10, 0.55)',
     },
     text2: {
         fontSize: 18,
         color: '#fff',
-        textAlign: 'center',
+        textAlign: 'left',
         fontWeight: 'bold',
-        marginLeft: 20,
+        marginLeft: 10,
         marginBottom: 10,
         marginTop: 8,
         paddingTop: 5,
-        borderWidth: 2,
-        borderColor: '#143409',
+        paddingLeft:13,
+        // borderWidth: 2,
+        // borderColor: '#143409',
         backgroundColor: '#265323',
         height: 40,
-        width: '90%',
+        width: 100,
     },
     FixedForeground: {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: MIN_HEIGHT,
@@ -177,14 +170,7 @@ const styles = StyleSheet.create({
     titleAnimated: {
         fontSize: 30,
         fontWeight: 'italic',
-        color: 'red',
-        // borderRadius: 10,
-        // height: 70,
-        // padding: 5,
-        // textAlign: 'center',
-        // marginBottom: 12,
-        // marginTop: 15,
-        // paddingTop: 5,
+        color: 'white',
     },
     Foreground: {
         flexDirection: 'row',
@@ -198,20 +184,14 @@ const styles = StyleSheet.create({
         fontWeight: 'italic',
         color: 'green',//transparent
         backgroundColor: 'transparent',
-        // textAlign: 'center',
-        // marginRight: 170,
-        // marginLeft: 165,
-        // marginBottom: 10,
-        // marginTop: 8,
-        // paddingTop: 5,
     },
-    // titleText: {
-    //     fontSize: 20,
-    // },
     name: {
-        fontSize: 20,
+        fontSize: 30,
+        fontStyle:'italic',
         fontWeight: 'bold',
-        color: 'green'
+        color: 'green',
+        // marginLeft:10,
+        alignSelf:'center'
     },
     profile: {
         alignSelf: 'flex-end',

@@ -31,13 +31,13 @@ const ReadMore = (props) => {
     return (
       <View>
         <Text onTextLayout={onTextLayout} numberOfLines={numLines} 
-        style={textStyle} ellipsizeMode="tail">
+        style={styles.textStyle} ellipsizeMode="tail">
           {text}
         </Text>
   
         {showMoreButton ? (
           <Text onPress={toggleTextShown} style={styles.ReadButton}>
-            {textShown ? 'Read Less' : 'Read More'}
+            {textShown ? '...Read Less' : '... Read More'}
           </Text>
         ) : null}
       </View>
@@ -46,10 +46,14 @@ const ReadMore = (props) => {
 const styles = StyleSheet.create ({
   ReadButton:{
     alignSelf: 'flex-end',
-    color: 'white',
+    color: 'black',
+    marginRight:14,
+    fontSize:15,
   },
   textStyle:{
-    color:'white'
+    color:'black',
+    fontSize:15,
+    // marginRight:10,
   }
 })
 export default ReadMore;

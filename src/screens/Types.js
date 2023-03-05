@@ -54,10 +54,10 @@ const Types = (props) => {
     }
     const params = {
         flatList: {
-            data: [...filterData() , ...filterData()],
+            data: [...filterData(), ...filterData()],
             renderItem: renderCard,
             style: styles.flatList,
-            numColumns: 1,
+            numColumns: 2,
             padding: 10,
             paddingTop: 22,
         }
@@ -66,21 +66,10 @@ const Types = (props) => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
 
-    // const scrollY = new Animated.Value(0)
-    // const diffClamp = Animated.diffClamp(scrollY,0,170)
-    // const translateY = diffClamp.interpolate({
-    //     inputRange:[0,170],
-    //     outputRange:[0,-170]
-    // }) 
-
     return (
-        <ImageBackground style={styles.img} source={require('../assets/images/type4.jpeg')}>
+        <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
             <CustomHeader />
-            <FlatList {...params.flatList} 
-            // onScroll={(e)=>{
-            //     scrollY.setValue(e.nativeEvent.contentOffset.y)}}
-                />
-                {/* <SearchList/> */}
+            <FlatList {...params.flatList} />
         </ImageBackground>
     )
 };
@@ -89,30 +78,5 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    cards: {
-        marginRight: 170,
-        marginLeft: 20,
-    },
-    search: {
-        padding: 10,
-        alignSelf: 'flex-start',
-    },
-    searchContainer: {
-        height: 45,
-        width: 150,
-        margin: 10,
-        marginTop: 20,
-        borderWidth: 2,
-        borderRadius: 30,
-        borderColor: 'white',
-        alignSelf: 'center',
-        flexDirection: 'row',
-    }
+   
 }); export default Types;
-  {/* {!clicked}
-<SearchBar {... props}
-searchPhrase={searchPhrase}
-setSearchPhrase={setSearchPhrase}
-clicked={clicked}
-setClicked={setClicked}
-/> */}

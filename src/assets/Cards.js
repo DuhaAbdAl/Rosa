@@ -7,6 +7,7 @@ import {
     View,
     Pressable,
     Image,
+    ImageBackground,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -19,7 +20,7 @@ import RosaContext from '../../Store/RosaContext';
 const Cards = (props) => {
     const { Name, image, waterIcon, tempIcon, fertIcon, favorates } = props;
     // const [favorite, setFavorite] = useState(false)
-    const {favorite, setFavoratis} = useContext(RosaContext);
+    const { favorite, setFavoratis } = useContext(RosaContext);
     const navigation = useNavigation();
     var favoritsFromStorage = favorates;
 
@@ -37,7 +38,7 @@ const Cards = (props) => {
             favoritsFromStorage = favoritsFromStorage.filter(fav => fav !== Name);
         }
 
-        AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage)); 
+        AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage));
 
         setFavorite(!favorite)
     }
@@ -46,18 +47,29 @@ const Cards = (props) => {
         // setFavoratis(checkIfFavorate())
     }, [favorates])
 
-   
+
     return (
         <View >
-
+            <View style={{borderRadius:30}}>
             <Pressable style={styles.card} onPress={() => {
+                navigation.navigate(ScreenName.Info, { name: Name });
+            }}>
+                <ImageBackground style={styles.cardBackground} source={image}>
+                    <View style={styles.cardName}>
+                        <Text style={styles.cardText}>{Name}</Text>
+                    </View>
+                </ImageBackground>
+                </Pressable>
+            </View>
+
+            {/* <Pressable style={styles.card} onPress={() => {
                 navigation.navigate(ScreenName.Info, { name: Name });
             }}>
                 <Image style={styles.imgCard} source={image} />
                 <View style={styles.nameCard}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
                         <Text style={styles.text}>{Name}</Text>
-                        <Pressable onPress={OnClickFavorite} > 
+                        <Pressable onPress={OnClickFavorite} >
                             <View>
                                 <Icon
                                     style={styles.favorite}
@@ -89,7 +101,8 @@ const Cards = (props) => {
                         <Text style={styles.iconText}> {fertIcon} </Text>
                     </View>
                 </View>
-            </Pressable>
+            </Pressable> */}
+
         </View>
     )
 }
@@ -139,7 +152,26 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 5,
     },
-
+    cardBackground: {
+        height: 170,
+        width: 180,
+        marginLeft: 12,
+        borderRadius: 20,
+        marginBottom: 30,
+        
+    },
+    cardName: {
+        width: '100%',
+        height: 50,
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
+        marginTop: 120,
+    },
+    cardText:{
+        fontSize:18,
+        alignSelf:'center',
+        color:'white',
+        marginTop:15,
+    }
 })
 
 

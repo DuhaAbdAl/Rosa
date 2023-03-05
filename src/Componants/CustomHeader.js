@@ -72,6 +72,12 @@ const UpperHeader = (props) => {
                             setSearchPhrase("") && Keyboard.dismiss()
                         }} />
                     )}
+                    <Entypo
+                    name="chevron-small-right"
+                    color={'white'}
+                    size={45}
+                    style={{marginTop:8}}
+                        />
                 </View>
             </View>
             <View style={styles.listContainer}>
@@ -136,7 +142,7 @@ const CustomHeader = () => {
                 <View style={styles.upperHeaderPlaceholder} />
             </View> */}
             <UpperHeader />
-            <LowerHeader />
+            {/* <LowerHeader /> */}
 
         </View>
 
@@ -144,7 +150,7 @@ const CustomHeader = () => {
 };
 
 const UPPER_HEADER_PADDING_TOP = 1;
-const upperHeader_Hight = 75;
+const upperHeader_Hight = 95;
 const lowerHeader_Hight = 96;
 const styles = StyleSheet.create({
     container: {
