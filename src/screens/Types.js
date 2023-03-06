@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, FlatList, Animated} from "react-native";
+import { ImageBackground, StyleSheet, FlatList, Animated, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data } from "../mokData/data";
@@ -11,7 +11,7 @@ import RosaContext from "../../Store/RosaContext";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {}
-    const {favorates, setFavoratis} = useContext(RosaContext);
+    const { favorates, setFavoratis } = useContext(RosaContext);
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
@@ -54,7 +54,7 @@ const Types = (props) => {
     }
     const params = {
         flatList: {
-            data: [...filterData(), ...filterData()],
+            data: [...filterData()],
             renderItem: renderCard,
             style: styles.flatList,
             numColumns: 2,
@@ -67,16 +67,19 @@ const Types = (props) => {
     }, []);
 
     return (
-        <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
+        <View style={styles.img}>
             <CustomHeader />
             <FlatList {...params.flatList} />
-        </ImageBackground>
+        </View>
+        // <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
+        // </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
     img: {
         flex: 1,
+        backgroundColor:'black',
         justifyContent: 'center',
     },
-   
+
 }); export default Types;

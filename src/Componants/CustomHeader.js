@@ -173,7 +173,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
-        backgroundColor: 'rgba(10, 10, 10, 0.65)'
+        // backgroundColor: 'rgba(10, 10, 10, 0.65)',
+        backgroundColor:'#007aa1',
     },
     searchContainer: {
         flex: 1,

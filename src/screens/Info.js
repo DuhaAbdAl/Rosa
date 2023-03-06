@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TouchableOpacity, Dimensions } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TouchableOpacity, FlatList } from "react-native";
 import React from "react";
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
 import { data } from "../mokData/data";
@@ -8,11 +8,12 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 import { WINDOW_WIDTH } from "../assets/Sizes";
+import InfoCards from "../Componants/InfoCustomCards";
 
 const Info = (props) => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
-    const { name } = props.route.params || {}
+    const { name, infoName } = props.route.params || {}
     const found = data.find(element => element.title == name);
 
     const renderData = () => {
@@ -27,7 +28,31 @@ const Info = (props) => {
             )
         })
     }
-   
+    const filterData = () => {
+        const filterd = data?.filter(plant => {
+            return plant.type == infoName;
+        })
+
+        return filterd;
+    }
+    const renderInfoCard = ({ item }) => {
+        return <InfoCards
+            SunExposure={item.SunExposure}
+            Water={item.Water}
+            Fertilizer={item.Fertilizer}
+            BloomTime={item.BloomTime}
+        />
+    }
+    const param = {
+        flatList: {
+            data: [...filterData()],
+            renderItem: renderInfoCard,
+            style: styles.flatList,
+            numColumns: 2,
+            padding: 10,
+            paddingTop: 22,
+        }
+    };
     const navImgeTitle = useRef(null)
     const RenderFixedForegroundComponent = () => {
         return (
@@ -41,7 +66,6 @@ const Info = (props) => {
                         color="white"
                         style={styles.icon} />
                 </Pressable>
-                {/* <Text style={styles.titleAnimated}>{found.title}</Text> */}
                 <TouchableOpacity onPress={() => {
                     drawerNavigation?.openDrawer();
                 }}>
@@ -62,42 +86,19 @@ const Info = (props) => {
             foregroundParallaxRati: 5,
             renderHeader: () => <Image style={styles.image} source={found.image} />,
             renderFixedForeground: () => <RenderFixedForegroundComponent />,
-            // renderForeground: () => (
-            //     <View style={styles.Foreground}>
-            //         <Text style={styles.titleAnimatedUp}> {found.title} </Text>
-            //     </View>
-            // ),
         },
-        // TriggeringViewParams: {
-        //     style: styles.section,
-        //     onHide: () => {
-        //         console.log("onHide")
-        //         navImgeTitle.current?.fadeInUp?.(200)
-        //     },
-        //     onDisplay: () => {
-        //         console.log('onDisplay');
-        //         navImgeTitle.current?.fadeOut(100)
-        //     },
-        //     onBeginHidde: () => console.log("onBeginHidde"),
-        //     onBeginDisplayed: () => console.log("onBeginDisplayed"),
-        //     onTouchTop: () => console.log("onTouchTop"),
-        //     onBeginHidden: () => console.log("onBeginHidden"),
-        // }
+
     }//params
-
-
-    {/* <TriggeringView {...params.TriggeringViewParams}>
-        <Text style={styles.name}>{found.title + "ttt"}</Text>
-    </TriggeringView> */}
 
     return (
         <ImageHeaderScrollView {...params.ImageHeaderScrollView} >
             <TriggeringView>
                 <Text style={styles.name}>{found.title}</Text>
             </TriggeringView>
-            {/* <ImageBackground style={styles.imageBack} source={require('../assets/images/info10.jpeg')} > */}
-                {renderData()}
-            {/* </ImageBackground> */}
+            {renderData()}
+            <InfoCards {...param.flatList} />
+            {/* <FlatList {...param.flatList} /> */}
+
             {props.children}
         </ImageHeaderScrollView >
 
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 8,
         paddingTop: 5,
-        paddingLeft:13,
+        paddingLeft: 13,
         // borderWidth: 2,
         // borderColor: '#143409',
         backgroundColor: '#265323',
@@ -187,11 +188,11 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 30,
-        fontStyle:'italic',
+        fontStyle: 'italic',
         fontWeight: 'bold',
         color: 'green',
         // marginLeft:10,
-        alignSelf:'center'
+        alignSelf: 'center'
     },
     profile: {
         alignSelf: 'flex-end',

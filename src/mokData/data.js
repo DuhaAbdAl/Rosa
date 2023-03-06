@@ -51,15 +51,23 @@ export const data = [
         title: "Magnolia",
         image: require('../assets/images/MagnoliaBackground.jpeg'),
         info: {
-            about: `about`,
+            about: `The magnolia family is one of the oldest trees\n
+            in existence.Because magnolias are so old, their flowers\n
+            do not have true petals and sepals; instead, they have\n
+            petal-like tepals. Also, the flowers do not produce real\n
+            nectar but attract pollinating beetles with fragrant and\n
+            sugary secretions.`,
 
 
-            care: 'care',
         },
-        type: 'Flowers',
+        type: 'Trees',
         waterIcon: '1-2',
         tempIcon: '24c°-26c°',
         fertIcon: '1',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring,\nSummer,\nFall',
     },
     {
         id:'3',
