@@ -1,7 +1,7 @@
 export const data = [
     {
         id: '1',
-        title: "Lily",
+        title: "Lilium",
         image: require('../assets/images/LilyBackground2.jpeg'),
         info: {
             About: `
@@ -14,49 +14,30 @@ export const data = [
             you will enjoy their magnificent blooms from\n
             spring through first frost.\n
             At home in both formal and naturalistic settings.\n`,
-
-
-        //     Care: `
-        //          Provide well-drained, highly organic\n
-        //          soil in full sun,\n
-        //          with the lily's "feet" in shade.\n
-        //          Most lilies prefer acidic or neutral soils,\n
-        //          but some prefer alkaline soils.`,
-
-
-        //     Propagation: `
-        //          In spring, sow seed in a cold\n
-        //          frame as soon as ripe\n
-        //          or germinate under lights at 65-70°F.\n
-        //          In late summer, remove scales, offsets,\n
-        //          or bulblets as soon as foliage dies down.`,
-
-
-        //     Problems: `
-        //          Gray mold (in wet, cold weather),\n
-        //          viruses spread by aphids, red lily beetles,\n
-        //          slugs, snails.\n
-        //          Deer, rabbits, voles, and groundhogs\n
-        //          may eat the plants,\n
-        //          while birds may peck holes in the buds.`,
         },
 
         type: 'Flowers',
         waterIcon: '1-2',
         tempIcon: '28c°-30c° ',
         fertIcon: '1',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
     },
     {
         id:'2',
         title: "Magnolia",
         image: require('../assets/images/MagnoliaBackground.jpeg'),
         info: {
-            about: `The magnolia family is one of the oldest trees\n
-            in existence.Because magnolias are so old, their flowers\n
-            do not have true petals and sepals; instead, they have\n
-            petal-like tepals. Also, the flowers do not produce real\n
-            nectar but attract pollinating beetles with fragrant and\n
-            sugary secretions.`,
+            About: `
+            The magnolia family is one of the oldest trees\n
+            in existence.Because magnolias are so old,\n
+            their flowers do not have true petals and\n
+            sepals; instead, they have petal-like tepals.\n
+            Also, the flowers do not produce real nectar\n
+            but attract pollinating beetles with fragrant\n
+            and sugary secretions.`,
 
 
         },
@@ -67,7 +48,7 @@ export const data = [
         SunExposure:'Full Sun\nPart Sun',
         Water:'2 times a week',
         Fertilizer:'Once a week',
-        BloomTime:'Spring,\nSummer,\nFall',
+        BloomTime:'Spring, Summer,\nFall',
     },
     {
         id:'3',

@@ -8,5 +8,6 @@ export const ScreenName = {
     Favorite: 'Favorite',
     SearchHome: 'Search Home',
     CustomDrawer:'Custom Drawer', 
-    CustomHeader: 'CustomHeader',   
+    CustomHeader: 'CustomHeader', 
+    IconContainer: 'IconContainer',  
 };

@@ -11,6 +11,7 @@ import SignUp from "../src/screens/SignUp";
 import SearchHome from "../src/Componants/SearchHome";
 import Categories from "../src/screens/Categories";
 import CustomHeader from "../src/Componants/CustomHeader";
+import IconContainer from "../src/Componants/IconContainer";
 
 
 const MainNavigation = (props) => {
@@ -29,7 +30,7 @@ const MainNavigation = (props) => {
                     headerTintColor: 'green',
                     headerTitleAlign: 'center',
                 }}
-                >
+            >
                 <Stack.Screen name={ScreenName.HomePage} component={HomePage}
                     options={{
                         headerShown: false,
@@ -37,24 +38,18 @@ const MainNavigation = (props) => {
                 />
                 <Stack.Screen name="Drawer" component={MyDrawer}
                     options={{ headerShown: false, }} />
-                <Stack.Screen name={ScreenName.Types} component={Types} 
-                 options={{ headerShown: false, }}/>
+                <Stack.Screen name={ScreenName.Types} component={Types}
+                    options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.Info} component={Info}
-                 options={{ headerShown: false, }}
-                    // options={({route})=>({
-                    //     title: route.params.title
-                    //       })} 
-                    />
-                     <Stack.Screen name={ScreenName.Categories} component={Categories}
+                    options={{ headerShown: false, }} />
+                <Stack.Screen name={ScreenName.Categories} component={Categories}
                     options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
                     options={{ headerShown: false }} />
-                <Stack.Screen name={ScreenName.CustomHeader} component={CustomHeader}/>
-                 {/* <Stack.Screen name={ScreenName.CustomButton} component={CustomButton}
-                 options={{
-                    headerShown: false,
-                }} /> */}
-                <Stack.Screen name={ScreenName.SignUp} component={SignUp}/> 
+                <Stack.Screen name={ScreenName.CustomHeader} component={CustomHeader} />
+                <Stack.Screen name={ScreenName.SignUp} component={SignUp} />
+                <Stack.Screen name={ScreenName.IconContainer} component={IconContainer} />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

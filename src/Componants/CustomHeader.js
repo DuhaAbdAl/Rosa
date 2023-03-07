@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, Image, StatusBar, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Pressable, Image, StatusBar, ScrollView, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
 import { Window_Hight } from "../assets/Sizes";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -31,7 +31,7 @@ const UpperHeader = (props) => {
     const { clicked, setClicked } = props;
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
-    const {input, setInput} = useContext(RosaContext);
+    const { input, setInput } = useContext(RosaContext);
 
     return (
         <View style={styles.upperHeader}>
@@ -73,11 +73,11 @@ const UpperHeader = (props) => {
                         }} />
                     )}
                     <Entypo
-                    name="chevron-small-right"
-                    color={'white'}
-                    size={45}
-                    style={{marginTop:8}}
-                        />
+                        name="chevron-small-right"
+                        color={'white'}
+                        size={45}
+                        style={{ marginTop: 8 }}
+                    />
                 </View>
             </View>
             <View style={styles.listContainer}>
@@ -136,45 +136,35 @@ const LowerHeader = () => {
 }
 const CustomHeader = () => {
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle={'light-content'} />
-            {/* <View>
-                <View style={styles.upperHeaderPlaceholder} />
-            </View> */}
-            <UpperHeader />
-            {/* <LowerHeader /> */}
+        <ImageBackground source={require('../assets/images/Types4.jpeg')}>
 
-        </View>
+            <UpperHeader />
+
+        </ImageBackground>
 
     )
 };
 
 const UPPER_HEADER_PADDING_TOP = 1;
-const upperHeader_Hight = 95;
+const upperHeader_Hight = 100;
 const lowerHeader_Hight = 96;
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
     },
-    // upperHeaderPlaceHolder: {
-    //     height: upperHeader_Hight,
-    // },
+
     header: {
         width: '100%',
         height: 165,
     },
     upperHeaderPlaceholder: {
         height: upperHeader_Hight,
-        // paddingTop: UPPER_HEADER_PADDING_TOP,
     },
     upperHeader: {
-        // paddingTop: UPPER_HEADER_PADDING_TOP,
         height: upperHeader_Hight,
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 16,
-        // backgroundColor: 'rgba(10, 10, 10, 0.65)',
-        backgroundColor:'#007aa1',
     },
     searchContainer: {
         flex: 1,
@@ -196,7 +186,7 @@ const styles = StyleSheet.create({
     searchInput: {
         marginTop: 12,
         width: '100%',
-        backgroundColor: 'rgba(250,250,250,0.3)',
+        backgroundColor: 'rgba(250,250,250,0.5)',
         color: 'white',
         borderRadius: 4,
         paddingVertical: 4,
@@ -214,7 +204,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     lowerHeader: {
-        // marginTop:10,
         width: '100%',
         height: lowerHeader_Hight,
         flexDirection: 'row',

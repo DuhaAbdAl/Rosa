@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 import { WINDOW_WIDTH } from "../assets/Sizes";
 import InfoCards from "../Componants/InfoCustomCards";
+import IconContainer from "../Componants/IconContainer";
 
 const Info = (props) => {
     const navigation = useNavigation();
@@ -20,7 +21,6 @@ const Info = (props) => {
         var keys = Object.keys(found?.info || {});
         return keys.map(key => {
             return (
-                // <View style={styles.textContainer}>
                 <View>
                     <Text style={styles.text2}>{key || "404"}</Text>
                     <ReadMore text={found.info[key] || "404"} />
@@ -43,16 +43,16 @@ const Info = (props) => {
             BloomTime={item.BloomTime}
         />
     }
-    const param = {
-        flatList: {
-            data: [...filterData()],
-            renderItem: renderInfoCard,
-            style: styles.flatList,
-            numColumns: 2,
-            padding: 10,
-            paddingTop: 22,
-        }
-    };
+    // const param = {
+    //     flatList: {
+    //         data: [...filterData()],
+    //         renderItem: renderInfoCard,
+    //         style: styles.flatList,
+    //         numColumns: 2,
+    //         padding: 10,
+    //         paddingTop: 22,
+    //     }
+    // };
     const navImgeTitle = useRef(null)
     const RenderFixedForegroundComponent = () => {
         return (
@@ -96,7 +96,9 @@ const Info = (props) => {
                 <Text style={styles.name}>{found.title}</Text>
             </TriggeringView>
             {renderData()}
-            <InfoCards {...param.flatList} />
+            {/* {filterData()} */}
+            <InfoCards {...filterData()} />
+            {IconContainer()}
             {/* <FlatList {...param.flatList} /> */}
 
             {props.children}

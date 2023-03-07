@@ -67,12 +67,14 @@ const Types = (props) => {
     }, []);
 
     return (
-        <View style={styles.img}>
+        // <View style={styles.img}>
+        //     <CustomHeader />
+        //     <FlatList {...params.flatList} />
+        // </View>
+        <ImageBackground style={styles.img} source={require('../assets/images/Types4.jpeg')}>
             <CustomHeader />
             <FlatList {...params.flatList} />
-        </View>
-        // <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
-        // </ImageBackground>
+        </ImageBackground>
     )
 };
 const styles = StyleSheet.create({

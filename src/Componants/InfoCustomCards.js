@@ -8,7 +8,8 @@ const InfoCards = (props) => {
     const { description, SunExposure, Water, Fertilizer, BloomTime } = props;
 
         return (
-            <View >
+            <View>
+            <View style={styles.cardContainer} >
                 <View style={styles.container}>
                     <Fontisto
                     style={styles.icon}
@@ -25,6 +26,8 @@ const InfoCards = (props) => {
                     size={20} />
                     <Text>{BloomTime}</Text>
                 </View>
+                </View>
+                <View style={styles.cardContainer}>
                 <View style={styles.container}>
                     <MaterialCommunityIcons
                     style={styles.icon}
@@ -42,20 +45,26 @@ const InfoCards = (props) => {
                     <Text>{Fertilizer}</Text>
                 </View>
             </View>
+            </View>
         )
     }
    
 
 const styles = StyleSheet.create({
     container: {
-        width: 200,
+        width: 190,
         height: 170,
-        borderColor:'black',
+        borderColor:'green',
         borderWidth: 2,
-        margin:10,
+        margin:4,
+        alignItems:'center'
     },
     icon:{
         alignSelf:'center',
+        margin:10,
+    },
+    cardContainer:{
+        flexDirection:"row",
         margin:10,
     }
 })
