@@ -6,12 +6,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomHeader from "../Componants/CustomHeader";
 import { useContext } from "react";
 import RosaContext from "../../Store/RosaContext";
+import SearchBar from "../Componants/SearchBar";
 
 
 
 const Types = (props) => {
-    const { categoryName } = props.route.params || {}
-    const { favorates, setFavoratis } = useContext(RosaContext);
+    const { categoryName } = props.route.params || {};
+    const { favorates, setFavoratis, searchText, setSearchText } = useContext(RosaContext);
+    const [plants , setPlants] = useState('');
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
@@ -65,6 +67,22 @@ const Types = (props) => {
     useEffect(() => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
+    // useEffect(() => {
+    //     setPlants(plants);
+    // }, [])
+    // const onSearchChange = (val) => {
+    //     setSearchText(val)
+    // }
+    // const setPageData = () => {
+    //     if (!searchText || searchText == 'all') {
+    //         return plants;
+    //     }
+    //     const filterdData = data.find(product => product.title === searchText).products;
+    //     return filterdData;
+    // };
+    // useEffect(() => {
+    //     setPlants(plants);
+    // }, [])
 
     return (
         // <View style={styles.img}>
@@ -73,6 +91,8 @@ const Types = (props) => {
         // </View>
         <ImageBackground style={styles.img} source={require('../assets/images/Types4.jpeg')}>
             <CustomHeader />
+            {/* <SearchBar
+                onSearchChange={(val) => onSearchChange(val)} /> */}
             <FlatList {...params.flatList} />
         </ImageBackground>
     )
@@ -80,7 +100,7 @@ const Types = (props) => {
 const styles = StyleSheet.create({
     img: {
         flex: 1,
-        backgroundColor:'black',
+        backgroundColor: 'black',
         justifyContent: 'center',
     },
 

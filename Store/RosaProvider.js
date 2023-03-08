@@ -10,6 +10,8 @@ const RosaProvider = props => {
     const [clicked, setClicked] = useState(false);
     const [Data, setData] = useState();
     const [input, setInput] = useState("");
+    const [searchText, setSearchText] = useState('');
+
 
     return (
         <RosaContext.Provider
@@ -30,6 +32,8 @@ const RosaProvider = props => {
                 setData,
                 input,
                 setInput,
+                searchText,
+                setSearchText
             }}>
             {props.children}
         </RosaContext.Provider>

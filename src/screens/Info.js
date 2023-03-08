@@ -14,7 +14,7 @@ import IconContainer from "../Componants/IconContainer";
 const Info = (props) => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
-    const { name, infoName } = props.route.params || {}
+    const { name } = props.route.params || {}
     const found = data.find(element => element.title == name);
 
     const renderData = () => {
@@ -30,29 +30,20 @@ const Info = (props) => {
     }
     const filterData = () => {
         const filterd = data?.filter(plant => {
-            return plant.type == infoName;
+            return plant.title == name;
         })
-
-        return filterd;
+        return filterd[0];
     }
-    const renderInfoCard = ({ item }) => {
+    const renderInfoCard = (item) => {
         return <InfoCards
-            SunExposure={item.SunExposure}
-            Water={item.Water}
-            Fertilizer={item.Fertilizer}
-            BloomTime={item.BloomTime}
+            SunExposure={item?.SunExposure}
+            Water={item?.Water}
+            Fertilizer={item?.Fertilizer}
+            BloomTime={item?.BloomTime}
         />
     }
-    // const param = {
-    //     flatList: {
-    //         data: [...filterData()],
-    //         renderItem: renderInfoCard,
-    //         style: styles.flatList,
-    //         numColumns: 2,
-    //         padding: 10,
-    //         paddingTop: 22,
-    //     }
-    // };
+    // console.log('SunExposure', item.SunExposure)
+
     const navImgeTitle = useRef(null)
     const RenderFixedForegroundComponent = () => {
         return (
@@ -96,11 +87,8 @@ const Info = (props) => {
                 <Text style={styles.name}>{found.title}</Text>
             </TriggeringView>
             {renderData()}
-            {/* {filterData()} */}
-            <InfoCards {...filterData()} />
+            {renderInfoCard(filterData())}
             {IconContainer()}
-            {/* <FlatList {...param.flatList} /> */}
-
             {props.children}
         </ImageHeaderScrollView >
 

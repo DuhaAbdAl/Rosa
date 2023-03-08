@@ -1,30 +1,31 @@
 import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TouchableOpacity, Dimensions } from "react-native";
 import React from "react";
-import Fontisto from "react-native-ionicons";
-import MaterialCommunityIcons from "react-native-ionicons";
-import FontAwesome5 from "react-native-ionicons";
+import Fontisto from "react-native-vector-icons/Fontisto";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Ionicons from "react-native-vector-icons/Ionicons"
 
 const InfoCards = (props) => {
-    const { description, SunExposure, Water, Fertilizer, BloomTime } = props;
+    const {SunExposure, Water, Fertilizer, BloomTime } = props;
 
         return (
             <View>
             <View style={styles.cardContainer} >
                 <View style={styles.container}>
-                    <Fontisto
+                    <Ionicons
                     style={styles.icon}
-                    name="day-sunny"
-                    color="black"
-                    size={20} />
-                    <Text style={{color:"red"}}>{SunExposure}</Text>
+                    name="md-sunny-sharp"
+                    color={"#c3ce29"}
+                    size={40} />
+                    <Text style={styles.text}>{SunExposure}</Text>
                 </View>
                 <View style={styles.container}>
                     <MaterialCommunityIcons 
                     style={styles.icon}
                     name="flower-outline"
-                    color="black"
-                    size={20} />
-                    <Text>{BloomTime}</Text>
+                    color={"#7f3667"}
+                    size={45} />
+                    <Text style={styles.text}>{BloomTime}</Text>
                 </View>
                 </View>
                 <View style={styles.cardContainer}>
@@ -32,23 +33,22 @@ const InfoCards = (props) => {
                     <MaterialCommunityIcons
                     style={styles.icon}
                     name="watering-can"
-                    color="black"
-                    size={20} />
-                    <Text>{Water}</Text>
+                    color={"teal"}
+                    size={45} />
+                    <Text style={styles.text}>{Water}</Text>
                 </View>
                 <View style={styles.container}>
                     <FontAwesome5
                     style={styles.icon}
                     name="seedling"
-                    color="black"
-                    size={20} />
-                    <Text>{Fertilizer}</Text>
+                    color={"green"}
+                    size={40} />
+                    <Text style={styles.text}> {Fertilizer}</Text>
                 </View>
             </View>
             </View>
         )
-    }
-   
+    }   
 
 const styles = StyleSheet.create({
     container: {
@@ -62,10 +62,16 @@ const styles = StyleSheet.create({
     icon:{
         alignSelf:'center',
         margin:10,
+        // color:'green'
     },
     cardContainer:{
         flexDirection:"row",
         margin:10,
+    },
+    text:{
+        fontSize:20,
+        color:"black",
+        marginTop:15,
     }
 })
 export default InfoCards;

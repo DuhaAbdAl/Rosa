@@ -42,9 +42,6 @@ export const data = [
 
         },
         type: 'Trees',
-        waterIcon: '1-2',
-        tempIcon: '24c°-26c°',
-        fertIcon: '1',
         SunExposure:'Full Sun\nPart Sun',
         Water:'2 times a week',
         Fertilizer:'Once a week',
@@ -56,14 +53,12 @@ export const data = [
         image: require('../assets/images/IrisBackground.jpeg'),
         info: {
             about: `aaa`,
-
-
-            care: 'care',
         },
         type: 'Flowers',
-        waterIcon: '1-2',
-        tempIcon: '18c°-28c°',
-        fertIcon: '1',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
     },
     {
         id:'4',
@@ -71,14 +66,12 @@ export const data = [
         image: require('../assets/images/BleedingHeartBackground.jpeg'),
         info: {
             about: `aaa`,
-
-
-            care: 'care',
         },
         type: 'Flowers',
-        waterIcon: '1-2',
-        tempIcon: '27c°-35c°',
-        fertIcon: '2',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
     }
 ]
 
