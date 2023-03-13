@@ -1,7 +1,7 @@
 import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Entypo from "react-native-vector-icons/Entypo";
+import Feather from "react-native-vector-icons/Feather";
 import { SelectList } from "react-native-dropdown-select-list";
 import { useState } from "react";
 import { data } from "../mokData/data";
@@ -10,11 +10,12 @@ import RosaContext from "../../Store/RosaContext";
 import Cards from "../assets/Cards";
 import { useEffect } from "react";
 import { FlatList } from "react-native";
+import { color } from "react-native-reanimated";
 
 const SearchBar = (props) => {
     // const RosaContext = useContext(RosaContext);
     const { searchText, setSearchText } = useContext(RosaContext);
-    const [plants, setPlants] = useState('');
+    const [plants, setPlants] = useState([]);
 
     const searchData = data.map((item, index) => {
         return { key: index, value: item, text: item.title }
@@ -44,8 +45,8 @@ const SearchBar = (props) => {
         if (!searchText || searchText == 'all') {
             return plants;
         }
-        const filterdData = data.find(product => product.title === searchText).products;
-        return filterdData;
+    //     const filterdData = data.find(plant => plant.title === searchText).plant;
+    //     return filterdData;
     };
     useEffect(() => {
         setPlants(plants);
@@ -60,10 +61,11 @@ const SearchBar = (props) => {
                 setSelected={(val) => props.onSearchChange(val)}
                 data={searchData || []}
                 save="value"
-                searchicon={ <AntDesign style={styles.searchIcon}
-                name='search1'
-                color='white'
-                size={20} />} />
+                searchicon={ <Feather name="search" color={"white"} size={20} />}
+                arrowicon={<AntDesign name="down" color={"white"} size={18}/>}
+                boxStyles={{backgroundColor:"rgba(250,250,250,0.55)", height:45,}}
+                placeholder="Search"
+                />
             <FlatList
                 data={setPageData()}
                 renderItem={renderCards}
@@ -76,11 +78,7 @@ const SearchBar = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: 'rgba(250,250,250,0.5)',
         width: '70%',
-        // position:'absolute',
-        // height:70,
-        // height: '100%',
     },
     searchContainer: {
         flex: 1,
@@ -88,10 +86,10 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     searchIcon: {
-        // marginLeft: 7,
-        // marginTop: 15,
-        // margin: 5,
-        // position: 'absolute',
+        marginLeft: 7,
+        marginTop: 15,
+        margin: 5,
+        position: 'absolute',
     },
     searchInput: {
         marginTop: 12,
@@ -108,6 +106,6 @@ const styles = StyleSheet.create({
         marginLeft: 220,
         // marginBottom:30,
         // marginTop:8,
-    }
+    },
 });
 export default SearchBar;

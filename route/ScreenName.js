@@ -9,5 +9,6 @@ export const ScreenName = {
     SearchHome: 'Search Home',
     CustomDrawer:'Custom Drawer', 
     CustomHeader: 'CustomHeader', 
-    IconContainer: 'IconContainer',  
+    IconContainer: 'IconContainer', 
+    UserProfilePage: 'Profile', 
 };

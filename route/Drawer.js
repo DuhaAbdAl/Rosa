@@ -11,6 +11,7 @@ import { StyleSheet } from "react-native";
 import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
 import Favorite from "../src/Componants/Favorite";
+import UserProfilePage from "../src/screens/UserProfile";
 
 const Drawer = createDrawerNavigator();
 const MyDrawer = () => {
@@ -90,6 +91,13 @@ const MyDrawer = () => {
       headerShown:false
       }
     },
+    UserProfilePage:{
+      name: ScreenName.UserProfilePage,
+      component : UserProfilePage,
+      options:{
+        headerShown:false
+        }
+    }
    
   }
 // do another page for stack navigation and import them here
@@ -105,6 +113,7 @@ const MyDrawer = () => {
       <Drawer.Screen {...params.favorite}/>
       <Drawer.Screen {...params.signIn}/>
       <Drawer.Screen {...params.signUp}/>
+      <Drawer.Screen {...params.UserProfilePage}/>
     </Drawer.Navigator>
   );
 }

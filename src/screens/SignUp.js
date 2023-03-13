@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     pressText: {
-        color: '#2E8D36',
+        // color: '#2E8D36',
+        color:'white',
         fontSize: 15,
     },
     texeOr: {

@@ -10,7 +10,7 @@ const RosaProvider = props => {
     const [clicked, setClicked] = useState(false);
     const [Data, setData] = useState();
     const [input, setInput] = useState("");
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState([]);
 
 
     return (

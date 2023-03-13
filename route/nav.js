@@ -12,6 +12,7 @@ import SearchHome from "../src/Componants/SearchHome";
 import Categories from "../src/screens/Categories";
 import CustomHeader from "../src/Componants/CustomHeader";
 import IconContainer from "../src/Componants/IconContainer";
+import UserProfilePage from "../src/screens/UserProfile";
 
 
 const MainNavigation = (props) => {
@@ -49,7 +50,8 @@ const MainNavigation = (props) => {
                 <Stack.Screen name={ScreenName.CustomHeader} component={CustomHeader} />
                 <Stack.Screen name={ScreenName.SignUp} component={SignUp} />
                 <Stack.Screen name={ScreenName.IconContainer} component={IconContainer} />
-
+                <Stack.Screen name={ScreenName.UserProfilePage} component={UserProfilePage}
+                    options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

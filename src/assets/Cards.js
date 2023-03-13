@@ -18,7 +18,7 @@ import RosaContext from '../../Store/RosaContext';
 
 
 const Cards = (props) => {
-    const { Name, image, waterIcon, tempIcon, fertIcon, favorates } = props;
+    const { Name, image, favorates } = props;
     // const [favorite, setFavorite] = useState(false)
     const { favorite, setFavoratis } = useContext(RosaContext);
     const navigation = useNavigation();
@@ -55,20 +55,6 @@ const Cards = (props) => {
                 navigation.navigate(ScreenName.Info, { name: Name });
             }}>
                 <ImageBackground style={styles.cardBackground} source={image}>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>{Name}</Text>
-                    </View>
-                </ImageBackground>
-                </Pressable>
-            </View>
-
-            {/* <Pressable style={styles.card} onPress={() => {
-                navigation.navigate(ScreenName.Info, { name: Name });
-            }}>
-                <Image style={styles.imgCard} source={image} />
-                <View style={styles.nameCard}>
-                    <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
-                        <Text style={styles.text}>{Name}</Text>
                         <Pressable onPress={OnClickFavorite} >
                             <View>
                                 <Icon
@@ -78,30 +64,12 @@ const Cards = (props) => {
                                     size={20} />
                             </View>
                         </Pressable>
+                    <View style={styles.cardName}>
+                        <Text style={styles.cardText}>{Name}</Text>
                     </View>
-                    <View style={styles.iconView}>
-                        <Ionicons style={styles.iconStyle}
-                            name="water-outline"
-                            color="white"
-                            size={18} />
-                        <Text style={styles.iconText}> {waterIcon} </Text>
-                    </View>
-                    <View style={styles.iconView}>
-                        <Icon style={styles.iconStyle}
-                            name='thermometer-3'
-                            color="white"
-                            size={18} />
-                        <Text style={styles.iconText}> {tempIcon} </Text>
-                    </View>
-                    <View style={styles.iconView}>
-                        <Ionicons style={styles.iconStyle}
-                            name='leaf-outline'
-                            color="white"
-                            size={18} />
-                        <Text style={styles.iconText}> {fertIcon} </Text>
-                    </View>
-                </View>
-            </Pressable> */}
+                </ImageBackground>
+                </Pressable>
+            </View>
 
         </View>
     )
@@ -149,8 +117,7 @@ const styles = StyleSheet.create({
     },
     favorite: {
         alignSelf: 'flex-end',
-        marginRight: 10,
-        marginTop: 5,
+        margin:8,
     },
     cardBackground: {
         height: 170,
@@ -164,7 +131,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        marginTop: 120,
+        marginTop: 85,
     },
     cardText:{
         fontSize:18,

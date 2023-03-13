@@ -37,7 +37,7 @@ const ReadMore = (props) => {
   
         {showMoreButton ? (
           <Text onPress={toggleTextShown} style={styles.ReadButton}>
-            {textShown ? '...Read Less' : '... Read More'}
+            {textShown ? '...Read Less' : 'Read More ...'}
           </Text>
         ) : null}
       </View>
@@ -53,7 +53,6 @@ const styles = StyleSheet.create ({
   textStyle:{
     color:'black',
     fontSize:15,
-    // marginRight:10,
   }
 })
 export default ReadMore;

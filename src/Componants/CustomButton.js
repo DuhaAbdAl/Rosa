@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const CustomButton = ({text, onPress}) => {
 return(
-<TouchableOpacity OnPress={onPress}>
+<TouchableOpacity onPress={onPress}>
     <View style={styles.button}>
         <Text style={styles.buttonText}>{text}</Text>
     </View>

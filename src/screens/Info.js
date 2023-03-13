@@ -42,8 +42,6 @@ const Info = (props) => {
             BloomTime={item?.BloomTime}
         />
     }
-    // console.log('SunExposure', item.SunExposure)
-
     const navImgeTitle = useRef(null)
     const RenderFixedForegroundComponent = () => {
         return (
@@ -82,16 +80,17 @@ const Info = (props) => {
     }//params
 
     return (
+        <View style={{flex:1 }}>
         <ImageHeaderScrollView {...params.ImageHeaderScrollView} >
             <TriggeringView>
                 <Text style={styles.name}>{found.title}</Text>
             </TriggeringView>
             {renderData()}
             {renderInfoCard(filterData())}
-            {IconContainer()}
             {props.children}
         </ImageHeaderScrollView >
-
+        {IconContainer()}
+        </View>
     )
 
 }
@@ -121,41 +120,25 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         resizeMode: 'cover',
     },
-    imageBack: {
-        flex: 1,
-    },
-    textContainer: {
-        // alignContent:'flex-start',
-        // width: '90%',
-        // alignSelf: 'center',
-        // padding: 10,
-        // margin: 8,
-        borderColor: '#000',
-        borderWidth: 0.5,
-        // backgroundColor: 'rgba(10, 10, 10, 0.55)',
-    },
     text2: {
         fontSize: 18,
         color: '#fff',
         textAlign: 'left',
         fontWeight: 'bold',
         marginLeft: 10,
-        marginBottom: 10,
-        marginTop: 8,
+        marginBottom: 5,
+        marginTop: 10,
         paddingTop: 5,
         paddingLeft: 13,
-        // borderWidth: 2,
-        // borderColor: '#143409',
         backgroundColor: '#265323',
         height: 40,
-        width: 100,
+        width: 90,
     },
     FixedForeground: {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: MIN_HEIGHT,
-        // alignItems: 'center',
         paddingTop: 16,
     },
     titleAnimated: {
@@ -181,18 +164,18 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         fontWeight: 'bold',
         color: 'green',
-        // marginLeft:10,
+        marginLeft:10,
         alignSelf: 'center'
     },
     profile: {
         alignSelf: 'flex-end',
-        width: 38,
-        height: 38,
+        width: 48,
+        height: 48,
         borderRadius: 20,
         borderColor: 'white',
         borderWidth: 1,
-        margin: 10,
-        marginTop: 10,
+        marginRight: 18,
+        marginTop: 5,
     },
 });
 

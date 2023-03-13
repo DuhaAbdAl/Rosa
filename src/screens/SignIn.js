@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable } from "react-native";
+import { View, Text, TextInput, StyleSheet, ImageBackground, Pressable, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { BlurView } from "@react-native-community/blur";
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,10 +13,7 @@ const SignIn = (props) => {
     const [password, setPassword] = useState(password);
     return (
         <ImageBackground style={styles.container} source={require('../assets/images/drawer3.jpeg')}>
-            {/* <BlurView
-                style={styles.blur}
-                blurType="light"
-                blurAmount={10}> */}
+            <Text style={styles.Title}>Welcome Back</Text>
             <View style={styles.card}>
                 <TextInput
                     placeholderTextColor={'#fff'}
@@ -31,7 +28,10 @@ const SignIn = (props) => {
                     placeholder="**************"
                 // onChangeText={(val) => setPassword(val)}
                 />
-                <CustomButton text='Sign In' />
+                <CustomButton text='Sign In'
+                    onPress={() => {
+                        props.navigation.navigate(ScreenName.Categories);
+                    }} />
                 <View style={styles.uptext}>
                     <Text>Forgot Password ?</Text>
                     <Pressable onPress={() => {
@@ -41,14 +41,13 @@ const SignIn = (props) => {
                     </Pressable>
                 </View>
             </View>
-            {/* </BlurView> */}
         </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignItems: 'center',
     },
     card: {
@@ -69,19 +68,20 @@ const styles = StyleSheet.create({
         padding: 15,
         margin: 20,
     },
-    blur: {
-        width: 350,
-        height: 400,
-        alignSelf: 'center',
-        borderRadius: 30,
-        borderWidth: 1,
-    },
     uptext: {
         flexDirection: 'row',
     },
     pressText: {
-        color: '#2E8D36',
+        // color: '#2E8D36',
+        color: 'white',
         fontSize: 15,
+    },
+    Title:{
+        color:'white',
+        fontSize:35,
+        fontWeight:'bold',
+        marginBottom:110,
+        marginTop:60,
     }
 
 });

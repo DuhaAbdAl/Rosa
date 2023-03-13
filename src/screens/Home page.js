@@ -30,7 +30,7 @@ const HomePage = (props) => {
                         </Text>
                     </Text>
                 </View>
-                <TouchableOpacity onPress={() => {
+                {/* <TouchableOpacity onPress={() => {
                     props.navigation.navigate(ScreenName.Categories);
                 }}>
                     <View style={styles.buttonCard}>
@@ -38,15 +38,13 @@ const HomePage = (props) => {
                             Get Started
                         </Text>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View style={styles.pressContainer}>
-                    <View style={styles.inText}>
                         <Pressable onPress={() => {
                             props.navigation.navigate(ScreenName.SignIn);
                         }}>
                             <Text style={styles.pressText}> Sign In</Text>
                         </Pressable>
-                    </View>
                 </View>
             </ImageBackground>
 
@@ -128,17 +126,15 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     pressText: {
-        color: 'green',
-        fontSize: 20,
+        color: 'white',
+        fontSize: 25,
         fontWeight: 'bold',
         fontStyle:'italic',
         marginRight: 30,
     },
     pressContainer: {
-        // flexDirection: 'row',
-        alignSelf: 'flex-end',
-        justifyContent: 'center',
-        marginBottom: 50,
+        alignSelf: 'center',
+        marginTop:140,
     },
 }); export default HomePage;
 

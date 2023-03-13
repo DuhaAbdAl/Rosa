@@ -12,7 +12,7 @@ import SearchBar from "../Componants/SearchBar";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {};
-    const { favorates, setFavoratis, searchText, setSearchText } = useContext(RosaContext);
+    const { favorates, setFavoratis} = useContext(RosaContext);
     const [plants , setPlants] = useState('');
 
     const getfav = async () => {
@@ -26,8 +26,6 @@ const Types = (props) => {
 
         return favoritsFromStorage;
     }
-
-
 
     const filterData = () => {
         const filterd = data?.filter(plant => {
@@ -67,28 +65,9 @@ const Types = (props) => {
     useEffect(() => {
         getfav().then(res => setFavoratis([...res]))
     }, []);
-    // useEffect(() => {
-    //     setPlants(plants);
-    // }, [])
-    // const onSearchChange = (val) => {
-    //     setSearchText(val)
-    // }
-    // const setPageData = () => {
-    //     if (!searchText || searchText == 'all') {
-    //         return plants;
-    //     }
-    //     const filterdData = data.find(product => product.title === searchText).products;
-    //     return filterdData;
-    // };
-    // useEffect(() => {
-    //     setPlants(plants);
-    // }, [])
 
     return (
-        // <View style={styles.img}>
-        //     <CustomHeader />
-        //     <FlatList {...params.flatList} />
-        // </View>
+     
         <ImageBackground style={styles.img} source={require('../assets/images/Types4.jpeg')}>
             <CustomHeader />
             {/* <SearchBar
@@ -104,4 +83,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-}); export default Types;
+});
+ export default Types;

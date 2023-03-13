@@ -14,12 +14,11 @@ export const data = [
             you will enjoy their magnificent blooms from\n
             spring through first frost.\n
             At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
         },
 
         type: 'Flowers',
-        waterIcon: '1-2',
-        tempIcon: '28c°-30c° ',
-        fertIcon: '1',
         SunExposure:'Full Sun\nPart Sun',
         Water:'2 times a week',
         Fertilizer:'Once a week',

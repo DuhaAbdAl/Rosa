@@ -43,6 +43,8 @@ const Categories = (props) => {
         })
     }
 
+    const onCategoryPress = (title) => { navigation.navigate(ScreenName.Types, { categoryName: title }); }
+
     const renderImage = () => {
         return images.map((image, imageIndex) => {
             return (
@@ -50,7 +52,7 @@ const Categories = (props) => {
                 <Animated.View
                     style={[{ width: windowWidth }, styles.scrollContainer]}
                     key={imageIndex}>
-                    <TouchableOpacity style={styles.touch(windowWidth)} onPress={() => { navigation.navigate(ScreenName.Types, { categoryName: image.title }); }}>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.touch(windowWidth)} onPress={()=>onCategoryPress(image.title)}>
                         <Image source={image.img} style={styles.card} />
                     </TouchableOpacity>
 
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:18,
     },
     normallDots: {
         width: 8,
