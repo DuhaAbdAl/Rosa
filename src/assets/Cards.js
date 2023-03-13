@@ -18,9 +18,9 @@ import RosaContext from '../../Store/RosaContext';
 
 
 const Cards = (props) => {
-    const { Name, image, favorates } = props;
-    // const [favorite, setFavorite] = useState(false)
-    const { favorite, setFavoratis } = useContext(RosaContext);
+    const { Name, image } = props;
+    const [favorates, setFavorite] = useState(false)
+    // const { favorates, setFavoratis } = useContext(RosaContext);
     const navigation = useNavigation();
     var favoritsFromStorage = favorates;
 
@@ -31,7 +31,7 @@ const Cards = (props) => {
     }
 
     const OnClickFavorite = async () => {
-        if (!favorite) {
+        if (!favorates) {
             !checkIfFavorate() &&
                 favoritsFromStorage.push(Name)
         } else {
@@ -40,11 +40,11 @@ const Cards = (props) => {
 
         AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage));
 
-        setFavorite(!favorite)
+        setFavoratis(!favorates)
     }
 
     useEffect(() => {
-        // setFavoratis(checkIfFavorate())
+        // setFavorite(checkIfFavorate())
     }, [favorates])
 
 
@@ -59,8 +59,8 @@ const Cards = (props) => {
                             <View>
                                 <Icon
                                     style={styles.favorite}
-                                    name={(favorite) ? "heart" : "heart-o"}
-                                    color={(favorite) ? "red" : "white"}
+                                    name={(favorates) ? "heart" : "heart-o"}
+                                    color={(favorates) ? "red" : "white"}
                                     size={20} />
                             </View>
                         </Pressable>

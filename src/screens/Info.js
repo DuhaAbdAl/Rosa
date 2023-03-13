@@ -5,6 +5,7 @@ import { data } from "../mokData/data";
 import * as Animatable from 'react-native-animatable';
 import ReadMore from "../Componants/ReadMoreLess";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Entypo from "react-native-vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 import { WINDOW_WIDTH } from "../assets/Sizes";
@@ -58,8 +59,14 @@ const Info = (props) => {
                 <TouchableOpacity onPress={() => {
                     drawerNavigation?.openDrawer();
                 }}>
-                    <Image source={require('../assets/images/profile.jpeg')}
-                        style={styles.profile} />
+                     <Entypo
+                        name="menu"
+                        color={'white'}
+                        size={30}
+                        style={styles.menu}
+                    />
+                    {/* <Image source={require('../assets/images/profile.jpeg')}
+                        style={styles.profile} /> */}
                 </TouchableOpacity>
             </Animatable.View>
         )
@@ -95,7 +102,7 @@ const Info = (props) => {
 
 }
 const MIN_HEIGHT = 80;
-const MAX_HEIGHT = 200;
+const MAX_HEIGHT = 250;
 
 const styles = StyleSheet.create({
     headerImage: {
@@ -177,6 +184,9 @@ const styles = StyleSheet.create({
         marginRight: 18,
         marginTop: 5,
     },
+    menu:{
+        margin:10
+    }
 });
 
 export default Info;

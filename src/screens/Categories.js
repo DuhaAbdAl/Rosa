@@ -118,19 +118,19 @@ const Categories = (props) => {
                         name='hearto' />
                 </Pressable>
                 <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.Favorite);
+                    props.navigation.navigate(ScreenName.Schedule);
                 }}>
                     <Icon style={styles.icons}
                         name='calendar' />
                 </Pressable>
-                <Pressable onPress={() => {
+                {/* <Pressable onPress={() => {
                     props.navigation.navigate(ScreenName.SearchHome);
                 }}>
                     <Icon style={styles.icons}
                         name='search1' />
-                </Pressable>
+                </Pressable> */}
                 <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.Favorite);
+                    props.navigation.navigate(ScreenName.UserProfilePage);
                 }}>
                     <Icon style={styles.icons}
                         name='user' />
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
         height: 65,
         backgroundColor: '#28463e',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginTop: 70,
         alignSelf: 'center',
 

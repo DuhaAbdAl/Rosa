@@ -12,8 +12,8 @@ import SearchBar from "../Componants/SearchBar";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {};
-    const { favorates, setFavoratis} = useContext(RosaContext);
-    const [plants , setPlants] = useState('');
+    const { favorates, setFavoratis } = useContext(RosaContext);
+    const [plants, setPlants] = useState('');
 
     const getfav = async () => {
         var favoritsFromStorage = await AsyncStorage.getItem('favorite');
@@ -39,6 +39,7 @@ const Types = (props) => {
         const isFav = favorates.find(item => item.title === title)
         return !!isFav;
     }
+
 
     const renderCard = ({ item }) => {
         return <Cards
@@ -67,21 +68,25 @@ const Types = (props) => {
     }, []);
 
     return (
-     
-        <ImageBackground style={styles.img} source={require('../assets/images/Types4.jpeg')}>
+        // <View style={styles.img}> 
+        //     <CustomHeader />
+        //     <SearchBar/>
+        //     <FlatList {...params.flatList} />
+        // </View>
+        <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
             <CustomHeader />
+            <SearchBar/>
+            <FlatList {...params.flatList} />
             {/* <SearchBar
                 onSearchChange={(val) => onSearchChange(val)} /> */}
-            <FlatList {...params.flatList} />
         </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
     img: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: '#d0e1d2',
         justifyContent: 'center',
     },
-
 });
- export default Types;
+export default Types;

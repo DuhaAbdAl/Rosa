@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         height: 65,
         backgroundColor: '#28463e',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         // alignSelf: 'center',
         // marginTop:100,
         // marginBottom:150,

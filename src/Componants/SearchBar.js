@@ -54,16 +54,14 @@ const SearchBar = (props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.searchContainer}>
-               
-            </View>
             <SelectList
                 setSelected={(val) => props.onSearchChange(val)}
                 data={searchData || []}
                 save="value"
                 searchicon={ <Feather name="search" color={"white"} size={20} />}
                 arrowicon={<AntDesign name="down" color={"white"} size={18}/>}
-                boxStyles={{backgroundColor:"rgba(250,250,250,0.55)", height:45,}}
+                boxStyles={styles.box}
+                // boxStyles={{backgroundColor:"rgba(250,250,250,0.45)", height:45,}}
                 placeholder="Search"
                 />
             <FlatList
@@ -79,17 +77,14 @@ const SearchBar = (props) => {
 const styles = StyleSheet.create({
     container: {
         width: '70%',
-    },
-    searchContainer: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        marginTop: 30,
+        marginTop:15,
+        alignSelf:'center'
     },
     searchIcon: {
         marginLeft: 7,
         marginTop: 15,
         margin: 5,
-        position: 'absolute',
+        // position: 'absolute',
     },
     searchInput: {
         marginTop: 12,
@@ -107,5 +102,9 @@ const styles = StyleSheet.create({
         // marginBottom:30,
         // marginTop:8,
     },
+    box:{
+        backgroundColor:"rgba(250,250,250,0.45)",
+        height:45
+    }
 });
 export default SearchBar;

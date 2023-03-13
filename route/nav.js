@@ -13,6 +13,8 @@ import Categories from "../src/screens/Categories";
 import CustomHeader from "../src/Componants/CustomHeader";
 import IconContainer from "../src/Componants/IconContainer";
 import UserProfilePage from "../src/screens/UserProfile";
+import Schedule from "../src/Componants/Schedule";
+import Favorite from "../src/Componants/Favorite";
 
 
 const MainNavigation = (props) => {
@@ -52,8 +54,13 @@ const MainNavigation = (props) => {
                 <Stack.Screen name={ScreenName.IconContainer} component={IconContainer} />
                 <Stack.Screen name={ScreenName.UserProfilePage} component={UserProfilePage}
                     options={{ headerShown: false }} />
+                <Stack.Screen name={ScreenName.Schedule} component={Schedule}
+                    options={{ headerShown: false }} />
+                <Stack.Screen name={ScreenName.Favorite} component={Favorite}
+                    options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 };
+// Schedule
 export default MainNavigation;

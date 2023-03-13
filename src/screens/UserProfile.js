@@ -1,13 +1,13 @@
-import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Entypo from "react-native-vector-icons/Entypo";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Schedule from "../Componants/Schedule";
 import Countdown from "../Componants/Timer";
-import { ScrollView } from "react-native";
 
 
 const UserProfilePage = () => {
@@ -15,7 +15,7 @@ const UserProfilePage = () => {
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground style={styles.imageBackground} source={require('../assets/images/ProfileBackground.jpeg')}>
+            <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
                 <View style={{ flexDirection: 'row' }}>
                     <Ionicons
                         style={styles.backArrow}
@@ -37,7 +37,15 @@ const UserProfilePage = () => {
             </ImageBackground>
 
             <View>
-                <Text style={styles.titleText}>My Plants :</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <MaterialCommunityIcons
+                        style={styles.flowerIcon}
+                        name="flower-tulip"
+                        size={30}
+                        color='green'
+                    />
+                    <Text style={styles.titleText}>My Plants :</Text>
+                </View>
                 <ScrollView horizontal={true} style={styles.cardImg}>
                     <ImageBackground source={require('../assets/images/LilyBackground2.jpeg')} style={styles.img}>
                         <View style={styles.cardName}>
@@ -64,37 +72,65 @@ const UserProfilePage = () => {
                 </ScrollView>
             </View>
             <View >
-                <View style={{ flexDirection: "row" }}>
+                <View style={styles.alerts}>
                     <FontAwesome
                         style={styles.bellIcon}
                         name="bell"
-                        color={'black'}
-                        size={30} />
-                    <Text style={styles.bellText}>notification</Text>
+                        color={'green'}
+                        size={25} />
+                    <Text style={styles.bellText}>Alerts :</Text>
                 </View>
-                <View style={styles.CountConainer}>
-                    <View style={styles.CountdownWater}>
-                        <MaterialCommunityIcons
-                            style={styles.icon}
-                            name="watering-can"
-                            color={"blue"}
-                            size={33} />
-                        <Text style={styles.countTextWater}>3 days</Text>
-                    </View>
-                    <View style={styles.CountdownFert}>
-                        <FontAwesome5
-                            style={styles.icon}
-                            name="seedling"
-                            color={"green"}
-                            size={30} />
-                        <Text style={styles.countTextFert}>6 days</Text>
-                    </View>
+                <View>
+                    <ScrollView horizontal={true}>
+                        
+
+                        <View style={styles.CountConainer}>
+                            <View style={styles.CountdownWater}>
+                                <MaterialCommunityIcons
+                                    style={styles.icon}
+                                    name="watering-can"
+                                    color={"blue"}
+                                    size={33} />
+                                <Text style={styles.countTextWater}>3 days</Text>
+                            </View>
+                                <Text style={styles.nextText}>Lilum</Text>
+                            <View style={styles.CountdownFert}>
+                                <FontAwesome5
+                                    style={styles.icon}
+                                    name="seedling"
+                                    color={"green"}
+                                    size={28} />
+                                <Text style={styles.countTextFert}>6 days</Text>
+                            </View>
+                        </View>
+
+
+                        <View style={styles.CountConainer}>
+                            <View style={styles.CountdownWater}>
+                                <MaterialCommunityIcons
+                                    style={styles.icon}
+                                    name="watering-can"
+                                    color={"blue"}
+                                    size={33} />
+                                <Text style={styles.countTextWater}>3 days</Text>
+                            </View>
+                        <Text style={styles.nextText}>Iris</Text>
+                            <View style={styles.CountdownFert}>
+                                <FontAwesome5
+                                    style={styles.icon}
+                                    name="seedling"
+                                    color={"green"}
+                                    size={28} />
+                                <Text style={styles.countTextFert}>4 days</Text>
+                            </View>
+                        </View>
+                    </ScrollView>
                 </View>
-            </View>
-            {/* <View style={styles.calendar}>
+                {/* <View style={styles.calendar}>
                 <Schedule/>
                 {Countdown()}
             </View> */}
+            </View>
         </View>
     )
 }
@@ -128,40 +164,42 @@ const styles = StyleSheet.create({
     },
     CountConainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 10,
-        marginTop: 60,
-        borderTopWidth: 2,
+        paddingBottom: 15,
+        justifyContent:'space-between',
+        // padding:20,
+        // paddingLeft:20,
     },
     CountdownWater: {
         borderRadius: 100,
         borderWidth: 8,
-        height: 140,
-        width: 140,
+        height: 150,
+        width: 150,
         marginTop: 60,
         alignSelf: 'flex-end',
-        marginRight: 30,
+        marginRight: 10,
         borderRightColor: '#3f54be',
         borderBottomColor: '#3f54be',
-        transform: [{ rotate: '90deg' }]
+        transform: [{ rotate: '90deg' }],
+        marginLeft: 10
     },
     CountdownFert: {
         borderRadius: 100,
         borderWidth: 8,
-        height: 140,
-        width: 140,
+        height: 150,
+        width: 150,
         marginTop: 60,
         alignSelf: 'flex-start',
         borderRightColor: 'green',
         borderBottomColor: 'green',
         transform: [{ rotate: '90deg' }],
-        marginRight: 40,
+        marginRight: 100,
+        
     },
     countTextWater: {
         color: '#3f54be',
         alignSelf: 'center',
         marginTop: 0,
-        marginBottom: 90,
+        marginBottom: 100,
         fontSize: 22,
         transform: [{ rotate: '-90deg' }],
     },
@@ -169,7 +207,7 @@ const styles = StyleSheet.create({
         color: 'green',
         alignSelf: 'center',
         marginTop: 0,
-        marginBottom: 90,
+        marginBottom: 100,
         fontSize: 22,
         transform: [{ rotate: '-90deg' }]
     },
@@ -184,13 +222,6 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         margin: 10,
         fontWeight: 'bold',
-        // borderBottomWidth:2,
-        // width:120,
-    },
-    cardImg: {
-        // width:150,
-        // height:150,
-        // flexDirection:'row',
     },
     img: {
         width: 150,
@@ -211,7 +242,8 @@ const styles = StyleSheet.create({
     },
     bellIcon: {
         alignSelf: 'flex-start',
-        marginBottom: 20,
+        marginTop: 10,
+        marginLeft: 10,
     },
     bellText: {
         color: '#0d5b28',
@@ -219,7 +251,24 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         fontWeight: 'bold',
         marginLeft: 10,
-    }
+        marginTop: 10,
+    },
+    alerts: {
+        flexDirection: 'row',
+        borderTopWidth: 2,
+        marginTop: 20,
+    },
+    flowerIcon: {
+        marginTop: 10,
+        marginLeft: 10,
+    },
+    nextText: {
+        color: "green",
+        fontSize: 25,
+        alignSelf: 'flex-start'
+        // margin: 10,
+        // marginLeft:90,
+    },
 
 });
 export default UserProfilePage;

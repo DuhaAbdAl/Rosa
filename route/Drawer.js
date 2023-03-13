@@ -45,7 +45,7 @@ const MyDrawer = () => {
       component: HomePage,
       options: {
         headerShown: false,
-        drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
+        // drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
       }
     },
     favorite:{
@@ -53,7 +53,7 @@ const MyDrawer = () => {
       component: Favorite,
       options:{
         headerShown:false,
-        drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
+        // drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
         }
     },
     categoriesPage: {
@@ -107,12 +107,12 @@ const MyDrawer = () => {
     drawerPosition = 'left'
     {...params.navigator} >
       <Drawer.Screen {...params.homePage} />
-      <Drawer.Screen {...params.categoriesPage} />
-      <Drawer.Screen {...params.types} />
-      <Drawer.Screen {...params.info} />
-      <Drawer.Screen {...params.favorite}/>
+      {/* <Drawer.Screen {...params.categoriesPage} /> */}
+      {/* <Drawer.Screen {...params.types} /> */}
+      {/* <Drawer.Screen {...params.info} /> */}
+      {/* <Drawer.Screen {...params.favorite}/> */}
       <Drawer.Screen {...params.signIn}/>
-      <Drawer.Screen {...params.signUp}/>
+      {/* <Drawer.Screen {...params.signUp}/> */}
       <Drawer.Screen {...params.UserProfilePage}/>
     </Drawer.Navigator>
   );

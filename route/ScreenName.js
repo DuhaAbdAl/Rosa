@@ -11,4 +11,5 @@ export const ScreenName = {
     CustomHeader: 'CustomHeader', 
     IconContainer: 'IconContainer', 
     UserProfilePage: 'Profile', 
+    Schedule: 'Schedule',
 };
