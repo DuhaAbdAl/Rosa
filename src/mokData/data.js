@@ -706,7 +706,7 @@ export const data = [
     },
     {
         title: "Lemon Lime",
-        image: require('../assets/images/rosemary.jpeg'),
+        image: require('../assets/images/Lemon.jpeg'),
         info: {
             About: `
             Lilies add graceful elegance and fragrance\n
@@ -729,8 +729,8 @@ export const data = [
         BloomTime:'Spring, Summer,\nFall',
     },
     {
-        title: "Rosemary",
-        image: require('../assets/images/rosemary.jpeg'),
+        title: "Anthurium",
+        image: require('../assets/images/Anthurium.png'),
         info: {
             About: `
             Lilies add graceful elegance and fragrance\n
@@ -753,8 +753,8 @@ export const data = [
         BloomTime:'Spring, Summer,\nFall',
     },
     {
-        title: "Rosemary",
-        image: require('../assets/images/rosemary.jpeg'),
+        title: "Golden Pothos",
+        image: require('../assets/images/Pothos.jpeg'),
         info: {
             About: `
             Lilies add graceful elegance and fragrance\n
@@ -777,8 +777,8 @@ export const data = [
         BloomTime:'Spring, Summer,\nFall',
     },
     {
-        title: "Rosemary",
-        image: require('../assets/images/rosemary.jpeg'),
+        title: "Lucky Bamboo",
+        image: require('../assets/images/Bamboo.jpeg'),
         info: {
             About: `
             Lilies add graceful elegance and fragrance\n
@@ -801,8 +801,8 @@ export const data = [
         BloomTime:'Spring, Summer,\nFall',
     },
     {
-        title: "Rosemary",
-        image: require('../assets/images/rosemary.jpeg'),
+        title: "Snake Plant",
+        image: require('../assets/images/snake.jpeg'),
         info: {
             About: `
             Lilies add graceful elegance and fragrance\n
