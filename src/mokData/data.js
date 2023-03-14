@@ -536,6 +536,294 @@ export const data = [
         Fertilizer:'Once a week',
         BloomTime:'Spring, Summer,\nFall',
     },
+    {
+        title: "Basil",
+        image: require('../assets/images/Basil.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Cilantro",
+        image: require('../assets/images/Cilantro.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Dill",
+        image: require('../assets/images/Dill.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Mint",
+        image: require('../assets/images/Mint.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Oregano",
+        image: require('../assets/images/Oregano.png'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Parsley (Italian)",
+        image: require('../assets/images/Parsley.png'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Rosemary",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Herbs',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Lemon Lime",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Home Plants',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Rosemary",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Home Plants',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Rosemary",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Home Plants',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Rosemary",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Home Plants',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
+    {
+        title: "Rosemary",
+        image: require('../assets/images/rosemary.jpeg'),
+        info: {
+            About: `
+            Lilies add graceful elegance and fragrance\n
+            to any garden, blooming from early summer all\n
+            the way through\n
+            fall, depending on the type.\n
+            By carefully blending early, mid-season, and late\n
+            varieties into your garden,\n
+            you will enjoy their magnificent blooms from\n
+            spring through first frost.\n
+            At home in both formal and naturalistic settings.\n`,
+
+            Tips:':',
+        },
+
+        type: 'Home Plants',
+        SunExposure:'Full Sun\nPart Sun',
+        Water:'2 times a week',
+        Fertilizer:'Once a week',
+        BloomTime:'Spring, Summer,\nFall',
+    },
 ]
 
 

@@ -14,7 +14,7 @@ const Favorite = (props) => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/info2.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/Types4.jpeg')}>
             <View style={styles.header}>
                 <Pressable onPress={() => {
                     navigation.goBack();

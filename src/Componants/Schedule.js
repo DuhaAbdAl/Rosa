@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, Image, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, View, Pressable, Text, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -56,7 +56,7 @@ const Schedule = () => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
-        <ImageBackground source={require('../assets/images/info2.jpeg')} style={styles.container}>
+        <ImageBackground source={require('../assets/images/types3.jpeg')} style={styles.container}>
             <View style={styles.header}>
                 <Pressable onPress={() => {
                     navigation.goBack();
@@ -78,9 +78,41 @@ const Schedule = () => {
                     />
                 </TouchableOpacity>
             </View>
-            <CalendarList
+            <View style={styles.agenda}>
+                <Agenda
+                    selected="2023-03-14"
+                    items={{
+                        '2023-03-14': [{ name: 'Recycling' }, { name: 'Planted' }, { name: 'Watering' }],
+                        '2023-03-15': [{ name: 'Fertilizing' }]
+                    }}
+                    renderItem={(item) => (
+                        <TouchableOpacity style={styles.item}>
+                            <Text style={styles.itemText}>{item.name}</Text>
+                        </TouchableOpacity>
+                    )}
+                    theme={{
+                        calendarBackground: '#19362d',
+                        dayTextColor: '#fff',
+                        textDisabledColor: '#444',
+                        monthTextColor: '#fff',
+                        dayTextAtIndex6: {
+                            color: 'green'
+                        }
+                    }}
+                />
+            </View>
+            {/* <Calendar
                 style={styles.list}
-            />
+                theme={{
+                    calendarBackground: '#077086',
+                    dayTextColor: '#fff',
+                    textDisabledColor: '#444',
+                    monthTextColor: '#fff',
+                    dayTextAtIndex6: {
+                        color: 'green'
+                      }
+                  }}
+            /> */}
 
         </ImageBackground>
     )
@@ -100,17 +132,43 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     list: {
-        borderRadius: 5,
-        marginTop: 40,
+        borderRadius: 10,
+        marginTop: 120,
         elevation: 5,
         borderWidth: 4,
-        borderColor: 'rgba(100, 100, 100, 0.2)',
-        width: '100%',
-        height: '90%'
+        borderColor: 'rgba(250, 250, 250, 0.2)',
+        width: '90%',
+        height: '70%',
+        alignSelf: 'center',
+        paddingTop: 45
     },
-    header:{
+    header: {
         flexDirection: 'row',
-        justifyContent: 'space-between' 
+        justifyContent: 'space-between'
+    },
+    item: {
+        backgroundColor: 'white',
+        flex: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginRight: 10,
+        marginTop: 17,
+        width: '90%'
+    },
+    itemText: {
+        color: '#888',
+        fontSize: 16,
+    },
+    agenda: {
+        flex: 1,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        marginTop: 25,
+        borderRadius: 10,
+        elevation: 5,
+        borderWidth: 3,
+        borderColor: 'rgba(250, 250, 250, 0.2)',
+        width: '95%',
     },
 });
 export default Schedule;

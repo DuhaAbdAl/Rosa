@@ -45,8 +45,8 @@ const SearchBar = (props) => {
         if (!searchText || searchText == 'all') {
             return plants;
         }
-    //     const filterdData = data.find(plant => plant.title === searchText).plant;
-    //     return filterdData;
+        // const filterdData = data.find(plant => plant.title === searchText).plant;
+        // return filterdData;
     };
     useEffect(() => {
         setPlants(plants);

@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         marginBottom:110,
         marginTop:60,
+        fontStyle:"italic",
+        elevation:15,
+        borderColor:'green',
     }
 
 });

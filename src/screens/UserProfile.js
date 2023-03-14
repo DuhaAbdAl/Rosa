@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView,Pressable } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
@@ -17,11 +17,15 @@ const UserProfilePage = () => {
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
                 <View style={{ flexDirection: 'row' }}>
+                <Pressable onPress={() => {
+                    navigation.goBack();
+                }}>
                     <Ionicons
                         style={styles.backArrow}
                         name="chevron-back"
                         color={'white'}
                         size={30} />
+                        </Pressable>
                     <TouchableOpacity onPress={() => {
                         drawerNavigation?.openDrawer();
                     }}>

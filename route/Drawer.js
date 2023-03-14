@@ -113,7 +113,7 @@ const MyDrawer = () => {
       {/* <Drawer.Screen {...params.favorite}/> */}
       <Drawer.Screen {...params.signIn}/>
       {/* <Drawer.Screen {...params.signUp}/> */}
-      <Drawer.Screen {...params.UserProfilePage}/>
+      {/* <Drawer.Screen {...params.UserProfilePage}/> */}
     </Drawer.Navigator>
   );
 }
