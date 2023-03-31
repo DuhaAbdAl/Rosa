@@ -29,6 +29,8 @@ const SearchList = (props) => {
     )
 };
 
+
+
 const styles = StyleSheet.create({
     listContainer: {
         // margin: 10,

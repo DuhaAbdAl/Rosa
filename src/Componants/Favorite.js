@@ -14,7 +14,7 @@ const Favorite = (props) => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/Types4.jpeg')}>
+        <ImageBackground style={styles.image} source={require('../assets/images/fav.jpeg')} >
             <View style={styles.header}>
                 <Pressable onPress={() => {
                     navigation.goBack();
@@ -42,7 +42,7 @@ const Favorite = (props) => {
                         <Text style={styles.cardText}>Lilum</Text>
                     </View>
                 </ImageBackground>
-                <ImageBackground source={require('../assets/images/BleedingHeartBackground.jpeg')} style={styles.img}>
+                <ImageBackground source={require('../assets/images/AfricanDaisy.jpeg')} style={styles.img}>
                     <View style={styles.cardName}>
                         <Text style={styles.cardText}>Bleeding Heart</Text>
                     </View>
@@ -65,8 +65,7 @@ const Favorite = (props) => {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        justifyContent: 'center',
-        
+        backgroundColor: '#33691e',
     },
     img: {
         width: 250,
@@ -95,7 +94,9 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor:'rgba(52,52,52,0.5)',
+        height:65
     },
 });
 export default Favorite;

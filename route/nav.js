@@ -50,7 +50,10 @@ const MainNavigation = (props) => {
                 <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
                     options={{ headerShown: false }} />
                 <Stack.Screen name={ScreenName.CustomHeader} component={CustomHeader} />
-                <Stack.Screen name={ScreenName.SignUp} component={SignUp} />
+                <Stack.Screen name={ScreenName.SignIn} component={SignIn}
+                options={{ headerShown: false }}  />
+                <Stack.Screen name={ScreenName.SignUp} component={SignUp}
+                options={{ headerShown: false }}  />
                 <Stack.Screen name={ScreenName.IconContainer} component={IconContainer} />
                 <Stack.Screen name={ScreenName.UserProfilePage} component={UserProfilePage}
                     options={{ headerShown: false }} />

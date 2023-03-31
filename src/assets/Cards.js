@@ -20,32 +20,15 @@ import RosaContext from '../../Store/RosaContext';
 const Cards = (props) => {
     const { Name, image } = props;
     const [favorates, setFavorite] = useState(false)
-    // const { favorates, setFavoratis } = useContext(RosaContext);
     const navigation = useNavigation();
-    var favoritsFromStorage = favorates;
-
-
-    const checkIfFavorate = () => {
-        const isFav = favoritsFromStorage.find(item => item === Name)
-        return !!isFav;
-    }
 
     const OnClickFavorite = async () => {
-        if (!favorates) {
-            !checkIfFavorate() &&
-                favoritsFromStorage.push(Name)
-        } else {
-            favoritsFromStorage = favoritsFromStorage.filter(fav => fav !== Name);
-        }
-
-        AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage));
-
-        setFavoratis(!favorates)
+        setFavorite(!favorates)
     }
 
-    useEffect(() => {
-        // setFavorite(checkIfFavorate())
-    }, [favorates])
+    // useEffect(() => {
+    //     // setFavorite(checkIfFavorate())
+    // }, [favorates])
 
 
     return (

@@ -275,7 +275,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
-    
+
+            Tips:':',
     
         },
         type: 'Trees',
@@ -318,6 +319,7 @@ export const data = [
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
 
+            Tips:':',
 
         },
         type: 'Trees',
@@ -338,6 +340,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+            
+            Tips:':',
 
 
         },
@@ -359,6 +363,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+            
+            Tips:':',
 
 
         },
@@ -381,6 +387,8 @@ export const data = [
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
 
+            Tips:':',
+
 
         },
         type: 'Trees',
@@ -401,6 +409,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+            
+            Tips:':',
 
 
         },
@@ -423,6 +433,8 @@ export const data = [
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
 
+            Tips:':',
+
 
         },
         type: 'Shrubs',
@@ -443,6 +455,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+
+            Tips:':',
 
 
         },
@@ -465,6 +479,8 @@ export const data = [
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
 
+            Tips:':',
+
 
         },
         type: 'Shrubs',
@@ -485,6 +501,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+
+            Tips:':',
 
 
         },
@@ -507,6 +525,8 @@ export const data = [
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
 
+            Tips:':',
+
 
         },
         type: 'Shrubs',
@@ -527,6 +547,8 @@ export const data = [
             Also, the flowers do not produce real nectar\n
             but attract pollinating beetles with fragrant\n
             and sugary secretions.`,
+
+            Tips:':',
 
 
         },

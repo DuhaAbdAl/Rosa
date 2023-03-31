@@ -73,7 +73,7 @@ const Types = (props) => {
         //     <SearchBar/>
         //     <FlatList {...params.flatList} />
         // </View>
-        <ImageBackground style={styles.img} source={require('../assets/images/info2.jpeg')}>
+        <ImageBackground style={styles.img} source={require('../assets/images/Hoa.jpeg')}>
             <CustomHeader />
             <SearchBar/>
             <FlatList {...params.flatList} />
@@ -85,7 +85,8 @@ const Types = (props) => {
 const styles = StyleSheet.create({
     img: {
         flex: 1,
-        backgroundColor: '#d0e1d2',
+        backgroundColor: '#33691e',
+        // backgroundColor:'#efeff1',
         justifyContent: 'center',
     },
 });

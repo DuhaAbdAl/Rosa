@@ -29,7 +29,7 @@ const MyDrawer = () => {
   const params = {
     navigator: {
       drawerContent: props => <CustomDrawer {...props} />,
-      screenOptions: { 
+      screenOptions: {
         drawerActiveBackgroundColor: '#356258',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
@@ -48,72 +48,74 @@ const MyDrawer = () => {
         // drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
       }
     },
-    favorite:{
+    favorite: {
       name: ScreenName.Favorite,
       component: Favorite,
-      options:{
-        headerShown:false,
+      options: {
+        headerShown: false,
         // drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
-        }
+      }
     },
     categoriesPage: {
       name: ScreenName.Categories,
       component: Categories,
       options: {
-        headerShown:false , 
+        headerShown: false,
       }
-    }, 
-    types:{
-      name:ScreenName.Types,
-      component: Types,
-      options:{
-        headerShown:false
-        }
     },
-    info:{
+    types: {
+      name: ScreenName.Types,
+      component: Types,
+      options: {
+        headerShown: false
+      }
+    },
+    info: {
       name: ScreenName.Info,
       component: Info,
-      options:{
-        headerShown:false
-        }
+      options: {
+        headerShown: false
+      }
     },
-    signIn:{
+    signIn: {
       name: ScreenName.SignIn,
       component: SignIn,
-      options:{
-      headerShown:false
+      options: {
+        headerShown: false
       }
     },
-    signUp:{
+    signUp: {
       name: ScreenName.SignUp,
       component: SignUp,
-      options:{
-      headerShown:false
+      options: {
+        headerShown: false
       }
     },
-    UserProfilePage:{
+    UserProfilePage: {
       name: ScreenName.UserProfilePage,
-      component : UserProfilePage,
-      options:{
-        headerShown:false
-        }
+      component: UserProfilePage,
+      options: {
+        headerShown: false
+      }
     }
-   
+
   }
-// do another page for stack navigation and import them here
+  // do another page for stack navigation and import them here
   return (
-    <Drawer.Navigator 
-    id="LeftDrawer"
-    drawerPosition = 'left'
-    {...params.navigator} >
+    <Drawer.Navigator
+      id="LeftDrawer"
+      drawerPosition='left'
+  
+      {...params.navigator} >
       <Drawer.Screen {...params.homePage} />
+      {/* <Drawer.Screen  /> */}
       {/* <Drawer.Screen {...params.categoriesPage} /> */}
       {/* <Drawer.Screen {...params.types} /> */}
       {/* <Drawer.Screen {...params.info} /> */}
       {/* <Drawer.Screen {...params.favorite}/> */}
-      <Drawer.Screen {...params.signIn}/>
+      {/* <Drawer.Screen {...params.signIn} /> */}
       {/* <Drawer.Screen {...params.signUp}/> */}
-      {/* <Drawer.Screen {...params.UserProfilePage}/> */}
+      <Drawer.Screen {...params.UserProfilePage}/>
     </Drawer.Navigator>
   );
 }

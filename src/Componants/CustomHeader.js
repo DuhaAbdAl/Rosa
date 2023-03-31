@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: 'center',
         paddingHorizontal: 10,
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        backgroundColor:'rgba(52,52,52,0.5)',
+
     },
     profile: {
         width: 43,

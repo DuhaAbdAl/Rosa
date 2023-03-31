@@ -10,7 +10,7 @@ const IconContainer = (props) => {
     return (
         <View style={styles.iconContainer}>
             <Pressable onPress={() => {
-                props.navigation.navigate(ScreenName.HomePage)
+                navigation.navigate(ScreenName.HomePage)
             }}>
                 <Icon style={styles.icons}
                     name='home' />
@@ -19,13 +19,13 @@ const IconContainer = (props) => {
                 style={styles.icons}
                 name="pluscircleo" />
             <Pressable onPress={() => {
-                props.navigation.navigate(ScreenName.Favorite);
+                navigation.navigate(ScreenName.Favorite);
             }}>
                 <Icon style={styles.icons}
                     name='hearto' />
             </Pressable>
             <Pressable onPress={() => {
-                props.navigation.navigate(ScreenName.Favorite);
+                navigation.navigate(ScreenName.Schedule);
             }}>
                 <Icon style={styles.icons}
                     name='calendar' />

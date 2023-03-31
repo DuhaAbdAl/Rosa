@@ -7,44 +7,61 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import { ScrollView } from "react-native";
 import { useState } from "react";
 
+//#c3ce29=yellow
 const InfoCards = (props) => {
     const { SunExposure, Water, Fertilizer, BloomTime } = props;
 
     return (
         <View>
             <ScrollView horizontal={true}>
-                    <View style={styles.container}>
+                <View style={styles.container}>
+                    <View style={styles.iconContainer}>
                         <Ionicons
                             style={styles.icon}
                             name="md-sunny-sharp"
                             color={"#c3ce29"}
-                            size={30} />
-                       <Text style={styles.text}>{SunExposure}</Text>
+                            size={22} />
                     </View>
-                    <View style={styles.container}>
+                    <View>
+                        <Text style={styles.text}>{SunExposure}</Text>
+                    </View>
+                </View>
+                <View style={styles.container}>
+                    <View style={styles.iconContainer}>
                         <MaterialCommunityIcons
                             style={styles.icon}
                             name="flower-outline"
-                            color={"#7f3667"}
-                            size={28} />
+                            color={"#e44b8d"}
+                            size={25} />
+                    </View>
+                    <View>
                         <Text style={styles.text}>{BloomTime}</Text>
                     </View>
-                    <View style={styles.container}>
+                </View>
+                <View style={styles.container}>
+                    <View style={styles.iconContainer}>
                         <MaterialCommunityIcons
                             style={styles.icon}
                             name="watering-can"
-                            color={"teal"}
-                            size={30} />
+                            color={"#1fbdd2"}
+                            size={25} />
+                    </View>
+                    <View>
                         <Text style={styles.text}>{Water}</Text>
                     </View>
-                    <View style={styles.container}>
+                </View>
+                <View style={styles.container}>
+                    <View style={styles.iconContainer}>
                         <FontAwesome5
                             style={styles.icon}
                             name="seedling"
-                            color={"green"}
-                            size={30} />
+                            color={"#8bc34a"}
+                            size={20} />
+                    </View>
+                    <View>
                         <Text style={styles.text}> {Fertilizer}</Text>
                     </View>
+                </View>
             </ScrollView>
         </View>
     )
@@ -52,14 +69,16 @@ const InfoCards = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 100,
-        height: 110,
+        width: 110,
+        height: 120,
         borderColor: 'green',
         borderWidth: 2,
-        marginLeft:15,
+        marginLeft: 15,
         alignItems: 'center',
-        borderRadius:15,
-        marginBottom:10,
+        borderRadius: 15,
+        marginBottom: 10,
+        backgroundColor: '#378c80',
+        elevation:10
     },
     icon: {
         alignSelf: 'center',
@@ -68,6 +87,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 14,
         color: "black",
+        marginTop:5,
+    },
+    iconContainer: {
+        backgroundColor: "rgba(52,52,52,0.3)",
+        alignSelf: 'flex-start',
+        borderRadius: 10,
     }
 })
 export default InfoCards;

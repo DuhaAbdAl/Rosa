@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Agenda, Calendar, CalendarList, DateData } from "react-native-calendars";
 import { useState } from "react";
 
+
 // const timeToString = (time = Number) => {
 //     const date = new Date(time);
 //     return date.toISOString().split('T')[0];
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderWidth: 3,
         borderColor: 'rgba(250, 250, 250, 0.2)',
-        width: '95%',
+        width: '100%',
     },
 });
 export default Schedule;
