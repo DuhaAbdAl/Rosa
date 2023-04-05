@@ -16,11 +16,12 @@ const InfoCards = (props) => {
             <ScrollView horizontal={true}>
                 <View style={styles.container}>
                     <View style={styles.iconContainer}>
-                        <Ionicons
+                        <Fontisto
                             style={styles.icon}
-                            name="md-sunny-sharp"
-                            color={"#c3ce29"}
-                            size={22} />
+                            name="day-sunny"
+                            // color={"#c3ce29"}
+                            // color={'white'}
+                            size={20} />
                     </View>
                     <View>
                         <Text style={styles.text}>{SunExposure}</Text>
@@ -30,9 +31,9 @@ const InfoCards = (props) => {
                     <View style={styles.iconContainer}>
                         <MaterialCommunityIcons
                             style={styles.icon}
-                            name="flower-outline"
-                            color={"#e44b8d"}
-                            size={25} />
+                            name="flower-tulip-outline"
+                            // color={"#e44b8d"}
+                            size={20} />
                     </View>
                     <View>
                         <Text style={styles.text}>{BloomTime}</Text>
@@ -43,7 +44,7 @@ const InfoCards = (props) => {
                         <MaterialCommunityIcons
                             style={styles.icon}
                             name="watering-can"
-                            color={"#1fbdd2"}
+                            // color={"#1fbdd2"}
                             size={25} />
                     </View>
                     <View>
@@ -55,7 +56,7 @@ const InfoCards = (props) => {
                         <FontAwesome5
                             style={styles.icon}
                             name="seedling"
-                            color={"#8bc34a"}
+                            // color={"#8bc34a"}
                             size={20} />
                     </View>
                     <View>
@@ -69,30 +70,37 @@ const InfoCards = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 110,
-        height: 120,
-        borderColor: 'green',
+        width: 130,
+        height: 170,
+        // borderColor: '#0b626b',
+        borderColor:"gray",
         borderWidth: 2,
         marginLeft: 15,
-        alignItems: 'center',
         borderRadius: 15,
         marginBottom: 10,
-        backgroundColor: '#378c80',
-        elevation:10
+        // backgroundColor: '#378c80',
+        backgroundColor:"#0b626b",
+        opacity:1,
+        elevation:10,
     },
     icon: {
         alignSelf: 'center',
         margin: 8,
+        color:"#fff"
     },
     text: {
         fontSize: 14,
-        color: "black",
-        marginTop:5,
+        color: "white",
+        marginTop:60,
+        alignSelf:'center'
     },
     iconContainer: {
-        backgroundColor: "rgba(52,52,52,0.3)",
+        backgroundColor: "rgba(250,250,250,0.2)",
         alignSelf: 'flex-start',
+        // alignSelf:"center",
         borderRadius: 10,
+        marginLeft:8,
+        marginTop:5
     }
 })
 export default InfoCards;

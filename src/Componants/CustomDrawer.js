@@ -1,14 +1,22 @@
 import React from "react";
 import { View, Text, ImageBackground, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/AntDesign";
+import { ScreenName } from "../../route/ScreenName";
+import MainStack from "../../route/Stack";
 
 const CustomDrawer = (props) => {
+const params ={
+    HomePage: {
+        name: "MainStack",
+        component: MainStack,
+    },
 
+}
 
 
     return (
-        <View style={{ flex: 1}}>
+        <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}
                 contentContainerStyle={{ backgroundColor: 'black' }}>
                 <ImageBackground source={require('../assets/images/drawer1.jpeg')} style={{ padding: 20 }}>
@@ -17,16 +25,19 @@ const CustomDrawer = (props) => {
                 </ImageBackground>
                 <View style={styles.drwerlist}>
                     <DrawerItemList {...props} />
+                    {/* <DrawerItem
+                        label="Home"
+                        onPress={() => navigation.navigate(ScreenName.HomePage)} /> */}
                 </View>
             </DrawerContentScrollView>
             <View style={styles.margin}>
                 <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={styles.outIcon}>
                         <Icon
                             name='logout'
                             size={18}
                             color='#333' />
-                        <Text style={styles.text}> Sign Out</Text>
+                        <Text style={styles.outText}> Sign Out</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -55,12 +66,16 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: '#ccc',
     },
-    text: {
+    outText: {
         fontSize: 18,
         fontFamily: 'Roboto-Medium',
         marginLeft: 5,
         color: '#333',
     },
+    outIcon: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    }
 
 })
 export default CustomDrawer;

@@ -96,7 +96,7 @@ const Info = (props) => {
             {renderInfoCard(filterData())}
             {props.children}
         </ImageHeaderScrollView >
-        {IconContainer()}
+        {/* {IconContainer()} */}
         </View>
     )
 
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     text2: {
-        fontSize: 18,
-        color: '#fff',
+        fontSize: 20,
+        color: '#0b626b',
         textAlign: 'left',
         fontWeight: 'bold',
         marginLeft: 10,
@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingTop: 5,
         paddingLeft: 13,
-        // backgroundColor: '#265323',
-        backgroundColor:'#378c80',
+        // backgroundColor: '#0b626b',
+        // backgroundColor:'#378c80',
         height: 40,
         width: 90,
     },

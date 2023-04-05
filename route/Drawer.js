@@ -12,6 +12,7 @@ import SignIn from "../src/screens/SignIn";
 import SignUp from "../src/screens/SignUp";
 import Favorite from "../src/Componants/Favorite";
 import UserProfilePage from "../src/screens/UserProfile";
+import MainStack from "./Stack";
 
 const Drawer = createDrawerNavigator();
 const MyDrawer = () => {
@@ -45,7 +46,7 @@ const MyDrawer = () => {
       component: HomePage,
       options: {
         headerShown: false,
-        // drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
+        drawerIcon: ({ color }) => renderIcon(color, ScreenName.HomePage)
       }
     },
     favorite: {
@@ -54,27 +55,6 @@ const MyDrawer = () => {
       options: {
         headerShown: false,
         // drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
-      }
-    },
-    categoriesPage: {
-      name: ScreenName.Categories,
-      component: Categories,
-      options: {
-        headerShown: false,
-      }
-    },
-    types: {
-      name: ScreenName.Types,
-      component: Types,
-      options: {
-        headerShown: false
-      }
-    },
-    info: {
-      name: ScreenName.Info,
-      component: Info,
-      options: {
-        headerShown: false
       }
     },
     signIn: {
@@ -105,13 +85,10 @@ const MyDrawer = () => {
     <Drawer.Navigator
       id="LeftDrawer"
       drawerPosition='left'
-  
-      {...params.navigator} >
+      {...params.navigator} 
+      >
+      {/* <Drawer.Screen name={"MainStack"} component={MainStack}/> */}
       <Drawer.Screen {...params.homePage} />
-      {/* <Drawer.Screen  /> */}
-      {/* <Drawer.Screen {...params.categoriesPage} /> */}
-      {/* <Drawer.Screen {...params.types} /> */}
-      {/* <Drawer.Screen {...params.info} /> */}
       {/* <Drawer.Screen {...params.favorite}/> */}
       {/* <Drawer.Screen {...params.signIn} /> */}
       {/* <Drawer.Screen {...params.signUp}/> */}

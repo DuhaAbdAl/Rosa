@@ -393,9 +393,9 @@ export const data = [
         },
         type: 'Trees',
         SunExposure:'Full Sun\nPart Sun',
-        Water:'2 times a week',
-        Fertilizer:'Once a week',
-        BloomTime:'Spring, Summer,\nFall',
+        Water:'2 times \na week',
+        Fertilizer:'Once \na week',
+        BloomTime:'Spring, \nSummer, \nFall',
     },
     {
         title: "Euonymus",

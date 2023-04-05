@@ -12,4 +12,5 @@ export const ScreenName = {
     IconContainer: 'IconContainer', 
     UserProfilePage: 'Profile', 
     Schedule: 'Schedule',
+    MainStack: "MainStack",
 };
