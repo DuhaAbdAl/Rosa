@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView,Pressable } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView, Pressable } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
@@ -8,6 +8,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Schedule from "../Componants/Schedule";
 import Countdown from "../Componants/Timer";
+import CountDownCircle from "../Componants/CountDownCircle";
 
 
 const UserProfilePage = () => {
@@ -17,15 +18,15 @@ const UserProfilePage = () => {
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
                 <View style={{ flexDirection: 'row' }}>
-                <Pressable onPress={() => {
-                    navigation.goBack();
-                }}>
-                    <Ionicons
-                        style={styles.backArrow}
-                        name="chevron-back"
-                        color={'white'}
-                        size={30} />
-                        </Pressable>
+                    <Pressable onPress={() => {
+                        navigation.goBack();
+                    }}>
+                        <Ionicons
+                            style={styles.backArrow}
+                            name="chevron-back"
+                            color={'white'}
+                            size={30} />
+                    </Pressable>
                     <TouchableOpacity onPress={() => {
                         drawerNavigation?.openDrawer();
                     }}>
@@ -84,8 +85,9 @@ const UserProfilePage = () => {
                         size={25} />
                     <Text style={styles.bellText}>Alerts :</Text>
                 </View>
+                {/* <CountDownCircle/> */}
                 <View>
-                    <ScrollView horizontal={true}>
+                    {/* <ScrollView horizontal={true}>
                         
 
                         <View style={styles.CountConainer}>
@@ -128,7 +130,8 @@ const UserProfilePage = () => {
                                 <Text style={styles.countTextFert}>4 days</Text>
                             </View>
                         </View>
-                    </ScrollView>
+                    </ScrollView> */}
+                    
                 </View>
                 {/* <View style={styles.calendar}>
                 <Schedule/>
@@ -169,7 +172,7 @@ const styles = StyleSheet.create({
     CountConainer: {
         flexDirection: 'row',
         paddingBottom: 15,
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         // padding:20,
         // paddingLeft:20,
     },
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
         borderBottomColor: 'green',
         transform: [{ rotate: '90deg' }],
         marginRight: 100,
-        
+
     },
     countTextWater: {
         color: '#3f54be',
