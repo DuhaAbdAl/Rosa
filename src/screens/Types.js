@@ -68,24 +68,24 @@ const Types = (props) => {
     }, []);
 
     return (
-        // <View style={styles.img}> 
-        //     <CustomHeader />
-        //     <SearchBar/>
-        //     <FlatList {...params.flatList} />
-        // </View>
-        <ImageBackground style={styles.img} source={require('../assets/images/Hoa.jpeg')}>
+        <View style={styles.img}> 
             <CustomHeader />
             <SearchBar/>
             <FlatList {...params.flatList} />
-            {/* <SearchBar
-                onSearchChange={(val) => onSearchChange(val)} /> */}
-        </ImageBackground>
+        </View>
+        // <ImageBackground style={styles.img} source={require('../assets/images/Hoa.jpeg')}>
+        //     <CustomHeader />
+        //     <SearchBar/>
+        //     <FlatList {...params.flatList} />
+        //     {/* <SearchBar
+        //         onSearchChange={(val) => onSearchChange(val)} /> */}
+        // </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
     img: {
         flex: 1,
-        backgroundColor: '#33691e',
+        backgroundColor: '#fff',
         // backgroundColor:'#efeff1',
         justifyContent: 'center',
     },

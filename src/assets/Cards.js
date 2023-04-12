@@ -62,42 +62,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    imgCard: {
-        width: 150,
-        height: 150,
-        borderRadius: 30,
-        marginRight: 10,
-        marginBottom: 15,
-    },
-    nameCard: {
-        width: 237,
-        height: 150,
-        paddingTop: 10,
-        backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        marginBottom: 10,
-        borderRadius: 20,
-        elevation: 30,
-    },
-    text: {
-        color: 'white',
-        fontSize: 15,
-        marginRight: 90,
-        marginLeft: 10,
-    },
-    iconStyle: {
-        marginBottom: 10,
-        marginTop: 7,
-        flexDirection: 'row',
-        marginLeft: 10,
-    },
-    iconView: {
-        flexDirection: 'row',
-    },
-    iconText: {
-        marginTop: 7,
-        marginLeft: 5,
-        color: 'white',
-    },
     favorite: {
         alignSelf: 'flex-end',
         margin:8,
@@ -106,9 +70,10 @@ const styles = StyleSheet.create({
         height: 170,
         width: 180,
         marginLeft: 12,
-        borderRadius: 20,
         marginBottom: 30,
-        
+        elevation:15,
+        borderWidth:1,
+        borderColor:'gray',
     },
     cardName: {
         width: '100%',

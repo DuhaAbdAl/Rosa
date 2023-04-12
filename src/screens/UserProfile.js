@@ -1,4 +1,5 @@
 import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView, Pressable } from "react-native";
+import { Avatar, Title, Caption, TouchableRipple } from "react-native-paper";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +10,8 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Schedule from "../Componants/Schedule";
 import Countdown from "../Componants/Timer";
 import CountDownCircle from "../Componants/CountDownCircle";
-
+import Animated from 'react-native-reanimated';
+import BottomSheet from 'reanimated-bottom-sheet';
 
 const UserProfilePage = () => {
     const navigation = useNavigation();
@@ -17,7 +19,7 @@ const UserProfilePage = () => {
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', justifyContent:'space-between' }}>
                     <Pressable onPress={() => {
                         navigation.goBack();
                     }}>
@@ -38,9 +40,11 @@ const UserProfilePage = () => {
                     </TouchableOpacity>
                 </View>
                 <Image source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} />
-                <Text style={styles.usertext}>User</Text>
+                <View>
+                    <Title style={styles.title}>User</Title>
+                    <Caption style={styles.caption}>@User</Caption>
+                </View>
             </ImageBackground>
-
             <View>
                 <View style={{ flexDirection: 'row' }}>
                     <MaterialCommunityIcons
@@ -85,7 +89,6 @@ const UserProfilePage = () => {
                         size={25} />
                     <Text style={styles.bellText}>Alerts :</Text>
                 </View>
-                {/* <CountDownCircle/> */}
                 <View>
                     {/* <ScrollView horizontal={true}>
                         
@@ -131,11 +134,10 @@ const UserProfilePage = () => {
                             </View>
                         </View>
                     </ScrollView> */}
-                    
+
                 </View>
                 {/* <View style={styles.calendar}>
                 <Schedule/>
-                {Countdown()}
             </View> */}
             </View>
         </View>
@@ -150,15 +152,27 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     menu: {
-        marginLeft: 315,
         margin: 10,
     },
     Profileimg: {
-        height: 150,
-        width: 160,
+        height: 130,
+        width: 140,
         borderRadius: 20,
         marginBottom: 10,
         alignSelf: 'center'
+    },
+    title: {
+        fontSize: 23,
+        fontWeight: 'bold',
+        alignSelf:'center',
+        color: '#fff'
+    },
+    caption: {
+        fontSize: 14,
+        lineHeight: 14,
+        fontWeight: '500',
+        alignSelf:'center',
+        color: '#fff'
     },
     usertext: {
         color: 'white',
@@ -276,6 +290,7 @@ const styles = StyleSheet.create({
         // margin: 10,
         // marginLeft:90,
     },
+   
 
 });
 export default UserProfilePage;

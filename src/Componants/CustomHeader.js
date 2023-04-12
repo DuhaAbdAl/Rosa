@@ -34,7 +34,6 @@ const UpperHeader = (props) => {
                 {/* <Image source={require('../assets/images/profile.jpeg')}
                     style={styles.profile} /> */}
             </TouchableOpacity>
-                    {/* <SearchBar /> */}
         </View>
     )
 };
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 10,
         justifyContent:"space-between",
-        backgroundColor:'rgba(52,52,52,0.5)',
+        backgroundColor:'rgba(52,52,52,0.3)',
 
     },
     profile: {

@@ -15,6 +15,7 @@ import IconContainer from "../src/Componants/IconContainer";
 import UserProfilePage from "../src/screens/UserProfile";
 import Schedule from "../src/Componants/Schedule";
 import Favorite from "../src/Componants/Favorite";
+import EditProfile from "../src/screens/EditProfile";
 
 
 const MainStack = (props) => {
@@ -57,6 +58,8 @@ const MainStack = (props) => {
                     options={{ headerShown: false }} />
                 <Stack.Screen name={ScreenName.Favorite} component={Favorite}
                     options={{ headerShown: false }} />
+                     {/* <Stack.Screen name={ScreenName.EditProfile} component={EditProfile}
+                    options={{ headerShown: false }} /> */}
             </Stack.Navigator>
     )
 };

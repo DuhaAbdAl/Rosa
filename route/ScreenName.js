@@ -13,4 +13,5 @@ export const ScreenName = {
     UserProfilePage: 'Profile', 
     Schedule: 'Schedule',
     MainStack: "MainStack",
+    EditProfile: "Edit Profile",
 };
