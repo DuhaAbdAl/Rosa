@@ -12,6 +12,7 @@ import Countdown from "../Componants/Timer";
 import CountDownCircle from "../Componants/CountDownCircle";
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
+import EditProfile from "./EditProfile";
 
 const UserProfilePage = () => {
     const navigation = useNavigation();
@@ -39,6 +40,7 @@ const UserProfilePage = () => {
                             size={30} />
                     </TouchableOpacity>
                 </View>
+                {/* <EditProfile/> */}
                 <Image source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} />
                 <View>
                     <Title style={styles.title}>User</Title>

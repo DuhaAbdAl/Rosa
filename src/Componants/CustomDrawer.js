@@ -2,17 +2,22 @@ import React from "react";
 import { View, Text, ImageBackground, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/AntDesign";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { ScreenName } from "../../route/ScreenName";
 import MainStack from "../../route/Stack";
+import { useNavigation } from "@react-navigation/native";
+
 
 const CustomDrawer = (props) => {
-const params ={
-    HomePage: {
-        name: "MainStack",
-        component: MainStack,
-    },
+    const navigation = useNavigation();
 
-}
+    const params = {
+        HomePage: {
+            name: "MainStack",
+            component: MainStack,
+        },
+
+    }
 
 
     return (
@@ -20,6 +25,12 @@ const params ={
             <DrawerContentScrollView {...props}
                 contentContainerStyle={{ backgroundColor: 'black' }}>
                 <ImageBackground source={require('../assets/images/drawer1.jpeg')} style={{ padding: 20 }}>
+                    <TouchableOpacity onPress={() => navigation.navigate(ScreenName.EditProfile) }>
+                        <MaterialCommunityIcons
+                            name="account-check"
+                            size={23}
+                            style={styles.editIcon} />
+                    </TouchableOpacity>
                     <Image source={require('../assets/images/profile.jpeg')} style={styles.img} />
                     <Text style={styles.usertext}>User</Text>
                 </ImageBackground>
@@ -75,6 +86,10 @@ const styles = StyleSheet.create({
     outIcon: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    editIcon: {
+        alignSelf: 'flex-end',
+        color: 'white',
     }
 
 })

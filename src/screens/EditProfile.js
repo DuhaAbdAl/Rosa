@@ -1,52 +1,191 @@
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
-import { StyleSheet, View, TouchableOpacity, Image, Text, ImageBackground, ScrollView, Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text, ImageBackground, TextInput } from "react-native";
 import React from "react";
- 
+import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useTheme } from 'react-native-paper';
+
 
 const EditProfile = () => {
+    const { colors } = useTheme();
+    const bs = React.createRef();
+    const fall = new Animated.Value(1);
+    const renderInner = () =>
+    (
+        <View style={styles.panel}>
+            <View >
+                <Text style={styles.panelTitle}>Upload Photo</Text>
+                <Text style={styles.panelTitle}>Choose Your Profile Picture</Text>
+            </View>
+            <TouchableOpacity style={styles.panelButton}>
+                <Text style={styles.panelButtonTitle}>Take Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.panelButton}>
+                <Text style={styles.panelButtonTitle}>Choose From Library</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.panelButton} onPress={() => bs.current.snapTo(1)}>
+                <Text style={styles.panelButtonTitle}>Cancel</Text>
+            </TouchableOpacity>
+        </View>
+    )
 
-   const bs = React.createRef();
-   const fall = new Animated.Value(1);
-   const renderInner = () => {
 
-   }
-   const renderHeader = () => {
-    <View style={styles.header}>
-        <View style={styles.panelHeader}>
-            <View style={styles.panelHandle}>
+    const renderHeader = () =>
+    (
+        <View style={styles.header}>
+            <View style={styles.panelHeader}>
+                <View style={styles.panelHandle}>
+
+                </View>
 
             </View>
 
         </View>
+    )
 
-    </View>
-   }
 
     return (
-        <ImageBackground source={require('../assets/images/profile.jpeg')} style={styles.Profileimg}>
-
+        <View style={styles.container}>
             <BottomSheet
-            ref={bs}
-            snapPoints={[330, 0]}
-            renderContent={renderInner()}
-            renderHeader={renderHeader()}
-            initialSnap={1}
-            callbackNode={fall}
-            enabledGestureInteraction={true}
+                ref={bs}
+                snapPoints={[330, 0]}
+                renderContent={renderInner}
+                renderHeader={renderHeader}
+                initialSnap={1}
+                callbackNode={fall}
+                enabledGestureInteraction={true}
             />
-        </ImageBackground>
+            <Animated.View style={[styles.animeted, opacity = Animated.add(0.1, Animated.multiply(fall, 1.0))
+            ]} >
+                <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
+                    <View style={{ alignItems: 'center' }}>
 
+                        <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
+                            {/* <View
+                            style={{
+                                height: 100,
+                                width: 100,
+                                borderRadius: 15,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        > */}
+
+
+                            <ImageBackground source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} imageStyle={{ borderRadius: 15 }}>
+                                <View style={styles.cameraWrapper}>
+                                    <Feather
+                                        name='camera'
+                                        size={35}
+                                        color={'#fff'}
+                                        style={styles.cameraIcon} />
+                                </View>
+
+                            </ImageBackground>
+
+
+                            {/* </View> */}
+
+                        </TouchableOpacity>
+                        <Text style={styles.userName}>User</Text>
+                    </View>
+                </ImageBackground>
+            </Animated.View >
+            <View style={styles.action}>
+                <FontAwesome
+                    name='user-o'
+                    size={25}
+                    color={'#333'}
+                    style={styles.icon}
+                />
+                <TextInput
+                    placeholder='First Name'
+                    placeholderTextColor={'#666666'}
+                    style={[styles.textInput, { color: colors.text }]}
+                />
+            </View>
+            <View style={styles.action}>
+                <FontAwesome
+                    name='user-o'
+                    size={25}
+                    color={'#333'}
+                    style={styles.icon}
+                />
+                <TextInput
+                    placeholder='Last Name'
+                    placeholderTextColor={'#666666'}
+                    style={[styles.textInput, { color: colors.text }]}
+                />
+            </View>
+            <View style={styles.action}>
+                <Feather
+                    name='phone'
+                    size={25}
+                    color={'#333'}
+                    style={styles.icon}
+                />
+                <TextInput
+                    placeholder='Phone'
+                    placeholderTextColor={'#666666'}
+                    keyboardType='numper-pad'
+                    style={[styles.textInput, { color: colors.text }]}
+                />
+            </View>
+            <View style={styles.action}>
+                <FontAwesome
+                    name='envelope-o'
+                    size={25}
+                    color={'#333'}
+                    style={styles.icon}
+                />
+                <TextInput
+                    placeholder='Email'
+                    placeholderTextColor={'#666666'}
+                    keyboardType='email-address'
+                    style={[styles.textInput, { color: colors.text }]}
+                />
+            </View>
+            <TouchableOpacity style={styles.commandButton}>
+                <Text style={styles.panelButtonTitle}>Submit</Text>
+            </TouchableOpacity>
+        </View >
     )
 }
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    imageBackground: {
+        width: '100%',
+        height: 250,
+    },
+    Profileimg: {
+        height: 150,
+        width: 140,
+        borderRadius: 30,
+        marginBottom: 10,
+        alignSelf: 'center'
+    },
+    commandButton: {
+        padding: 15,
+        borderRadius: 10,
+        backgroundColor: 'teal',
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    panel: {
+        padding: 20,
+        backgroundColor: '#ffffff',
+        paddingTop: 5,
+    },
     header: {
         backgroundColor: '#fff',
         shadowColor: '#333',
-        shadowOffset: {width: -1, height: -3},
+        shadowOffset: { width: -1, height: -3 },
         shadowRadius: 2,
         shadowOpacity: 0.4,
-        elevation:5,
+        elevation: 5,
         paddingTop: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
@@ -60,6 +199,75 @@ const styles = StyleSheet.create ({
         borderRadius: 4,
         backgroundColor: '#00000040',
         marginBottom: 10,
+    },
+    panelTitle: {
+        fontSize: 27,
+        height: 35,
+    },
+    panelSubtitle: {
+        fontSize: 14,
+        color: 'gray',
+        height: 10,
+    },
+    panelButton: {
+        padding: 13,
+        borderRadius: 10,
+        backgroundColor: 'teal',
+        alignItems: 'center',
+        marginVertical: 7,
+    },
+    panelButtonTitle: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    action: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f2f2f2',
+        paddingBottom: 5,
+    },
+    actionError: {
+        flexDirection: 'row',
+        marginTop: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#FF0000',
+        paddingBottom: 5,
+    },
+    textInput: {
+        flex: 1,
+        marginTop: 10,
+        paddingLeft: 10,
+        color: '#05375a',
+    },
+    cameraWrapper: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    cameraIcon: {
+        opacity: 0.7,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: '#fff',
+        borderRadius: 10,
+    },
+    animeted: {
+        margin: 20,
+    },
+    userName: {
+        marginTop: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black'
+    },
+    icon: {
+        marginTop: 18,
+        marginLeft: 25
     }
 
+
 })
+export default EditProfile;

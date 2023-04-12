@@ -25,9 +25,9 @@ const MainStack = (props) => {
                 initialRouteName="Drawer"
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: '#28463e'
+                        // backgroundColor: '#28463e'
                     },
-                    headerTintColor: 'green',
+                    headerTintColor: 'teal',
                     headerTitleAlign: 'center',
                 }}
             >
@@ -58,8 +58,7 @@ const MainStack = (props) => {
                     options={{ headerShown: false }} />
                 <Stack.Screen name={ScreenName.Favorite} component={Favorite}
                     options={{ headerShown: false }} />
-                     {/* <Stack.Screen name={ScreenName.EditProfile} component={EditProfile}
-                    options={{ headerShown: false }} /> */}
+                     <Stack.Screen name={ScreenName.EditProfile} component={EditProfile}/>
             </Stack.Navigator>
     )
 };
