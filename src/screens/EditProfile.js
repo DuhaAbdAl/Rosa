@@ -4,6 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Text, ImageBackground, TextInput } 
 import React from "react";
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from 'react-native-paper';
 
 
@@ -56,41 +57,36 @@ const EditProfile = () => {
                 callbackNode={fall}
                 enabledGestureInteraction={true}
             />
-            <Animated.View style={[styles.animeted, opacity = Animated.add(0.1, Animated.multiply(fall, 1.0))
+            <Animated.View style={[styles.animeted,
+            opacity = Animated.add(0.3, Animated.multiply(fall, 1.0))
             ]} >
-                <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
-                    <View style={{ alignItems: 'center' }}>
-
-                        <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
-                            {/* <View
-                            style={{
-                                height: 100,
-                                width: 100,
-                                borderRadius: 15,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}
-                        > */}
-
-
-                            <ImageBackground source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} imageStyle={{ borderRadius: 15 }}>
-                                <View style={styles.cameraWrapper}>
-                                    <Feather
-                                        name='camera'
-                                        size={35}
-                                        color={'#fff'}
-                                        style={styles.cameraIcon} />
-                                </View>
-
-                            </ImageBackground>
-
-
-                            {/* </View> */}
-
-                        </TouchableOpacity>
-                        <Text style={styles.userName}>User</Text>
-                    </View>
-                </ImageBackground>
+                <View>
+                    <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
+                        <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
+                            <View style={{ alignItems: 'center' }}>
+                                <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
+                                    <ImageBackground source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} imageStyle={{ borderRadius: 15 }}>
+                                        <View style={styles.cameraWrapper}>
+                                            <Feather
+                                                name='camera'
+                                                size={35}
+                                                color={'#fff'}
+                                                style={styles.cameraIcon} />
+                                        </View>
+                                    </ImageBackground>
+                                </TouchableOpacity>
+                                <Text style={styles.userName}>User</Text>
+                            </View>
+                            <View style={styles.editBackground}>
+                                <MaterialCommunityIcons
+                                    name='pencil-outline'
+                                    size={25}
+                                    color={'#fff'}
+                                     />
+                            </View>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                </View>
             </Animated.View >
             <View style={styles.action}>
                 <FontAwesome
@@ -102,7 +98,7 @@ const EditProfile = () => {
                 <TextInput
                     placeholder='First Name'
                     placeholderTextColor={'#666666'}
-                    style={[styles.textInput, { color: colors.text }]}
+                    style={styles.textInput}
                 />
             </View>
             <View style={styles.action}>
@@ -115,7 +111,7 @@ const EditProfile = () => {
                 <TextInput
                     placeholder='Last Name'
                     placeholderTextColor={'#666666'}
-                    style={[styles.textInput, { color: colors.text }]}
+                    style={styles.textInput}
                 />
             </View>
             <View style={styles.action}>
@@ -129,7 +125,7 @@ const EditProfile = () => {
                     placeholder='Phone'
                     placeholderTextColor={'#666666'}
                     keyboardType='numper-pad'
-                    style={[styles.textInput, { color: colors.text }]}
+                    style={styles.textInput}
                 />
             </View>
             <View style={styles.action}>
@@ -143,7 +139,7 @@ const EditProfile = () => {
                     placeholder='Email'
                     placeholderTextColor={'#666666'}
                     keyboardType='email-address'
-                    style={[styles.textInput, { color: colors.text }]}
+                    style={styles.textInput}
                 />
             </View>
             <TouchableOpacity style={styles.commandButton}>
@@ -158,14 +154,14 @@ const styles = StyleSheet.create({
     },
     imageBackground: {
         width: '100%',
-        height: 250,
+        height: 270,
     },
     Profileimg: {
         height: 150,
         width: 140,
         borderRadius: 30,
-        marginBottom: 10,
-        alignSelf: 'center'
+        marginTop: 30,
+        alignSelf: 'center',
     },
     commandButton: {
         padding: 15,
@@ -173,6 +169,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'teal',
         alignItems: 'center',
         marginTop: 10,
+        margin: 10,
     },
     panel: {
         padding: 20,
@@ -226,8 +223,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: '#666666',
         paddingBottom: 5,
+        margin: 20,
     },
     actionError: {
         flexDirection: 'row',
@@ -255,18 +253,29 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     animeted: {
-        margin: 20,
+        // margin: 20,
     },
     userName: {
         marginTop: 10,
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black'
+        color: '#fff'
     },
     icon: {
         marginTop: 18,
         marginLeft: 25
-    }
+    }, 
+    editBackground: {
+        marginBottom: 25,
+        marginRight: 10,
+        borderRadius: 20,
+        backgroundColor: 'rgba(250,250,250,0.3)',
+        height: 40,
+        width: 40,
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 
 
 })

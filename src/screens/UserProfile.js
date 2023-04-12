@@ -20,7 +20,7 @@ const UserProfilePage = () => {
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground style={styles.imageBackground} source={require('../assets/images/drawer1.jpeg')}>
-                <View style={{ flexDirection: 'row', justifyContent:'space-between' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Pressable onPress={() => {
                         navigation.goBack();
                     }}>
@@ -49,15 +49,26 @@ const UserProfilePage = () => {
             </ImageBackground>
             <View>
                 <View style={{ flexDirection: 'row' }}>
-                    <MaterialCommunityIcons
+                </View>
+                <View style={styles.contentScroll}>
+                    {/* <MaterialCommunityIcons
                         style={styles.flowerIcon}
                         name="flower-tulip"
                         size={30}
-                        color='green'
-                    />
-                    <Text style={styles.titleText}>My Plants :</Text>
+                        color='#fff'
+                    /> */}
+                    <TouchableOpacity onPress={() => {}}>
+                        <Text style={styles.titleText}>My Plants</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {}}>
+                        <Text style={styles.titleText}>Alerts</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {}}>
+                        <Text style={styles.titleText}>My Favorites</Text>
+                    </TouchableOpacity>
+
                 </View>
-                <ScrollView horizontal={true} style={styles.cardImg}>
+                {/* <ScrollView horizontal={true} style={styles.cardImg}>
                     <ImageBackground source={require('../assets/images/LilyBackground2.jpeg')} style={styles.img}>
                         <View style={styles.cardName}>
                             <Text style={styles.cardText}>Lilum</Text>
@@ -80,9 +91,9 @@ const UserProfilePage = () => {
                         </View>
                     </ImageBackground>
 
-                </ScrollView>
+                </ScrollView> */}
             </View>
-            <View >
+            {/* <View >
                 <View style={styles.alerts}>
                     <FontAwesome
                         style={styles.bellIcon}
@@ -91,7 +102,7 @@ const UserProfilePage = () => {
                         size={25} />
                     <Text style={styles.bellText}>Alerts :</Text>
                 </View>
-                <View>
+                <View> */}
                     {/* <ScrollView horizontal={true}>
                         
 
@@ -138,11 +149,11 @@ const UserProfilePage = () => {
                     </ScrollView> */}
 
                 </View>
-                {/* <View style={styles.calendar}>
+                /* <View style={styles.calendar}>
                 <Schedule/>
-            </View> */}
-            </View>
-        </View>
+            </View> */
+            // </View>
+        // </View>
     )
 }
 const styles = StyleSheet.create({
@@ -166,14 +177,14 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 23,
         fontWeight: 'bold',
-        alignSelf:'center',
+        alignSelf: 'center',
         color: '#fff'
     },
     caption: {
         fontSize: 14,
         lineHeight: 14,
         fontWeight: '500',
-        alignSelf:'center',
+        alignSelf: 'center',
         color: '#fff'
     },
     usertext: {
@@ -240,11 +251,11 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
     titleText: {
-        color: '#0d5b28',
-        fontSize: 20,
+        color: '#fff',
+        fontSize: 15,
         fontStyle: 'italic',
-        margin: 10,
         fontWeight: 'bold',
+        // marginRight: 15,
     },
     img: {
         width: 150,
@@ -282,8 +293,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     flowerIcon: {
-        marginTop: 10,
-        marginLeft: 10,
+        // marginTop: 10,
+        // marginLeft: 10,
     },
     nextText: {
         color: "green",
@@ -292,7 +303,17 @@ const styles = StyleSheet.create({
         // margin: 10,
         // marginLeft:90,
     },
-   
+    contentScroll: {
+        width: '100%',
+        height: 40,
+        backgroundColor: 'teal',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        padding: 5,
+        marginTop: 80
+        }
+
 
 });
 export default UserProfilePage;

@@ -7,6 +7,7 @@ import CustomHeader from "../Componants/CustomHeader";
 import { useContext } from "react";
 import RosaContext from "../../Store/RosaContext";
 import SearchBar from "../Componants/SearchBar";
+import SearchList from "../Componants/searchList";
 
 
 
@@ -70,7 +71,8 @@ const Types = (props) => {
     return (
         <View style={styles.img}> 
             <CustomHeader />
-            <SearchBar/>
+            <SearchList/>
+            {/* <SearchBar/> */}
             <FlatList {...params.flatList} />
         </View>
         // <ImageBackground style={styles.img} source={require('../assets/images/Hoa.jpeg')}>

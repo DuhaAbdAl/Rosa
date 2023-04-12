@@ -5,7 +5,7 @@ import {
     ActivityIndicator,
     ImageBackground
 } from "react-native";
-import SearchList from "./List";
+// import SearchList from "./List";
 import SearchBar from "./SearchBar";
 import { data } from "../mokData/data";
 
@@ -35,9 +35,9 @@ const SearchHome = () => {
                     clicked={clicked}
                     setClicked={setClicked}
                 />
-                {(
+                {/* {(
                     <SearchList data={data} input={input} setInput={setInput}/>
-                )}
+                )} */}
             </View>
         </ImageBackground>
     );

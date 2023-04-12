@@ -6,6 +6,7 @@ import Info from "../src/screens/Info";
 import CustomDrawer from "../src/Componants/CustomDrawer";
 import Icon from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { ScreenName } from "./ScreenName";
 import { StyleSheet } from "react-native";
 import SignIn from "../src/screens/SignIn";
@@ -20,9 +21,9 @@ const MyDrawer = () => {
   const renderIcon = (color, screenName) => {
     const icons = {
       [ScreenName.HomePage]: <FontAwesome name="home" size={22} color={'black'} />,
-      [ScreenName.Favorite]: <Icon name="heart" size={22} color={'red'} />,
-      // [ScreenName.Favorite]: <Icon name="home" size={22} color={color} />,
-      [ScreenName.Info]: <Icon name="home" size={22} color={color} />,
+      // [ScreenName.Favorite]: <Icon name="heart" size={22} color={'red'} />,
+      [ScreenName.UserProfilePage]: <FontAwesome5 name="user-alt" size={22} color={color} />,
+      // [ScreenName.Info]: <Icon name="home" size={22} color={color} />,
     }
     return icons[screenName];
   }
@@ -75,7 +76,9 @@ const MyDrawer = () => {
       name: ScreenName.UserProfilePage,
       component: UserProfilePage,
       options: {
-        headerShown: false
+        headerShown: false,
+        drawerIcon: ({ color }) => renderIcon(color, ScreenName.UserProfilePage)
+
       }
     }
 
