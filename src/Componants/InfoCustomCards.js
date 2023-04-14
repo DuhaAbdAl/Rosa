@@ -13,8 +13,76 @@ const InfoCards = (props) => {
 
     return (
         <View>
-            <ScrollView horizontal={true}>
-                <View style={styles.container}>
+            <ScrollView>
+                <View style={styles.tipsWrapper}>
+                    <TouchableOpacity>
+                    <Text style={styles.tipsTitle}> Sun Exposure </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                    <Text style={styles.tipsTitle}> Watering </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                    <Text style={styles.tipsTitle}> Fertilizer </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                    <Text style={styles.tipsTitle}> BloomTime </Text>
+                    </TouchableOpacity>
+                   
+                </View>
+            </ScrollView>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    tipsWrapper: {
+        width: '100%',
+        height: 50,
+        backgroundColor: 'teal',
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    tipsTitle: {
+        color: '#fff',
+
+    },
+    container: {
+        width: 130,
+        height: 170,
+        // borderColor: '#0b626b',
+        borderColor:"gray",
+        borderWidth: 1,
+        marginLeft: 15,
+        borderRadius: 15,
+        marginBottom: 10,
+        backgroundColor: '#378c80',
+        // backgroundColor:"#0b626b",
+        opacity:1,
+        // elevation:10,
+    },
+    icon: {
+        alignSelf: 'center',
+        margin: 8,
+        color:"#fff"
+    },
+    text: {
+        fontSize: 14,
+        color: "white",
+        marginTop:60,
+        // alignSelf:'center'
+    },
+    iconContainer: {
+        backgroundColor: "rgba(250,250,250,0.2)",
+        alignSelf: 'flex-start',
+        // alignSelf:"center",
+        borderRadius: 10,
+        marginLeft:8,
+        marginTop:5
+    }
+})
+export default InfoCards;
+{/* <View style={styles.container}>
                     <View style={styles.iconContainer}>
                         <Fontisto
                             style={styles.icon}
@@ -62,45 +130,4 @@ const InfoCards = (props) => {
                     <View>
                         <Text style={styles.text}> {Fertilizer}</Text>
                     </View>
-                </View>
-            </ScrollView>
-        </View>
-    )
-}
-
-const styles = StyleSheet.create({
-    container: {
-        width: 130,
-        height: 170,
-        // borderColor: '#0b626b',
-        borderColor:"gray",
-        borderWidth: 2,
-        marginLeft: 15,
-        borderRadius: 15,
-        marginBottom: 10,
-        // backgroundColor: '#378c80',
-        backgroundColor:"#0b626b",
-        opacity:1,
-        elevation:10,
-    },
-    icon: {
-        alignSelf: 'center',
-        margin: 8,
-        color:"#fff"
-    },
-    text: {
-        fontSize: 14,
-        color: "white",
-        marginTop:60,
-        alignSelf:'center'
-    },
-    iconContainer: {
-        backgroundColor: "rgba(250,250,250,0.2)",
-        alignSelf: 'flex-start',
-        // alignSelf:"center",
-        borderRadius: 10,
-        marginLeft:8,
-        marginTop:5
-    }
-})
-export default InfoCards;
+                </View> */}

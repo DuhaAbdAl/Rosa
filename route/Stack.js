@@ -16,6 +16,7 @@ import UserProfilePage from "../src/screens/UserProfile";
 import Schedule from "../src/Componants/Schedule";
 import Favorite from "../src/Componants/Favorite";
 import EditProfile from "../src/screens/EditProfile";
+import CardInfo from "../src/screens/CardInfo";
 
 
 const MainStack = (props) => {
@@ -40,8 +41,8 @@ const MainStack = (props) => {
                     options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.Types} component={Types}
                     options={{ headerShown: false, }} />
-                <Stack.Screen name={ScreenName.Info} component={Info}
-                    options={{ headerShown: false, }} />
+                {/* <Stack.Screen name={ScreenName.Info} component={Info}
+                    options={{ headerShown: false, }} /> */}
                 <Stack.Screen name={ScreenName.Categories} component={Categories}
                     options={{ headerShown: false, }} />
                 <Stack.Screen name={ScreenName.SearchHome} component={SearchHome}
@@ -59,6 +60,8 @@ const MainStack = (props) => {
                 <Stack.Screen name={ScreenName.Favorite} component={Favorite}
                     options={{ headerShown: false }} />
                      <Stack.Screen name={ScreenName.EditProfile} component={EditProfile}/>
+                     <Stack.Screen name={ScreenName.CardInfo} component={CardInfo}
+                    options={{ headerShown: false }} />
             </Stack.Navigator>
     )
 };

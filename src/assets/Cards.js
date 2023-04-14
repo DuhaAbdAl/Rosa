@@ -35,7 +35,7 @@ const Cards = (props) => {
         <View >
             <View style={{borderRadius:30}}>
             <Pressable style={styles.card} onPress={() => {
-                navigation.navigate(ScreenName.Info, { name: Name });
+                navigation.navigate(ScreenName.CardInfo, { name: Name });
             }}>
                 <ImageBackground style={styles.cardBackground} source={image}>
                         <Pressable onPress={OnClickFavorite} >

@@ -11,6 +11,12 @@ const RosaProvider = props => {
     const [Data, setData] = useState();
     const [input, setInput] = useState("");
     const [searchText, setSearchText] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isData, setIsData] = useState([]);
+    const [error, setError] = useState(null);
+    const [fullData, setFullData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
 
 
     return (
@@ -33,7 +39,17 @@ const RosaProvider = props => {
                 input,
                 setInput,
                 searchText,
-                setSearchText
+                setSearchText,
+                isLoading,
+                setIsLoading,
+                isData,
+                setIsData,
+                error, 
+                setError,
+                fullData,
+                setFullData,
+                searchQuery,
+                setSearchQuery,
             }}>
             {props.children}
         </RosaContext.Provider>

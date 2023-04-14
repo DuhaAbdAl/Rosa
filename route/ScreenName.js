@@ -14,4 +14,5 @@ export const ScreenName = {
     Schedule: 'Schedule',
     MainStack: "MainStack",
     EditProfile: "Edit Profile",
+    CardInfo: "Card Info",
 };
