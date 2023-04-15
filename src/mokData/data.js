@@ -872,6 +872,19 @@ export const images = [
     }
 ]
 
+export const slides = [
+    {
+        title: 'Explore',
+        image: require('../assets/images/FloweryKiss.png'),
+        desc: 'Find all about your favorite plants'
+    },
+    {
+        title: 'Keep Track',
+        image: require('../assets/images/mgaelod.png'),
+        desc: 'Tools to help you tack care of your plants'
+    },
+]
+
 export const addFavorite = [
     
 ]

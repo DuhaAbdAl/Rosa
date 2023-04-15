@@ -15,4 +15,6 @@ export const ScreenName = {
     MainStack: "MainStack",
     EditProfile: "Edit Profile",
     CardInfo: "Card Info",
+    SplashScreen: "Splash Screen",
+    SlideIntroScreens: "Into Slides",
 };

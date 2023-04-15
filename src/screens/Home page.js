@@ -3,6 +3,8 @@ import React from "react";
 import { ScreenName } from "../../route/ScreenName";
 import Entypo from "react-native-vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
+import LinearGradient from "react-native-linear-gradient";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 
 const HomePage = (props) => {
@@ -39,13 +41,25 @@ const HomePage = (props) => {
                         </Text>
                     </View>
                 </TouchableOpacity> */}
-                <View style={styles.pressContainer}>
-                        <Pressable onPress={() => {
-                            props.navigation.navigate(ScreenName.SignIn);
-                        }}>
-                            <Text style={styles.pressText}> Sign In</Text>
-                        </Pressable>
-                </View>
+                {/* <View style={styles.pressContainer}>
+                    <Pressable onPress={() => {
+                        props.navigation.navigate(ScreenName.SignIn);
+                    }}>
+                        <Text style={styles.pressText}> Sign In</Text>
+                    </Pressable>
+                </View> */}
+                <TouchableOpacity onPress={() => {props.navigation.navigate(ScreenName.SlideIntroScreens) }}>
+                    <View
+                        backgroundColor={'rgba(250,250,250,0.1)'}
+                        style={styles.signIn}
+                    >
+                        <Text style={styles.textSign}>Get Started</Text>
+                        <MaterialIcons
+                            name="navigate-next"
+                            color={'#fff'}
+                            size={20} />
+                    </View>
+                </TouchableOpacity>
             </ImageBackground>
 
         </View>
@@ -82,7 +96,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 200,
         marginTop: 10,
-        elevation:14,
+        elevation: 14,
     },
     text3: {
         fontSize: 24,
@@ -129,12 +143,27 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 25,
         fontWeight: 'bold',
-        fontStyle:'italic',
+        fontStyle: 'italic',
         marginRight: 30,
     },
     pressContainer: {
         alignSelf: 'center',
-        marginTop:140,
+        marginTop: 140,
+    },
+    textSign: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    signIn: {
+        width: 150,
+        height: 40,
+        justifyContent: "center",
+        alignItems: 'center',
+        borderRadius: 50,
+        flexDirection: "row",
+        alignSelf:'center',
+        marginTop: 140,
     },
 }); export default HomePage;
 

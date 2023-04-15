@@ -14,6 +14,8 @@ import SignUp from "../src/screens/SignUp";
 import Favorite from "../src/Componants/Favorite";
 import UserProfilePage from "../src/screens/UserProfile";
 import MainStack from "./Stack";
+import SplashScreen from "../src/screens/SplashScreen";
+import IntroSlides from "../src/screens/SlideIntroScreens";
 
 const Drawer = createDrawerNavigator();
 const MyDrawer = () => {
@@ -90,7 +92,14 @@ const MyDrawer = () => {
       drawerPosition='left'
       {...params.navigator} 
       >
-      {/* <Drawer.Screen name={"MainStack"} component={MainStack}/> */}
+      {/* <Drawer.Screen name={"Splash Screen"} component={SplashScreen}
+      options={{
+        headerShown :false
+      }}/> */}
+      {/* <Drawer.Screen name={'Intro'} component={IntroSlides}
+      options={{
+        headerShown :false
+      }}/> */}
       <Drawer.Screen {...params.homePage} />
       {/* <Drawer.Screen {...params.favorite}/> */}
       {/* <Drawer.Screen {...params.signIn} /> */}

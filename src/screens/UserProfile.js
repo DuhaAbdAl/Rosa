@@ -13,6 +13,7 @@ import CountDownCircle from "../Componants/CountDownCircle";
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 import EditProfile from "./EditProfile";
+import { Calendar } from "react-native-calendars";
 
 const UserProfilePage = () => {
     const navigation = useNavigation();
@@ -44,10 +45,13 @@ const UserProfilePage = () => {
                 <Image source={require('../assets/images/profile.jpeg')} style={styles.Profileimg} />
                 <View>
                     <Title style={styles.title}>User</Title>
-                    <Caption style={styles.caption}>@User</Caption>
+                    {/* <Caption style={styles.caption}>@User</Caption> */}
                 </View>
             </ImageBackground>
             <View>
+                <View>
+                <Calendar/>
+                </View>
                 <View style={{ flexDirection: 'row' }}>
                 </View>
                 <View style={styles.contentScroll}>
