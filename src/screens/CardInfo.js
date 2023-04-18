@@ -12,8 +12,11 @@ import { useRef } from "react";
 import { WINDOW_WIDTH } from "../assets/Sizes";
 import InfoCards from "../Componants/InfoCustomCards";
 import IconContainer from "../Componants/IconContainer";
+import { useContext } from "react";
+import RosaContext from "../../Store/RosaContext";
 
 const CardInfo = (props) => {
+    const {myPlants, setMyPlants} = useContext(RosaContext)
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     const { name } = props.route.params || {}
@@ -43,6 +46,10 @@ const CardInfo = (props) => {
             Fertilizer={item?.Fertilizer}
             BloomTime={item?.BloomTime}
         />
+    }
+
+    const addBotton = (myPlants) => {
+        // setMyPlants([myPlants])
     }
 
     return (
@@ -78,7 +85,7 @@ const CardInfo = (props) => {
                     {props.children}
                 </View>
             </ScrollView>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={addBotton}>
                 <AntDesign
                     name="pluscircleo"
                     style={styles.plusIcon}

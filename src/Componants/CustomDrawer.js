@@ -6,6 +6,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { ScreenName } from "../../route/ScreenName";
 import MainStack from "../../route/Stack";
 import { useNavigation } from "@react-navigation/native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 
 
 const CustomDrawer = (props) => {
@@ -25,7 +27,7 @@ const CustomDrawer = (props) => {
             <DrawerContentScrollView {...props}
                 contentContainerStyle={{ backgroundColor: 'black' }}>
                 <ImageBackground source={require('../assets/images/drawer1.jpeg')} style={{ padding: 20 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate(ScreenName.EditProfile) }>
+                    <TouchableOpacity onPress={() => navigation.navigate(ScreenName.EditProfile)}>
                         <MaterialCommunityIcons
                             name="account-check"
                             size={23}
@@ -37,8 +39,10 @@ const CustomDrawer = (props) => {
                 <View style={styles.drwerlist}>
                     <DrawerItemList {...props} />
                     {/* <DrawerItem
-                        label="Home"
-                        onPress={() => navigation.navigate(ScreenName.HomePage)} /> */}
+                        label={'Home'}
+                        onPress={navigation.navigate(ScreenName.HomePage)}
+                        icon={() => (<FontAwesome name="home" size={22} color={'black'} />)
+                        } /> */}
                 </View>
             </DrawerContentScrollView>
             <View style={styles.margin}>

@@ -14,52 +14,9 @@ const Favorite = (props) => {
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/fav.jpeg')} >
-            <View style={styles.header}>
-                <Pressable onPress={() => {
-                    navigation.goBack();
-                }}>
-                    <Ionicons
-                        name="chevron-back"
-                        size={30}
-                        color="white"
-                        style={styles.icon} />
-                </Pressable>
-                <TouchableOpacity onPress={() => {
-                    drawerNavigation?.openDrawer();
-                }}>
-                    <Entypo
-                        name="menu"
-                        color={'white'}
-                        size={30}
-                        style={styles.menu}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style={{alignItems: 'center'}}>
-                <ImageBackground source={require('../assets/images/LilyBackground2.jpeg')} style={styles.img}>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>Lilum</Text>
-                    </View>
-                </ImageBackground>
-                <ImageBackground source={require('../assets/images/AfricanDaisy.jpeg')} style={styles.img}>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>Bleeding Heart</Text>
-                    </View>
-                </ImageBackground>
-
-                <ImageBackground source={require('../assets/images/MagnoliaBackground.jpeg')} style={styles.img}>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>Magnolia</Text>
-                    </View>
-                </ImageBackground>
-                <ImageBackground source={require('../assets/images/IrisBackground.jpeg')} style={styles.img}>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>Iris</Text>
-                    </View>
-                </ImageBackground>
-            </View>
-        </ImageBackground>
+       <View>
+        
+       </View>
     )
 }
 const styles = StyleSheet.create({

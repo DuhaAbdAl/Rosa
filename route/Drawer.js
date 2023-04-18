@@ -1,4 +1,4 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
 import HomePage from "../src/screens/Home page";
 import Categories from "../src/screens/Categories";
 import Types from "../src/screens/Types";
@@ -90,13 +90,9 @@ const MyDrawer = () => {
     <Drawer.Navigator
       id="LeftDrawer"
       drawerPosition='left'
-      {...params.navigator} 
-      >
-      {/* <Drawer.Screen name={"Splash Screen"} component={SplashScreen}
-      options={{
-        headerShown :false
-      }}/> */}
-      {/* <Drawer.Screen name={'Intro'} component={IntroSlides}
+      {...params.navigator}
+    >
+        {/* <Drawer.Screen name={'Intro'} component={IntroSlides}
       options={{
         headerShown :false
       }}/> */}
@@ -104,7 +100,7 @@ const MyDrawer = () => {
       {/* <Drawer.Screen {...params.favorite}/> */}
       {/* <Drawer.Screen {...params.signIn} /> */}
       {/* <Drawer.Screen {...params.signUp}/> */}
-      <Drawer.Screen {...params.UserProfilePage}/>
+      <Drawer.Screen {...params.UserProfilePage} />
     </Drawer.Navigator>
   );
 }

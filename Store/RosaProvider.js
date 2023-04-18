@@ -16,6 +16,7 @@ const RosaProvider = props => {
     const [error, setError] = useState(null);
     const [fullData, setFullData] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [myPlants, setMyPlants] = useState([]);
 
 
 
@@ -50,6 +51,8 @@ const RosaProvider = props => {
                 setFullData,
                 searchQuery,
                 setSearchQuery,
+                myPlants,
+                setMyPlants
             }}>
             {props.children}
         </RosaContext.Provider>

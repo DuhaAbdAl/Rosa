@@ -50,7 +50,7 @@ const UserProfilePage = () => {
             </ImageBackground>
             <View>
                 <View>
-                <Calendar/>
+                    <Calendar/>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                 </View>
@@ -61,13 +61,13 @@ const UserProfilePage = () => {
                         size={30}
                         color='#fff'
                     /> */}
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => { }}>
                         <Text style={styles.titleText}>My Plants</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => { }}>
                         <Text style={styles.titleText}>Alerts</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => { }}>
                         <Text style={styles.titleText}>My Favorites</Text>
                     </TouchableOpacity>
 
@@ -107,7 +107,7 @@ const UserProfilePage = () => {
                     <Text style={styles.bellText}>Alerts :</Text>
                 </View>
                 <View> */}
-                    {/* <ScrollView horizontal={true}>
+            {/* <ScrollView horizontal={true}>
                         
 
                         <View style={styles.CountConainer}>
@@ -152,11 +152,11 @@ const UserProfilePage = () => {
                         </View>
                     </ScrollView> */}
 
-                </View>
-                /* <View style={styles.calendar}>
-                <Schedule/>
-            </View> */
-            // </View>
+        </View>
+        /* <View style={styles.calendar}>
+        <Schedule/>
+    </View> */
+        // </View>
         // </View>
     )
 }
@@ -315,8 +315,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: 5,
-        marginTop: 80
-        }
+        // marginTop: 10
+    }
 
 
 });

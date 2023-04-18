@@ -13,11 +13,12 @@ import SearchList from "../Componants/searchList";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {};
-    const { favorates, setFavoratis } = useContext(RosaContext);
-    const [plants, setPlants] = useState('');
+    // const { favorates, setFavoratis } = useContext(RosaContext);
+    // const [plants, setPlants] = useState('');
+    const [fav, setFavoratis] = useState([]);
 
     const getfav = async () => {
-        var favoritsFromStorage = await AsyncStorage.getItem('favorite');
+        var favoritsFromStorage = await AsyncStorage.getItem('fav');
 
         if (favoritsFromStorage) {
             favoritsFromStorage = await JSON.parse(favoritsFromStorage);
@@ -37,10 +38,11 @@ const Types = (props) => {
     }
 
     const checkIsFavorate = (title) => {
-        const isFav = favorates.find(item => item.title === title)
+        const isFav = fav.find(item => item.title === title)
         return !!isFav;
     }
 
+    
 
     const renderCard = ({ item }) => {
         return <Cards
@@ -51,7 +53,7 @@ const Types = (props) => {
             fertIcon={item.fertIcon}
             item={item}
             isFavorate={checkIsFavorate(item.title)}
-            favorates={favorates}
+            favorates={fav}
         />
     }
     const params = {

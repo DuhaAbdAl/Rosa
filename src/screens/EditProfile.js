@@ -6,9 +6,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from 'react-native-paper';
+import { ScreenName } from '../../route/ScreenName';
 
 
-const EditProfile = () => {
+const EditProfile = ({navigation}) => {
     const { colors } = useTheme();
     const bs = React.createRef();
     const fall = new Animated.Value(1);
@@ -142,7 +143,8 @@ const EditProfile = () => {
                     style={styles.textInput}
                 />
             </View>
-            <TouchableOpacity style={styles.commandButton}>
+            <TouchableOpacity style={styles.commandButton}
+            onPress={() => {navigation.navigate(ScreenName.UserProfilePage)}}>
                 <Text style={styles.panelButtonTitle}>Submit</Text>
             </TouchableOpacity>
         </View >

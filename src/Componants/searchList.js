@@ -15,6 +15,7 @@ import RosaContext from "../../Store/RosaContext";
 import { useContext } from "react";
 
 const listData = data;
+// console.log('List', listData)
 
 const SearchList = () => {
     const { isLoading, setIsLoading,
@@ -56,8 +57,9 @@ const SearchList = () => {
         setIsData(filtersData)
     }
 
-    const contains = (title, query) => {
-
+    const contains = ({name}, query) => {
+        const {title} = name;
+        
         if (
             title.includes(query)
         ) {
@@ -83,6 +85,18 @@ const SearchList = () => {
 
     };
 
+    const renderItem = (item) => {
+        <View style={styles.itemContainer}>
+            <Image source={item.item.image} style={styles.image} />
+            <View>
+                <Text style={styles.textTitle}>{item.item.title}</Text>
+            </View>
+        </View>
+        console.log('img', item.item.image)
+        console.log('title', item.item.title)
+        console.log('item', item)
+    }
+
     return (
         <View style={styles.searchContainer}>
             <TextInput
@@ -96,14 +110,7 @@ const SearchList = () => {
             <FlatList
                 data={listData}
                 keyExtractor={(item) => item.title}
-                // renderItem={({ item }) => (
-                //     <View style={styles.itemContainer}>
-                //         <Image source={(item.image)} style={styles.image} />
-                //         <View>
-                //             <Text style={styles.textTitle}>{item.title}</Text>
-                //         </View>
-                //     </View>
-                // )}
+                renderItem={renderItem}
             />
 
         </View>
@@ -118,16 +125,21 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 20,
         marginTop: 20,
+        marginBottom: 60,
     },
     searchBox: {
+        // flex:2,
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderColor: '#333',
         borderWidth: 1,
-        borderRadius: 10,
-        alignSelf:'center',
+        borderRadius: 20,
+        alignSelf: 'center',
         width: '80%',
         height: 50,
+        backgroundColor: 'rgba(252,252,252,0.9)',
+
+
     },
     itemContainer: {
         flexDirection: 'row',
