@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
         margin:8,
     },
     cardBackground: {
-        height: 170,
+        height: 240,
         width: 180,
         marginLeft: 12,
-        marginBottom: 30,
-        elevation:15,
+        marginBottom: 10,
+        elevation:10,
         borderWidth:1,
         borderColor:'gray',
     },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        marginTop: 85,
+        marginTop: 155,
     },
     cardText:{
         fontSize:18,

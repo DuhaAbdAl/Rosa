@@ -875,13 +875,13 @@ export const images = [
 export const slides = [
     {
         title: 'Explore',
-        image: require('../assets/images/FloweryKiss.png'),
+        image: require('../assets/images/explore2.jpg'),
         desc: 'Find all about your favorite plants'
     },
     {
         title: 'Keep Track',
         image: require('../assets/images/mgaelod.png'),
-        desc: 'Tools to help you tack care of your plants'
+        desc: 'Tools to help you take care of your plants'
     },
 ]
 

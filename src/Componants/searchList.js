@@ -23,17 +23,18 @@ const SearchList = () => {
         error, setError,
         fullData, setFullData,
         searchQuery, setSearchQuery } = useContext(RosaContext);
-
-
-    useEffect(() => {
-        setIsLoading(true)
-        fetchData(data)
-    }, []);
-
-    const fetchData = (ListData) => {
+        
+        
+        useEffect(() => {
+            setIsLoading(true)
+            fetchData(listData)
+        }, []);
+        
+    const fetchData = async () => {
         try {
-            const response = fetch(ListData);
-            setIsData(response);
+            const response = listData;
+            const json = await response.json();
+            setIsData(json);
 
             console.log('setdata', response);
 
@@ -123,9 +124,12 @@ const SearchList = () => {
 const styles = StyleSheet.create({
     searchContainer: {
         flex: 1,
-        marginHorizontal: 20,
-        marginTop: 20,
-        marginBottom: 60,
+        // marginHorizontal: 20,
+        // marginTop: 20,
+        // marginBottom: 60,
+        backgroundColor:"red",
+        minHeight:150,
+        minWidth:50,
     },
     searchBox: {
         // flex:2,

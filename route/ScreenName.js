@@ -17,4 +17,5 @@ export const ScreenName = {
     CardInfo: "Card Info",
     SplashScreen: "Splash Screen",
     SlideIntroScreens: "Into Slides",
+    searchList: "searchList",
 };

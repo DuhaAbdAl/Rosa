@@ -61,7 +61,7 @@ const SignUp = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <ImageBackground style={styles.imageBackground} source={require('../assets/images/types2.jpeg')}>
-                    <Text style={styles.textHeader}>Register now</Text>
+                    <Text style={styles.textHeader}>Register now!</Text>
                 </ImageBackground>
             </View>
             <Animatable.View style={styles.footer}

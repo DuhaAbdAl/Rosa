@@ -19,6 +19,7 @@ import EditProfile from "../src/screens/EditProfile";
 import CardInfo from "../src/screens/CardInfo";
 import SignIn from "../src/screens/Sign_in";
 import IntroSlides from "../src/screens/SlideIntroScreens";
+import SearchList from "../src/Componants/searchList";
 
 
 const MainStack = (props) => {
@@ -55,7 +56,7 @@ const MainStack = (props) => {
             <Stack.Screen name={ScreenName.SignIn} component={SignIn}
                 options={{ headerShown: false }} />
             <Stack.Screen name={ScreenName.SignUp} component={SignUp}
-                    options={{ headerShown: false }} />
+                options={{ headerShown: false }} />
             <Stack.Screen name={ScreenName.IconContainer} component={IconContainer} />
             <Stack.Screen name={ScreenName.UserProfilePage} component={UserProfilePage}
                 options={{ headerShown: false }} />
@@ -65,6 +66,8 @@ const MainStack = (props) => {
                 options={{ headerShown: false }} />
             <Stack.Screen name={ScreenName.EditProfile} component={EditProfile} />
             <Stack.Screen name={ScreenName.CardInfo} component={CardInfo}
+                options={{ headerShown: false }} />
+            <Stack.Screen name={ScreenName.searchList} component={SearchList}
                 options={{ headerShown: false }} />
         </Stack.Navigator>
     )

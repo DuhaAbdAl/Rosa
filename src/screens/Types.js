@@ -73,7 +73,7 @@ const Types = (props) => {
     return (
         <View style={styles.img}> 
             <CustomHeader />
-            <SearchList/>
+            {/* <SearchList/> */}
             {/* <SearchBar/> */}
             <FlatList {...params.flatList} />
         </View>

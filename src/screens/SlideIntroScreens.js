@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 import HomePage from './Home page';
 import { ScreenName } from '../../route/ScreenName';
+import * as Animatable from 'react-native-animatable';
+
 
 const slidesData = slides;
 
@@ -16,9 +18,8 @@ const IntroSlides = ({ navigation }) => {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 {/* <HomePage/> */}
                 <ImageBackground style={styles.container} source={item.image}>
-                    <Text style={styles.titleStyle}>{item.title}</Text>
-                    {/* <Image source={item.image} /> */}
-                    <Text style={styles.text}>{item.desc}</Text>
+                    <Animatable.Text style={styles.titleStyle} animation={'bounceIn'}>{item.title}</Animatable.Text>
+                    <Animatable.Text style={styles.text} animation={'fadeInLeftBig'}>{item.desc}</Animatable.Text>
                 </ImageBackground>
             </View>
         )
@@ -70,24 +71,24 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
-        // padding: 10,
         justifyContent: 'center',
     },
     titleStyle: {
-        // padding: 10,
         textAlign: 'center',
-        fontSize: 28,
+        fontSize: 30,
         fontWeight: 'bold',
         color: '#333',
-        marginBottom: 300,
+        marginBottom: 150,
     },
     text: {
-        fontSize: 25,
-        color: '#333',
-        marginBottom: 150,
-        marginTop: 200,
-        backgroundColor: 'rgba(250,250,250,0.8)',
-        textAlign: 'center'
+        // fontFamily: 'Lobster',
+        fontWeight: 'bold',
+        fontSize: 30,
+        color: '#fff',
+        marginTop: 350,
+        backgroundColor: 'rgba(52,52,52,0.2)',
+        textAlign: 'center',
+        // backgroundColor: 'transparent'
     },
     buttonCircle: {
         width: 50,

@@ -123,12 +123,12 @@ const Categories = (props) => {
                     <Icon style={styles.icons}
                         name='calendar' />
                 </Pressable>
-                {/* <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.SearchHome);
+                <Pressable onPress={() => {
+                    props.navigation.navigate(ScreenName.searchList);
                 }}>
                     <Icon style={styles.icons}
                         name='search1' />
-                </Pressable> */}
+                </Pressable>
                 <Pressable onPress={() => {
                     props.navigation.navigate(ScreenName.UserProfilePage);
                 }}>
