@@ -25,67 +25,69 @@ const SearchList = () => {
         searchQuery, setSearchQuery } = useContext(RosaContext);
         
         
-        useEffect(() => {
-            setIsLoading(true)
-            fetchData(listData)
-        }, []);
+        // useEffect(() => {
+        //     setIsLoading(true)
+        //     fetchData(listData)
+        // }, []);
+
+
         
-    const fetchData = async () => {
-        try {
-            const response = listData;
-            const json = await response.json();
-            setIsData(json);
+    // const fetchData = async () => {
+    //     try {
+    //         const response = listData;
+    //         const json = await response.json();
+    //         setIsData(json);
 
-            console.log('setdata', response);
+    //         console.log('setdata', response);
 
-            setFullData(response);
-            setIsLoading(false);
-        } catch (error) {
-            setError(error);
+    //         setFullData(response);
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         setError(error);
 
-            console.log('error', error);
+    //         console.log('error', error);
 
-            setIsLoading(false);
-        }
-    }
+    //         setIsLoading(false);
+    //     }
+    // }
+ 
 
     const handleSearch = (query) => {
-        setSearchQuery(query)
+        // setSearchQuery(query)
         const formattedQuery = query.toLowerCase()
-        const filtersData = filter(fullData, (plant) => {
-            return contains(plant, formattedQuery)
+        const filtersData = listData.filter((item) => {
+            return item.title.toLowerCase().match(formattedQuery)
         })
         setIsData(filtersData)
-    }
 
-    const contains = ({name}, query) => {
-        const {title} = name;
-        
-        if (
-            title.includes(query)
-        ) {
-            return true;
+        if ( !formattedQuery || formattedQuery === '') {
+            setIsData(data)
         }
-        return false
+    
+
+    // if (isLoading) {
+    //     return (
+    //         <View style={styles.responseContainer}>
+    //             <ActivityIndicator size={'small'} color={'#5500dc'} />
+    //         </View>
+    //     )
+    // }
+
+    // if (error) {
+    //     return (
+    //         <View style={styles.responseContainer}>
+    //             <Text>not found</Text>
+    //         </View>
+    //     )
+    // };
+    // setError(error)
+
+    if(data.isData(filtersData)) {
+        setIsData({
+          data: filtersData,
+        });
+      }
     }
-
-    if (isLoading) {
-        return (
-            <View style={styles.responseContainer}>
-                <ActivityIndicator size={'large'} color={'#5500dc'} />
-            </View>
-        )
-    }
-
-    if (error) {
-        return (
-            <View style={styles.responseContainer}>
-                <Text>not found</Text>
-            </View>
-        )
-
-    };
-
     const renderItem = (item) => {
         <View style={styles.itemContainer}>
             <Image source={item.item.image} style={styles.image} />
@@ -93,9 +95,9 @@ const SearchList = () => {
                 <Text style={styles.textTitle}>{item.item.title}</Text>
             </View>
         </View>
-        console.log('img', item.item.image)
-        console.log('title', item.item.title)
-        console.log('item', item)
+        // console.log('img', item.item.image)
+        // console.log('title', item.item.title)
+        // console.log('item', item)
     }
 
     return (
@@ -113,7 +115,6 @@ const SearchList = () => {
                 keyExtractor={(item) => item.title}
                 renderItem={renderItem}
             />
-
         </View>
 
     )
@@ -124,15 +125,10 @@ const SearchList = () => {
 const styles = StyleSheet.create({
     searchContainer: {
         flex: 1,
-        // marginHorizontal: 20,
-        // marginTop: 20,
-        // marginBottom: 60,
-        backgroundColor:"red",
         minHeight:150,
         minWidth:50,
     },
     searchBox: {
-        // flex:2,
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderColor: '#333',
@@ -142,6 +138,8 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 50,
         backgroundColor: 'rgba(252,252,252,0.9)',
+        marginTop: 30,
+        color: "#333"
 
 
     },

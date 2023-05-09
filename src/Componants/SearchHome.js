@@ -26,7 +26,7 @@ const SearchHome = () => {
     // }, []);
 
     return (
-        <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
+        // <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
             <View >
                 {!clicked}
                 <SearchBar style={styles.bar}
@@ -39,7 +39,7 @@ const SearchHome = () => {
                     <SearchList data={data} input={input} setInput={setInput}/>
                 )} */}
             </View>
-        </ImageBackground>
+        // </ImageBackground>
     );
 };
 
@@ -47,7 +47,7 @@ const SearchHome = () => {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
     },
     bar:{
         marginBottom:200,

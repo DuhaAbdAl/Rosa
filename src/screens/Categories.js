@@ -124,7 +124,7 @@ const Categories = (props) => {
                         name='calendar' />
                 </Pressable>
                 <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.searchList);
+                    props.navigation.navigate(ScreenName.SearchHome);
                 }}>
                     <Icon style={styles.icons}
                         name='search1' />

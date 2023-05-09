@@ -123,11 +123,11 @@ const SignIn = ({ navigation }) => {
                                 <Text style={styles.textSignUp}>Sign Up</Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={() => navigation.navigate(ScreenName.Categories)}>
+                        {/* <TouchableOpacity onPress={() => navigation.navigate(ScreenName.Categories)}>
                         <View style={styles.skipButton}>
                             <Text style={styles.skipText}>Skip</Text>
                         </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </ScrollView>
             </Animatable.View>
