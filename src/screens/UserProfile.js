@@ -14,6 +14,8 @@ import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 import EditProfile from "./EditProfile";
 import { Calendar } from "react-native-calendars";
+import CircularProgress from 'react-native-circular-progress-indicator';
+
 
 const UserProfilePage = () => {
     const navigation = useNavigation();
@@ -50,7 +52,7 @@ const UserProfilePage = () => {
             </ImageBackground>
             <View>
                 <View>
-                    <Calendar/>
+                    <Calendar />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                 </View>
@@ -97,60 +99,31 @@ const UserProfilePage = () => {
 
                 </ScrollView> */}
             </View>
-            {/* <View >
-                <View style={styles.alerts}>
-                    <FontAwesome
-                        style={styles.bellIcon}
-                        name="bell"
-                        color={'green'}
-                        size={25} />
-                    <Text style={styles.bellText}>Alerts :</Text>
-                </View>
-                <View> */}
-            {/* <ScrollView horizontal={true}>
-                        
+            <View style={{flexDirection:'row', justifyContent: 'space-evenly', margin:10, marginTop:20}}>
+                <CircularProgress
+                    value={0}
+                    radius={60}
+                    maxValue={10}
+                    initialValue={10}
+                    progressValueColor={'#fff'}
+                    activeStrokeWidth={10}
+                    inActiveStrokeWidth={10}
+                    duration={20000}
+                    // onAnimationComplete={() => alert('time out')}
+                />
 
-                        <View style={styles.CountConainer}>
-                            <View style={styles.CountdownWater}>
-                                <MaterialCommunityIcons
-                                    style={styles.icon}
-                                    name="watering-can"
-                                    color={"blue"}
-                                    size={33} />
-                                <Text style={styles.countTextWater}>3 days</Text>
-                            </View>
-                                <Text style={styles.nextText}>Lilum</Text>
-                            <View style={styles.CountdownFert}>
-                                <FontAwesome5
-                                    style={styles.icon}
-                                    name="seedling"
-                                    color={"green"}
-                                    size={28} />
-                                <Text style={styles.countTextFert}>6 days</Text>
-                            </View>
-                        </View>
-
-
-                        <View style={styles.CountConainer}>
-                            <View style={styles.CountdownWater}>
-                                <MaterialCommunityIcons
-                                    style={styles.icon}
-                                    name="watering-can"
-                                    color={"blue"}
-                                    size={33} />
-                                <Text style={styles.countTextWater}>3 days</Text>
-                            </View>
-                        <Text style={styles.nextText}>Iris</Text>
-                            <View style={styles.CountdownFert}>
-                                <FontAwesome5
-                                    style={styles.icon}
-                                    name="seedling"
-                                    color={"green"}
-                                    size={28} />
-                                <Text style={styles.countTextFert}>4 days</Text>
-                            </View>
-                        </View>
-                    </ScrollView> */}
+                <CircularProgress
+                    value={0}
+                    radius={60}
+                    maxValue={10}
+                    initialValue={10}
+                    progressValueColor={'#fff'}
+                    activeStrokeWidth={10}
+                    inActiveStrokeWidth={10}
+                    duration={20000}
+                    // onAnimationComplete={() => alert('time out')}
+                />
+            </View>
 
         </View>
         /* <View style={styles.calendar}>
