@@ -118,7 +118,7 @@ const Categories = (props) => {
                         name='hearto' />
                 </Pressable>
                 <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.Schedule);
+                    props.navigation.navigate(ScreenName.AddPlants);
                 }}>
                     <Icon style={styles.icons}
                         name='calendar' />

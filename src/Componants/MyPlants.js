@@ -1,7 +1,9 @@
 import { StyleSheet, View, Pressable, Image, Text,  } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 const MyPlants = () => {
+    const [myPlants, setMyPlants] = useState([]);
+     
     <View style={styles.container}>
         
     </View>

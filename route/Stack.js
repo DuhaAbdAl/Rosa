@@ -20,6 +20,7 @@ import CardInfo from "../src/screens/CardInfo";
 import SignIn from "../src/screens/Sign_in";
 import IntroSlides from "../src/screens/SlideIntroScreens";
 import SearchList from "../src/Componants/searchList";
+import AddPlants from "../src/screens/AddPlants";
 
 
 const MainStack = (props) => {
@@ -31,15 +32,12 @@ const MainStack = (props) => {
                 headerStyle: {
                     // backgroundColor: '#28463e'
                 },
-                headerTintColor: 'teal',
+                headerTintColor: '#fff',
                 headerTitleAlign: 'center',
             }}
         >
             <Stack.Screen name={ScreenName.HomePage} component={HomePage}
-                options={{
-                    headerShown: false,
-                }}
-            />
+                options={{headerShown: false}} />
             <Stack.Screen name="Drawer" component={MyDrawer}
                 options={{ headerShown: false, }} />
             <Stack.Screen name={ScreenName.Types} component={Types}
@@ -69,6 +67,11 @@ const MainStack = (props) => {
                 options={{ headerShown: false }} />
             <Stack.Screen name={ScreenName.searchList} component={SearchList}
                 options={{ headerShown: false }} />
+            <Stack.Screen name={ScreenName.AddPlants} component={AddPlants}
+                options={{ headerStyle: {
+                    backgroundColor: "black"
+                }}}
+                 />
         </Stack.Navigator>
     )
 };
