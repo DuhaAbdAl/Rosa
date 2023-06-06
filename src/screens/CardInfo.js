@@ -16,7 +16,7 @@ import { useContext } from "react";
 import RosaContext from "../../Store/RosaContext";
 
 const CardInfo = (props) => {
-    const {myPlants, setMyPlants} = useContext(RosaContext)
+    const { myPlants, setMyPlants } = useContext(RosaContext)
     const navigation = useNavigation();
     const drawerNavigation = navigation.getParent('LeftDrawer');
     const { name } = props.route.params || {}
@@ -78,19 +78,19 @@ const CardInfo = (props) => {
                 </View>
                 <Text style={styles.name}>{found.title}</Text>
             </ImageBackground>
-            <ScrollView>
+            <ScrollView style={{backgroundColor: "#fff"}}>
                 <View >
                     {renderData()}
                     {renderInfoCard(filterData())}
                     {props.children}
                 </View>
+                <TouchableOpacity onPress={addBotton}>
+                    <AntDesign
+                        name="pluscircleo"
+                        style={styles.plusIcon}
+                    />
+                </TouchableOpacity>
             </ScrollView>
-            <TouchableOpacity onPress={addBotton}>
-                <AntDesign
-                    name="pluscircleo"
-                    style={styles.plusIcon}
-                />
-            </TouchableOpacity>
         </View>
     )
 
@@ -121,8 +121,9 @@ const styles = StyleSheet.create({
     plusIcon: {
         color: 'teal',
         alignSelf: 'center',
-        marginBottom: 15,
-        fontSize: 50
+        marginBottom: 10,
+        fontSize: 60,
+        marginTop: 10,
     },
     icon: {
         marginLeft: 15,

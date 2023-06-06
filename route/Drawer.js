@@ -2,15 +2,15 @@ import { DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
 import HomePage from "../src/screens/Home page";
 import Categories from "../src/screens/Categories";
 import Types from "../src/screens/Types";
-import Info from "../src/screens/Info";
+// import Info from "../src/screens/Info";
 import CustomDrawer from "../src/Componants/CustomDrawer";
 import Icon from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { ScreenName } from "./ScreenName";
 import { StyleSheet } from "react-native";
-import SignIn from "../src/screens/SignIn";
-import SignUp from "../src/screens/SignUp";
+// import SignIn from "../src/screens/SignIn";
+// import SignUp from "../src/screens/SignUp";
 import Favorite from "../src/Componants/Favorite";
 import UserProfilePage from "../src/screens/UserProfile";
 import MainStack from "./Stack";
@@ -60,20 +60,20 @@ const MyDrawer = () => {
         // drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
       }
     },
-    signIn: {
-      name: ScreenName.SignIn,
-      component: SignIn,
-      options: {
-        headerShown: false
-      }
-    },
-    signUp: {
-      name: ScreenName.SignUp,
-      component: SignUp,
-      options: {
-        headerShown: false
-      }
-    },
+    // signIn: {
+    //   name: ScreenName.SignIn,
+    //   component: SignIn,
+    //   options: {
+    //     headerShown: false
+    //   }
+    // },
+    // signUp: {
+    //   name: ScreenName.SignUp,
+    //   component: SignUp,
+    //   options: {
+    //     headerShown: false
+    //   }
+    // },
     UserProfilePage: {
       name: ScreenName.UserProfilePage,
       component: UserProfilePage,
