@@ -14,24 +14,32 @@ import filter from "lodash.filter";
 import RosaContext from "../../Store/RosaContext";
 import { useContext } from "react";
 
+
+// const QueryList = ({searchPhrase, setClicked, data}) => {
+//     const [list, setList] = useState([]);
+//     const [selectedCategory, setSelectedCategory] = useState(null);
+
 const listData = data;
 // console.log('List', listData)
 
 const SearchList = () => {
-    const { isLoading, setIsLoading,
+    const {
+        list, setList,
+        searchText, setSearchText,
+        isLoading, setIsLoading,
         isData, setIsData,
         error, setError,
         fullData, setFullData,
         searchQuery, setSearchQuery } = useContext(RosaContext);
-        
-        
-        // useEffect(() => {
-        //     setIsLoading(true)
-        //     fetchData(listData)
-        // }, []);
 
 
-        
+    // useEffect(() => {
+    //     setIsLoading(true)
+    //     fetchData(listData)
+    // }, []);
+
+
+
     // const fetchData = async () => {
     //     try {
     //         const response = listData;
@@ -50,20 +58,59 @@ const SearchList = () => {
     //         setIsLoading(false);
     //     }
     // }
- 
 
-    const handleSearch = (query) => {
-        // setSearchQuery(query)
-        const formattedQuery = query.toLowerCase()
-        const filtersData = listData.filter((item) => {
-            return item.title.toLowerCase().match(formattedQuery)
-        })
-        setIsData(filtersData)
 
-        if ( !formattedQuery || formattedQuery === '') {
-            setIsData(data)
+    const handleSearch = (plant) => {
+        let plantList = data.filter(a => {
+            (a.data.includes(plant.id) &&
+                a.title
+                    .toUpperCase()
+                    .includes(searchText.toUpperCase().trim().replace(/\s/g, ''))) ||
+                a.title
+                    .toUpperCase()
+                    .includes(searchText.toUpperCase().trim().replace(/\s/g, ''));
+        });
+
+        setList(plantList);
+        setSelectedCategory(plant);
+    }
+
+    useEffect(() => {
+        check();
+    }, [searchText]);
+
+    const check = () => {
+        if (searchText == '') {
+            setList([]);
+            return;
         }
+        let titleList = data.filter(val => {
+            return (
+                val.title
+                    .toUpperCase()
+                    .includes(searchText.toUpperCase().trim().replace(/\s/g, ''))
+            );
+        });
+        console.log('title list ', titleList);
+        setList(titleList);
+    };
+
+    const renderList = ({item}) => {
+        return <QueryComp item={item} />;
+      };
     
+
+    // // setSearchQuery(query)
+    // const formattedQuery = query.toLowerCase()
+    // const filtersData = listData.filter((item) => {
+    //     return item.title.toLowerCase().match(formattedQuery)
+    // })
+    // setIsData(filtersData)
+
+    // if ( !formattedQuery || formattedQuery === '') {
+    //     setIsData(data)
+    // }
+
 
     // if (isLoading) {
     //     return (
@@ -82,12 +129,12 @@ const SearchList = () => {
     // };
     // setError(error)
 
-    if(data.isData(filtersData)) {
-        setIsData({
-          data: filtersData,
-        });
-      }
-    }
+    // if(data.isData(filtersData)) {
+    //     setIsData({
+    //       data: filtersData,
+    //     });
+    //   }
+    // }
     const renderItem = (item) => {
         <View style={styles.itemContainer}>
             <Image source={item.item.image} style={styles.image} />
@@ -98,6 +145,16 @@ const SearchList = () => {
         // console.log('img', item.item.image)
         // console.log('title', item.item.title)
         // console.log('item', item)
+    }
+    const params = {
+        Flatlist: {
+          data: list,
+          renderItem: renderList,
+          keyExtractor: item => item.id,
+          //   style: {backgroundColor: 'red'},
+          extraData: data,
+          keyboardShouldPersistTaps: 'handled',
+        },
     }
 
     return (
@@ -110,11 +167,11 @@ const SearchList = () => {
                 autoCapitalize="none"
                 value={searchQuery}
                 onChangeText={(query) => handleSearch(query)} />
-            <FlatList
+             {/* <FlatList
                 data={listData}
                 keyExtractor={(item) => item.title}
                 renderItem={renderItem}
-            />
+            /> */}
         </View>
 
     )
@@ -125,8 +182,8 @@ const SearchList = () => {
 const styles = StyleSheet.create({
     searchContainer: {
         flex: 1,
-        minHeight:150,
-        minWidth:50,
+        minHeight: 150,
+        minWidth: 50,
     },
     searchBox: {
         paddingHorizontal: 20,
@@ -140,8 +197,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(252,252,252,0.9)',
         marginTop: 30,
         color: "#333"
-
-
     },
     itemContainer: {
         flexDirection: 'row',

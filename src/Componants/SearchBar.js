@@ -146,17 +146,6 @@ const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked }) => {
                         }} />
                     )}
             </LinearGradient>
-            {/* {clicked && (
-                <View>
-                    <Button
-                        title="Cancel"
-                        onPress={() => {
-                            Keyboard.dismiss();
-                            setClicked(false);
-                        }}
-                    ></Button>
-                </View>
-            )} */}
         </View >
     );
 };

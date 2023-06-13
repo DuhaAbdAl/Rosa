@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, Pressable, ScrollView, Animated, Image, useWindowDimensions, TouchableOpacity } from "react-native";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { ScreenName } from "../../route/ScreenName";
 import Icon from "react-native-vector-icons/AntDesign";
-import { images } from "../mokData/data";
+// import { images } from "../mokData/data";
+import { getAllCategory } from "../../API/Api";
 
 const Categories = (props) => {
     const { title, img } = props;
     const navigation = useNavigation()
+    const [images , setImages] = useState([])
 
     const scroll = useRef(new Animated.Value(0)).current
     let { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -52,7 +54,7 @@ const Categories = (props) => {
                 <Animated.View
                     style={[{ width: windowWidth }, styles.scrollContainer]}
                     key={imageIndex}>
-                    <TouchableOpacity activeOpacity={0.8} style={styles.touch(windowWidth)} onPress={()=>onCategoryPress(image.title)}>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.touch(windowWidth)} onPress={() => onCategoryPress(image.title)}>
                         <Image source={image.img} style={styles.card} />
                     </TouchableOpacity>
 
@@ -79,6 +81,17 @@ const Categories = (props) => {
         }
         )
     }
+
+    const getCategoreisFromApi = ()=>{
+        getAllCategory().then(res => {
+            res && 
+            setImages(res)
+        })
+    }
+
+    useEffect(()=>{
+        getCategoreisFromApi()
+    },[])
 
     return (
         <View style={styles.container}>
@@ -150,7 +163,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     scrollContainer: {
-        flex:1
+        flex: 1
     },
     card: {
         flex: 1,
@@ -162,7 +175,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:18,
+        marginTop: 18,
     },
     normallDots: {
         width: 8,
@@ -172,7 +185,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     nametext: {
-        height:100 , 
+        height: 100,
         width: '100%',
         marginBottom: 10,
         // borderWidth:1 , 
