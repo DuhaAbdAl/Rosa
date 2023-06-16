@@ -84,8 +84,9 @@ const Categories = (props) => {
 
     const getCategoreisFromApi = ()=>{
         getAllCategory().then(res => {
+            console.log("res: " , res);
             res && 
-            setImages(res)
+            setImages(res?.all)
         })
     }
 

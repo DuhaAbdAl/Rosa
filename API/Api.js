@@ -1,5 +1,5 @@
 
-const Base_URL = "https://rosa-verde-lqyr.onrender.com";
+const Base_URL = "https://rosa-verde-lqyr.onrender.com/";
 
 export const getAllCategory = async () => {
     const url = "category/getAllCategory"
@@ -55,8 +55,8 @@ export const login = async (body) => {
 }
 const AppFetch = async (url , method , body) => {
     const fullUrl = Base_URL + url
-   return await fetch(fullUrl
-    , {
+    console.log("fullUrl: " , fullUrl);
+   return await fetch(fullUrl, {
         "method": method,
         body: body,
     }

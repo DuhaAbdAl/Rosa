@@ -62,7 +62,7 @@ const SearchList = () => {
 
     const handleSearch = (plant) => {
         let plantList = data.filter(a => {
-            (a.data.includes(plant.id) &&
+            (a.data.includes(plant.title) &&
                 a.title
                     .toUpperCase()
                     .includes(searchText.toUpperCase().trim().replace(/\s/g, ''))) ||
@@ -95,10 +95,11 @@ const SearchList = () => {
         setList(titleList);
     };
 
-    const renderList = ({item}) => {
-        return <QueryComp item={item} />;
-      };
-    
+    const renderList = ({ item }) => {
+        return ;
+    };
+    // console.log("item", item)
+
 
     // // setSearchQuery(query)
     // const formattedQuery = query.toLowerCase()
@@ -148,17 +149,19 @@ const SearchList = () => {
     }
     const params = {
         Flatlist: {
-          data: list,
-          renderItem: renderList,
-          keyExtractor: item => item.id,
-          //   style: {backgroundColor: 'red'},
-          extraData: data,
-          keyboardShouldPersistTaps: 'handled',
+            data: data,
+            renderItem: renderList,
+            keyExtractor: item => item.title,
+            extraData: data,
+            keyboardShouldPersistTaps: 'handled',
         },
     }
 
     return (
-        <View style={styles.searchContainer}>
+        <View style={styles.searchContainer}
+            onStartShouldSetResponder={() => {
+                setClicked(false);
+            }}>
             <TextInput
                 placeholder="Search"
                 placeholderTextColor={'black'}
@@ -167,7 +170,9 @@ const SearchList = () => {
                 autoCapitalize="none"
                 value={searchQuery}
                 onChangeText={(query) => handleSearch(query)} />
-             {/* <FlatList
+            <FlatList {...params.Flatlist} />
+
+            {/* <FlatList
                 data={listData}
                 keyExtractor={(item) => item.title}
                 renderItem={renderItem}

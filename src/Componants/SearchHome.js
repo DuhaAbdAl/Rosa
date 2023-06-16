@@ -8,6 +8,8 @@ import {
 // import SearchList from "./List";
 import SearchBar from "./SearchBar";
 import { data } from "../mokData/data";
+import SearchList from "./searchList";
+import List from "../../Archive/searchList";
 
 const SearchHome = () => {
     const [searchPhrase, setSearchPhrase] = useState("");
@@ -27,18 +29,28 @@ const SearchHome = () => {
 
     return (
         // <ImageBackground style={styles.image} source={require('../assets/images/type4.jpeg')}>
-            <View >
-                {!clicked}
-                <SearchBar style={styles.bar}
-                    searchPhrase={searchPhrase}
-                    setSearchPhrase={setSearchPhrase}
-                    clicked={clicked}
-                    setClicked={setClicked}
-                />
-                {/* {(
+        <View >
+            {!clicked}
+            <SearchBar style={styles.bar}
+                searchPhrase={searchPhrase}
+                setSearchPhrase={setSearchPhrase}
+                clicked={clicked}
+                setClicked={setClicked}
+                onFocus={() => {
+                    setClicked(true);
+                }}
+
+            />
+            <List/>
+            {/* <SearchList
+                searchPhrase={searchPhrase}
+                data={data}
+                setClicked={setClicked}
+            /> */}
+            {/* {(
                     <SearchList data={data} input={input} setInput={setInput}/>
                 )} */}
-            </View>
+        </View>
         // </ImageBackground>
     );
 };
@@ -49,8 +61,8 @@ const styles = StyleSheet.create({
         flex: 1,
         // justifyContent: 'center',
     },
-    bar:{
-        marginBottom:200,
+    bar: {
+        marginBottom: 200,
     }
 });
 export default SearchHome;
