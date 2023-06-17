@@ -41,7 +41,10 @@ const SearchHome = () => {
                 }}
 
             />
-            <List/>
+            <List
+             searchPhrase={searchPhrase}
+             data={data}
+             setClicked={setClicked}/>
             {/* <SearchList
                 searchPhrase={searchPhrase}
                 data={data}
