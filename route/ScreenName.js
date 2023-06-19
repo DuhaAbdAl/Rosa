@@ -19,4 +19,5 @@ export const ScreenName = {
     SlideIntroScreens: "Into Slides",
     searchList: "searchList",
     AddPlants: "Add Plants",
+    searchNave: "searchNav"
 };

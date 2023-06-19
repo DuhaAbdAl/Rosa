@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         flexDirection: "row",
-        width: "90%",
+        width: "100%",
 
     },
     searchBarUnclicked: {
@@ -167,7 +167,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "95%",
         height: 60,
-        // backgroundColor: 'rgba(50,50,50,0.4)',
         borderRadius: 15,
         alignItems: "center",
         borderColor: "#333",
@@ -180,7 +179,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: "95%",
-        // backgroundColor: 'rgba(50,50,50,0.4)',
         borderRadius: 15,
         borderWidth: 1,
         borderColor: "#333",

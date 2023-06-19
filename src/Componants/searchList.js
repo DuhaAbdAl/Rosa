@@ -13,6 +13,7 @@ import { ActivityIndicator } from "react-native";
 import filter from "lodash.filter";
 import RosaContext from "../../Store/RosaContext";
 import { useContext } from "react";
+import searchNav from "./searchNav";
 
 
 // const QueryList = ({searchPhrase, setClicked, data}) => {
@@ -66,7 +67,7 @@ const SearchList = () => {
                 a.title
                     .toUpperCase()
                     .includes(searchText.toUpperCase().trim().replace(/\s/g, ''))) ||
-                a.title
+                a.type
                     .toUpperCase()
                     .includes(searchText.toUpperCase().trim().replace(/\s/g, ''));
         });
@@ -95,9 +96,9 @@ const SearchList = () => {
         setList(titleList);
     };
 
-    const renderList = ({ item }) => {
-        return ;
-    };
+    // const renderList = ({ item }) => {
+    //     return <searchNav item={item}/> ;
+    // };
     // console.log("item", item)
 
 

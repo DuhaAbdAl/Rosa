@@ -1,8 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import {COLORS, FONTS} from '../Data/Dimentions';
-import {ScreenNames} from '../Data/ScreenNames';
+import { ScreenName } from '../../route/ScreenName';
 
 const searchNav = ({item}) => {
   const navigation = useNavigation();
@@ -12,12 +11,12 @@ const searchNav = ({item}) => {
       style={styles.container}
       onPress={() => {
         console.log('item = ', item);
-        navigation.navigate(ScreenNames.Track, {item});
+        navigation.navigate(ScreenName, {item});
       }}>
-      <Image style={styles.image} source={item?.artwork} resizeMode="cover" />
+      {/* <Image style={styles.image} source={item?.image} resizeMode="cover" /> */}
       <View>
-        <Text style={styles.SongName}>{item?.title}</Text>
-        <Text style={styles.Songartist}>{item?.artist}</Text>
+        <Text style={styles.Title}>{item?.title}</Text>
+        <Text style={styles.Type}>{item?.type}</Text>
       </View>
     </Pressable>
   );
@@ -37,14 +36,11 @@ const styles = StyleSheet.create({
       borderBottomLeftRadius: 2,
       borderTopLeftRadius: 2,
     },
-    SongName: {
-      ...FONTS.h2,
-      color: COLORS.lightGray,
+    Title: {
       margin: '2%',
       marginLeft: '5%',
     },
-    Songartist: {
-      ...FONTS.h4,
+    Type: {
       color: 'gray',
       margin: '2%',
       marginLeft: '5%',

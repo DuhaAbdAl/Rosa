@@ -70,7 +70,7 @@ import {
   Text,
   View,
   FlatList,
-  SafeAreaView,
+  Image
 } from "react-native";
 import { data } from "../src/mokData/data";
 
@@ -79,8 +79,8 @@ const searchData = data;
 // definition of the Item, which will be rendered in the FlatList
 const Item = ({ title, image }) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-    <Text style={styles.img}>{image}</Text>
+    <Image style={styles.img} source={image} />
+    <Text style={styles.title}> {title} </Text>
   </View>
 );
 
@@ -89,14 +89,12 @@ const List = ({ searchPhrase, setClicked, data }) => {
   const renderItem = ({ item }) => {
     // when no input, show all
     if (searchPhrase === "") {
-      return <Item title={item.title} 
-      image={item.image} 
-      />;
+      return <Item image={item.image} title={item.title}/>   
     }
     // filter of the name
     if (item.title.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
       return <Item title={item.title}
-       image={item.image} 
+        image={item.image}
       />;
     }
     // filter of the description
@@ -105,8 +103,12 @@ const List = ({ searchPhrase, setClicked, data }) => {
     // }
   };
 
+  // const renderList = ({ item }) => {
+  //   return <searchNav item={item} />;
+  // };
+
   return (
-    <SafeAreaView style={styles.list__container}>
+    <View style={styles.list__container}>
       <View
         onStartShouldSetResponder={() => {
           setClicked(false);
@@ -118,7 +120,7 @@ const List = ({ searchPhrase, setClicked, data }) => {
           keyExtractor={(item) => item.id}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -129,22 +131,24 @@ const styles = StyleSheet.create({
     margin: 10,
     height: "85%",
     width: "100%",
+    
   },
   item: {
-    margin: 30,
+    margin: 20,
     borderBottomWidth: 2,
-    borderBottomColor: "lightgrey"
+    borderBottomColor: "lightgrey",
+    flexDirection: "row"
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 5,
     fontStyle: "italic",
-    color: "#333"
+    color: "#333",
+    marginTop: 15,
   },
   img: {
-    height: 40,
-    width: 40,
-    alignSelf: "flex-start",
+    height: 70,
+    width: 75,
+    marginRight: 10,
   },
 });

@@ -39,20 +39,11 @@ const SearchHome = () => {
                 onFocus={() => {
                     setClicked(true);
                 }}
-
             />
             <List
              searchPhrase={searchPhrase}
              data={data}
              setClicked={setClicked}/>
-            {/* <SearchList
-                searchPhrase={searchPhrase}
-                data={data}
-                setClicked={setClicked}
-            /> */}
-            {/* {(
-                    <SearchList data={data} input={input} setInput={setInput}/>
-                )} */}
         </View>
         // </ImageBackground>
     );
