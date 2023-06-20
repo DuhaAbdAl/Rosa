@@ -13,7 +13,7 @@ import { ActivityIndicator } from "react-native";
 import filter from "lodash.filter";
 import RosaContext from "../../Store/RosaContext";
 import { useContext } from "react";
-import searchNav from "./searchNav";
+import searchNav from "../../Archive/searchNav";
 
 
 // const QueryList = ({searchPhrase, setClicked, data}) => {

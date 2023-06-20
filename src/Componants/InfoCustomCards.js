@@ -16,14 +16,14 @@ const InfoCards = (props) => {
         <View style={styles.tipsWrapper}>
             <ScrollView>
                 <View style={styles.tipCard}>
+                        <Text style={styles.tipsTitle}> Sun Exposure </Text>
+                        <Text style={styles.tipContext}>{SunExposure}</Text>
                     <Fontisto
                         name="sun"
-                        size={150}
+                        size={90}
                         color={"#ffbd58"}
                     />
                     <View style={{marginTop:30, marginLeft: 20}}>
-                        <Text style={styles.tipsTitle}> Sun Exposure </Text>
-                        <Text style={styles.tipContext}>{SunExposure}</Text>
                     </View>
                 </View>
                 <Text style={styles.line}>_________________________________________________</Text>
@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
     tipsTitle: {
         color: '#333',
         fontSize: 18,
-        marginBottom:5,
+        marginBottom:15,
     },
     tipContext: {
         color: "#333",
         fontSize: 15,
         lineHeight: 25,
-        marginLeft: 10,
+        // marginLeft: 10,
     },
     tipCard:{
         flexDirection: 'row',

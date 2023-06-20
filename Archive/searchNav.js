@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import { ScreenName } from '../../route/ScreenName';
+import { ScreenName } from '../route/ScreenName';
 
 const searchNav = ({item}) => {
   const navigation = useNavigation();
@@ -16,7 +16,7 @@ const searchNav = ({item}) => {
       {/* <Image style={styles.image} source={item?.image} resizeMode="cover" /> */}
       <View>
         <Text style={styles.Title}>{item?.title}</Text>
-        <Text style={styles.Type}>{item?.type}</Text>
+        {/* <Text style={styles.Type}>{item?.type}</Text> */}
       </View>
     </Pressable>
   );
@@ -29,12 +29,6 @@ const styles = StyleSheet.create({
       height: 70,
       // backgroundColor: 'red',
       margin: '2%',
-    },
-    image: {
-      width: '20%',
-      height: '100%',
-      borderBottomLeftRadius: 2,
-      borderTopLeftRadius: 2,
     },
     Title: {
       margin: '2%',

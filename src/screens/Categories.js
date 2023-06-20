@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { getAllCategory } from "../../API/Api";
 
 const Categories = (props) => {
-    const { title, img } = props;
+    // const { title, img } = props;
     const navigation = useNavigation()
     const [images , setImages] = useState([])
 
@@ -49,13 +49,13 @@ const Categories = (props) => {
 
     const renderImage = () => {
         return images.map((image, imageIndex) => {
+                console.log("image: " , image.img);
             return (
-
                 <Animated.View
                     style={[{ width: windowWidth }, styles.scrollContainer]}
                     key={imageIndex}>
                     <TouchableOpacity activeOpacity={0.8} style={styles.touch(windowWidth)} onPress={() => onCategoryPress(image.title)}>
-                        <Image source={image.img} style={styles.card} />
+                        <Image source={{uri:image.img}} style={styles.card} />
                     </TouchableOpacity>
 
                 </Animated.View >

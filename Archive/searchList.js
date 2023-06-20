@@ -70,9 +70,13 @@ import {
   Text,
   View,
   FlatList,
-  Image
+  Image,
+  Pressable
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { data } from "../src/mokData/data";
+import { ScreenName } from "../route/ScreenName";
+
 
 
 const searchData = data;
@@ -86,10 +90,15 @@ const Item = ({ title, image }) => (
 
 // the filter
 const List = ({ searchPhrase, setClicked, data }) => {
+  const navigation = useNavigation();
   const renderItem = ({ item }) => {
     // when no input, show all
     if (searchPhrase === "") {
-      return <Item image={item.image} title={item.title}/>   
+      return (
+        <Pressable onPress={() => { navigation.navigate(ScreenName.CardInfo, { name: item.title }) }}>
+          <Item image={item.image} title={item.title} />
+        </Pressable>
+      )
     }
     // filter of the name
     if (item.title.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
@@ -100,7 +109,7 @@ const List = ({ searchPhrase, setClicked, data }) => {
     // filter of the description
     // if (item.image.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
     //   return <Item title={item.title} image={item.image} />;
-    // }
+    // } 
   };
 
   // const renderList = ({ item }) => {
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: "85%",
     width: "100%",
-    
+
   },
   item: {
     margin: 20,
