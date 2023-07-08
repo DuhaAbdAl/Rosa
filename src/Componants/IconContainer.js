@@ -15,9 +15,6 @@ const IconContainer = (props) => {
                 <Icon style={styles.icons}
                     name='home' />
             </Pressable>
-            <Icon
-                style={styles.icons}
-                name="pluscircleo" />
             <Pressable onPress={() => {
                 navigation.navigate(ScreenName.Favorite);
             }}>
@@ -25,10 +22,23 @@ const IconContainer = (props) => {
                     name='hearto' />
             </Pressable>
             <Pressable onPress={() => {
-                navigation.navigate(ScreenName.Schedule);
+                navigation.navigate(ScreenName.AddPlants);
+            }}>
+                <Icon
+                    style={styles.icons}
+                    name="pluscircleo" />
+            </Pressable>
+            <Pressable onPress={() => {
+                navigation.navigate(ScreenName.SearchHome);
             }}>
                 <Icon style={styles.icons}
-                    name='calendar' />
+                    name='search1' />
+            </Pressable>
+            <Pressable onPress={() => {
+                navigation.navigate(ScreenName.UserProfilePage);
+            }}>
+                <Icon style={styles.icons}
+                    name='user' />
             </Pressable>
         </View>
     )
@@ -40,9 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#28463e',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // alignSelf: 'center',
-        // marginTop:100,
-        // marginBottom:150,
+        marginTop: 70,
     },
     icons: {
         padding: 5,

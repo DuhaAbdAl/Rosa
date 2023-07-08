@@ -1,8 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Button, TextInput, TouchableOpacity } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
+import { images } from '../mokData/data';
+import DropdownComponent from '../Componants/DropDown';
+// import { data, images } from '../mokData/data';
 
 
 const AddPlants = () => {
+    
+    // const categoryData = images
     return (
         <View style={styles.container}>
             
@@ -26,6 +32,12 @@ const AddPlants = () => {
              underlineColorAndroid={"#c5e1a5"}
              style={styles.textInput}             
             />
+            <DropdownComponent/>
+            {/* <Dropdown
+            mode='default'
+            data={images.title}
+            placeholder='Category'
+            /> */}
            <TouchableOpacity style={styles.addButton}>
             <Text style={styles.buttonText}>Add plant</Text>
            </TouchableOpacity>
