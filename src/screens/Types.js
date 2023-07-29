@@ -61,7 +61,7 @@ const Types = (props) => {
             data: [...filterData()],
             renderItem: renderCard,
             style: styles.flatList,
-            numColumns: 2,
+            // numColumns: 2,
             padding: 10,
             paddingTop: 22,
         }

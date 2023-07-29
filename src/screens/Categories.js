@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, ScrollView, Animated, Image, useWindowDimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Pressable, ScrollView, Animated, Image, useWindowDimensions, TouchableOpacity, ActivityIndicator } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { ScreenName } from "../../route/ScreenName";
@@ -11,6 +11,7 @@ const Categories = (props) => {
     // const { title, img } = props;
     const navigation = useNavigation()
     const [images, setImages] = useState([])
+    const [loding, setLoading] = useState(false)
 
     const scroll = useRef(new Animated.Value(0)).current
     let { width: windowWidth, height: windowHeight } = useWindowDimensions();
@@ -84,7 +85,9 @@ const Categories = (props) => {
     }
 
     const getCategoreisFromApi = () => {
+        setLoading(true)
         getAllCategory().then(res => {
+            setLoading(false)
             console.log("res: ", res);
             res &&
                 setImages(res?.all)
@@ -94,6 +97,11 @@ const Categories = (props) => {
     useEffect(() => {
         getCategoreisFromApi()
     }, [])
+
+
+    if(loding) {
+        return <ActivityIndicator size={'large'} style={{flex:1}} />
+    }
 
     return (
         <View style={styles.container}>
@@ -120,38 +128,6 @@ const Categories = (props) => {
                 {renderDots()}
             </View>
             <IconContainer />
-            {/* <View style={styles.iconContainer}> */}
-            {/* <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.HomePage);
-                }}>
-                    <Icon style={styles.icons}
-                        name='home' />
-                </Pressable>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.Favorite);
-                }}>
-                    <Icon style={styles.icons}
-                        name='hearto' />
-                </Pressable>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.AddPlants);
-                }}>
-                    <Icon style={styles.icons}
-                        name='calendar' />
-                </Pressable>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.SearchHome);
-                }}>
-                    <Icon style={styles.icons}
-                        name='search1' />
-                </Pressable>
-                <Pressable onPress={() => {
-                    props.navigation.navigate(ScreenName.UserProfilePage);
-                }}>
-                    <Icon style={styles.icons}
-                        name='user' />
-                </Pressable> */}
-            {/* </View> */}
         </View>
 
     )

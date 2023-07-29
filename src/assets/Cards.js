@@ -10,8 +10,8 @@ import {
     ImageBackground,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
-import Ionicons from "react-native-vector-icons/Ionicons";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Fontisto from "react-native-vector-icons/Fontisto";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import RosaContext from '../../Store/RosaContext';
@@ -31,13 +31,13 @@ const Cards = (props) => {
 
 
     const OnClickFavorite = async () => {
-    //     if (!favorite) {
-    //         !checkIfFavorate() &&
-    //         favoritsFromStorage.push(Name)
-    // } else {
-    //     favoritsFromStorage = favoritsFromStorage.filter(fav => fav !== Name);
-    // }
-    // AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage)); 
+        //     if (!favorite) {
+        //         !checkIfFavorate() &&
+        //         favoritsFromStorage.push(Name)
+        // } else {
+        //     favoritsFromStorage = favoritsFromStorage.filter(fav => fav !== Name);
+        // }
+        // AsyncStorage.setItem('favorite', JSON.stringify(favoritsFromStorage)); 
         setFavorite(!favo)
     }
 
@@ -47,60 +47,63 @@ const Cards = (props) => {
 
 
     return (
-        <View >
-            <View style={{borderRadius:30}}>
-            <Pressable style={styles.card} onPress={() => {
-                navigation.navigate(ScreenName.CardInfo, { name: Name });
-            }}>
-                <ImageBackground style={styles.cardBackground} source={image}>
-                        <Pressable onPress={OnClickFavorite} >
-                            <View>
-                                <Icon
-                                    style={styles.favorite}
-                                    name={(favo) ? "heart" : "heart-o"}
-                                    color={(favo) ? "red" : "white"}
-                                    size={20} />
-                            </View>
-                        </Pressable>
-                    <View style={styles.cardName}>
-                        <Text style={styles.cardText}>{Name}</Text>
-                    </View>
-                </ImageBackground>
+        <View style={styles.card} >
+            <Image style={styles.img} source={image} />
+            <Text style={styles.cardText}>{Name}</Text>
+            <View style={styles.icons}>
+                <Pressable onPress={OnClickFavorite} >
+                    <FontAwesome
+                        name={(favo) ? "heart" : "heart-o"}
+                        color={(favo) ? "red" : "white"}
+                        size={25} />
+                </Pressable>
+                <Pressable onPress={() => {
+                    navigation.navigate(ScreenName.CardInfo, { name: Name });
+                }}>
+                    <Fontisto
+                        name='arrow-right-l'
+                        color={"white"}
+                        size={25}
+                    />
                 </Pressable>
             </View>
-
         </View>
     )
 }
 const styles = StyleSheet.create({
     card: {
         flex: 1,
-        flexDirection: 'row',
+        height: 160,
+        flexDirection: "row",
+        backgroundColor: "green",
+        marginBottom: 10,
+        borderBottomLeftRadius: 40,
+        borderTopLeftRadius: 40,
+        justifyContent: "space-between"
     },
-    favorite: {
-        alignSelf: 'flex-end',
-        margin:8,
+    icons: {
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 8,
+        flexDirection: "column",
+        justifyContent: "space-between",
     },
     cardBackground: {
-        height: 240,
-        width: 180,
-        marginLeft: 12,
-        marginBottom: 10,
-        elevation:10,
-        borderWidth:1,
-        borderColor:'gray',
+        backgroundColor: "yellow",
+        elevation: 10,
+        borderWidth: 1,
+        borderColor: 'red',
+        margin: 10,
     },
-    cardName: {
-        width: '100%',
-        height: 50,
-        backgroundColor: 'rgba(52, 52, 52, 0.5)',
-        marginTop: 155,
+    cardText: {
+        fontSize: 18,
+        alignSelf: 'center',
+        color: 'white',
     },
-    cardText:{
-        fontSize:18,
-        alignSelf:'center',
-        color:'white',
-        marginTop:15,
+    img: {
+        height: "100%",
+        width: "30%",
+        borderRadius: 25,
     }
 })
 

@@ -26,12 +26,12 @@ const AddPlants = () => {
              underlineColorAndroid={"#c5e1a5"}
              style={styles.textInput}             
             />
-             <TextInput
+             {/* <TextInput
              placeholder="Species"
              placeholderTextColor={"#fff"}
              underlineColorAndroid={"#c5e1a5"}
              style={styles.textInput}             
-            />
+            /> */}
             <DropdownComponent/>
             {/* <Dropdown
             mode='default'

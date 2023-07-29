@@ -102,9 +102,11 @@ const List = ({ searchPhrase, setClicked, data }) => {
     }
     // filter of the name
     if (item.title.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-      return <Item title={item.title}
-        image={item.image}
-      />;
+      return (
+        <Pressable onPress={() => { navigation.navigate(ScreenName.CardInfo, { name: item.title }) }}>
+          <Item title={item.title} image={item.image} />
+        </Pressable>
+      )
     }
     // filter of the description
     // if (item.image.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {

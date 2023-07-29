@@ -1,117 +1,84 @@
 import React, { useState } from 'react';
-  import { StyleSheet, Text, View } from 'react-native';
-  import { Dropdown } from 'react-native-element-dropdown';
-  import AntDesign from 'react-native-vector-icons/AntDesign'; 
-import { images } from '../mokData/data';
 import { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
 import { getAllCategory } from "../../API/Api";
+import {images} from '../mokData/data';
+
+const Data = images.map((image , index) => {
+  return {value: index , lable:image.title}
+} );
+
+ // useEffect(() => {
+  //   getCategoreisFromApi()
+  // }, [])
 
 
-  // const data = images;
+const DropdownComponent = () => {
+  const [value, setValue] = useState(null);
 
-  const DropdownComponent = () => {
-    const [value, setValue] = useState(null);
-    const [isFocus, setIsFocus] = useState(false);
+  // const getCategoreisFromApi = () => {
+  //   getAllCategory().then(res => {
+  //       console.log("res: ", res);
+  //       res &&
+  //           setIsFocus(res?.all)
+  //   })
+  // }
+  
+ 
+  return (
+    <Dropdown
+      style={styles.dropdown}
+      placeholderStyle={styles.placeholderStyle}
+      selectedTextStyle={styles.selectedTextStyle}
+      inputSearchStyle={styles.inputSearchStyle}
+      iconStyle={styles.iconStyle}
+      itemTextStyle={styles.itemTextStyle}
+      data={Data}
+      search
+      maxHeight={300}
+      labelField="lable"
+      valueField="value"
+      placeholder="Select Category"
+      searchPlaceholder="Search..."
+      value={value}
+      onChange={item => {
+        setValue(item);
+        console.log('title =', item.title)
+      }}
+    />
+  );
+};
 
-    const renderLabel = () => {
-      if (value || isFocus) {
-        return (
-          <Text style={[styles.label, isFocus && { color: 'blue' }]}>
-            Category
-          </Text>
-        );
-      }
-      return null;
-    };
+export default DropdownComponent;
 
-
-    
-    const getCategoreisFromApi = () => {
-      getAllCategory().then(res => {
-          console.log("res: ", res);
-          res &&
-              setIsFocus(res?.all)
-      })
+const styles = StyleSheet.create({
+  dropdown: {
+    margin: 16,
+    height: 50,
+    borderBottomColor: "#c5e1a5",
+    borderBottomWidth: 1,
+  },
+  placeholderStyle: {
+    fontSize: 15,
+    color: "white",
+  },
+  selectedTextStyle: {
+    fontSize: 15,
+    color: "white",
+  },
+  iconStyle: {
+    width: 25,
+    height: 25,
+    color: "white",
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+    color: "black",
+  },
+  itemTextStyle: {
+    fontSize: 15,
+    color: "black",
   }
-
-  useEffect(() => {
-      getCategoreisFromApi()
-  }, [])
-
-    return ( 
-      <View style={styles.container}>
-        {renderLabel()}
-        <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-          placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={styles.selectedTextStyle}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={getCategoreisFromApi}
-          search
-          maxHeight={300}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocus ? 'Select item' : '...'}
-          searchPlaceholder="Search..."
-          value={value}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          onChange={item => {
-            setValue(item.value);
-            setIsFocus(false);
-          }}
-          // renderLeftIcon={() => (
-          //   <AntDesign
-          //     style={styles.icon}
-          //     color={isFocus ? 'blue' : 'black'}
-          //     name="Safety"
-          //     size={20}
-          //   />
-          // )}
-        />
-      </View>
-    );
-  };
-
-  export default DropdownComponent;
-
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: 'white',
-      padding: 16,
-    },
-    dropdown: {
-      height: 50,
-      borderColor: 'gray',
-      borderWidth: 0.5,
-      borderRadius: 8,
-      paddingHorizontal: 8,
-    },
-    icon: {
-      marginRight: 5,
-    },
-    label: {
-      position: 'absolute',
-      backgroundColor: 'white',
-      left: 22,
-      top: 8,
-      zIndex: 999,
-      paddingHorizontal: 8,
-      fontSize: 14,
-    },
-    placeholderStyle: {
-      fontSize: 16,
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-    },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
-    inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
-    },
-  });
+});
