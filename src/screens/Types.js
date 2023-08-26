@@ -1,14 +1,14 @@
-import { ImageBackground, StyleSheet, FlatList, Animated, View } from "react-native";
+import { 
+     StyleSheet,
+     FlatList, 
+     View 
+    } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
 import { data } from "../mokData/data";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomHeader from "../Componants/CustomHeader";
-import { useContext } from "react";
-import RosaContext from "../../Store/RosaContext";
-import SearchBar from "../Componants/SearchBar";
-import SearchList from "../Componants/searchList";
-
+import { getAllPlant } from "../../API/Api";
+import IconContainer from "../Componants/IconContainer";
 
 
 const Types = (props) => {
@@ -16,31 +16,33 @@ const Types = (props) => {
     // const { favorates, setFavoratis } = useContext(RosaContext);
     // const [plants, setPlants] = useState('');
     const [fav, setFavoratis] = useState([]);
+    const [loding, setLoading] = useState(false)
 
-    const getfav = async () => {
-        var favoritsFromStorage = await AsyncStorage.getItem('fav');
 
-        if (favoritsFromStorage) {
-            favoritsFromStorage = await JSON.parse(favoritsFromStorage);
-        } else {
-            favoritsFromStorage = []
-        }
+    // const getfav = async () => {
+    //     var favoritsFromStorage = await AsyncStorage.getItem('fav');
 
-        return favoritsFromStorage;
-    }
+    //     if (favoritsFromStorage) {
+    //         favoritsFromStorage = await JSON.parse(favoritsFromStorage);
+    //     } else {
+    //         favoritsFromStorage = []
+    //     }
 
-    const filterData = () => {
-        const filterd = data?.filter(plant => {
-            return plant.type == categoryName;
-        })
+    //     return favoritsFromStorage;
+    // }
 
-        return filterd;
-    }
+    // const filterData = () => {
+    //     const filterd = data?.filter(plant => {
+    //         return plant.type == categoryName;
+    //     })
 
-    const checkIsFavorate = (title) => {
-        const isFav = fav.find(item => item.title === title)
-        return !!isFav;
-    }
+    //     return filterd;
+    // }
+
+    // const checkIsFavorate = (title) => {
+    //     const isFav = fav.find(item => item.title === title)
+    //     return !!isFav;
+    // }
 
     
 
@@ -52,13 +54,31 @@ const Types = (props) => {
             tempIcon={item.tempIcon}
             fertIcon={item.fertIcon}
             item={item}
-            isFavorate={checkIsFavorate(item.title)}
+            // isFavorate={checkIsFavorate(item.title)}
             favorates={fav}
         />
     }
+    const getAllPlant = () => {
+        setLoading(true)
+        getAllPlant.then(res => {
+            setLoading(false)
+            console.log("res: ", res);
+            res &&
+                setImages(res?.all)
+        })
+    }
+
+    useEffect(() => {
+        getAllPlant()
+    }, [])
+
+
+    if(loding) {
+        return <ActivityIndicator size={'large'} style={{flex:1}} />
+    }
     const params = {
         flatList: {
-            data: [...filterData()],
+            data: [...getAllPlant()],
             renderItem: renderCard,
             style: styles.flatList,
             // numColumns: 2,
@@ -66,31 +86,21 @@ const Types = (props) => {
             paddingTop: 22,
         }
     };
-    useEffect(() => {
-        getfav().then(res => setFavoratis([...res]))
-    }, []);
+    // useEffect(() => {
+    //     getfav().then(res => setFavoratis([...res]))
+    // }, []);
 
     return (
-        <View style={styles.img}> 
+        <View style={styles.container}> 
             <CustomHeader />
-            {/* <SearchList/> */}
-            {/* <SearchBar/> */}
             <FlatList {...params.flatList} />
         </View>
-        // <ImageBackground style={styles.img} source={require('../assets/images/Hoa.jpeg')}>
-        //     <CustomHeader />
-        //     <SearchBar/>
-        //     <FlatList {...params.flatList} />
-        //     {/* <SearchBar
-        //         onSearchChange={(val) => onSearchChange(val)} /> */}
-        // </ImageBackground>
     )
 };
 const styles = StyleSheet.create({
-    img: {
+    container: {
         flex: 1,
-        backgroundColor: '#fff',
-        // backgroundColor:'#efeff1',
+        backgroundColor: 'black',
         justifyContent: 'center',
     },
 });

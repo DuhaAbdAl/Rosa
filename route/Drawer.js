@@ -15,7 +15,7 @@ import Favorite from "../src/Componants/Favorite";
 import UserProfilePage from "../src/screens/UserProfile";
 import MainStack from "./Stack";
 import SplashScreen from "../src/screens/SplashScreen";
-import IntroSlides from "../src/screens/SlideIntroScreens";
+import IntroSlides from "../src/Componants/SlideIntroScreens";
 
 const Drawer = createDrawerNavigator();
 const MyDrawer = () => {

@@ -1,22 +1,16 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     Pressable,
     Image,
-    ImageBackground,
 } from 'react-native';
 import { ScreenName } from '../../route/ScreenName';
-import Fontisto from "react-native-vector-icons/Fontisto";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect } from 'react';
-import RosaContext from '../../Store/RosaContext';
 import LinearGradient from 'react-native-linear-gradient';
-import IconContainer from '../Componants/IconContainer';
 
 
 const Cards = (props) => {
@@ -49,12 +43,10 @@ const Cards = (props) => {
 
 
     return (
-        // <View>
-           <LinearGradient
+            <LinearGradient
                 colors={['#276221', '#5bb450']}
                 style={styles.card}
             >
-             {/* <View style={styles.card} > */}
                 <Image style={styles.img} source={image} />
                 <Text style={styles.cardText}>{Name}</Text>
                 <View style={styles.icons}>
@@ -74,14 +66,8 @@ const Cards = (props) => {
                         />
                     </Pressable>
                 </View>
-            {/* </View> */}
-             </LinearGradient> 
-
-        //     <View>
-        //         <IconContainer />
-        //     </View>
-        //  </View>
-
+                {/* </View> */}
+            </LinearGradient>
     )
 }
 const styles = StyleSheet.create({
@@ -90,11 +76,12 @@ const styles = StyleSheet.create({
         height: 160,
         flexDirection: "row",
         marginBottom: 10,
-        borderBottomLeftRadius: 40,
-        borderTopLeftRadius: 40,
+        // borderBottomLeftRadius: 40,
+        // borderTopLeftRadius: 40,
         justifyContent: "space-between",
         elevation: 10,
-        backgroundColor:"green"
+        backgroundColor: "green",
+        borderRadius: 20,
     },
     icons: {
         marginRight: 10,
@@ -118,7 +105,7 @@ const styles = StyleSheet.create({
     img: {
         height: "100%",
         width: "30%",
-        borderRadius: 25,
+        borderRadius: 20,
     }
 })
 

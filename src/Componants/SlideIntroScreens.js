@@ -4,7 +4,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import { slides } from '../mokData/data';
 import { useState } from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
-import HomePage from './Home page';
+import HomePage from '../screens/Home page';
 import { ScreenName } from '../../route/ScreenName';
 import * as Animatable from 'react-native-animatable';
 
@@ -15,12 +15,12 @@ const IntroSlides = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                {/* <HomePage/> */}
-                <ImageBackground style={styles.container} source={item.image}>
-                    <Animatable.Text style={styles.titleStyle} animation={'bounceIn'}>{item.title}</Animatable.Text>
-                    <Animatable.Text style={styles.text} animation={'fadeInLeftBig'}>{item.desc}</Animatable.Text>
-                </ImageBackground>
+            <View style={styles.pageLayout}>
+                {/* <ImageBackground style={styles.container} source={item.image}> */}
+                <Animatable.Text style={styles.titleStyle} animation={'bounceIn'}>{item.title}</Animatable.Text>
+                <Image style={styles.img} source={item.image}/>
+                <Animatable.Text style={styles.text} animation={'fadeInLeftBig'}>{item.desc}</Animatable.Text>
+                {/* </ImageBackground> */}
             </View>
         )
     }
@@ -53,6 +53,9 @@ const IntroSlides = ({ navigation }) => {
     const onDone = () => {
         navigation.navigate(ScreenName.SignIn)
     }
+   const onSkip = () => {
+        navigation.navigate(ScreenName.SignIn)
+    }
 
     return <AppIntroSlider
         data={slidesData}
@@ -60,35 +63,31 @@ const IntroSlides = ({ navigation }) => {
         renderNextButton={renderNextButton}
         renderDoneButton={renderDoneButton}
         onDone={onDone}
+        onSkip={onSkip}
+        showSkipButton={true}
         dotStyle={{ backgroundColor: 'white', width: 30, }}
         activeDotStyle={{ backgroundColor: 'green', width: 30, }}
     />
 }
 
 const styles = StyleSheet.create({
-    container: {
+    pageLayout: {
         flex: 1,
-        width: '100%',
-        backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "black",
+        alignItems: 'center',
+        justifyContent: "space-evenly"
     },
     titleStyle: {
-        textAlign: 'center',
-        fontSize: 30,
+        fontSize: 35,
         fontWeight: 'bold',
-        color: '#333',
-        marginBottom: 150,
+        color: '#fff',
     },
     text: {
-        // fontFamily: 'Lobster',
-        fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 25,
         color: '#fff',
-        marginTop: 350,
-        backgroundColor: 'rgba(52,52,52,0.2)',
         textAlign: 'center',
-        // backgroundColor: 'transparent'
     },
     buttonCircle: {
         width: 50,
@@ -97,6 +96,12 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    img: {
+        alignSelf: "center",
+        height: 250,
+        width: 250,
+        borderRadius: 150,
     },
 
 })

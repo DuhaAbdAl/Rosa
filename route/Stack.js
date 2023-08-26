@@ -18,7 +18,7 @@ import Favorite from "../src/Componants/Favorite";
 import EditProfile from "../src/screens/EditProfile";
 import CardInfo from "../src/screens/CardInfo";
 import SignIn from "../src/screens/Sign_in";
-import IntroSlides from "../src/screens/SlideIntroScreens";
+import IntroSlides from "../src/Componants/SlideIntroScreens";
 import SearchList from "../src/Componants/searchList";
 import AddPlants from "../src/screens/AddPlants";
 

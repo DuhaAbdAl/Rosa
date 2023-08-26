@@ -875,7 +875,7 @@ export const images = [
 export const slides = [
     {
         title: 'Explore',
-        image: require('../assets/images/explore2.jpg'),
+        image: require('../assets/images/explore.jpeg'),
         desc: 'Find all about your favorite plants'
     },
     {
