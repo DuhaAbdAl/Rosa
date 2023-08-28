@@ -13,9 +13,8 @@ import IconContainer from "../Componants/IconContainer";
 
 const Types = (props) => {
     const { categoryName } = props.route.params || {};
-    // const { favorates, setFavoratis } = useContext(RosaContext);
-    // const [plants, setPlants] = useState('');
     const [fav, setFavoratis] = useState([]);
+    const [images, setImages] = useState([])
     const [loding, setLoading] = useState(false)
 
 
@@ -39,28 +38,14 @@ const Types = (props) => {
     //     return filterd;
     // }
 
-    // const checkIsFavorate = (title) => {
-    //     const isFav = fav.find(item => item.title === title)
-    //     return !!isFav;
-    // }
-
-    
-
-    const renderCard = ({ item }) => {
-        return <Cards
-            Name={item.title}
-            image={item.image}
-            waterIcon={item.waterIcon}
-            tempIcon={item.tempIcon}
-            fertIcon={item.fertIcon}
-            item={item}
-            // isFavorate={checkIsFavorate(item.title)}
-            favorates={fav}
-        />
+    const checkIsFavorate = (title) => {
+        const isFav = fav.find(item => item.title === title)
+        return !!isFav;
     }
-    const getAllPlant = () => {
+
+    const getAllPlantFromApi = () => {
         setLoading(true)
-        getAllPlant.then(res => {
+        getAllPlant().then(res => {
             setLoading(false)
             console.log("res: ", res);
             res &&
@@ -69,16 +54,28 @@ const Types = (props) => {
     }
 
     useEffect(() => {
-        getAllPlant()
+        getAllPlantFromApi()
     }, [])
 
 
     if(loding) {
         return <ActivityIndicator size={'large'} style={{flex:1}} />
     }
+    const renderCard = ({ item }) => {
+        return <Cards
+            Name={url.title}
+            image={url.images}
+            // waterIcon={url.WaterIcon}
+            // tempIcon={url.TempIcon}
+            // fertIcon={url.FertIcon}
+            // item={item}
+            // isFavorate={checkIsFavorate(item.title)}
+            favorates={fav}
+        />
+    }
     const params = {
         flatList: {
-            data: [...getAllPlant()],
+            data: [...getAllPlantFromApi()],
             renderItem: renderCard,
             style: styles.flatList,
             // numColumns: 2,
