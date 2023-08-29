@@ -47,7 +47,7 @@ const Cards = (props) => {
                 colors={['#276221', '#5bb450']}
                 style={styles.card}
             >
-                <Image style={styles.img} source={image} />
+                <Image style={styles.img} source={{uri:image}} />
                 <Text style={styles.cardText}>{Name}</Text>
                 <View style={styles.icons}>
                     <Pressable onPress={OnClickFavorite} >

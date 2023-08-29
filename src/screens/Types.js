@@ -1,7 +1,8 @@
 import { 
      StyleSheet,
      FlatList, 
-     View 
+     View,
+     ActivityIndicator 
     } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
@@ -61,21 +62,19 @@ const Types = (props) => {
     if(loding) {
         return <ActivityIndicator size={'large'} style={{flex:1}} />
     }
-    const renderCard = ({ item }) => {
+    const renderCard = ({ item}) => {
         return <Cards
-            Name={url.title}
-            image={url.images}
-            // waterIcon={url.WaterIcon}
-            // tempIcon={url.TempIcon}
-            // fertIcon={url.FertIcon}
-            // item={item}
+            Name={item.title}
+            image={item.image}
+            item={item}
             // isFavorate={checkIsFavorate(item.title)}
             favorates={fav}
         />
     }
     const params = {
         flatList: {
-            data: [...getAllPlantFromApi()],
+            // data: [...filterData()],
+            data: images,
             renderItem: renderCard,
             style: styles.flatList,
             // numColumns: 2,
@@ -97,7 +96,7 @@ const Types = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: 'white',
         justifyContent: 'center',
     },
 });
