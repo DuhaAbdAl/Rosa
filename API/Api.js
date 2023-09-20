@@ -1,4 +1,3 @@
-
 const Base_URL = "https://rosa-verde-lqyr.onrender.com/";
 
 export const getAllCategory = async () => {
@@ -53,6 +52,35 @@ export const login = async (body) => {
     const url = "/login"
     return await AppFetch(url, "POST", body)
 }
+export const addImageURL = async (body) => {
+    const url = "/addImageURL"
+    return await AppFetch(url, "POST", body)
+}
+export const getCategoryImage = async (body) =>{
+    const url = "/getImage"
+    return await AppFetch(url, "GET", body)
+}
+export const addMyPlant = async (body) => {
+    const url = "/addMyPlant"
+    return await AppFetch(url,"POST", body)
+}
+export const getMyPlant = async (body) => {
+    const url = "/getMyPlant"
+    return await AppFetch(url, "Get", body)
+}
+export const deleteMyPlant = async (body) => {
+    const url = "/deleteMyPlant"
+    return await AppFetch(url, "DELETE", body)
+}
+export const getAllMyPlant = async () => {
+    const url = "/getAllMyPlant"
+    return await AppFetch(url, "GET")
+}
+export const updateMyPlant = async (body) => {
+    const url = "/updateMyPlant"
+    return await AppFetch(url, "PATCH", body)
+}
+
 const AppFetch = async (url , method , body) => {
     const fullUrl = Base_URL + url
     console.log("fullUrl: " , fullUrl);

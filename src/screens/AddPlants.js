@@ -7,7 +7,13 @@ import DropdownComponent from '../Componants/DropDown';
 
 
 const AddPlants = () => {
-    
+
+    // var Array = [];
+    //     plants.forEach(item => {
+    //         Array.push(item.Category)
+    //     })
+    //     console.log(Array)
+
     // const categoryData = images
     return (
         <View style={styles.container}>
