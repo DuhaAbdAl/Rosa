@@ -6,14 +6,12 @@ import {
     } from "react-native";
 import React, { useEffect, useState } from "react";
 import Cards from "../assets/Cards";
-import { data } from "../mokData/data";
 import CustomHeader from "../Componants/CustomHeader";
 import { getAllPlant } from "../../API/Api";
 import IconContainer from "../Componants/IconContainer";
 
 
-const Types = (props) => {
-    const { categoryName } = props.route.params || {};
+const Types = () => {
     const [fav, setFavoratis] = useState([]);
     const [images, setImages] = useState([])
     const [loding, setLoading] = useState(false)
@@ -73,7 +71,6 @@ const Types = (props) => {
     }
     const params = {
         flatList: {
-            // data: [...filterData()],
             data: images,
             renderItem: renderCard,
             style: styles.flatList,
