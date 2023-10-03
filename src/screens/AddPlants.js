@@ -3,11 +3,13 @@ import { StyleSheet, View, Text, Image, Button, TextInput, TouchableOpacity } fr
 import { Dropdown } from 'react-native-element-dropdown';
 import { images } from '../mokData/data';
 import DropdownComponent from '../Componants/DropDown';
+import { addMyPlant } from '../../API/Api';
 // import { data, images } from '../mokData/data';
 
 
 const AddPlants = () => {
-
+    const [MyPlant, setMyPlant] = useState([])
+    const [loding, setLoading] = useState(false)
     // var Array = [];
     //     plants.forEach(item => {
     //         Array.push(item.Category)
@@ -15,49 +17,67 @@ const AddPlants = () => {
     //     console.log(Array)
 
     // const categoryData = images
+    const addMyPlantFromApi = () => {
+        setLoading(true)
+        addMyPlant().then(res => {
+            setLoading(false)
+            console.log("res: ", res);
+            res &&
+                setMyPlant(res?.all)
+        })
+    }
+
+    useEffect(() => {
+        addMyPlantFromApi()
+    }, [])
+
+
+    if (loding) {
+        return <ActivityIndicator size={'large'} style={{ flex: 1 }} />
+    }
     return (
         <View style={styles.container}>
-            
-            <Image style={styles.image} source={require('../assets/images/BellaGomez.jpeg')}/>
+
+            <Image style={styles.image} source={require('../assets/images/BellaGomez.jpeg')} />
             <TextInput
-             placeholder="Name"
-             placeholderTextColor={"#fff"}
-             underlineColorAndroid={"#c5e1a5"}
-             style={styles.textInput}             
+                placeholder="Name"
+                placeholderTextColor={"#fff"}
+                underlineColorAndroid={"#c5e1a5"}
+                style={styles.textInput}
             />
-             <TextInput
-             placeholder="Birthday"
-             keyboardType='numeric'
-             placeholderTextColor={"#fff"}
-             underlineColorAndroid={"#c5e1a5"}
-             style={styles.textInput}             
+            <TextInput
+                placeholder="Birthday"
+                keyboardType='numeric'
+                placeholderTextColor={"#fff"}
+                underlineColorAndroid={"#c5e1a5"}
+                style={styles.textInput}
             />
-             {/* <TextInput
+            {/* <TextInput
              placeholder="Species"
              placeholderTextColor={"#fff"}
              underlineColorAndroid={"#c5e1a5"}
              style={styles.textInput}             
             /> */}
-            <DropdownComponent/>
+            <DropdownComponent />
             {/* <Dropdown
             mode='default'
             data={images.title}
             placeholder='Category'
             /> */}
-           <TouchableOpacity style={styles.addButton}>
-            <Text style={styles.buttonText}>Add plant</Text>
-           </TouchableOpacity>
+            <TouchableOpacity style={styles.addButton} onPress={()=> {(addMyPlant())}}>
+                <Text style={styles.buttonText}>Add plant</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         backgroundColor: '#333'
     },
     textInput: {
         color: '#fff',
-        margin:10,
+        margin: 10,
     },
     image: {
         height: 200,
