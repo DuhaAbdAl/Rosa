@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, Button, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Image, Button, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { images } from '../mokData/data';
 import DropdownComponent from '../Componants/DropDown';
@@ -52,18 +52,7 @@ const AddPlants = () => {
                 underlineColorAndroid={"#c5e1a5"}
                 style={styles.textInput}
             />
-            {/* <TextInput
-             placeholder="Species"
-             placeholderTextColor={"#fff"}
-             underlineColorAndroid={"#c5e1a5"}
-             style={styles.textInput}             
-            /> */}
             <DropdownComponent />
-            {/* <Dropdown
-            mode='default'
-            data={images.title}
-            placeholder='Category'
-            /> */}
             <TouchableOpacity style={styles.addButton} onPress={()=> {(addMyPlant())}}>
                 <Text style={styles.buttonText}>Add plant</Text>
             </TouchableOpacity>
