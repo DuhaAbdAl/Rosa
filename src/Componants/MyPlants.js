@@ -22,7 +22,6 @@ const MyPlants = () => {
                 setImages(res?.all)
         })
     }
-
     useEffect(() => {
         getAllMyPlantFromApi()
     }, [])
