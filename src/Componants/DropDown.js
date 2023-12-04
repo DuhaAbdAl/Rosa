@@ -8,24 +8,24 @@ import { View, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
-const Data = images.map((image, index) => {
-  return {lable: image.title, value: index }
-});
 
 // useEffect(() => {
 //   getCategoreisFromApi()
 // }, [])
 
+const Data = images.map((image, index) => {
+  return { lable: image.title, value: index }
+});
 
 const DropdownComponent = (item) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [category, setCategory] = useState("");
+  const [value, setValue] = useState("");
 
   // const getCategoreisFromApi = () => {
   //   getAllCategory().then(res => {
   //       console.log("res: ", res);
   //       res &&
-  //           setIsFocus(res?.all)
+  //           setValue(res?.all)
   //   })
   // }
 
@@ -36,25 +36,26 @@ const DropdownComponent = (item) => {
     // value={category}
     // placeholderTextColor="#11182744"
     // >
-      <DropDownPicker
+    <DropDownPicker
       style={styles.input}
       items={Data}
       open={isOpen}
       setOpen={() => setIsOpen(!isOpen)}
-      value={category}
-      setValue={(val) => setCategory(val)}
       maxHeight={200}
       placeholder="Select Category"
       placeholderStyle={styles.placeholderStyle}
       showTickIcon={false}
       showArrowIcon={true}
       disableBorderRadios={true}
-      dropDownContainerStyle = {{backgroundColor: "green"}}
-      onChangeValue={setCategory}
+      // dropDownContainerStyle = {{backgroundColor: "green"}}
+      value={value}
+      setValue={(item) => setValue(item)}
+      onChangeValue={setValue}
       itemTextStyle={styles.itemTextStyle}
       selectedItemLabelStyle={styles.selectedTextStyle}
-      />
-      // </TextInput>
+      
+    />
+    // </TextInput>
   );
 };
 
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     // color:"red",
   },
   selectedTextStyle: {
-    fontSize: 15,
+    fontSize: 20,
     color: "red",
   },
   iconStyle: {
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   itemTextStyle: {
-    fontSize: 15,
+    fontSize: 20,
     color: "black",
   },
   label: {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
     // color: "#111827cc",
-    color:"red",
+    color: "red",
     borderRadius: 50,
     borderWidth: 2,
     borderColor: "#11182711",

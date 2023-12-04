@@ -60,13 +60,13 @@ const MyDrawer = () => {
         // drawerIcon: ({ color }) => renderIcon(color, ScreenName.Favorite)
       }
     },
-    // signIn: {
-    //   name: ScreenName.SignIn,
-    //   component: SignIn,
-    //   options: {
-    //     headerShown: false
-    //   }
-    // },
+    Types: {
+      name: ScreenName.Types,
+      component: Types,
+      options: {
+        headerShown: false
+      }
+    },
     // signUp: {
     //   name: ScreenName.SignUp,
     //   component: SignUp,
@@ -98,7 +98,7 @@ const MyDrawer = () => {
       }}/> */}
       <Drawer.Screen {...params.homePage} />
       {/* <Drawer.Screen {...params.favorite}/> */}
-      {/* <Drawer.Screen {...params.signIn} /> */}
+      <Drawer.Screen {...params.Types} />
       {/* <Drawer.Screen {...params.signUp}/> */}
       <Drawer.Screen {...params.UserProfilePage} />
     </Drawer.Navigator>
